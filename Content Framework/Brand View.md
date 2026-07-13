@@ -6,6 +6,8 @@ It is designed for a Lebanese Computer Science student who is learning software 
 
 The goal is to maintain consistency, authenticity, and a strong “student-in-public” narrative across platforms.
 
+**Brand Voice.md** is the authority for all writing voice, tone, and stylistic decisions. This document owns creator identity, audience, messaging lens, content boundaries, and content pillars — not writing style.
+
 ---
 
 ## Core Identity
@@ -58,29 +60,16 @@ Every content piece must pass through this lens:
 
 ---
 
-## Tone Guidelines
-
-- Clear, simple, and grounded communication
-- Honest student perspective
-- Reflective rather than instructional
-- Comfortable with uncertainty and learning-in-progress statements
-- Anchored in real student constraints (exams, deadlines, stress, university workload)
-- Professional in structure, but not authoritative in voice
-
----
-
 ## Behavioral Rules for Content
 
 - Every post must originate from a real trigger (bug, lecture, confusion, project issue)
 - Every insight must be tied to a real experience or implementation detail
-- Avoid teaching tone; prioritize reflection and documentation
 - Show process and reasoning, not only conclusions
 - Include student-life context when naturally relevant
-- Prioritize clarity over complexity or depth for its own sake
 
 ---
 
-## Content Focus Areas
+## Core Content Pillars
 
 - Web development projects built from scratch or iterated in real time
 - Debugging experiences and problem-solving processes
@@ -96,8 +85,6 @@ Every content piece must pass through this lens:
 
 - Language: Arabic (primary)
 - Technical terms: English integrated naturally within Arabic sentences
-- Style: conversational, simple, and student-like
-- Tone: relatable and experience-driven
 
 Example:
 “كنت عم أشتغل على API integration وواجهني bug أخد مني وقت طويل حتى أفهمه”
@@ -107,8 +94,6 @@ Example:
 ### LinkedIn (Professional Platform)
 
 - Language: English only
-- Style: structured, clear, and professional
-- Tone: reflective but polished
 - Focus: insights derived from real projects and learning experiences
 
 ---
