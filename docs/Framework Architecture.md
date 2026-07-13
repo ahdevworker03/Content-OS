@@ -2,15 +2,11 @@
 
 ## Executive Summary
 
-This repository contains a **personal brand content system** for a Lebanese Computer Science student documenting his learning journey in public. The system is designed to produce authentic, student-perspective content across **Instagram** (carousels + reels + stories) and **LinkedIn** (professional posts). The architecture is split into three functional layers:
+This repository contains a **personal brand content framework** for a Lebanese Computer Science student who documents his learning journey in public. The framework produces authentic, student-perspective content across Instagram (carousels, reels, stories) and LinkedIn (professional posts).
 
-1. **Strategic Definition** — who the brand is, what it says, how it sounds (`Content Framework/`)
-2. **Production & Rendering** — how carousels are visually built and exported (`Carousel Structure/`, `Export Files/`)
-3. **Archive** — what has been posted and where (`Content Posted/`)
+The system is built on three functional layers: **strategic definition** (brand identity, format rules, workflow), **production and rendering** (HTML carousel templates and Playwright-based PNG export), and **archiving** (published content organized by platform). It is AI-assisted — the framework documents serve as instruction sources for an LLM content generation agent.
 
-A fourth layer exists as a **roadmap/improvement plan** in `docs/`.
-
-The system is **AI-assisted**: the `Content Framework/Generating Content Prompts.md` file defines 4 prompt templates (post ideas, post scripts, story ideas, story scripts) that reference the other framework files as instruction sources for an LLM-based content generation agent.
+Design philosophy: every piece of content originates from a real trigger (a bug, a lecture, a project issue), passes through a consistent brand lens, and is adapted per-format and per-platform rather than copied.
 
 ---
 
@@ -18,212 +14,143 @@ The system is **AI-assisted**: the `Content Framework/Generating Content Prompts
 
 ```
 Social Media Content/
-├── MovieShelf_Reel_Script.md                # Standalone production script (not part of framework)
+├── Content Framework/                       # Brand strategy, format definitions, workflow, prompts
+│   ├── Brand View.md
+│   ├── Carousels.md
+│   ├── Reels.md
+│   ├── Stories.md
+│   ├── Content Format.md
+│   ├── Content Pipeline.md
+│   ├── Generating Content Prompts.md
+│   └── Posted Titles.md
 │
-├── Content Framework/                        # Core brand & content strategy
-│   ├── Brand View.md                         # Brand identity, audience, tone, platform strategy
-│   ├── Carousels.md                          # Carousel format definition & structure
-│   ├── Reels.md                              # Reel format definition & structure
-│   ├── Stories.md                            # Story format definition & structure
-│   ├── Content Format.md                     # Content distribution logic (format balance)
-│   ├── Content Pipeline.md                   # End-to-end workflow: trigger → format → execute
-│   ├── Generating Content Prompts.md         # AI prompt templates (4 agents)
-│   └── Posted Titles.md                      # Published post titles (duplication prevention)
+├── Carousel Structure/                      # HTML/CSS carousel template + design system
+│   ├── index.html
+│   └── styles.css
 │
-├── Carousel Structure/                       # Render-ready HTML/CSS carousel templates
-│   ├── index.html                            # 8-slide carousel example in Lebanese Arabic
-│   └── styles.css                            # Complete styling system (1080×1080px)
+├── Export Files/                            # Playwright-based slide export pipeline
+│   ├── package.json
+│   ├── export-slides.js
+│   └── extracted-slides/
 │
-├── Export Files/                             # Automation to export slides as PNGs
-│   ├── package.json                          # Node.js project (Playwright dependency)
-│   ├── export-slides.js                      # Playwright script → screenshots each .slide div
-│   ├── extracted-slides/                     # Output: 8 PNG images (slide-01 to slide-08)
-│   └── node_modules/                         # Playwright runtime
-│
-├── Content Posted/                           # Published content archive
-│   ├── Linkedln/                             # LinkedIn posts (English, text-only)
+├── Content Posted/                          # Published content archive by platform
+│   ├── Linkedln/
 │   └── Instagram/
-│       └── Instagram Carousel/               # visual carousel posts (PNG/JPG slides)
+│       └── Instagram Carousel/
 │
 └── docs/
-    ├── Content System Improvement.md         # 10-phase roadmap for system evolution
-    └── Framework Architecture.md             # This file
+    ├── Content System Improvement.md        # Roadmap and evolution plan
+    └── Framework Architecture.md            # This file
 ```
 
 ---
 
 ## Folder-by-Folder Breakdown
 
-### `Content Framework/` — The Strategic Core
+### `Content Framework/`
 
-This folder contains **8 markdown files** that together define the brand, content types, tone, workflows, and AI-generation instructions. It is the **source of truth** for all content decisions.
+The strategic core of the system. Eight markdown files that together define the brand identity, content types, tone, production workflow, and AI-generation instructions. This folder is the **source of truth** for all content decisions.
 
-| File                            | Role                                                                                                                                                                                                             |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Brand View.md`                 | Defines the creator identity (Lebanese CS student), audience, core lens, tone, platform language strategy, and content boundaries. The "constitution" of the system.                                             |
-| `Carousels.md`                  | Defines 4 carousel types (Educational, Education+Opinion, Project Thinking, Project Documentation). Mandates a 5-slide mandatory structure: Hook → Trigger → Body → Project Bridge → CTA.                        |
-| `Reels.md`                      | Defines 3 reel types (Quick Insights, Personal Reflection, Project Clips). Mandates environment authenticity (student setting clips) and "Facepalm" hooks.                                                       |
-| `Stories.md`                    | Defines 5 story categories (Learning Journey, Unpolished 20%, Quick Value, Interaction, Project Updates). Emphasizes low-friction, unpolished authenticity.                                                      |
-| `Content Format.md`             | Distribution balance guidelines (e.g. 50% educational carousels, 50% quick-tip reels). Introduces the**Trigger-First** content planning logic.                                                                   |
-| `Content Pipeline.md`           | Step-by-step workflow: Trigger → Format Selection → Execution Rules. Includes an "Expert Filter" check and "Visual Vibe Check" for quality control.                                                              |
-| `Generating Content Prompts.md` | 4 isolated prompt templates for an AI agent. The longest file (654 lines). References all other framework files as @-inputs. Defines the Carousel Production Workflow (7 steps) and Reel/Caption/LinkedIn rules. |
-| `Posted Titles.md`              | 5 previously published titles used for duplication prevention by the AI agent. Currently flat text only,**no metadata** (date, format, pillar).                                                                  |
-
-### `Carousel Structure/` — The Visual Template
-
-This folder contains a **single working carousel implementation** in HTML + CSS. It serves as both a template and a rendering target for the export pipeline.
-
-- `index.html`: 8-slide carousel in Lebanese Arabic. Each slide is a `.slide` div inside a `.slide-wrapper`. Slides follow the mandatory structure from `Carousels.md` (Hook → Trigger → Body → Real Moments → Process → Growth → CTA).
-- `styles.css`: 449-line design system. 1080×1080px slides. Dark theme (`#1a0f08` background, `#f5a84a` orange accent). Uses Tajawal (Arabic) + Pacifico/Caveat/Nunito/Courier New fonts. RTL layout. Includes: box-l, box-l2, arrow-list, grid4, bullet-row, footer-line components.
-
-### `Export Files/` — The Automation Layer
-
-Node.js project using **Playwright** to screenshot each carousel slide as a PNG.
-
-- `package.json`: Minimal — one dependency (`playwright ^1.61.1`).
-- `export-slides.js`: Launches Chromium, navigates to `http://127.0.0.1:5500/Carousel%20Structure/index.html` (Live Server URL), locates all `.slide` elements, screenshots each one into `extracted-slides/`.
-- `extracted-slides/`: Contains 8 PNG outputs from the last export run.
-
-**Observations**: The Live Server URL is hardcoded. There is no npm script defined for running the export. The export script assumes the `Carousel Structure/` HTML is running locally.
-
-### `Content Posted/` — The Archive
-
-- `Linkedln/` (note the typo: "Linkedln" not "LinkedIn"): 5 English text posts. Each is a self-contained markdown file. Topics progress: introduction → CS breadth → non-technical skills → operating systems → reading errors. These map to the first 5 entries in `Posted Titles.md`.
-- `Instagram/Instagram Carousel/`: 5 posts with 6–11 slides each. Post 4 images are processed through Picsart (filename pattern `*-Picsart-AiImageEnhancer.png`). **No markdown or metadata files** — only images. No LinkedIn-level captions or scripts archived here.
-
-### `docs/` — The Roadmap
-
-- `Content System Improvement.md`: 10-phase, 529-line improvement checklist. Proposes: brand voice refinement, platform rules, hook library, format restructuring, rewriting logic, stories support, output packages, archiving, JSON content model, and React rendering. All items are unchecked (todo-style).
-- `Framework Architecture.md`: Previously empty — now contains this document.
-
-### Root-level file
-
-- `MovieShelf_Reel_Script.md`: Complete ~55-second reel script for an Instagram Reel about a React project (MovieShelf). Full production notes, Arabic captions, timing check. **Not referenced by any framework file.** It is an executed output, not framework documentation.
+| File                            | Description                                                                                                                                                                                                                                                                 |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Brand View.md`                 | Defines the creator identity (Lebanese CS student), target audience, core messaging lens, tone guidelines, platform language strategy, and content boundaries (what the brand is NOT). Exists to keep every content piece consistent with the "student-in-public" identity. |
+| `Carousels.md`                  | Defines 4 carousel types and mandates a 5-slide structure (Hook → Trigger → Body → Project Bridge → CTA). Exists to ensure all carousel content follows a repeatable, scannable format.                                                                                     |
+| `Reels.md`                      | Defines 3 reel types with environment authenticity rules (student-setting clips) and hook patterns. Exists to distinguish quick-format content from deep-dive carousels.                                                                                                    |
+| `Stories.md`                    | Defines 5 story categories focused on daily, unpolished, low-friction engagement. Exists to keep stories intentional rather than noisy.                                                                                                                                     |
+| `Content Format.md`             | Distribution balance guidelines across all formats and introduces the**Trigger-First** planning logic. Exists as the bridge between content ideas and format selection.                                                                                                     |
+| `Content Pipeline.md`           | Step-by-step workflow from trigger identification through format selection to quality control (Expert Filter Check, Visual Vibe Check). Exists to make the content production process repeatable.                                                                           |
+| `Generating Content Prompts.md` | Four isolated LLM prompt templates (Post Idea Generator, Post Script Builder, Story Idea Generator, Story Script Builder). References other framework documents as @-inputs. Exists to encode the entire framework into AI-executable instructions.                         |
+| `Posted Titles.md`              | List of previously published titles for duplication prevention. Exists to help the AI agent avoid repeating ideas.                                                                                                                                                          |
 
 ---
 
-## Content Framework Architecture
+### `Carousel Structure/`
 
-The framework is built around a **Trigger-First model**:
+A working HTML/CSS carousel implementation that serves as both a visual template and a rendering target for the export pipeline. `index.html` contains an 8-slide carousel in Lebanese Arabic following the carousel schema. `styles.css` is a 1080×1080px dark-theme design system with RTL layout support and reusable component classes. This is the **only physical template** in the system — new carousels are produced by populating its structure.
 
-```
-Real Experience (bug, lecture, confusion)
-       |
-       v
-  Trigger Identified
-       |
-       v
-  Format Selected (Carousel / Reel / Story)
-       |
-       v
-  Brand Lens Applied ("I learned", student perspective)
-       |
-       v
-  Platform Adaptation (Arabic+English for IG, English for LinkedIn)
-       |
-       v
-  Output (slides / script / caption / post)
-```
+### `Export Files/`
 
-**Key architectural principles:**
+A Node.js project using Playwright to screenshot each `.slide` element from the carousel HTML into individual PNG files. `export-slides.js` navigates to the locally served HTML, locates all `.slide` divs, and saves them to `extracted-slides/`. The pipeline requires a running Live Server instance and produces platform-ready carousel images.
 
-1. **Identity-Constrained**: Every content piece must pass through the `Brand View.md` lens. Content boundaries are explicitly defined (NOT an expert, NOT motivational, NOT abstract theory).
-2. **Format-Specific Rules**: Each format (`Carousels.md`, `Reels.md`, `Stories.md`) has its own purpose, structure, and style rules that are distinct from each other.
-3. **Trigger-First**: Content originates from a real event. "What happened today?" is the starting question (`Content Pipeline.md:5-6`).
-4. **Bilingual by Platform**: Instagram = Lebanese Arabic + English tech terms. LinkedIn = English only. Adaptation is required, translation is forbidden.
-5. **Student-Centric Quality Gates**: Expert Filter Check ("Does this sound like a teacher?") and Visual Vibe Check ("Does this look too clean?").
+### `Content Posted/`
 
-**Content Progression (soft rule):** `Generating Content Prompts.md:132-148` defines a preferred progression from CS fundamentals → web development → advanced topics, to show an evolving journey rather than disconnected posts.
+Archive of published content organized by platform. LinkedIn posts are stored as text-only markdown files. Instagram carousels are stored as numbered PNG/JPG slide sequences grouped by post. Note: the LinkedIn folder has a naming inconsistency (`Linkedln/` instead of `LinkedIn/`).
+
+### `docs/`
+
+Contains `Content System Improvement.md` — a 10-phase, todo-style roadmap for evolving the framework (brand voice refinement, platform rules, hook library, JSON content model, React rendering). All items are currently unchecked.
 
 ---
 
-## Export/Connection Flow
+## System Workflow
 
-The production pipeline connects framework → render → export:
+The framework operates across six phases that connect the documents into a cohesive system:
 
-```
-Content Framework/            Carousel Structure/          Export Files/
-┌──────────────────┐         ┌──────────────────┐         ┌──────────────────┐
-│ Carousels.md      │         │ index.html        │         │ package.json      │
-│ (structure rules) │─────→   │ (populated with   │─────→   │ export-slides.js   │
-│ Content Pipeline  │         │  carousel content)│         │ (Playwright       │
-│ Generating        │         │ styles.css        │         │  screenshots)     │
-│ Content Prompts   │         └──────────────────┘         │ extracted-slides/ │
-└──────────────────┘                                       │ (PNG output)     │
-                                                           └──────────────────┘
-```
+### 1. Strategy
 
-The flow described in `Generating Content Prompts.md` (Step 1–7, lines 290–410):
+`Brand View.md` defines the foundational identity and boundaries. It influences every downstream document — content format rules, tone, language strategy, and platform roles. All other decisions must be compatible with this layer.
 
-1. Build the story (Trigger → Problem → Confusion → Discovery → Lesson)
-2. Create master script in English
-3. Translate to Lebanese Arabic
-4. Read existing carousel structure (the HTML)
-5. Populate the structure (fill placeholders)
-6. Implement fully (replace HTML placeholders)
-7. Pre-output compliance check
+### 2. Content Planning
 
-**The export pipeline is manual**: developer runs Live Server on the HTML → runs `node export-slides.js` → PNGs appear in `extracted-slides/`.
+`Content Format.md` provides distribution balance guidelines and the **Trigger-First** logic ("What happened today?"). `Carousels.md`, `Reels.md`, and `Stories.md` define what each format is for, so the right format can be matched to the right idea. `Content Pipeline.md` formalises the selection flow.
 
-**Missing connections**:
+### 3. Content Creation
 
-- No automated path from "content idea" to "populated HTML carousel" — the AI generates text, but human must manually insert it into the HTML.
-- No automated path from carousel HTML to "posted to Instagram" — PNGs are exported but need manual upload.
-- LinkedIn posts are text-only markdown files with no connection to the visual carousel pipeline.
-- The Instagram carousel archive (PNG files) has no metadata linking it back to `Posted Titles.md` or the framework documents.
+`Generating Content Prompts.md` encodes the planning and format documents into AI-executable instructions. Its four agents handle separate responsibilities:
+
+- **Post Idea Generator** produces 3 ideas using Brand View, format docs, Pipeline, and Posted Titles (duplication prevention).
+- **Post Script Builder** transforms a selected idea into publishable content, following a 7-step carousel workflow.
+- **Story Idea Generator** and **Story Script Builder** handle the lighter story track.
+
+### 4. Repurposing
+
+Content is adapted per-platform rather than translated. A single carousel generates two outputs: an Instagram version (Lebanese Arabic + English technical terms) and a LinkedIn version (English only, professional framing). Reels produce an Instagram-only output. This repurposing logic is defined in both `Content Format.md` and `Generating Content Prompts.md`.
+
+### 5. Publishing
+
+Carousels are rendered through the `Carousel Structure/` HTML template, then exported to PNGs via the Playwright script in `Export Files/`. LinkedIn posts are published as text. The human-in-the-loop handles final upload and posting.
+
+### 6. Continuous Improvement
+
+`docs/Content System Improvement.md` tracks planned evolutions (hook library, JSON content model, React rendering layer). `Posted Titles.md` provides a lightweight feedback loop by preventing idea duplication.
 
 ---
 
-## Final Mental Model of the System
+## Document Relationships
+
+The framework documents form a directed information flow:
 
 ```
-                         ┌─────────────────────────────┐
-                         │      Brand Identity         │
-                         │   (Brand View.md)           │
-                         │   Lebanese CS Student       │
-                         │   Learning in Public        │
-                         └─────────────┬───────────────┘
-                                       │
-                         ┌─────────────▼───────────────┐
-                         │   Content Trigger           │
-                         │   (real bug / lecture /     │
-                         │    confusion / project)      │
-                         └─────────────┬───────────────┘
-                                       │
-                    ┌──────────────────┼──────────────────┐
-                    │                  │                  │
-         ┌──────────▼──────┐  ┌───────▼───────┐  ┌──────▼──────┐
-         │   Carousel      │  │   Reel        │  │   Story     │
-         │ (deep dive)     │  │ (quick tip)   │  │ (daily)     │
-         └──────────┬──────┘  └───────┬───────┘  └──────┬──────┘
-                    │                  │                  │
-         ┌──────────▼──────┐  ┌───────▼───────┐  ┌──────▼──────┐
-         │ HTML + CSS      │  │ Script +      │  │ Frame-by-   │
-         │ Carousel        │  │ Visual Plan   │  │ frame plan  │
-         └──────────┬──────┘  └───────┬───────┘  └──────┬──────┘
-                    │                  │                  │
-         ┌──────────▼──────┐  ┌───────▼───────┐         │
-         │ Playwright      │  │ Manual        │         │
-         │ Export → PNGs   │  │ Recording     │         │
-         └──────────┬──────┘  └───────┬───────┘         │
-                    │                  │                  │
-                    └──────────────────┼──────────────────┘
-                                       │
-                         ┌─────────────▼───────────────┐
-                         │   Dual-Platform Output       │
-                         │   Instagram (Arabic)         │
-                         │   LinkedIn (English)          │
-                         └─────────────┬───────────────┘
-                                       │
-                         ┌─────────────▼───────────────┐
-                         │   Archive                   │
-                         │   Content Posted/           │
-                         │   (LinkedIn: .md, IG: .png) │
-                         └─────────────────────────────┘
+Brand View.md
+  │
+  ├──► Carousels.md      (format rules must align with brand identity)
+  ├──► Reels.md          (authenticity rules derived from brand tone)
+  ├──► Stories.md        (unpolished mandate from brand boundaries)
+  ├──► Content Format.md (platform language strategy from brand)
+  └──► Content Pipeline.md (quality gates reflect brand voice)
+         │
+         ▼
+   Content Format.md  ◄──►  Carousels.md, Reels.md, Stories.md
+   (distribution balance, trigger-first logic connects to all format docs)
+         │
+         ▼
+   Content Pipeline.md  (references Brand View, Content Format, and format docs)
+         │
+         ▼
+   Generating Content Prompts.md
+   (consumes ALL framework docs as @-inputs; encodes them into 4 agent prompts)
+         │
+         ▼
+   Posted Titles.md  (consulted by Post Idea Generator for duplication prevention)
 ```
 
-The system is **content-strategy-first, production-second**. The heavy investment is in defining brand, tone, and workflow rules (8 framework files + 1 prompt file). The production pipeline is minimal (HTML → Playwright → PNGs). The archive is basic (text or images, no metadata).
+Key relationships:
 
-The most sophisticated piece is `Generating Content Prompts.md` (654 lines), which acts as the **bridge between human strategy and AI execution**. It encodes the entire framework into prompt instructions, making the AI agent a disciplined content producer within the brand's boundaries.
+- `Brand View.md` is the root dependency — every other document inherits constraints from it.
+- `Content Format.md` sits between planning and execution, connecting to all three format-specific documents.
+- `Content Pipeline.md` is the procedural hub that sequences planning, format selection, and quality checks.
+- `Generating Content Prompts.md` is the terminal consumer — it references every other document and produces the executable output.
+- `Posted Titles.md` is only consumed by the Post Idea Generator agent and does not influence other documents.
+- The `Carousel Structure/` HTML and `Export Files/` pipeline are downstream of the framework documents but have no reverse feedback into them.
 
-The system is **designed for a single creator** managing both strategy and execution. It is not a multi-user CMS or a fully automated pipeline — it is a structured but human-in-the-loop content operation.
+---
