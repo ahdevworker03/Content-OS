@@ -1,7 +1,12 @@
 # Carousels
 
-Carousels are the main educational documentation.
-They should be structured, reflective, and useful enough that people see the journey.
+Carousels are the main educational documentation format.
+They are structured slide-by-slide walkthroughs that guide the reader through a learning journey.
+
+## What Problems a Carousel Solves
+
+Carousels transform a learning experience into a shareable, structured narrative.
+They are chosen when a concept needs explanation — when the reader needs to follow the thinking, not just see the conclusion.
 
 Carousels are best for:
 
@@ -11,6 +16,18 @@ Carousels are best for:
 - Reflections (Why it was hard)
 - Thought processes
 - Lessons from learning and building
+
+---
+
+## What Defines a Good Carousel
+
+A good carousel respects the reader's time. Every slide must advance the narrative; remove any slide that only repeats or pads.
+
+- The trigger must be specific enough to anchor an entire carousel. A generic trigger produces a generic carousel.
+- The explanation must be grounded in your own code or project work. Hypothetical examples weaken the format.
+- Each slide introduces exactly one idea. A slide that tries to do two things does neither.
+- The Project Bridge is not optional — it proves the concept was applied, not just studied.
+- The CTA invites peer discussion, not feedback for the creator.
 
 ---
 
@@ -46,23 +63,21 @@ Explain a concept from a student's perspective.
 - Development tools
 - Software engineering fundamentals
 
-### Content style
+### Format Constraints
 
-These posts should:
+- Every slide must serve the narrative progression. Remove any slide that does not advance the explanation.
+- The concept must be demonstrated through your own code or project work — no hypothetical examples.
+- The Project Bridge must reference a real implementation from active project work.
+- The CTA must invite peer discussion, not feedback-for-the-creator.
 
-- Start with a personal hook
-- Define the concept in plain language (as I understood it)
-- Use examples from my own code
-- Avoid unnecessary jargon
-- Focus on clarity over complexity
-- End with a question for fellow learners
+For writing style, tone, and voice guidelines — including plain language, jargon handling, and teaching tone — refer to `Brand Voice.md`.
 
-### What to avoid
+### What to Avoid
 
-- Sounding like a teacher ("You should...")
-- Too much theory with no application
-- Overcomplicated explanations
-- Trying to sound more advanced than necessary
+- A carousel that explains a concept without showing it in your own code.
+- Slide sequences that repeat the same point — each slide should introduce new information or a new perspective.
+- Starting without a trigger. Carousels must originate from a real learning moment.
+- For voice-related constraints (teaching tone, over-explanation, jargon), refer to `Brand Voice.md`.
 
 ---
 
@@ -79,6 +94,14 @@ Share a topic while adding the student perspective.
 - Show what I learned from it personally
 - Compare my expectation versus reality
 
+### Structure
+
+Follow the same mandatory structure (Hook → Trigger → Body → Project Bridge → CTA) with the personal perspective woven through the explanation. The Body slides should alternate between concept explanation and personal reaction.
+
+### Distinction from Educational Documentation
+
+This type adds the subjective layer: not just what I learned, but how I felt about it, what surprised me, and how my understanding changed.
+
 ---
 
 ## 3) Project Thinking and Product Building
@@ -86,6 +109,25 @@ Share a topic while adding the student perspective.
 ### Purpose
 
 Document how I think about problems as a student builder.
+
+### What to include
+
+- The problem I was trying to solve
+- The approaches I considered and why I chose one
+- What I learned from the implementation
+- What I would do differently next time
+
+### Structure
+
+This type does not require a full Hook → Trigger → Body → Project Bridge → CTA sequence. A simpler structure works:
+
+1. **Context:** What problem I was working on
+2. **Thought process:** How I approached it
+3. **Outcome:** What happened and what I learned
+
+### Constraint
+
+The thinking must be visible, not abstract. Include code snippets, architecture sketches, or decision logs. If the thinking cannot be shown, it is not ready for this format.
 
 ---
 
@@ -95,11 +137,13 @@ Document how I think about problems as a student builder.
 
 Document the progress of my own project in public.
 
-### Content style
+### Format Guidelines
 
-These posts should feel:
+- Grounded in actual work — show real commits, real decisions, real tradeoffs.
+- The progress or problem must be visible, not abstract. Include screenshots, code diffs, or architecture sketches.
+- Follow the same mandatory structure (Hook → Trigger → Body → Project Bridge → CTA) with the project as context.
+- For writing style and tone, refer to `Brand Voice.md`.
 
-- Real and Specific
-- Grounded in actual work
-- Honest about progress and problems
-- Less polished, more authentic
+### Distinction from Project Thinking
+
+Project Documentation shows what happened in the project. Project Thinking shows how the decision was made. The same project moment can be two different carousels — one documenting the feature, another explaining the reasoning behind it.

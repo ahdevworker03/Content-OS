@@ -1,0 +1,33 @@
+{
+  "$schema": "Describes the data model for populating a carousel template.",
+  "version": "1.0",
+  "description": "Each carousel is defined by metadata and an ordered array of slides. The template renders each slide using the appropriate layout based on its type field.",
+  "meta": {
+    "title": "Carousel display title",
+    "lang": "ar | en",
+    "direction": "rtl | ltr",
+    "username": "Handle displayed on the cover",
+    "footer_name": "Author name in the final slide",
+    "footer_handle": "Handle in the final slide"
+  },
+  "slides": [
+    {
+      "type": "cover | box-list | arrow-list | grid-2x2 | bullet-list | final-cta",
+      "number": "Slide label e.g. SLIDE 1 OF 8 — COVER",
+      "section_tag": { "text": "", "class": "cons" },
+      "label": "Optional uppercase label",
+      "title": "Slide heading",
+      "teasers": ["cover type: subtitle lines"],
+      "items": [
+        { "text": "HTML content", "highlight": false, "bold": false, "accent": false }
+      ],
+      "grid_items": [
+        { "label": "Card title", "text": "Card body" }
+      ],
+      "summary": "bullet-list type: highlighted summary",
+      "quote": "final-cta type: final quote in accent box",
+      "cta": "final-cta type: call-to-action question",
+      "swipe": "swipe →"
+    }
+  ]
+}

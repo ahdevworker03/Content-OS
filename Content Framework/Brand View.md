@@ -81,28 +81,13 @@ Every content piece must pass through this lens:
 
 ## Language Strategy
 
-### Instagram (Primary Platform)
-
-- Language: Arabic (primary)
-- Technical terms: English integrated naturally within Arabic sentences
-
-Example:
-“كنت عم أشتغل على API integration وواجهني bug أخد مني وقت طويل حتى أفهمه”
-
----
-
-### LinkedIn (Professional Platform)
-
-- Language: English only
-- Focus: insights derived from real projects and learning experiences
+Language-per-platform rules (which language to write in, when to mix English technical terms, rewriting rules between platforms) are owned by `Brand Voice.md`. Refer to `Brand Voice.md` — Language Strategy and Platform Rewriting Rules sections.
 
 ---
 
 ## Platform Strategy
 
-- Instagram: daily learning, experiments, mistakes, and student journey documentation
-- LinkedIn: structured reflections and professional summaries of the same experiences
-- Each idea can be adapted per platform, not translated directly
+Platform roles, communication style, depth, tone adaptation, CTA patterns, and audience expectations per platform are defined in `Brand Voice.md` — Platform Rules section.
 
 ---
 

@@ -1,0 +1,64 @@
+# Optional CI/CD workflow for automated carousel slide export.
+#
+# Triggered manually (workflow_dispatch) so it never runs unexpectedly.
+# Configure the URL and output paths in Export Files/export-config.js
+# or pass them as workflow inputs.
+#
+# Prerequisites:
+#   - Node.js and npm dependencies installed in Export Files/
+#
+# Usage:
+#   gh workflow run export.yml
+
+name: Export Carousel Slides
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "URL of the carousel HTML page"
+        required: false
+        default: "http://localhost:8000/Carousel%20Structure/index.html"
+      output_dir:
+        description: "Output directory name"
+        required: false
+        default: "extracted-slides"
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Export Files
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+          cache-dependency-path: Export Files/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install chromium
+
+      - name: Start local server
+        run: |
+          npx http-server .. -p 8000 -c-1 &
+          sleep 2
+
+      - name: Export slides
+        run: |
+          node export-slides.js \
+            --url "${{ github.event.inputs.url }}" \
+            --output "${{ github.event.inputs.output_dir }}"
+
+      - name: Upload exported slides
+        uses: actions/upload-artifact@v4
+        with:
+          name: exported-slides
+          path: Export Files/${{ github.event.inputs.output_dir }}/

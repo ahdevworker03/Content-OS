@@ -1,0 +1,20 @@
+{
+  "id": "instagram-001",
+  "title": "",
+  "status": "published",
+  "published_date": "",
+  "platform": "Instagram",
+  "primary_format": "Carousel",
+  "content_pillar": "",
+  "language": "Arabic",
+  "tags": [],
+  "related_assets": [
+    "assets/1.png",
+    "assets/2.png",
+    "assets/3.png",
+    "assets/4.png",
+    "assets/5.png",
+    "assets/6.png"
+  ],
+  "notes": ""
+}

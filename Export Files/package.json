@@ -1,16 +1,22 @@
 {
   "name": "social-media-content",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Export pipeline for social media carousel slides",
+  "main": "export-slides.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "npx http-server .. -p 8000 -c-1",
+    "export": "node export-slides.js",
+    "export:custom": "node export-slides.js --url",
+    "export:linkedin": "node export-slides.js --url http://localhost:8000/Carousel%20Structure/index.html --output linkedin-slides",
+    "start": "npm run serve",
+    "test": "echo \"See Content Framework/Content Model.md for validation\" && exit 0"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "playwright": "^1.61.1"
+    "playwright": "^1.61.1",
+    "http-server": "^14.1.1"
   }
 }
