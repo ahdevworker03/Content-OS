@@ -57,8 +57,6 @@ Social Media Content/
     └── 01- Framework Architecture.md        # This file
 ```
 
-Note on missing items: `docs/Content System Improvement.md`, `docs/Framework Refactoring Plan.md`, and `.github/workflows/export.yml` are referenced in earlier planning but do not exist in the current codebase.
-
 ---
 
 ## Folder-by-Folder Breakdown
