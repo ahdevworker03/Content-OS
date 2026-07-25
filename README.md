@@ -44,24 +44,19 @@ Social Media Content/
 │           └── Instagram Carousel/         # 5 posts (Post 1-5: assets/ + metadata.json)
 │
 ├── production/                             # Render and export tooling
-│   ├── renderer/                           # Carousel template engine (reusable)
+│   ├── renderer/                           # Reusable carousel renderer
 │   │   ├── template.hbs                    # Handlebars template (6 slide layouts)
 │   │   ├── render.js                       # Node.js: template + JSON → HTML
 │   │   ├── styles.css                      # 1080×1080 dark theme design system, RTL
 │   │   └── package.json                    # devDeps: handlebars ^4.7.9
 │   ├── workspace/                          # Active carousel data and output
 │   │   ├── carousel.json                   # Current carousel structured data (ALL CAPS keys)
-│   │   ├── index.html                      # Rendered HTML output
-│   │   └── node_modules/                   # Handlebars runtime dependencies
-│   ├── export/                             # Playwright slide export pipeline
+│   │   └── index.html                      # Rendered HTML output
+│   ├── export/                             # HTML → PNG export pipeline
 │   │   ├── export-config.js                # Config: URL, viewport, selector, output
 │   │   ├── export-slides.js                # Screenshots .slide → PNGs
 │   │   ├── extracted-slides/               # 7 PNGs (slide-01 through slide-07)
 │   │   └── package.json                    # Deps: playwright ^1.61.1, http-server ^14.1.1
-│   └── templates/                          # Reusable structure definitions
-│       └── carousel/
-│           └── schema.json                 # Carousel data model v1.0 (descriptive)
-│
 └── README.md                               # This file
 ```
 
@@ -73,19 +68,19 @@ Social Media Content/
 
 Seven subdirectories organize the ten markdown files by concern:
 
-| Subdirectory  | File                            | Description                                                                                                                                     |
-| ------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `strategy/`   | `Brand View.md`                 | Creator identity (Lebanese CS student), target audience, messaging lens, content boundaries, pillars. Owns _who the creator is_.                |
-|               | `Brand Voice.md`                | Single Source of Truth for voice, tone, style, platform rules (Instagram/LinkedIn/X/Stories), language strategy. Owns _how the creator writes_.  |
-| `formats/`    | `Carousels.md`                  | 4 carousel types, mandatory 5-slide structure (Hook → Trigger → Body → Project Bridge → CTA).                                                   |
-|               | `Reels.md`                      | 3 reel types, authenticity rules (no staging), visible learning environment required.                                                            |
-|               | `Stories.md`                    | 5 story categories, unpolished 24h ephemeral, low-friction interactions.                                                                        |
-| `workflow/`   | `Content Format.md`             | Trigger-First planning logic (stages 1–3: Trigger → Idea → Format Selection).                                                                   |
-|               | `Content Pipeline.md`           | Full lifecycle (stages 4–8: Draft → Review → Final Assets → Published → Archived), quality gates, ownership matrix.                             |
-| `prompts/`    | `Generating Content Prompts.md` | 5 AI agents (Post Idea Generator, Post Content Builder, Carousel Renderer, Story Idea Generator, Story Content Builder). Orchestrator file.      |
-| `model/`      | `Content Model.md`              | Canonical JSON Schema (draft 2020-12) for Content Items — identity, trigger, metadata, platform variants, archive. 6 slide layouts, renderer interface. Forward-looking, not yet consumed. |
-| `memory/`     | `Posted Titles.md`              | Lightweight lookup table of published content. Per-post metadata lives in each post's `metadata.json`. Archive paths reference `Content Posted/` (outdated — should be `content/published/`). |
-| `docs/`       | `01- Framework Architecture.md` | This file.                                                                                                                                      |
+| Subdirectory | File                            | Description                                                                                                                                                                                   |
+| ------------ | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `strategy/`  | `Brand View.md`                 | Creator identity (Lebanese CS student), target audience, messaging lens, content boundaries, pillars. Owns _who the creator is_.                                                              |
+|              | `Brand Voice.md`                | Single Source of Truth for voice, tone, style, platform rules (Instagram/LinkedIn/X/Stories), language strategy. Owns _how the creator writes_.                                               |
+| `formats/`   | `Carousels.md`                  | 4 carousel types, mandatory 5-slide structure (Hook → Trigger → Body → Project Bridge → CTA).                                                                                                 |
+|              | `Reels.md`                      | 3 reel types, authenticity rules (no staging), visible learning environment required.                                                                                                         |
+|              | `Stories.md`                    | 5 story categories, unpolished 24h ephemeral, low-friction interactions.                                                                                                                      |
+| `workflow/`  | `Content Format.md`             | Trigger-First planning logic (stages 1–3: Trigger → Idea → Format Selection).                                                                                                                 |
+|              | `Content Pipeline.md`           | Full lifecycle (stages 4–8: Draft → Review → Final Assets → Published → Archived), quality gates, ownership matrix.                                                                           |
+| `prompts/`   | `Generating Content Prompts.md` | 5 AI agents (Post Idea Generator, Post Content Builder, Carousel Renderer, Story Idea Generator, Story Content Builder). Orchestrator file.                                                   |
+| `model/`     | `Content Model.md`              | Canonical JSON Schema (draft 2020-12) for Content Items — identity, trigger, metadata, platform variants, archive. 6 slide layouts, renderer interface. Forward-looking, not yet consumed.    |
+| `memory/`    | `Posted Titles.md`              | Lightweight lookup table of published content. Per-post metadata lives in each post's `metadata.json`. Archive paths reference `Content Posted/` (outdated — should be `content/published/`). |
+| `docs/`      | `01- Framework Architecture.md` | This file.                                                                                                                                                                                    |
 
 ### `content/` — Lifecycle Artifacts
 
@@ -100,22 +95,23 @@ Seven subdirectories organize the ten markdown files by concern:
 ### `production/` — Render and Export Tooling
 
 **`renderer/`** is the reusable carousel template engine:
+
 - `template.hbs` — Handlebars template supporting 6 slide layouts via conditionals (`TYPE_COVER`, `TYPE_BOX_LIST`, `TYPE_ARROW_LIST`, `TYPE_GRID_2X2`, `TYPE_BULLET_LIST`, `TYPE_FINAL_CTA`)
 - `render.js` — Compiles `template.hbs` + JSON data file, injects shared fields (`USERNAME`, `FOOTER_NAME`, `FOOTER_HANDLE`, `SWIPE`) into each slide, writes `index.html`
 - `styles.css` — 1080×1080px dark theme with RTL support, Google Fonts (Tajawal, Nunito, Pacifico, Caveat), section tag color variants, reusable components
 - `package.json` — devDependencies: handlebars ^4.7.9
 
 **`workspace/`** holds the active carousel's working files:
+
 - `carousel.json` — ALL CAPS keyed JSON data for the current carousel (7 slides: "This Summer, I'm Building Foundations")
 - `index.html` — Rendered output from the template engine (linked to `styles.css`)
 - `node_modules/` — Handlebars runtime
 
 **`export/`** is the Playwright slide export pipeline:
+
 - `export-config.js` — All settings overridable via CLI (`--url`, `--output`, `--selector`, `--width`, `--height`, `--scale`, `--headless`). Defaults: URL localhost:8000, viewport 1920×1080 @2x, selector `.slide`, output to `extracted-slides/`, pattern `slide-{{n}}.png`
 - `export-slides.js` — Launches Chromium headless, navigates to carousel HTML, screenshots each `.slide` as PNG
 - `extracted-slides/` — 7 PNGs (slide-01 through slide-07) for the "This Summer, I'm Building Foundations" carousel
-
-**`templates/carousel/schema.json`** — Descriptive data model (v1.0) for populating carousel templates: meta fields and slide array with type, number, section_tag, label, title, teasers, items, grid_items, summary, quote, cta, swipe.
 
 ---
 
