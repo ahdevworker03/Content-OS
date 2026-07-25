@@ -1,0 +1,100 @@
+{
+  "PAGE_TITLE": "This Summer, I'm Building Foundations",
+  "LANG": "ar",
+  "DIRECTION": "rtl",
+  "DIRECTION_RTL": true,
+  "USERNAME": "@abdallahhassoun.dev",
+  "FOOTER_NAME": "Abdallah Hassoun · CS Student",
+  "FOOTER_HANDLE": "abdallahhassoun.dev@",
+  "SWIPE": "→",
+  "SLIDES": [
+    {
+      "TYPE_COVER": true,
+      "NUMBER": "SLIDE 1 OF 7 — SUMMER BREAK",
+      "TITLE": "خلصت أول سنة Computer Science.",
+      "TEASERS": [
+        "وهلق عندي ٣ شهور...",
+        "وحاسس إنن ممكن يفرقوا أكتر من السنة كلها."
+      ]
+    },
+    {
+      "TYPE_BOX_LIST": true,
+      "NUMBER": "SLIDE 2 OF 7 — THE TRIGGER",
+      "LABEL": "FIRST YEAR",
+      "TITLE": "أول سنة علمتني كتير.",
+      "BOX_ITEMS": [
+        { "TEXT": "تعلمت HTML، CSS، JavaScript و TypeScript." },
+        { "TEXT": "بنيت مشاريع." },
+        { "TEXT": "وعملت Portfolio ونشرتو." },
+        { "TEXT": "بس كل ما كنت اشتغل على مشروع... كنت حس إنو في حدود للي بعرفو." },
+        { "TEXT": "مو لأني ما تعلمت... بس لأني بعدني بأول الطريق.", "ACCENT": true }
+      ]
+    },
+    {
+      "TYPE_BOX_LIST": true,
+      "NUMBER": "SLIDE 3 OF 7 — THE STRUGGLE",
+      "SECTION_TAG": "COURSE COLLECTOR",
+      "SECTION_TAG_CLASS": "cons",
+      "TITLE": "أول أسبوع من العطلة عملت أكبر غلطة.",
+      "BOX_ITEMS": [
+        { "TEXT": "فتحت YouTube..." },
+        { "TEXT": "وبلشت جمع كورسات." },
+        { "TEXT": "كل يوم كنت ضيف شي جديد." },
+        { "TEXT": "بعد كم يوم... صار عندي لستة أطول من المشاريع اللي خلصتها." }
+      ]
+    },
+    {
+      "TYPE_BOX_LIST": true,
+      "NUMBER": "SLIDE 4 OF 7 — THE REALIZATION",
+      "SECTION_TAG": "REALIZATION",
+      "SECTION_TAG_CLASS": "cons",
+      "TITLE": "وقتها انتبهت لشي.",
+      "BOX_ITEMS": [
+        { "TEXT": "أنا ما كنت محتار شو لازم أتعلم..." },
+        { "TEXT": "كنت محتار من وين بلّش." },
+        { "TEXT": "وفرق كبير بين التنين." },
+        { "TEXT": "لأنو إذا ضليت عم حضّر حتى بلّش..." },
+        { "TEXT": "رح يخلص الصيف وأنا بعدني عم حضّر.", "ACCENT": true }
+      ]
+    },
+    {
+      "TYPE_GRID_2X2": true,
+      "NUMBER": "SLIDE 5 OF 7 — MY PLAN",
+      "SECTION_TAG": "ROADMAP",
+      "SECTION_TAG_CLASS": "cons",
+      "TITLE": "قررت أخلي كل شي مرتبط بمشروع حقيقي.",
+      "GRID_ITEMS": [
+        { "LABEL": "React", "TEXT": "لأن أغلب الأفكار اللي ببالي بتحتاجه." },
+        { "LABEL": "TypeScript", "TEXT": "كل مشروع بعمله بخليني اكتشف تفاصيل بعدني ما بفهما." },
+        { "LABEL": "Git", "TEXT": "بدي أتعلم اشتغل متل أي فريق حقيقي." },
+        { "LABEL": "Linux", "TEXT": "بدي حسّن بيئة التطوير اللي بشتغل عليها كل يوم." }
+      ]
+    },
+    {
+      "TYPE_BULLET_LIST": true,
+      "NUMBER": "SLIDE 6 OF 7 — THE LESSON",
+      "LABEL": "MY FOCUS",
+      "TITLE": "إذا في شغلة بدي جرّبها هالصيف...",
+      "TITLE_CLASS": "s-title--experience",
+      "BULLET_ITEMS": [
+        { "TEXT": "أقضي وقت أقل عم حضّر... ووقت أكتر عم أبني." },
+        { "TEXT": "يمكن أعلق ساعات على Bug." },
+        { "TEXT": "يمكن أرجع أكتب نفس الكود مرتين." },
+        { "TEXT": "بس غالباً... هاد هو النوع من الشغل اللي رح يعلمني أكتر." }
+      ],
+      "SUMMARY": "اختر البناء، حتى لو كان أبطأ."
+    },
+    {
+      "TYPE_FINAL_CTA": true,
+      "NUMBER": "SLIDE 7 OF 7 — CLOSING",
+      "LABEL": "YOUR TURN",
+      "TITLE": "بعد ٣ شهور... شو رح يكون؟",
+      "FINAL_BULLET_ROWS": [
+        { "TEXT": "يا رح يكون عندي مشاريع جديدة أفتخر فيها..." },
+        { "TEXT": "أو رح يكون عندي لستة أطول بالكورسات اللي ناوي بلّش فيها." },
+        { "TEXT": "أنا عارف أي وحدة بدي اختار." }
+      ],
+      "CTA": "وإنت... شو ناوي تبني هالصيف؟ 👇"
+    }
+  ]
+}
