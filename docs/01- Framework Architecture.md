@@ -51,7 +51,7 @@ Social Media Content/
 │   └── Instagram/
 │       └── Instagram Carousel/              # 5 posts (assets/ + metadata.json each)
 │
-├── Draft Carousel - Refined.md              # Approved draft: "This Summer, I'm Building Foundations"
+├── Draft Carousel.md              # Approved draft: "This Summer, I'm Building Foundations"
 │
 └── docs/
     └── 01- Framework Architecture.md        # This file
@@ -67,18 +67,18 @@ Note on missing items: `docs/Content System Improvement.md`, `docs/Framework Ref
 
 The strategic core of the system. Ten markdown files that together define the brand identity, voice, content types, planning logic, production workflow, AI-generation instructions, and canonical content model. This folder is the **source of truth** for all content decisions.
 
-| File                            | Description                                                                                                                                                                                                                                                                 |
-| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Brand View.md`                 | Defines the creator identity (Lebanese CS student), target audience, core messaging lens, content boundaries, and content pillars. Owns _who the creator is_ and _what the brand covers_. Exists to keep every content piece consistent with the "student-in-public" identity. |
-| `Brand Voice.md`                | Single Source of Truth for all writing voice, tone, stylistic rules, platform rules, and language strategy. Owns _how the creator writes and adapts content per platform_. All other documents reference this for voice and platform guidance.                                 |
-| `Carousels.md`                  | Defines 4 carousel types and mandates a 5-slide structure (Hook → Trigger → Body → Project Bridge → CTA). Exists to ensure all carousel content follows a repeatable, scannable format.                                                                                     |
-| `Reels.md`                      | Defines 3 reel types with environment authenticity rules (student-setting clips) and hook patterns. Exists to distinguish quick-format content from deep-dive carousels.                                                                                                    |
-| `Stories.md`                    | Defines 5 story categories focused on daily, unpolished, low-friction engagement. Exists to keep stories intentional rather than noisy.                                                                                                                                     |
-| `Content Format.md`             | Owns the Trigger-First planning logic and format selection — given a trigger, which format should this become? Exists as the bridge between content ideas and format selection.                                                                                              |
-| `Content Pipeline.md`           | Owns the complete Content Lifecycle (Trigger → Idea → Format Selection → Draft → Review → Final Assets → Published → Archived) and production responsibility matrix. Exists to make the content production process repeatable and clearly owned.                              |
+| File                            | Description                                                                                                                                                                                                                                                                                             |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Brand View.md`                 | Defines the creator identity (Lebanese CS student), target audience, core messaging lens, content boundaries, and content pillars. Owns _who the creator is_ and _what the brand covers_. Exists to keep every content piece consistent with the "student-in-public" identity.                          |
+| `Brand Voice.md`                | Single Source of Truth for all writing voice, tone, stylistic rules, platform rules, and language strategy. Owns _how the creator writes and adapts content per platform_. All other documents reference this for voice and platform guidance.                                                          |
+| `Carousels.md`                  | Defines 4 carousel types and mandates a 5-slide structure (Hook → Trigger → Body → Project Bridge → CTA). Exists to ensure all carousel content follows a repeatable, scannable format.                                                                                                                 |
+| `Reels.md`                      | Defines 3 reel types with environment authenticity rules (student-setting clips) and hook patterns. Exists to distinguish quick-format content from deep-dive carousels.                                                                                                                                |
+| `Stories.md`                    | Defines 5 story categories focused on daily, unpolished, low-friction engagement. Exists to keep stories intentional rather than noisy.                                                                                                                                                                 |
+| `Content Format.md`             | Owns the Trigger-First planning logic and format selection — given a trigger, which format should this become? Exists as the bridge between content ideas and format selection.                                                                                                                         |
+| `Content Pipeline.md`           | Owns the complete Content Lifecycle (Trigger → Idea → Format Selection → Draft → Review → Final Assets → Published → Archived) and production responsibility matrix. Exists to make the content production process repeatable and clearly owned.                                                        |
 | `Generating Content Prompts.md` | Five isolated AI prompt templates (Post Idea Generator, Post Content Builder, Carousel Renderer, Story Idea Generator, Story Content Builder) that consume framework documents via @-references. Exists to orchestrate the framework into AI-executable instructions without embedding framework rules. |
-| `Posted Titles.md`              | Searchable index of published content with archive path references. Exists to prevent idea duplication and provide a lightweight lookup table for the Post Idea Generator.                                                                                                   |
-| `Content Model.md`              | Canonical structured content model defining the shape of every content item — identity, trigger, metadata, platform variants, bodies, archive. Defines the JSON schema and renderer interface that future tooling will consume. Prepares the system for structured data generation.                  |
+| `Posted Titles.md`              | Searchable index of published content with archive path references. Exists to prevent idea duplication and provide a lightweight lookup table for the Post Idea Generator.                                                                                                                              |
+| `Content Model.md`              | Canonical structured content model defining the shape of every content item — identity, trigger, metadata, platform variants, bodies, archive. Defines the JSON schema and renderer interface that future tooling will consume. Prepares the system for structured data generation.                     |
 
 ---
 
@@ -182,7 +182,7 @@ Brand View.md  ──────────►  Brand Voice.md
         Generating Content Prompts.md
         (consumes framework docs via @-references; orchestrates 5 agents)
          ├──► Posted Titles.md  (consulted by Post Idea Generator)
-         └──► Draft Carousel - Refined.md
+         └──► Draft Carousel.md
                 │
                 ▼
               Carousel Structure/
@@ -210,4 +210,4 @@ Key relationships:
 - `Content Model.md` defines the canonical JSON schema and renderer interface for all content types. It is a forward-looking definition that prepares the system for structured data generation. It is not yet consumed by other framework documents.
 - `Posted Titles.md` is only consumed by the Post Idea Generator agent and does not influence other documents.
 - The production layer (`Carousel Structure/`, `templates/`, `Export Files/`, `Content Posted/`) is downstream of the framework documents. It consumes structured data and never defines brand, format, or platform rules.
-- `Draft Carousel - Refined.md` is the bridge between the Post Content Builder agent and the Carousel Renderer agent.
+- `Draft Carousel.md` is the bridge between the Post Content Builder agent and the Carousel Renderer agent.
