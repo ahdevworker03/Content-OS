@@ -1,25 +1,31 @@
 {
   "id": "instagram-002",
-  "title": "",
+  "slug": "cs-is-more-than-one-path",
+  "title": "الـ CS مش مسار واحد — في عالم كامل من المجالات",
+  "type": "carousel",
+  "platforms": ["instagram"],
+  "publishedAt": null,
+  "createdAt": null,
+  "updatedAt": null,
+  "language": "ar",
   "status": "published",
-  "published_date": "",
-  "platform": "Instagram",
-  "primary_format": "Carousel",
-  "content_pillar": "",
-  "language": "Arabic",
-  "tags": [],
-  "related_assets": [
-    "assets/1.png",
-    "assets/2.png",
-    "assets/3.png",
-    "assets/4.png",
-    "assets/5.png",
-    "assets/6.png",
-    "assets/7.png",
-    "assets/8.jpg",
-    "assets/9.jpg",
-    "assets/10.jpg",
-    "assets/11.jpg"
-  ],
-  "notes": ""
+  "tags": ["CS", "career-paths", "software-engineering", "AI", "cybersecurity"],
+  "topics": ["cs-fields", "software-engineering", "artificial-intelligence", "cybersecurity"],
+  "pillar": "PLACEHOLDER — Not recorded",
+  "trigger": "PLACEHOLDER — Not recorded",
+  "rendererVersion": null,
+  "schemaVersion": "1.0.0",
+  "assets": {
+    "count": 11,
+    "files": [
+      "assets/1.png", "assets/2.png", "assets/3.png", "assets/4.png",
+      "assets/5.png", "assets/6.png", "assets/7.png",
+      "assets/8.jpg", "assets/9.jpg", "assets/10.jpg", "assets/11.jpg"
+    ],
+    "directory": "assets/"
+  },
+  "contentFiles": {
+    "contentMarkdown": "content.md",
+    "contentJson": "content.json"
+  }
 }

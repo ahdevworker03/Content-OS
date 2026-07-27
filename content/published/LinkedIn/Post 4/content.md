@@ -1,4 +1,6 @@
-As Computer Science students, we spend a lot of time talking about programming languages, frameworks, and projects.But one thing that often gets overlooked is the operating system we use every day.
+# As Computer Science students, we spend a lot of time talking about programming languages, frameworks, and projects. But one thing that often gets overlooked is the operating system we use every day.
+
+As Computer Science students, we spend a lot of time talking about programming languages, frameworks, and projects. But one thing that often gets overlooked is the operating system we use every day.
 
 When I first started learning programming, I viewed operating systems simply as a way to run applications. Windows, macOS, and Linux all seemed to do the same thing.
 
@@ -24,4 +26,5 @@ But because it helps you better understand the environment where software runs, 
 Programming is not only about writing code.
 
 It is also about understanding the systems that make that code work.
+
 What operating system do you use for development, and has it changed the way you learn or work?

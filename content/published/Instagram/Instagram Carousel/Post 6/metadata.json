@@ -1,7 +1,7 @@
 {
-  "id": "instagram-005",
-  "slug": "read-error-messages",
-  "title": "رسائل الأخطاء — Error Messages",
+  "id": "instagram-006",
+  "slug": "summer-building-foundations",
+  "title": "هالصيف عم أبني أساسات — This Summer, I'm Building Foundations",
   "type": "carousel",
   "platforms": ["instagram"],
   "publishedAt": null,
@@ -9,17 +9,17 @@
   "updatedAt": null,
   "language": "ar",
   "status": "published",
-  "tags": ["debugging", "errors", "learning", "programming"],
-  "topics": ["error-messages", "debugging", "learning-to-code"],
+  "tags": ["summer", "learning", "computer-science", "first-year", "foundations", "building"],
+  "topics": ["summer-break", "building-habits", "first-year-cs", "learning-strategy"],
   "pillar": "PLACEHOLDER — Not recorded",
   "trigger": "PLACEHOLDER — Not recorded",
   "rendererVersion": null,
   "schemaVersion": "1.0.0",
   "assets": {
-    "count": 8,
+    "count": 7,
     "files": [
       "assets/1.png", "assets/2.png", "assets/3.png", "assets/4.png",
-      "assets/5.png", "assets/6.png", "assets/7.png", "assets/8.png"
+      "assets/5.png", "assets/6.png", "assets/7.png"
     ],
     "directory": "assets/"
   },

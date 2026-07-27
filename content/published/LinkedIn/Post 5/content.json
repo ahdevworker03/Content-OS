@@ -1,0 +1,42 @@
+{
+  "identity": {
+    "id": "linkedin-005",
+    "title": "I used to copy error messages into ChatGPT without reading them. Here's why that was a mistake.",
+    "lifecycle_stage": "published"
+  },
+  "trigger": {
+    "description": "PLACEHOLDER — Trigger description not recorded in original archive",
+    "insight": "PLACEHOLDER — Validated insight not recorded in original archive",
+    "hook": "PLACEHOLDER — Hook not recorded in original archive"
+  },
+  "metadata": {
+    "platform": "linkedin",
+    "primary_format": "post",
+    "language": "en",
+    "content_pillar": "PLACEHOLDER — Not recorded",
+    "tags": [],
+    "created_date": null,
+    "published_date": null,
+    "notes": ""
+  },
+  "variants": [
+    {
+      "platform": "linkedin",
+      "format": "post",
+      "language": "en",
+      "body": {
+        "type": "post",
+        "content": "I used to copy error messages into ChatGPT without reading them. Here's why that was a mistake.\n\nLast week, I was building a react app with typescript. A wall of red text appeared in my terminal.\n\nMy instinct? Copy the entire error and paste it into an AI tool.\n\nThe AI gave me a generic answer. It didn't fix my problem.\n\nSo I went back and actually read the error message for the first time.\n\nHere's what I found:\n\nError messages aren't walls of text designed to confuse you. They're structured messages with four key parts:\n\n- Type - What kind of error is it? (Syntax, Reference, Type?)\n- Message — What exactly went wrong?\n- Line Number — Where in the code did it happen?\n- File Name — Which file is affected?\n\nOnce I learned to read these parts, my debugging time dropped significantly.\n\nThe real shift wasn't technical — it was psychological.\n\nI stopped seeing errors as failures and started seeing them as the compiler's way of helping me find the problem.\n\nNow when an error appears, I read the last line first (it usually has the summary), check the file and line number, then go to the exact spot in my code.\n\nMost of the time, I find the issue in under two minutes.\n\nWhat's the most confusing error message you've encountered?\n\nI'd love to hear what error patterns other developers and students run into — especially if it's one that taught you something unexpected.",
+        "structure": "PLACEHOLDER — Structure not recorded"
+      },
+      "caption": null,
+      "cta": "What's the most confusing error message you've encountered?"
+    }
+  ],
+  "archive": {
+    "path": "LinkedIn/Post 5/",
+    "assets": [],
+    "metadata_file": "metadata.json",
+    "content_files": ["content.md", "content.json"]
+  }
+}

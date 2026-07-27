@@ -1,0 +1,113 @@
+{
+  "identity": {
+    "id": "instagram-001",
+    "title": "ما حدا قلك ياه — أول شهر في CS",
+    "lifecycle_stage": "published"
+  },
+  "trigger": {
+    "description": "PLACEHOLDER — Trigger description not recorded in original archive",
+    "insight": "الحقيقة الكاملة اللي ما بيحكوها عن أول شهر في CS",
+    "hook": "ما حدا قلك ياه — أول شهر في CS"
+  },
+  "metadata": {
+    "platform": "instagram",
+    "primary_format": "carousel",
+    "language": "ar",
+    "content_pillar": "PLACEHOLDER — Not recorded",
+    "tags": ["CS", "first-year", "student-journey"],
+    "created_date": null,
+    "published_date": null,
+    "notes": "Arabic Instagram adaptation of LinkedIn Post 1 content"
+  },
+  "variants": [
+    {
+      "platform": "instagram",
+      "format": "carousel",
+      "language": "ar",
+      "body": {
+        "type": "carousel",
+        "slides": [
+          {
+            "layout": "cover",
+            "number": "SLIDE 1 OF 6 — COVER",
+            "title": "ما حدا قلك ياه",
+            "teasers": [
+              "أول شهر في CS — الحقيقة الكاملة اللي ما بيحكوها"
+            ]
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 2 OF 6 — THE REALITY",
+            "label": "الواقع",
+            "title": "الواقع اللي ما توقعته",
+            "items": [
+              { "text": "بتفكر حالك رح تبني Instagram", "accent": false },
+              { "text": "بعدك مش عارف ليه ال loop ما عم يوقف", "accent": true }
+            ]
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 3 OF 6 — THE REALITY",
+            "label": "الواقع",
+            "title": "الواقع اللي ما توقعته",
+            "items": [
+              { "text": "بتفكر حالك رح تبني Instagram", "accent": false },
+              { "text": "بعدك مش عارف ليه ال loop ما عم يوقف", "accent": true }
+            ]
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 4 OF 6 — ABOUT ME",
+            "label": "مين أنا",
+            "title": "مين أنا؟",
+            "items": [
+              { "text": "عبد الله حسون", "accent": false },
+              { "text": "أنا ع الطريق متلك تمامًا", "accent": false },
+              { "text": "شو رح شارك:", "accent": false },
+              { "text": "المفاهيم اللي عم أتعلمها", "accent": false },
+              { "text": "الأخطاء اللي بعملها", "accent": false },
+              { "text": "الدروس اللي ما بتعلمونا ياها بالجامعة", "accent": true }
+            ]
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 5 OF 6 — FOR YOU",
+            "label": "إلك إنت",
+            "title": "هيدا البوست إلك إنت",
+            "items": [
+              { "text": "اللي قالوله \"CS صعب\"", "accent": false },
+              { "text": "أو \"مش لأمثالنا\"", "accent": false },
+              { "text": "بدنا نثبت العكس. سوا — مش لحالك", "accent": true }
+            ]
+          },
+          {
+            "layout": "final-cta",
+            "number": "SLIDE 6 OF 6 — CLOSING",
+            "label": "اليوم",
+            "title": "اللي تعلمته اليوم",
+            "summary": "أول شهر في CS صعب — وهيدا طبيعي تمامًا",
+            "items": [
+              { "text": "اللحظة اللي بتغير — بتغير كل شي", "accent": false }
+            ],
+            "cta": "إذا إنت ع نفس الطريق — تابعني"
+          }
+        ]
+      },
+      "caption": "PLACEHOLDER — Caption not recorded in original archive",
+      "cta": "إذا إنت ع نفس الطريق — تابعني"
+    }
+  ],
+  "archive": {
+    "path": "Instagram/Instagram Carousel/Post 1/",
+    "assets": [
+      "assets/1.png",
+      "assets/2.png",
+      "assets/3.png",
+      "assets/4.png",
+      "assets/5.png",
+      "assets/6.png"
+    ],
+    "metadata_file": "metadata.json",
+    "content_files": ["content.md", "content.json"]
+  }
+}

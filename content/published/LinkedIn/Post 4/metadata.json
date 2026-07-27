@@ -1,15 +1,23 @@
 {
   "id": "linkedin-004",
+  "slug": "linux-for-cs-students",
   "title": "As Computer Science students, we spend a lot of time talking about programming languages, frameworks, and projects. But one thing that often gets overlooked is the operating system we use every day.",
+  "type": "post",
+  "platforms": ["linkedin"],
+  "publishedAt": null,
+  "createdAt": null,
+  "updatedAt": null,
+  "language": "en",
   "status": "published",
-  "published_date": "",
-  "platform": "LinkedIn",
-  "primary_format": "Post",
-  "content_pillar": "",
-  "language": "English",
   "tags": [],
-  "related_assets": [
-    "post.md"
-  ],
-  "notes": ""
+  "topics": [],
+  "pillar": "PLACEHOLDER — Not recorded",
+  "trigger": "PLACEHOLDER — Not recorded",
+  "rendererVersion": null,
+  "schemaVersion": "1.0.0",
+  "assets": [],
+  "contentFiles": {
+    "contentMarkdown": "content.md",
+    "contentJson": "content.json"
+  }
 }

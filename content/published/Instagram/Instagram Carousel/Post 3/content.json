@@ -1,0 +1,155 @@
+{
+  "identity": {
+    "id": "instagram-003",
+    "title": "Programming مش بس كتابة Code — في مهارات أهم بكتير",
+    "lifecycle_stage": "published"
+  },
+  "trigger": {
+    "description": "PLACEHOLDER — Trigger description not recorded in original archive",
+    "insight": "في مهارات أهم بكتير من البرمجة وحدها — problem solving, communication, independent learning, consistency",
+    "hook": "Programming مش بس كتابة Code — في مهارات أهم بكتير"
+  },
+  "metadata": {
+    "platform": "instagram",
+    "primary_format": "carousel",
+    "language": "ar",
+    "content_pillar": "PLACEHOLDER — Not recorded",
+    "tags": ["programming", "skills", "soft-skills", "learning"],
+    "created_date": null,
+    "published_date": null,
+    "notes": "Arabic Instagram adaptation of LinkedIn Post 3 content"
+  },
+  "variants": [
+    {
+      "platform": "instagram",
+      "format": "carousel",
+      "language": "ar",
+      "body": {
+        "type": "carousel",
+        "slides": [
+          {
+            "layout": "cover",
+            "number": "SLIDE 1 OF 10 — COVER",
+            "title": "Programming مش بس كتابة Code",
+            "teasers": [
+              "في مهارات أهم بكتير — خليني احكيلك شوي منهم"
+            ]
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 2 OF 10 — INTRODUCTION",
+            "title": "لما بلشت CS",
+            "items": [
+              { "text": "كنت فكر إنه تعلم الـ syntax والـ code هو أصعب جزء", "accent": false },
+              { "text": "وبعده كل شي رح يصير واضح", "accent": false },
+              { "text": "طلع في مهارات تانية ما بيعتموها بالـ tutorials", "accent": false },
+              { "text": "وهي اللي بتفرق بين الـ developer العادي والـ software engineer", "accent": true }
+            ]
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 3 OF 10 — PROBLEM SOLVING",
+            "label": "Problem Solving",
+            "title": "Programming مش بس كتابة Code",
+            "items": [
+              { "text": "يعني إنك لازم تتعلم كيف تقسم المشكلة الكبيرة قبل ما تكتب أول سطر code", "accent": true }
+            ]
+          },
+          {
+            "layout": "bullet-list",
+            "number": "SLIDE 4 OF 10 — DEVELOP PROBLEM SOLVING",
+            "label": "كيف تطور هالمهارة؟",
+            "items": [
+              { "text": "اعمل projects — ولو صغيرة. المهم تبني", "accent": false },
+              { "text": "جرب تعمل debug للكود تبعك بدل ما تسأل فورًا", "accent": false },
+              { "text": "حل مشاكل صغيرة — LeetCode أو Codeforces", "accent": false },
+              { "text": "لا تعتمد بس على AI tools — ChatGPT ما بتعلمك", "accent": false },
+              { "text": "حل مشاكل حقيقية حولك — real projects هي اللي بتخليك تتقدم", "accent": true }
+            ]
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 5 OF 10 — COMMUNICATION",
+            "label": "Communication",
+            "title": "الـ Developers ما بيشتغلوا لحالهم",
+            "items": [
+              { "text": "إنك تشرح أفكارك بوضوح", "accent": false },
+              { "text": "تسأل لما ما تفهم", "accent": false },
+              { "text": "وتشتغل مع team — هيدا فرق كبير بالعملية كلها", "accent": true }
+            ]
+          },
+          {
+            "layout": "bullet-list",
+            "number": "SLIDE 6 OF 10 — COMMUNICATION DETAILS",
+            "label": "شو بيشمل هيدا؟",
+            "items": [
+              { "text": "Teamwork — تشتغل مع غيرك وتكمل بعض", "accent": false },
+              { "text": "طلب الـ help — سؤال صح أهم من ساعة بحث", "accent": false },
+              { "text": "شرح طريقة تفكيرك — مش بس الـ solution", "accent": false },
+              { "text": "كتابة code واضح — غيرك رح يقرأه بعدك", "accent": true }
+            ]
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 7 OF 10 — INDEPENDENT LEARNING",
+            "label": "Independent Learning",
+            "title": "الجامعة لحالها ما بتكفي",
+            "items": [
+              { "text": "الـ tech بتغير بسرعة كبيرة", "accent": false },
+              { "text": "وقدرتك تتعلم لحالك بتصير advantage حقيقية", "accent": false },
+              { "text": "ما بتقدر تشتريها من أي مكان", "accent": true }
+            ]
+          },
+          {
+            "layout": "bullet-list",
+            "number": "SLIDE 8 OF 10 — HOW TO LEARN",
+            "label": "يعني تتعلم كيف...",
+            "items": [
+              { "text": "تبحث بطريقة صح — Google search مهارة لحالها", "accent": false },
+              { "text": "تقرأ documentation — مش بس تنتظر الـ answer", "accent": false },
+              { "text": "تجرب بنفسك — الغلط جزء من التعلم", "accent": false },
+              { "text": "تكمل حتى وقت تكون محتار — مش توقف", "accent": true }
+            ]
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 9 OF 10 — CONSISTENCY",
+            "label": "Consistency",
+            "title": "التقدم الصغير المستمر",
+            "items": [
+              { "text": "ما حدا بيصير قوي خلال شهر", "accent": false },
+              { "text": "التقدم الصغير المستمر أهم بكتير من الحماس المؤقت", "accent": true },
+              { "text": "10 دقيقة كل يوم أفضل من 4 ساعات مرة بالأسبوع", "accent": true }
+            ],
+            "summary": "الحقيقة"
+          },
+          {
+            "layout": "final-cta",
+            "number": "SLIDE 10 OF 10 — CLOSING",
+            "label": "اليوم",
+            "title": "اللي تعلمته اليوم",
+            "items": [
+              { "text": "Problem Solving — فكر قبل ما تكتب", "accent": false },
+              { "text": "Communication — اشرح أفكارك واشتغل مع فريق", "accent": false },
+              { "text": "Independent Learning — تعلم لحالك. الجامعة ما بتكفي", "accent": false },
+              { "text": "Consistency — خطوة صغيرة كل يوم أهم من كل شي", "accent": true }
+            ],
+            "cta": "اقترحوا علينا مهارات لازم أشتغل عليها هالفترة ما ذكرتها #"
+          }
+        ]
+      },
+      "caption": "PLACEHOLDER — Caption not recorded in original archive",
+      "cta": "اقترحوا علينا مهارات لازم أشتغل عليها هالفترة ما ذكرتها #"
+    }
+  ],
+  "archive": {
+    "path": "Instagram/Instagram Carousel/Post 3/",
+    "assets": [
+      "assets/1.png", "assets/2.png", "assets/3.png", "assets/4.png",
+      "assets/5.png", "assets/6.png", "assets/7.png",
+      "assets/8.png", "assets/9.png", "assets/10.png"
+    ],
+    "metadata_file": "metadata.json",
+    "content_files": ["content.md", "content.json"]
+  }
+}

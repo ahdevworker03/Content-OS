@@ -1,20 +1,34 @@
 {
   "id": "instagram-001",
-  "title": "",
+  "slug": "first-month-in-cs",
+  "title": "ما حدا قلك ياه — أول شهر في CS",
+  "type": "carousel",
+  "platforms": ["instagram"],
+  "publishedAt": null,
+  "createdAt": null,
+  "updatedAt": null,
+  "language": "ar",
   "status": "published",
-  "published_date": "",
-  "platform": "Instagram",
-  "primary_format": "Carousel",
-  "content_pillar": "",
-  "language": "Arabic",
-  "tags": [],
-  "related_assets": [
-    "assets/1.png",
-    "assets/2.png",
-    "assets/3.png",
-    "assets/4.png",
-    "assets/5.png",
-    "assets/6.png"
-  ],
-  "notes": ""
+  "tags": ["CS", "first-year", "student-journey"],
+  "topics": ["first-month", "expectations", "student-life"],
+  "pillar": "PLACEHOLDER — Not recorded",
+  "trigger": "PLACEHOLDER — Not recorded",
+  "rendererVersion": null,
+  "schemaVersion": "1.0.0",
+  "assets": {
+    "count": 6,
+    "files": [
+      "assets/1.png",
+      "assets/2.png",
+      "assets/3.png",
+      "assets/4.png",
+      "assets/5.png",
+      "assets/6.png"
+    ],
+    "directory": "assets/"
+  },
+  "contentFiles": {
+    "contentMarkdown": "content.md",
+    "contentJson": "content.json"
+  }
 }

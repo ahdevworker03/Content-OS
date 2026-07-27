@@ -1,22 +1,36 @@
 {
   "id": "instagram-004",
-  "title": "",
+  "slug": "operating-systems-for-cs-students",
+  "title": "Operating Systems — لازم كل طالب CS يفهمها",
+  "type": "carousel",
+  "platforms": ["instagram"],
+  "publishedAt": null,
+  "createdAt": null,
+  "updatedAt": null,
+  "language": "ar",
   "status": "published",
-  "published_date": "",
-  "platform": "Instagram",
-  "primary_format": "Carousel",
-  "content_pillar": "",
-  "language": "Arabic",
-  "tags": [],
-  "related_assets": [
-    "assets/1-Picsart-AiImageEnhancer.png",
-    "assets/2-Picsart-AiImageEnhancer.png",
-    "assets/3-Picsart-AiImageEnhancer.png",
-    "assets/4-Picsart-AiImageEnhancer.png",
-    "assets/5-Picsart-AiImageEnhancer.png",
-    "assets/6-Picsart-AiImageEnhancer.png",
-    "assets/7-Picsart-AiImageEnhancer.png",
-    "assets/8-Picsart-AiImageEnhancer.png"
-  ],
-  "notes": ""
+  "tags": ["OS", "linux", "windows", "macOS", "CS-student"],
+  "topics": ["operating-systems", "windows", "macos", "linux"],
+  "pillar": "PLACEHOLDER — Not recorded",
+  "trigger": "PLACEHOLDER — Not recorded",
+  "rendererVersion": null,
+  "schemaVersion": "1.0.0",
+  "assets": {
+    "count": 8,
+    "files": [
+      "assets/1-Picsart-AiImageEnhancer.png",
+      "assets/2-Picsart-AiImageEnhancer.png",
+      "assets/3-Picsart-AiImageEnhancer.png",
+      "assets/4-Picsart-AiImageEnhancer.png",
+      "assets/5-Picsart-AiImageEnhancer.png",
+      "assets/6-Picsart-AiImageEnhancer.png",
+      "assets/7-Picsart-AiImageEnhancer.png",
+      "assets/8-Picsart-AiImageEnhancer.png"
+    ],
+    "directory": "assets/"
+  },
+  "contentFiles": {
+    "contentMarkdown": "content.md",
+    "contentJson": "content.json"
+  }
 }

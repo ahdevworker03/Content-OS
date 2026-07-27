@@ -1,0 +1,141 @@
+{
+  "identity": {
+    "id": "instagram-005",
+    "title": "رسائل الأخطاء — Error Messages",
+    "lifecycle_stage": "published"
+  },
+  "trigger": {
+    "description": "PLACEHOLDER — Trigger description not recorded in original archive",
+    "insight": "رسائل الأخطاء مش عدوك — هي رسالة بتساعدك تعرف وين المشكلة",
+    "hook": "كنت بنسخ errors إلى ChatGPT بدون ما أقراها — وهيدي كانت الغلطة"
+  },
+  "metadata": {
+    "platform": "instagram",
+    "primary_format": "carousel",
+    "language": "ar",
+    "content_pillar": "PLACEHOLDER — Not recorded",
+    "tags": ["debugging", "errors", "learning", "programming"],
+    "created_date": null,
+    "published_date": null,
+    "notes": "Arabic Instagram adaptation of LinkedIn Post 5 content"
+  },
+  "variants": [
+    {
+      "platform": "instagram",
+      "format": "carousel",
+      "language": "ar",
+      "body": {
+        "type": "carousel",
+        "slides": [
+          {
+            "layout": "cover",
+            "number": "SLIDE 1 OF 8 — COVER",
+            "title": "رسائل الأخطاء",
+            "teasers": [
+              "وكل مرة يظهر error كنت أتجنبه أكثر",
+              "كنت بنسخه إلى ChatGPT بدون ما أقرأه"
+            ]
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 2 OF 8 — THE STORY",
+            "label": "قصتي",
+            "title": "شو اللي صار معي بالضبط؟",
+            "items": [
+              { "text": "كنت عم اشتغل على مشروع React باستخدام TypeScript", "accent": false },
+              { "text": "فجأة ظهر error طويل جدًا داخل الـ terminal", "accent": false },
+              { "text": "كنت بنسخه إلى ChatGPT — بس هالمرة ما طلع الجواب الصحيح", "accent": false },
+              { "text": "لأن الـ AI ما كان فاهم السياق الكامل للمشكلة", "accent": false },
+              { "text": "رجعت للـ error وقرأته فعليًا لأول مرة بحياتي", "accent": true }
+            ]
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 3 OF 8 — WHAT IS AN ERROR",
+            "label": "شو هي؟",
+            "title": "شو هي الـ Error Messages أصلًا؟",
+            "items": [
+              { "text": "هي رسالة من الـ compiler أو الـ runtime بتخبرك إنو في مشكلة", "accent": false },
+              { "text": "بمكان معين من الكود أو بطريقة كتابة الكود", "accent": false },
+              { "text": "هي مجرد رسالة بتحاول تساعدك تعرف وين المشكلة", "accent": true }
+            ]
+          },
+          {
+            "layout": "grid-2x2",
+            "number": "SLIDE 4 OF 8 — ERROR PARTS",
+            "label": "الأجزاء",
+            "title": "شو الأجزاء اللي لازم تنتبه لها؟",
+            "grid_items": [
+              { "label": "Type", "text": "نوع الخطأ (Syntax؟ Reference؟ Type؟)" },
+              { "label": "Message", "text": "شو المشكلة بالضبط؟" },
+              { "label": "Line Number", "text": "بأي سطر موجودة؟" },
+              { "label": "File Name", "text": "بأي ملف موجودة؟" }
+            ]
+          },
+          {
+            "layout": "grid-2x2",
+            "number": "SLIDE 5 OF 8 — COMMON ERRORS",
+            "label": "أشهر Errors",
+            "title": "أشهر Errors واجهتها",
+            "grid_items": [
+              { "label": "ReferenceError", "text": "يعني حاولت تستخدم شي غير موجود أصلًا" },
+              { "label": "SyntaxError", "text": "يعني في خطأ بالكتابة — فاصلة أو قوس بمكان غلط" },
+              { "label": "TypeError", "text": "يعني نوع المتغير أو القيمة ما تم تعريفها" },
+              { "label": "ImportError", "text": "يعني عم تستورد library غير موجودة" }
+            ]
+          },
+          {
+            "layout": "bullet-list",
+            "number": "SLIDE 6 OF 8 — MY APPROACH",
+            "label": "طريقتي",
+            "title": "كيف صرت أقرأ الـ Error اليوم؟",
+            "items": [
+              { "text": "ما بخاف من طول الرسالة — بقرأ آخر سطر أولًا", "accent": false },
+              { "text": "بشوف اسم الملف ورقم السطر", "accent": false },
+              { "text": "برجع للكود وبشوف شو كاتب فعلًا", "accent": false },
+              { "text": "بحاول أفهم المشكلة قبل ما أسأل ChatGPT", "accent": false },
+              { "text": "هلق صارت الـ errors أداة تعلم — مش شي بخوف", "accent": true }
+            ]
+          },
+          {
+            "layout": "bullet-list",
+            "number": "SLIDE 7 OF 8 — WHAT CHANGED",
+            "label": "التغير",
+            "title": "شو تغير بعد ما تعلمت أقرأ الـ Error؟",
+            "items": [
+              { "text": "صرت أحل المشاكل أسرع", "accent": false },
+              { "text": "صرت أفهم الكود بشكل أعمق", "accent": false },
+              { "text": "علاقتي مع الـ documentation صارت أقوى", "accent": false },
+              { "text": "صرت ساعد غيري بالـ debugging لأني فهمت المنطق وراء المشاكل", "accent": false },
+              { "text": "قراءة الـ errors خلتني أفهم البرمجة بشكل أعمق", "accent": true }
+            ]
+          },
+          {
+            "layout": "final-cta",
+            "number": "SLIDE 8 OF 8 — CLOSING",
+            "label": "الخلاصة",
+            "title": "الـ Error Message مش عدوك",
+            "items": [
+              { "text": "هي أول شي عم يخبرك إنو في مشكلة", "accent": false },
+              { "text": "لا تبعتها لـ AI قبل ما تقراها", "accent": false },
+              { "text": "اقرأ نوع الخطأ — الرسالة — السطر — واسم الملف", "accent": false },
+              { "text": "وغالبًا رح تلاقي نصف الحل لحالك", "accent": true }
+            ],
+            "cta": "شو أكتر error عطلك أو ضيعك بفترة تعلمك للبرمجة؟ #"
+          }
+        ]
+      },
+      "caption": "PLACEHOLDER — Caption not recorded in original archive",
+      "cta": "شو أكتر error عطلك أو ضيعك بفترة تعلمك للبرمجة؟ #"
+    }
+  ],
+  "archive": {
+    "path": "Instagram/Instagram Carousel/Post 5/",
+    "assets": [
+      "assets/1.png", "assets/2.png", "assets/3.png", "assets/4.png",
+      "assets/5.png", "assets/6.png", "assets/7.png", "assets/8.png"
+    ],
+    "metadata_file": "metadata.json",
+    "content_files": ["content.md", "content.json"]
+  }
+}

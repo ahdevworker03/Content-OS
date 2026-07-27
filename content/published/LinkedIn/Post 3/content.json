@@ -1,0 +1,42 @@
+{
+  "identity": {
+    "id": "linkedin-003",
+    "title": "When I first started learning programming, I thought becoming good at coding was mostly about learning syntax and writing code faster.",
+    "lifecycle_stage": "published"
+  },
+  "trigger": {
+    "description": "PLACEHOLDER — Trigger description not recorded in original archive",
+    "insight": "PLACEHOLDER — Validated insight not recorded in original archive",
+    "hook": "PLACEHOLDER — Hook not recorded in original archive"
+  },
+  "metadata": {
+    "platform": "linkedin",
+    "primary_format": "post",
+    "language": "en",
+    "content_pillar": "PLACEHOLDER — Not recorded",
+    "tags": [],
+    "created_date": null,
+    "published_date": null,
+    "notes": ""
+  },
+  "variants": [
+    {
+      "platform": "linkedin",
+      "format": "post",
+      "language": "en",
+      "body": {
+        "type": "post",
+        "content": "When I first started learning programming, I thought becoming good at coding was mostly about learning syntax and writing code faster.\n\nBut the more I learn, the more I realize that some of the most important skills in Computer Science are not only technical.\n\nA few skills I believe every CS student should build besides coding:\n\n• Problem Solving\nLearning how to break problems into smaller parts and think logically instead of only searching for answers.\n\n• Communication\nExplaining ideas clearly, asking questions, collaborating with others, and writing understandable code.\n\n• Independent Learning\nTechnology changes constantly, and learning how to learn on your own becomes extremely valuable over time.\n\n• Consistency\nProgress in tech usually comes from showing up regularly, building projects, making mistakes, and improving step by step.\n\nI'm still working on all of these myself while continuing my journey in software engineering.\n\nWhat skill do you think is most underrated for developers?",
+        "structure": "PLACEHOLDER — Structure not recorded"
+      },
+      "caption": null,
+      "cta": "What skill do you think is most underrated for developers?"
+    }
+  ],
+  "archive": {
+    "path": "LinkedIn/Post 3/",
+    "assets": [],
+    "metadata_file": "metadata.json",
+    "content_files": ["content.md", "content.json"]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "identity": {
+    "id": "linkedin-004",
+    "title": "As Computer Science students, we spend a lot of time talking about programming languages, frameworks, and projects. But one thing that often gets overlooked is the operating system we use every day.",
+    "lifecycle_stage": "published"
+  },
+  "trigger": {
+    "description": "PLACEHOLDER — Trigger description not recorded in original archive",
+    "insight": "PLACEHOLDER — Validated insight not recorded in original archive",
+    "hook": "PLACEHOLDER — Hook not recorded in original archive"
+  },
+  "metadata": {
+    "platform": "linkedin",
+    "primary_format": "post",
+    "language": "en",
+    "content_pillar": "PLACEHOLDER — Not recorded",
+    "tags": [],
+    "created_date": null,
+    "published_date": null,
+    "notes": ""
+  },
+  "variants": [
+    {
+      "platform": "linkedin",
+      "format": "post",
+      "language": "en",
+      "body": {
+        "type": "post",
+        "content": "As Computer Science students, we spend a lot of time talking about programming languages, frameworks, and projects. But one thing that often gets overlooked is the operating system we use every day.\n\nWhen I first started learning programming, I viewed operating systems simply as a way to run applications. Windows, macOS, and Linux all seemed to do the same thing.\n\nOver time, I realized they offer very different experiences and teach different lessons.\n\nWindows is the operating system most students (and even people) start with. It has excellent software compatibility, a familiar interface, and a relatively low learning curve.\n\nmacOS is popular among developers because of its stability and its Unix-based foundation, which provides access to many tools commonly used in software development.\n\nLinux, however, taught me something different.\n\nAs I spent more time using Linux, I found myself relying on the terminal, reading documentation more carefully, understanding how software is installed, and learning more about how the system actually works behind the scenes.\n\nWhat makes Linux especially important for Computer Science students is that many real-world software environments are built around it. Linux powers a large portion of web servers, cloud infrastructure, containers, and other systems that modern applications depend on.\n\nThis does not mean every student should immediately abandon Windows or buy a new computer.\n\nBut I do think every CS student should spend some time learning Linux.\nNot because it makes you a better programmer overnight.\n\nBut because it helps you better understand the environment where software runs, gets deployed, and serves real users.\n\nProgramming is not only about writing code.\n\nIt is also about understanding the systems that make that code work.\n\nWhat operating system do you use for development, and has it changed the way you learn or work?",
+        "structure": "PLACEHOLDER — Structure not recorded"
+      },
+      "caption": null,
+      "cta": "What operating system do you use for development, and has it changed the way you learn or work?"
+    }
+  ],
+  "archive": {
+    "path": "LinkedIn/Post 4/",
+    "assets": [],
+    "metadata_file": "metadata.json",
+    "content_files": ["content.md", "content.json"]
+  }
+}

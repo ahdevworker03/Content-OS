@@ -1,24 +1,31 @@
 {
   "id": "instagram-003",
-  "title": "",
+  "slug": "skills-beyond-coding",
+  "title": "Programming مش بس كتابة Code — في مهارات أهم بكتير",
+  "type": "carousel",
+  "platforms": ["instagram"],
+  "publishedAt": null,
+  "createdAt": null,
+  "updatedAt": null,
+  "language": "ar",
   "status": "published",
-  "published_date": "",
-  "platform": "Instagram",
-  "primary_format": "Carousel",
-  "content_pillar": "",
-  "language": "Arabic",
-  "tags": [],
-  "related_assets": [
-    "assets/1.png",
-    "assets/2.png",
-    "assets/3.png",
-    "assets/4.png",
-    "assets/5.png",
-    "assets/6.png",
-    "assets/7.png",
-    "assets/8.png",
-    "assets/9.png",
-    "assets/10.png"
-  ],
-  "notes": ""
+  "tags": ["programming", "skills", "soft-skills", "learning"],
+  "topics": ["problem-solving", "communication", "independent-learning", "consistency"],
+  "pillar": "PLACEHOLDER — Not recorded",
+  "trigger": "PLACEHOLDER — Not recorded",
+  "rendererVersion": null,
+  "schemaVersion": "1.0.0",
+  "assets": {
+    "count": 10,
+    "files": [
+      "assets/1.png", "assets/2.png", "assets/3.png", "assets/4.png",
+      "assets/5.png", "assets/6.png", "assets/7.png",
+      "assets/8.png", "assets/9.png", "assets/10.png"
+    ],
+    "directory": "assets/"
+  },
+  "contentFiles": {
+    "contentMarkdown": "content.md",
+    "contentJson": "content.json"
+  }
 }

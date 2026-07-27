@@ -1,15 +1,23 @@
 {
   "id": "linkedin-001",
+  "slug": "study-cs-first-month",
   "title": "Everyone told me: \"Study Computer Science, it's the future.\" But nobody really told me how the first month would feel.",
+  "type": "post",
+  "platforms": ["linkedin"],
+  "publishedAt": null,
+  "createdAt": null,
+  "updatedAt": null,
+  "language": "en",
   "status": "published",
-  "published_date": "",
-  "platform": "LinkedIn",
-  "primary_format": "Post",
-  "content_pillar": "",
-  "language": "English",
   "tags": [],
-  "related_assets": [
-    "post.md"
-  ],
-  "notes": ""
+  "topics": [],
+  "pillar": "PLACEHOLDER — Not recorded",
+  "trigger": "PLACEHOLDER — Not recorded",
+  "rendererVersion": null,
+  "schemaVersion": "1.0.0",
+  "assets": [],
+  "contentFiles": {
+    "contentMarkdown": "content.md",
+    "contentJson": "content.json"
+  }
 }

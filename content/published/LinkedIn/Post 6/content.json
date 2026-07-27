@@ -1,0 +1,42 @@
+{
+  "identity": {
+    "id": "linkedin-006",
+    "title": "After my first year of Computer Science, I realized there's a difference between preparing to build and actually building.",
+    "lifecycle_stage": "published"
+  },
+  "trigger": {
+    "description": "PLACEHOLDER — Trigger description not recorded in original archive",
+    "insight": "PLACEHOLDER — Validated insight not recorded in original archive",
+    "hook": "PLACEHOLDER — Hook not recorded in original archive"
+  },
+  "metadata": {
+    "platform": "linkedin",
+    "primary_format": "post",
+    "language": "en",
+    "content_pillar": "PLACEHOLDER — Not recorded",
+    "tags": [],
+    "created_date": null,
+    "published_date": null,
+    "notes": ""
+  },
+  "variants": [
+    {
+      "platform": "linkedin",
+      "format": "post",
+      "language": "en",
+      "body": {
+        "type": "post",
+        "content": "After my first year of Computer Science, I realized there's a difference between preparing to build and actually building.\n\nThe first year taught me HTML, CSS, JavaScript, and TypeScript. I built projects, published a portfolio, and shipped real work. But every time I started a new project, I hit a wall. Not because I didn't know enough — but because I was still at the beginning of the road.\n\nThe moment I noticed the real pattern was when summer started. I opened YouTube, and within a week I had collected React, Next.js, Linux, Docker, Git, and backend courses. My to-learn list was longer than my shipped projects. I wasn't deciding what to learn — I was avoiding the discomfort of not knowing where to start.\n\nThat's when I realized: the problem wasn't information. It was action.\n\nSo I made one decision: everything I learn this summer has to be tied to a real project.\n\n- React, because most ideas I want to build need it.\n- TypeScript, because every project shows me how much I still don't fully understand.\n- Git, because I want to work the way real teams do.\n- Linux, because I want to understand the environment my code runs on.\n\nNot to collect technologies. To build more.\n\nI'm guessing I'll spend hours on bugs. I'll probably rewrite the same code twice. But I've learned that type of work teaches me more than any tutorial ever could.\n\nIn three months, either I'll have projects I'm proud of, or a longer list of courses I planned to start. I know which one I'm choosing.\n\nWhat are you building this summer, and how are you deciding what to focus on?",
+        "structure": "PLACEHOLDER — Structure not recorded"
+      },
+      "caption": null,
+      "cta": "What are you building this summer, and how are you deciding what to focus on?"
+    }
+  ],
+  "archive": {
+    "path": "LinkedIn/Post 6/",
+    "assets": [],
+    "metadata_file": "metadata.json",
+    "content_files": ["content.md", "content.json"]
+  }
+}

@@ -35,12 +35,13 @@ Social Media Content/
 │       └── 01- Framework Architecture.md   # This file
 │
 ├── content/                                # Content lifecycle artifacts
+│   ├── ideas/                              # Future content ideas (empty)
 │   ├── drafts/                             # Working drafts (Post Content Builder output)
 │   │   └──  carousel.md                    # "This Summer, I'm Building Foundations"
 │   └── published/                          # Archived published content by platform
-│       ├── LinkedIn/                       # 5 posts (Post 1-5: post.md + metadata.json)
+│       ├── LinkedIn/                       # content.md + content.json + metadata.json
 │       └── Instagram/
-│           └── Instagram Carousel/         # 5 posts (Post 1-5: assets/ + metadata.json)
+│           └── Instagram Carousel/         # assets/ + content.md + content.json + metadata.json
 │
 ├── production/                             # Render and export tooling
 │   ├── renderer/                           # Carousel template engine (reusable)
@@ -57,9 +58,6 @@ Social Media Content/
 │   │   ├── export-slides.js                # Screenshots .slide → PNGs
 │   │   ├── extracted-slides/               # 7 PNGs (slide-01 through slide-07)
 │   │   └── package.json                    # Deps: playwright, http-server
-│   └── templates/                          # Reusable structure definitions
-│       └── carousel/
-│           └── schema.json                 # Carousel data model v1.0
 │
 └── README.md                               # Project overview
 ```
@@ -90,7 +88,7 @@ Seven subdirectories organize the ten markdown files by concern:
 
 **`drafts/`** contains working drafts produced by the Post Content Builder agent. Currently houses ` carousel.md` — a 7-slide draft for "This Summer, I'm Building Foundations" (Lebanese Arabic) with a LinkedIn adaptation (English). This is the bridge between content creation and the renderer.
 
-**`published/`** archives published content by platform. LinkedIn contains 5 posts, each with `post.md` (body) and `metadata.json`. Instagram contains 5 carousel posts under `Instagram Carousel/`, each with image assets in `assets/` and `metadata.json`. All 10 posts have empty `published_date`, `content_pillar`, and `tags` fields. Instagram posts lack title and caption files. Carousel source JSON is not archived with assets.
+**`published/`** archives published content by platform. LinkedIn posts each have `content.md` (human-readable body), `content.json` (canonical Content Model), and `metadata.json` (archive metadata). Instagram carousel posts under `Instagram Carousel/` each have image assets in `assets/`, `content.md`, `content.json`, and `metadata.json`. All posts follow the self-contained Content Model structure.
 
 ### `production/` — Render and Export Tooling
 
@@ -110,8 +108,6 @@ Seven subdirectories organize the ten markdown files by concern:
 - `export-slides.js` — Launches Chromium headless, navigates to carousel HTML, screenshots each `.slide` as PNG
 - `extracted-slides/` — 7 PNGs (slide-01 through slide-07)
 - All settings overridable via CLI: `--url`, `--output`, `--selector`, `--width`, `--height`, `--scale`, `--headless`
-
-**`templates/carousel/schema.json`** — Descriptive data model (v1.0) for populating carousel templates: meta fields and slide array with type, number, section_tag, label, title, teasers, items, grid_items, summary, quote, cta, swipe.
 
 ---
 

@@ -39,9 +39,9 @@ Social Media Content/
 │   ├── drafts/                             # Working drafts (Post Content Builder output)
 │   │   └──  carousel.md                    # "This Summer, I'm Building Foundations" (231 lines)
 │   └── published/                          # Archived published content by platform
-│       ├── LinkedIn/                       # 5 posts (Post 1-5: post.md + metadata.json)
+│       ├── LinkedIn/                       # content.md + content.json + metadata.json
 │       └── Instagram/
-│           └── Instagram Carousel/         # 5 posts (Post 1-5: assets/ + metadata.json)
+│           └── Instagram Carousel/         # assets/ + content.md + content.json + metadata.json
 │
 ├── production/                             # Render and export tooling
 │   ├── renderer/                           # Reusable carousel renderer
@@ -79,7 +79,7 @@ Seven subdirectories organize the ten markdown files by concern:
 |              | `Content Pipeline.md`           | Full lifecycle (stages 4–8: Draft → Review → Final Assets → Published → Archived), quality gates, ownership matrix.                                                                           |
 | `prompts/`   | `Generating Content Prompts.md` | 5 AI agents (Post Idea Generator, Post Content Builder, Carousel Renderer, Story Idea Generator, Story Content Builder). Orchestrator file.                                                   |
 | `model/`     | `Content Model.md`              | Canonical JSON Schema (draft 2020-12) for Content Items — identity, trigger, metadata, platform variants, archive. 6 slide layouts, renderer interface. Forward-looking, not yet consumed.    |
-| `memory/`    | `Posted Titles.md`              | Lightweight lookup table of published content. Per-post metadata lives in each post's `metadata.json`. Archive paths reference `Content Posted/` (outdated — should be `content/published/`). |
+| `memory/`    | `Posted Titles.md`              | Lightweight lookup table of published content. Per-post metadata lives in each post's `metadata.json`. |
 | `docs/`      | `01- Framework Architecture.md` | This file.                                                                                                                                                                                    |
 
 ### `content/` — Lifecycle Artifacts
@@ -88,9 +88,9 @@ Seven subdirectories organize the ten markdown files by concern:
 
 **`drafts/`** — Working drafts produced by the Post Content Builder agent. Currently houses ` carousel.md` (filename has a leading space) — a 7-slide draft for "This Summer, I'm Building Foundations" (Lebanese Arabic) with a LinkedIn adaptation (English). This is the bridge between content creation and the renderer.
 
-**`published/`** — Archives published content by platform. LinkedIn contains 5 posts, each with `post.md` (body) and `metadata.json`. Instagram contains 5 carousel posts under `Instagram Carousel/`, each with image assets in `assets/` and `metadata.json`.
+**`published/`** — Archives published content by platform. LinkedIn posts each have `content.md` (human-readable body), `content.json` (canonical Content Model), and `metadata.json` (archive metadata). Instagram carousel posts under `Instagram Carousel/` each have image assets in `assets/`, `content.md`, `content.json`, and `metadata.json`.
 
-**Metadata gaps:** All 10 posts have empty `published_date`, `content_pillar`, and `tags` fields. Instagram posts have empty `title` and `notes` fields and lack caption files. Carousel source JSON is not archived alongside published assets.
+**Archive improvements:** All posts follow the self-contained per-post structure (`content.md` + `content.json` + `metadata.json`; Instagram posts additionally include `assets/`). Caption text for Instagram was not visible in slide images — left as `PLACEHOLDER`. Some metadata fields (`published_date`, `content_pillar`, `trigger`) remain as `PLACEHOLDER` or `null` due to missing original records.
 
 ### `production/` — Render and Export Tooling
 
@@ -208,6 +208,6 @@ framework/strategy/
 ## Known Gaps
 
 - **`.gitignore`** — Missing; `node_modules/` directories in `production/workspace/`, `production/export/`, and `production/renderer/` are tracked by git.
-- **`Posted Titles.md` archive paths** — Reference `Content Posted/` but actual directories live under `content/published/`. Paths need updating.
-- **Metadata completeness** — All published posts lack `published_date`, `content_pillar`, and `tags`. Instagram posts lack `title`, `notes`, and caption files.
+- **Metadata completeness** — `published_date`, `content_pillar`, `trigger`, and `created_date` remain `PLACEHOLDER`/`null` for all posts. These were not recorded at publication time.
+- **Instagram captions** — Caption text was not visible in slide images; all Instagram posts use `PLACEHOLDER`.
 - **Draft filename** — `content/drafts/ carousel.md` has a leading space in its filename.

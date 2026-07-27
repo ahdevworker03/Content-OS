@@ -1,0 +1,169 @@
+{
+  "identity": {
+    "id": "instagram-002",
+    "title": "الـ CS مش مسار واحد — في عالم كامل من المجالات",
+    "lifecycle_stage": "published"
+  },
+  "trigger": {
+    "description": "PLACEHOLDER — Trigger description not recorded in original archive",
+    "insight": "الـ CS مش مسار واحد — في عالم كامل من المجالات، كل واحد عالم لحاله",
+    "hook": "كنت مفكر إنو إلو طريق واحد — طلع عالم كامل لحالو"
+  },
+  "metadata": {
+    "platform": "instagram",
+    "primary_format": "carousel",
+    "language": "ar",
+    "content_pillar": "PLACEHOLDER — Not recorded",
+    "tags": ["CS", "career-paths", "software-engineering", "AI", "cybersecurity"],
+    "created_date": null,
+    "published_date": null,
+    "notes": "Arabic Instagram adaptation of LinkedIn Post 2 content"
+  },
+  "variants": [
+    {
+      "platform": "instagram",
+      "format": "carousel",
+      "language": "ar",
+      "body": {
+        "type": "carousel",
+        "slides": [
+          {
+            "layout": "cover",
+            "number": "SLIDE 1 OF 11 — COVER",
+            "title": "الـ CS مش مسار واحد",
+            "teasers": [
+              "كنت مفكر إنو إلو طريق واحد —",
+              "طلع عالم كامل لحالو"
+            ]
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 2 OF 11 — OVERVIEW",
+            "section_tag": { "text": "COMPUTER SCIENCE", "class": "tag" },
+            "title": "شو هو الـ Computer Science؟",
+            "items": [
+              { "text": "الـ CS مقسمة لعدة مجالات — مجالات متخصصة", "accent": false },
+              { "text": "وكل مجال بيحل المشاكل بطريقة مختلفة", "accent": true }
+            ]
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 3 OF 11 — SOFTWARE ENGINEERING",
+            "section_tag": { "text": "SOFTWARE ENGINEERING", "class": "tag" },
+            "label": "شو هو؟",
+            "title": "Software Engineering",
+            "items": [
+              { "text": "بناء الـ softwares والـ applications اللي الناس بتستخدمها كل يوم", "accent": false },
+              { "text": "من المواقع للتطبيقات للأنظمة الكبيرة", "accent": true }
+            ]
+          },
+          {
+            "layout": "grid-2x2",
+            "number": "SLIDE 4 OF 11 — PATHS",
+            "label": "المسارات الموجودة",
+            "grid_items": [
+              { "label": "Frontend", "text": "واجهة المستخدم اللي بتشوفها" },
+              { "label": "Backend", "text": "الخلفية والسيرفر" },
+              { "label": "API + Database", "text": "طرق ربط الأنظمة ببعض" },
+              { "label": "Mobile Dev", "text": "تطوير تطبيقات الموبايل" },
+              { "label": "DevOps", "text": "إدارة وتشغيل الأنظمة" }
+            ]
+          },
+          {
+            "layout": "bullet-list",
+            "number": "SLIDE 5 OF 11 — SKILLS",
+            "label": "المهارات المطلوبة",
+            "items": [
+              { "text": "Problem Solving — حل المشاكل بطريقة منطقية", "accent": false },
+              { "text": "Programming — البرمجة بلغة واحدة على الأقل", "accent": false },
+              { "text": "System Design — طرق ربط الأنظمة ببعض", "accent": false },
+              { "text": "Data — تخزين وتنظيم البيانات", "accent": false },
+              { "text": "System Architecture — تفكر بالنظام كامل", "accent": true }
+            ]
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 6 OF 11 — AI",
+            "section_tag": { "text": "ARTIFICIAL INTELLIGENCE", "class": "tag" },
+            "label": "شو هو؟",
+            "title": "Artificial Intelligence",
+            "items": [
+              { "text": "جعل الـ systems تتعلم patterns وتأخذ decisions لحالها", "accent": false },
+              { "text": "بدون ما تبرمجها لكل حالة", "accent": true }
+            ]
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 7 OF 11 — AI APPLICATIONS",
+            "title": "شو بنوا فيه؟",
+            "items": [
+              { "text": "Chatbots — شات ذكي بيفهم سؤالك", "accent": false },
+              { "text": "أنظمة اقتراحات: Netflix, TikTok", "accent": false },
+              { "text": "Computer Vision — فهم الصور والفيديو", "accent": false },
+              { "text": "Predictive Analytics — توقع البيانات", "accent": true }
+            ]
+          },
+          {
+            "layout": "bullet-list",
+            "number": "SLIDE 8 OF 11 — CYBERSECURITY",
+            "label": "حماية كل شي رقمي",
+            "items": [
+              { "text": "Penetration Testing — اختبار الاختراق القانوني", "accent": false },
+              { "text": "Network Security — حماية الشبكات", "accent": false },
+              { "text": "Digital Forensics — التحقيق الرقمي", "accent": false },
+              { "text": "System Protection — حماية الأنظمة من الداخل", "accent": false },
+              { "text": "Security Assessment — اختبار الأمان قبل ما يخترقوك", "accent": true }
+            ]
+          },
+          {
+            "layout": "bullet-list",
+            "number": "SLIDE 9 OF 11 — CYBERSECURITY SKILLS",
+            "label": "المهارات المطلوبة",
+            "items": [
+              { "text": "Analytical Thinking — التفكير التحليلي والنقدي", "accent": false },
+              { "text": "Networking — فهم كيف الشبكات تشتغل", "accent": false },
+              { "text": "Linux Basics — أساسيات نظام لينكس", "accent": false },
+              { "text": "Vulnerability Research — إيجاد ثغرات ما بيشوفها غيرك", "accent": false },
+              { "text": "System Understanding — فهم كيف الأنظمة تشتغل من الداخل", "accent": true }
+            ]
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 10 OF 11 — ADVICE",
+            "label": "الخطوة الصح",
+            "title": "ما لازم تتقن كل شي فورًا",
+            "items": [
+              { "text": "أغلب الناس بيكتشفوا المسار تبعهم وهم عم يبنوا أول مشاريع إلهم", "accent": false },
+              { "text": "ابدأ بأي مجال بيشدك — الباقي رح يتوضح وأنت عم تمشي", "accent": true }
+            ],
+            "summary": "الخطوة الصح"
+          },
+          {
+            "layout": "final-cta",
+            "number": "SLIDE 11 OF 11 — CLOSING",
+            "label": "اليوم",
+            "title": "اللي تعلمته اليوم",
+            "items": [
+              { "text": "الـ CS مش مسار واحد — في عالم كامل من المجالات", "accent": false },
+              { "text": "كل واحد عالم لحاله", "accent": false },
+              { "text": "أنا حاليًا اتجاهي الـ Software Engineering وبدأت بـ Frontend Development", "accent": true }
+            ],
+            "cta": "أي مجال بيشدك أكتر؟ حكيلي بالتعليقات حتى نحكي عنه تاني مرة #"
+          }
+        ]
+      },
+      "caption": "PLACEHOLDER — Caption not recorded in original archive",
+      "cta": "أي مجال بيشدك أكتر؟ حكيلي بالتعليقات حتى نحكي عنه تاني مرة"
+    }
+  ],
+  "archive": {
+    "path": "Instagram/Instagram Carousel/Post 2/",
+    "assets": [
+      "assets/1.png", "assets/2.png", "assets/3.png", "assets/4.png",
+      "assets/5.png", "assets/6.png", "assets/7.png",
+      "assets/8.jpg", "assets/9.jpg", "assets/10.jpg", "assets/11.jpg"
+    ],
+    "metadata_file": "metadata.json",
+    "content_files": ["content.md", "content.json"]
+  }
+}

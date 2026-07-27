@@ -1,3 +1,5 @@
+# I used to copy error messages into ChatGPT without reading them. Here's why that was a mistake.
+
 I used to copy error messages into ChatGPT without reading them. Here's why that was a mistake.
 
 Last week, I was building a react app with typescript. A wall of red text appeared in my terminal.
@@ -13,13 +15,13 @@ Here's what I found:
 Error messages aren't walls of text designed to confuse you. They're structured messages with four key parts:
 
 - Type - What kind of error is it? (Syntax, Reference, Type?)
-- Message - What exactly went wrong?
-- Line Number - Where in the code did it happen?
-- File Name - Which file is affected?
+- Message — What exactly went wrong?
+- Line Number — Where in the code did it happen?
+- File Name — Which file is affected?
 
 Once I learned to read these parts, my debugging time dropped significantly.
 
-The real shift wasn't technical - it was psychological.
+The real shift wasn't technical — it was psychological.
 
 I stopped seeing errors as failures and started seeing them as the compiler's way of helping me find the problem.
 
@@ -29,4 +31,4 @@ Most of the time, I find the issue in under two minutes.
 
 What's the most confusing error message you've encountered?
 
-I'd love to hear what error patterns other developers and students run into â especially if it's one that taught you something unexpected.
+I'd love to hear what error patterns other developers and students run into — especially if it's one that taught you something unexpected.

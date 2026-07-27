@@ -1,0 +1,129 @@
+{
+  "identity": {
+    "id": "instagram-006",
+    "title": "هالصيف عم أبني أساسات — This Summer, I'm Building Foundations",
+    "lifecycle_stage": "published"
+  },
+  "trigger": {
+    "description": "PLACEHOLDER — Trigger description not recorded in original archive",
+    "insight": "الفرق بين التحضير والبناء — اختر البناء، حتى لو كان أبطأ",
+    "hook": "خلصت أول سنة CS — وهلق عندي 3 شهور وحاسس إنن ممكن يفرقوا أكتر من السنة كلها"
+  },
+  "metadata": {
+    "platform": "instagram",
+    "primary_format": "carousel",
+    "language": "ar",
+    "content_pillar": "PLACEHOLDER — Not recorded",
+    "tags": ["summer", "learning", "computer-science", "first-year", "foundations", "building"],
+    "created_date": null,
+    "published_date": null,
+    "notes": "Arabic Instagram adaptation of LinkedIn Post 6 content — Summer break reflection"
+  },
+  "variants": [
+    {
+      "platform": "instagram",
+      "format": "carousel",
+      "language": "ar",
+      "body": {
+        "type": "carousel",
+        "slides": [
+          {
+            "layout": "cover",
+            "number": "SLIDE 1 OF 7 — SUMMER BREAK",
+            "title": "خلصت أول سنة Computer Science.",
+            "teasers": [
+              "وهلق عندي ٣ شهور...",
+              "وحاسس إنن ممكن يفرقوا أكتر من السنة كلها."
+            ]
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 2 OF 7 — THE TRIGGER",
+            "label": "FIRST YEAR",
+            "title": "أول سنة علمتني كتير.",
+            "items": [
+              { "text": "تعلمت HTML، CSS، JavaScript و TypeScript.", "accent": false },
+              { "text": "بنيت مشاريع.", "accent": false },
+              { "text": "وعملت Portfolio ونشرتو.", "accent": false },
+              { "text": "بس كل ما كنت اشتغل على مشروع... كنت حس إنو في حدود للي بعرفو.", "accent": false },
+              { "text": "مو لأني ما تعلمت... بس لأني بعدني بأول الطريق.", "accent": true }
+            ]
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 3 OF 7 — THE STRUGGLE",
+            "label": "COURSE COLLECTOR",
+            "title": "أول أسبوع من العطلة عملت أكبر غلطة.",
+            "items": [
+              { "text": "فتحت YouTube...", "accent": false },
+              { "text": "وبلشت جمع كورسات.", "accent": false },
+              { "text": "كل يوم كنت ضيف شي جديد.", "accent": false },
+              { "text": "بعد كم يوم... صار عندي لستة أطول من المشاريع اللي خلصتها.", "accent": true }
+            ]
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 4 OF 7 — THE REALIZATION",
+            "label": "REALIZATION",
+            "title": "وقتها انتبهت لشي.",
+            "items": [
+              { "text": "أنا ما كنت محتار شو لازم أتعلم...", "accent": false },
+              { "text": "كنت محتار من وين بلّش.", "accent": false },
+              { "text": "وفرق كبير بين التنين.", "accent": false },
+              { "text": "لأنو إذا ضليت عم حضّر حتى بلّش...", "accent": false },
+              { "text": "رح يخلص الصيف وأنا بعدني عم حضّر.", "accent": true }
+            ]
+          },
+          {
+            "layout": "grid-2x2",
+            "number": "SLIDE 5 OF 7 — MY PLAN",
+            "label": "ROADMAP",
+            "title": "قررت أخلي كل شي مرتبط بمشروع حقيقي.",
+            "grid_items": [
+              { "label": "React", "text": "لأن أغلب الأفكار اللي ببالي بتحتاجه." },
+              { "label": "TypeScript", "text": "كل مشروع بعمله بخليني اكتشف تفاصيل بعدني ما بفهما." },
+              { "label": "Git", "text": "بدي أتعلم اشتغل متل أي فريق حقيقي." },
+              { "label": "Linux", "text": "بدي حسّن بيئة التطوير اللي بشتغل عليها كل يوم." }
+            ]
+          },
+          {
+            "layout": "bullet-list",
+            "number": "SLIDE 6 OF 7 — THE LESSON",
+            "label": "MY FOCUS",
+            "title": "إذا في شغلة بدي جرّبها هالصيف...",
+            "items": [
+              { "text": "أقضي وقت أقل عم حضّر... ووقت أكتر عم أبني.", "accent": false },
+              { "text": "يمكن أعلق ساعات على Bug.", "accent": false },
+              { "text": "يمكن أرجع أكتب نفس الكود مرتين.", "accent": false },
+              { "text": "بس غالباً... هاد هو النوع من الشغل اللي رح يعلمني أكتر.", "accent": true }
+            ],
+            "summary": "اختر البناء، حتى لو كان أبطأ."
+          },
+          {
+            "layout": "final-cta",
+            "number": "SLIDE 7 OF 7 — CLOSING",
+            "label": "YOUR TURN",
+            "title": "بعد ٣ شهور... شو رح يكون؟",
+            "items": [
+              { "text": "يا رح يكون عندي مشاريع جديدة أفتخر فيها...", "accent": false },
+              { "text": "أو رح يكون عندي لستة أطول بالكورسات اللي ناوي بلّش فيها.", "accent": false },
+              { "text": "أنا عارف أي وحدة بدي اختار.", "accent": true }
+            ],
+            "cta": "وإنت... شو ناوي تبني هالصيف؟ 👇"
+          }
+        ]
+      },
+      "caption": "PLACEHOLDER — Caption not recorded in original archive",
+      "cta": "وإنت... شو ناوي تبني هالصيف؟ 👇"
+    }
+  ],
+  "archive": {
+    "path": "Instagram/Instagram Carousel/Post 6/",
+    "assets": [
+      "assets/1.png", "assets/2.png", "assets/3.png", "assets/4.png",
+      "assets/5.png", "assets/6.png", "assets/7.png"
+    ],
+    "metadata_file": "metadata.json",
+    "content_files": ["content.md", "content.json"]
+  }
+}

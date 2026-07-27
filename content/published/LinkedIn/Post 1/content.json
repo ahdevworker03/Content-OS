@@ -1,0 +1,42 @@
+{
+  "identity": {
+    "id": "linkedin-001",
+    "title": "Everyone told me: \"Study Computer Science, it's the future.\" But nobody really told me how the first month would feel.",
+    "lifecycle_stage": "published"
+  },
+  "trigger": {
+    "description": "PLACEHOLDER — Trigger description not recorded in original archive",
+    "insight": "PLACEHOLDER — Validated insight not recorded in original archive",
+    "hook": "PLACEHOLDER — Hook not recorded in original archive"
+  },
+  "metadata": {
+    "platform": "linkedin",
+    "primary_format": "post",
+    "language": "en",
+    "content_pillar": "PLACEHOLDER — Not recorded",
+    "tags": [],
+    "created_date": null,
+    "published_date": null,
+    "notes": ""
+  },
+  "variants": [
+    {
+      "platform": "linkedin",
+      "format": "post",
+      "language": "en",
+      "body": {
+        "type": "post",
+        "content": "Everyone told me: \"Study Computer Science, it's the future.\"\nBut nobody really told me how the first month would feel. 👀\n\nIn week 1, you think you are about to build the next Instagram.\nBy week 3, you are still wondering why the loop isn't stopping? 😶\n\nAnd then, suddenly, something clicks.\n\nOne problem.\nSolved by you.\n\nAnd from that moment, you get hooked !\n\nI am Abdallah, a first-year Computer Science student.\n\nI am not an expert. I am still on the path — just like many of you.\n\nHere, I will share:\n→ the concepts I am learning.\n→ the mistakes I make.\n→ the lessons nobody teaches in class.\n\nThis is for every student who was told:\n\n\"CS is too hard\"\nor\n\"this is not for people like us.\"\n\nWe are here to prove that wrong. Together. 💪\n\nThis is Day 1 of my public journey.\n\nFollow along if you are on the same road. 🚀",
+        "structure": "PLACEHOLDER — Structure not recorded"
+      },
+      "caption": null,
+      "cta": "Follow along if you are on the same road. 🚀"
+    }
+  ],
+  "archive": {
+    "path": "LinkedIn/Post 1/",
+    "assets": [],
+    "metadata_file": "metadata.json",
+    "content_files": ["content.md", "content.json"]
+  }
+}

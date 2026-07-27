@@ -1,0 +1,147 @@
+{
+  "identity": {
+    "id": "instagram-004",
+    "title": "Operating Systems — لازم كل طالب CS يفهمها",
+    "lifecycle_stage": "published"
+  },
+  "trigger": {
+    "description": "PLACEHOLDER — Trigger description not recorded in original archive",
+    "insight": "قبل ما تختار OS — لازم تفهم شو وظيفة كل واحد وليش انعمل",
+    "hook": "لازم كل طالب CS يفهم أنظمة التشغيل قبل ما يختار واحد"
+  },
+  "metadata": {
+    "platform": "instagram",
+    "primary_format": "carousel",
+    "language": "ar",
+    "content_pillar": "PLACEHOLDER — Not recorded",
+    "tags": ["OS", "linux", "windows", "macOS", "CS-student"],
+    "created_date": null,
+    "published_date": null,
+    "notes": "Arabic Instagram adaptation of LinkedIn Post 4 content"
+  },
+  "variants": [
+    {
+      "platform": "instagram",
+      "format": "carousel",
+      "language": "ar",
+      "body": {
+        "type": "carousel",
+        "slides": [
+          {
+            "layout": "cover",
+            "number": "SLIDE 1 OF 8 — COVER",
+            "title": "Operating Systems",
+            "teasers": [
+              "لازم كل طالب CS",
+              "قبل ما تختار OS —",
+              "لازم تفهم شو وظيفة كل واحد وليش انعمل"
+            ]
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 2 OF 8 — WHAT IS OS",
+            "title": "شو بيعمل الـ Operating System؟",
+            "items": [
+              { "text": "الـ OS (نظام التشغيل) هو الـ software بينك وبين الـ hardware", "accent": true },
+              { "text": "بيدير الـ memory", "accent": false },
+              { "text": "بيدير الملفات والـ storage", "accent": false },
+              { "text": "بيشغل الـ applications", "accent": false },
+              { "text": "بيتحكم بأجهزة الـ input/output", "accent": false },
+              { "text": "بيوزع موارد الـ CPU", "accent": false },
+              { "text": "بدون OS — أغلب الـ software ما بيقدر يشتغل", "accent": true }
+            ]
+          },
+          {
+            "layout": "grid-2x2",
+            "number": "SLIDE 3 OF 8 — WINDOWS",
+            "label": "Windows",
+            "title": "Windows",
+            "grid_items": [
+              { "label": "الجمهور", "text": "الطلاب — الموظفون — اللاعبون — المستخدمون العاديون" },
+              { "label": "المميزات", "text": "أكبر نسبة استخدام. توافق ممتاز مع البرامج. دعم قوي للألعاب." },
+              { "label": "العيوب", "text": "تحكم أقل بالنظام وتخصيص محدود مقارنة مع Linux" }
+            ]
+          },
+          {
+            "layout": "grid-2x2",
+            "number": "SLIDE 4 OF 8 — MACOS",
+            "label": "macOS",
+            "title": "macOS",
+            "grid_items": [
+              { "label": "الجمهور", "text": "مطوري الموبايل — مطوري الويب — صناع المحتوى" },
+              { "label": "المميزات", "text": "مبني على Unix. بيئة تطوير مستقرة. بطارية أفضل. تكامل قوي مع Apple" },
+              { "label": "العيوب", "text": "يحتاج أجهزة Apple (غالي). والتخصيص فيه كمان أقل" }
+            ]
+          },
+          {
+            "layout": "grid-2x2",
+            "number": "SLIDE 5 OF 8 — LINUX",
+            "label": "Linux",
+            "title": "Linux",
+            "grid_items": [
+              { "label": "الجمهور", "text": "مطورين — طلاب CS — مهندسي DevOps" },
+              { "label": "المميزات", "text": "open source. أدوات development قوية. خفيف. مجاني." },
+              { "label": "التحدي", "text": "فيه منحنى تعلم (learning curve) أصعب شوي في البداية" }
+            ]
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 6 OF 8 — WHY LINUX",
+            "label": "Linux في العمل",
+            "title": "ليش كتير companies بتتعلم Linux؟",
+            "items": [
+              { "text": "Web Servers (خوادم الويب)", "accent": false },
+              { "text": "Containers (حاويات تشغيل معزولة)", "accent": false },
+              { "text": "Cloud Infrastructure (البنية السحابية)", "accent": false },
+              { "text": "DevOps Tools (أدوات الأتمتة والتشغيل)", "accent": false },
+              { "text": "تعلم Linux بيساعدك تفهم البيئات اللي بيننشر فيها الـ software فعليًا", "accent": true }
+            ]
+          },
+          {
+            "layout": "bullet-list",
+            "number": "SLIDE 7 OF 8 — MY EXPERIENCE",
+            "label": "تجربتي",
+            "title": "شو تعلمت بعد ما انتقلت لـ Linux؟",
+            "items": [
+              { "text": "صرت أستخدم الـ terminal أكتر بكتير", "accent": false },
+              { "text": "تعلمت أقرأ الـ documentation بعمق", "accent": false },
+              { "text": "فهمت كيف البرامج فعليًا بتنزل وبتشتغل", "accent": false },
+              { "text": "Linux خلاني أفهم الكمبيوتر والـ system بشكل أعمق", "accent": true }
+            ]
+          },
+          {
+            "layout": "final-cta",
+            "number": "SLIDE 8 OF 8 — CLOSING",
+            "label": "الخلاصة",
+            "title": "أي OS لازم يستخدم طالب CS؟",
+            "items": [
+              { "text": "Windows — مناسب للبداية والسهولة", "accent": false },
+              { "text": "macOS — ممتاز إذا كنت أصلًا تملك Apple", "accent": false },
+              { "text": "Linux — لازم تتعلمه بوقت من الأوقات", "accent": false },
+              { "text": "الهدف مش تستخدم Linux لأنه \"best\"", "accent": false },
+              { "text": "الهدف إنك تفهم الأنظمة اللي ورا الـ software اللي بتبنيه", "accent": true }
+            ],
+            "cta": "ما هو نظام التشغيل اللي بتستخدمه؟ وهل غيّر طريقة تعلمك؟"
+          }
+        ]
+      },
+      "caption": "PLACEHOLDER — Caption not recorded in original archive",
+      "cta": "ما هو نظام التشغيل اللي بتستخدمه؟ وهل غيّر طريقة تعلمك؟"
+    }
+  ],
+  "archive": {
+    "path": "Instagram/Instagram Carousel/Post 4/",
+    "assets": [
+      "assets/1-Picsart-AiImageEnhancer.png",
+      "assets/2-Picsart-AiImageEnhancer.png",
+      "assets/3-Picsart-AiImageEnhancer.png",
+      "assets/4-Picsart-AiImageEnhancer.png",
+      "assets/5-Picsart-AiImageEnhancer.png",
+      "assets/6-Picsart-AiImageEnhancer.png",
+      "assets/7-Picsart-AiImageEnhancer.png",
+      "assets/8-Picsart-AiImageEnhancer.png"
+    ],
+    "metadata_file": "metadata.json",
+    "content_files": ["content.md", "content.json"]
+  }
+}
