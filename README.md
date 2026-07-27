@@ -14,7 +14,7 @@ Design philosophy: every piece of content originates from a real trigger (a bug,
 
 ```
 Social Media Content/
-├── framework/                              # Brand strategy, formats, workflow, prompts, model, memory, docs
+├── framework/                              # Brand strategy, formats, workflow, prompts, model, memory
 │   ├── strategy/                           # Creator identity and voice
 │   │   ├── Brand View.md                   # Identity, audience, pillars, boundaries (110 lines)
 │   │   └── Brand Voice.md                  # Voice, tone, platform rules, language strategy (335 lines)
@@ -31,7 +31,6 @@ Social Media Content/
 │   │   └── Content Model.md                # JSON Schema (draft 2020-12), renderer interface (373 lines)
 │   ├── memory/                             # Published content index
 │   │   └── Posted Titles.md                # Duplication prevention lookup table (30 lines)
-│   └── docs/                               # (empty — content migrated to production/renderer/docs/)
 │
 ├── content/                                # Content lifecycle artifacts
 │   ├── ideas/                              # Future content ideas (empty)
@@ -72,7 +71,7 @@ Social Media Content/
 
 ### `framework/` — Strategic Core
 
-Seven subdirectories organize the ten markdown files by concern:
+Six subdirectories organize the nine markdown files by concern:
 
 | Subdirectory | File                            | Description                                                                                                                                                                                   |
 | ------------ | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -86,7 +85,7 @@ Seven subdirectories organize the ten markdown files by concern:
 | `prompts/`   | `Generating Content Prompts.md` | 5 AI agents (Post Idea Generator, Post Content Builder, Carousel Renderer, Story Idea Generator, Story Content Builder). Orchestrator file.                                                   |
 | `model/`     | `Content Model.md`              | Canonical JSON Schema (draft 2020-12) for Content Items — identity, trigger, metadata, platform variants, archive. 6 slide layouts, renderer interface. Forward-looking, not yet consumed.    |
 | `memory/`    | `Posted Titles.md`              | Lightweight lookup table of published content. Per-post metadata lives in each post's `metadata.json`. |
-| `docs/`      | _(empty)_                       | Content migrated to `production/renderer/docs/`.                                                                                                                                              |
+
 
 ### `content/` — Lifecycle Artifacts
 
