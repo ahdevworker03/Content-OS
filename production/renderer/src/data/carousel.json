@@ -1,0 +1,54 @@
+{
+  "slides": [
+    {
+      "layout": "cover",
+      "title": "This Summer",
+      "subtitle": "I'm building foundations."
+    },
+    {
+      "layout": "bullet-list",
+      "title": "Key Features",
+      "items": [
+        { "text": "React 18 with TypeScript" },
+        { "text": "Component-based architecture" },
+        { "text": "Design system with CSS variables", "highlight": true },
+        { "text": "1080×1080 canvas output" }
+      ]
+    },
+    {
+      "layout": "arrow-list",
+      "title": "Pipeline",
+      "items": [
+        { "text": "Idea" },
+        { "text": "Design" },
+        { "text": "Develop" },
+        { "text": "Deploy" }
+      ]
+    },
+    {
+      "layout": "grid",
+      "title": "Specifications",
+      "items": [
+        { "label": "Resolution", "value": "1080×1080" },
+        { "label": "Format", "value": "PNG" },
+        { "label": "Framework", "value": "React" },
+        { "label": "Scaling", "value": "Responsive" }
+      ]
+    },
+    {
+      "layout": "box-list",
+      "title": "Why This Matters",
+      "items": [
+        { "heading": "Performance", "description": "Lightweight rendering pipeline optimized for speed." },
+        { "heading": "Consistency", "description": "Unified design system across all slide layouts." },
+        { "heading": "Scalability", "description": "Easily extend with new layouts and components." }
+      ]
+    },
+    {
+      "layout": "cta",
+      "badge": "New",
+      "title": "Ready to Build",
+      "subtitle": "Start creating content with the new renderer."
+    }
+  ]
+}

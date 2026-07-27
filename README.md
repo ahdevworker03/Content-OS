@@ -44,18 +44,22 @@ Social Media Content/
 │           └── Instagram Carousel/         # assets/ + content.md + content.json + metadata.json
 │
 ├── production/                             # Render and export tooling
-│   ├── renderer/                           # Reusable carousel renderer
-│   │   ├── template.hbs                    # Handlebars template (6 slide layouts)
-│   │   ├── render.js                       # Node.js: template + JSON → HTML
-│   │   ├── styles.css                      # 1080×1080 dark theme design system, RTL
-│   │   └── package.json                    # devDeps: handlebars ^4.7.9
-│   ├── workspace/                          # Active carousel data and output
-│   │   ├── carousel.json                   # Current carousel structured data (ALL CAPS keys)
-│   │   └── index.html                      # Rendered HTML output
-│   ├── export/                             # HTML → PNG export pipeline
+│   ├── renderer/                           # React carousel renderer (Vite + React + TypeScript)
+│   │   ├── src/                            # TypeScript source
+│   │   │   ├── renderer/                   #   JSON loader, mapper, SlideRenderer
+│   │   │   ├── studio/                     #   Development Studio (toolbar, sidebar, preview)
+│   │   │   ├── components/                 #   UI primitives + Slide canvas
+│   │   │   ├── layouts/                    #   6 slide layout components
+│   │   │   ├── types/                      #   Renderer-specific TypeScript types
+│   │   │   └── data/                       #   Development carousel JSON
+│   │   ├── index.html                      # Vite entry HTML
+│   │   └── package.json                    # Deps: react, react-dom, vite, typescript
+│   ├── workspace/                          # Active carousel data
+│   │   └── carousel.json                   # Current carousel structured data (ALL CAPS keys)
+│   ├── export/                             # Playwright PNG export pipeline
 │   │   ├── export-config.js                # Config: URL, viewport, selector, output
 │   │   ├── export-slides.js                # Screenshots .slide → PNGs
-│   │   ├── extracted-slides/               # 7 PNGs (slide-01 through slide-07)
+│   │   ├── n/                              # 7 PNGs (slide-01 through slide-07)
 │   │   └── package.json                    # Deps: playwright ^1.61.1, http-server ^14.1.1
 └── README.md                               # This file
 ```
@@ -94,18 +98,20 @@ Seven subdirectories organize the ten markdown files by concern:
 
 ### `production/` — Render and Export Tooling
 
-**`renderer/`** is the reusable carousel template engine:
+**`renderer/`** is the React carousel rendering engine (Vite + React + TypeScript):
 
-- `template.hbs` — Handlebars template supporting 6 slide layouts via conditionals (`TYPE_COVER`, `TYPE_BOX_LIST`, `TYPE_ARROW_LIST`, `TYPE_GRID_2X2`, `TYPE_BULLET_LIST`, `TYPE_FINAL_CTA`)
-- `render.js` — Compiles `template.hbs` + JSON data file, injects shared fields (`USERNAME`, `FOOTER_NAME`, `FOOTER_HANDLE`, `SWIPE`) into each slide, writes `index.html`
-- `styles.css` — 1080×1080px dark theme with RTL support, Google Fonts (Tajawal, Nunito, Pacifico, Caveat), section tag color variants, reusable components
-- `package.json` — devDependencies: handlebars ^4.7.9
+- **`src/renderer/`** — Rendering pipeline: `loadCarousel.ts` loads JSON, `mapWorkspaceCarousel.ts` converts the Content Model to renderer models, `SlideRenderer.tsx` dispatches to the correct layout by type.
+- **`src/studio/`** — Development Studio interface: toolbar, sidebar, live preview, scale controls, validation panel, debug panel, keyboard navigation.
+- **`src/components/`** — Reusable UI primitives (`Title`, `Subtitle`, `BulletList`, `Badge`, `Footer`) and `Slide` canvas (1080×1080 with responsive scaling).
+- **`src/layouts/`** — 6 layout components (`CoverSlide`, `BulletListSlide`, `ArrowListSlide`, `GridSlide`, `BoxListSlide`, `CtaSlide`).
+- **`src/types/`** — Renderer-specific typed models (discriminated union `SlideData`).
+- **`src/data/carousel.json`** — Development carousel JSON (swappable to workspace data via config flag).
+- **`index.css`** — Design system with CSS variables for colors, spacing, typography, radii, slide dimensions.
+- `package.json` — Dependencies: react, react-dom, vite, typescript.
 
-**`workspace/`** holds the active carousel's working files:
+**`workspace/`** holds the active carousel's working data:
 
-- `carousel.json` — ALL CAPS keyed JSON data for the current carousel (7 slides: "This Summer, I'm Building Foundations")
-- `index.html` — Rendered output from the template engine (linked to `styles.css`)
-- `node_modules/` — Handlebars runtime
+- `carousel.json` — ALL CAPS keyed JSON data for the current carousel (7 slides: "This Summer, I'm Building Foundations"). Loaded at runtime by the renderer via `loadCarousel.ts` → `mapWorkspaceCarousel.ts`.
 
 **`export/`** is the Playwright slide export pipeline:
 
@@ -126,13 +132,14 @@ content/drafts/ carousel.md
 production/workspace/carousel.json
         │  (structured data, ALL CAPS keys)
         ▼
-node render.js  (Handlebars: template.hbs + data → HTML)
+production/renderer/  (React + Vite)
+  loadCarousel.ts ──► mapWorkspaceCarousel.ts ──► SlideRenderer
         │
         ▼
-production/workspace/index.html
-        │  (linked to styles.css)
+Browser Preview / Studio
+        │
         ▼
-node export-slides.js  (Playwright: screenshots .slide → PNGs)
+[Phase 6] node export-slides.js  (Playwright: screenshots → PNGs)
         │
         ▼
 production/export/extracted-slides/*.png
@@ -149,9 +156,9 @@ content/published/LinkedIn/   (manual post)
 1. **Strategy** — `Brand View.md` (identity, audience, pillars) and `Brand Voice.md` (voice, platform rules) are co-root documents influencing all downstream decisions.
 2. **Content Planning** — `Content Format.md` owns trigger-first planning (stages 1–3). `Carousels.md`, `Reels.md`, `Stories.md` define format purposes for selection.
 3. **Content Creation** — `Generating Content Prompts.md` orchestrates 5 AI agents: Post Idea Generator, Post Content Builder, Carousel Renderer, Story Idea Generator, Story Content Builder.
-4. **Carousel Render Pipeline** — Draft → JSON → Handlebars → HTML → Playwright → PNGs.
+4. **Carousel Render Pipeline** — Draft → JSON → React Renderer (Studio preview) → [Phase 6] Playwright → PNGs.
 5. **Repurposing** — Each carousel produces Instagram (Lebanese Arabic) and LinkedIn (English) outputs, governed by platform rewriting rules in `Brand Voice.md`.
-6. **Publishing** — Carousels render through `production/renderer/`, assembled in `production/workspace/`, exported via `production/export/`, and posted by the human-in-the-loop.
+6. **Publishing** — Carousels render through `production/renderer/` (React Studio), data sourced from `production/workspace/`, exported via `production/export/` (Phase 6), and posted by the human-in-the-loop.
 7. **Continuous Improvement** — `Posted Titles.md` prevents idea duplication. Metadata gaps (missing dates, pillars, tags, Instagram titles/captions) tracked for future improvement.
 
 ---
@@ -185,15 +192,15 @@ framework/strategy/
               │
               ▼
         production/workspace/
-        carousel.json  →  index.html
+        carousel.json
               │
               ▼
         production/renderer/
-        template.hbs + render.js + styles.css
+        src/renderer/  (React, Vite)
               │
               ▼
         production/export/
-        export-slides.js → extracted-slides/*.png
+        export-slides.js → n/*.png  [Phase 6]
               │
               ▼
         content/published/
@@ -207,7 +214,7 @@ framework/strategy/
 
 ## Known Gaps
 
-- **`.gitignore`** — Missing; `node_modules/` directories in `production/workspace/`, `production/export/`, and `production/renderer/` are tracked by git.
+- **`.gitignore`** — Missing; `node_modules/` directories in `production/export/` and `production/renderer/` are tracked by git.
 - **Metadata completeness** — `published_date`, `content_pillar`, `trigger`, and `created_date` remain `PLACEHOLDER`/`null` for all posts. These were not recorded at publication time.
 - **Instagram captions** — Caption text was not visible in slide images; all Instagram posts use `PLACEHOLDER`.
 - **Draft filename** — `content/drafts/ carousel.md` has a leading space in its filename.
