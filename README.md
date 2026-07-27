@@ -31,8 +31,7 @@ Social Media Content/
 │   │   └── Content Model.md                # JSON Schema (draft 2020-12), renderer interface (373 lines)
 │   ├── memory/                             # Published content index
 │   │   └── Posted Titles.md                # Duplication prevention lookup table (30 lines)
-│   └── docs/                               # System documentation
-│       └── 01- Framework Architecture.md   # This file (202 lines)
+│   └── docs/                               # (empty — content migrated to production/renderer/docs/)
 │
 ├── content/                                # Content lifecycle artifacts
 │   ├── ideas/                              # Future content ideas (empty)
@@ -52,6 +51,9 @@ Social Media Content/
 │   │   │   ├── layouts/                    #   6 slide layout components
 │   │   │   ├── types/                      #   Renderer-specific TypeScript types
 │   │   │   └── data/                       #   Development carousel JSON
+│   │   ├── docs/                            # Renderer architecture documentation
+│   │   │   ├── 01-Renderer Architecture.md  #   Engine architecture, layers, data flow
+│   │   │   └── 02-Layout Development Guide.md #   Layout creation and modification guide
 │   │   ├── index.html                      # Vite entry HTML
 │   │   └── package.json                    # Deps: react, react-dom, vite, typescript
 │   ├── workspace/                          # Active carousel data
@@ -84,7 +86,7 @@ Seven subdirectories organize the ten markdown files by concern:
 | `prompts/`   | `Generating Content Prompts.md` | 5 AI agents (Post Idea Generator, Post Content Builder, Carousel Renderer, Story Idea Generator, Story Content Builder). Orchestrator file.                                                   |
 | `model/`     | `Content Model.md`              | Canonical JSON Schema (draft 2020-12) for Content Items — identity, trigger, metadata, platform variants, archive. 6 slide layouts, renderer interface. Forward-looking, not yet consumed.    |
 | `memory/`    | `Posted Titles.md`              | Lightweight lookup table of published content. Per-post metadata lives in each post's `metadata.json`. |
-| `docs/`      | `01- Framework Architecture.md` | This file.                                                                                                                                                                                    |
+| `docs/`      | _(empty)_                       | Content migrated to `production/renderer/docs/`.                                                                                                                                              |
 
 ### `content/` — Lifecycle Artifacts
 
@@ -106,6 +108,9 @@ Seven subdirectories organize the ten markdown files by concern:
 - **`src/layouts/`** — 6 layout components (`CoverSlide`, `BulletListSlide`, `ArrowListSlide`, `GridSlide`, `BoxListSlide`, `CtaSlide`).
 - **`src/types/`** — Renderer-specific typed models (discriminated union `SlideData`).
 - **`src/data/carousel.json`** — Development carousel JSON (swappable to workspace data via config flag).
+- **`docs/`** — Renderer architecture documentation:
+  - `01-Renderer Architecture.md` — Engine architecture, layers, data flow, design decisions.
+  - `02-Layout Development Guide.md` — Workflow and conventions for adding or modifying layouts.
 - **`index.css`** — Design system with CSS variables for colors, spacing, typography, radii, slide dimensions.
 - `package.json` — Dependencies: react, react-dom, vite, typescript.
 
@@ -214,7 +219,7 @@ framework/strategy/
 
 ## Known Gaps
 
-- **`.gitignore`** — Missing; `node_modules/` directories in `production/export/` and `production/renderer/` are tracked by git.
+- **`.gitignore`** — Now present at root. Covers `node_modules/`, `dist/`, `*.tsbuildinfo`, `.DS_Store`, `Thumbs.db`. Remaining tracked `node_modules/` in sub-projects should be added. See issue #1.
 - **Metadata completeness** — `published_date`, `content_pillar`, `trigger`, and `created_date` remain `PLACEHOLDER`/`null` for all posts. These were not recorded at publication time.
 - **Instagram captions** — Caption text was not visible in slide images; all Instagram posts use `PLACEHOLDER`.
 - **Draft filename** — `content/drafts/ carousel.md` has a leading space in its filename.
