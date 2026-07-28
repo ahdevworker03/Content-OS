@@ -25,8 +25,14 @@ Social Media Content/
 │   ├── workflow/                           # Planning and production lifecycle
 │   │   ├── Content Format.md               # Trigger-First planning (stages 1-3, 104 lines)
 │   │   └── Content Pipeline.md             # Full lifecycle (stages 4-8), quality gates (208 lines)
-│   ├── prompts/                            # AI agent prompt templates
-│   │   └── Generating Content Prompts.md   # 5 agents, orchestrator file (958 lines)
+│   ├── prompts/                            # AI agent workflow prompts
+│   │   ├── 01-Idea Discovery.md            # Surface post ideas
+│   │   ├── 02-Content Planning.md          # Approve content brief
+│   │   ├── 03-Post Content Builder.md      # Write content package + JSON
+│   │   ├── 04-Render Validation.md         # Validate React rendering
+│   │   ├── 05-Export Assets.md             # Export PNG slide images
+│   │   ├── 06-Archive Published Post.md    # Archive post and update index
+│   │   └── README.md                       # Operational guide
 │   ├── model/                              # Canonical content data model
 │   │   └── Content Model.md                # JSON Schema (draft 2020-12), renderer interface (373 lines)
 │   ├── memory/                             # Published content index
@@ -82,7 +88,7 @@ Six subdirectories organize the nine markdown files by concern:
 |              | `Stories.md`                    | 5 story categories, unpolished 24h ephemeral, low-friction interactions.                                                                                                                      |
 | `workflow/`  | `Content Format.md`             | Trigger-First planning logic (stages 1–3: Trigger → Idea → Format Selection).                                                                                                                 |
 |              | `Content Pipeline.md`           | Full lifecycle (stages 4–8: Draft → Review → Final Assets → Published → Archived), quality gates, ownership matrix.                                                                           |
-| `prompts/`   | `Generating Content Prompts.md` | 5 AI agents (Post Idea Generator, Post Content Builder, Carousel Renderer, Story Idea Generator, Story Content Builder). Orchestrator file.                                                   |
+| `prompts/`   | `01-Idea Discovery.md` through `06-Archive Published Post.md` | 6 numbered workflow prompts, each with a single responsibility. See `README.md` in this directory for the operational guide.        |
 | `model/`     | `Content Model.md`              | Canonical JSON Schema (draft 2020-12) for Content Items — identity, trigger, metadata, platform variants, archive. 6 slide layouts, renderer interface. Forward-looking, not yet consumed.    |
 | `memory/`    | `Posted Titles.md`              | Lightweight lookup table of published content. Per-post metadata lives in each post's `metadata.json`. |
 
@@ -127,30 +133,29 @@ Six subdirectories organize the nine markdown files by concern:
 
 ## Production Pipeline
 
-The end-to-end pipeline converts a draft into published carousel assets:
+The end-to-end pipeline moves from idea to published archive through six workflows:
 
 ```
-content/drafts/ carousel.md
-        │  (Post Content Builder agent)
+User Context / Learning Activity
+        │  (01) Idea Discovery
         ▼
-production/workspace/carousel.json
-        │  (structured data, ALL CAPS keys)
+Content Idea
+        │  (02) Content Planning
         ▼
-production/renderer/  (React + Vite)
-  loadCarousel.ts ──► mapWorkspaceCarousel.ts ──► SlideRenderer
-        │
+Approved Content Brief
+        │  (03) Post Content Builder
         ▼
-Browser Preview / Studio
-        │
-        ▼
-[Phase 6] node export-slides.js  (Playwright: screenshots → PNGs)
-        │
-        ▼
-production/export/extracted-slides/*.png
-        │  (7 platform-ready assets)
-        ▼
-content/published/Instagram/  (manual upload)
-content/published/LinkedIn/   (manual post)
+content/drafts/carousel.md  ───  production/workspace/carousel.json
+        │  (04) Render Validation                       │
+        ▼                                               │
+Render Confirmation                                     │
+        │  (05) Export Assets                            │
+        ▼                                               │
+production/export/*.png                                  │
+        │  (06) Archive Published Post                   │
+        ▼                                               ▼
+content/published/<Platform>/<Post>/
+  content.md  content.json  metadata.json  assets/
 ```
 
 ---
@@ -159,11 +164,14 @@ content/published/LinkedIn/   (manual post)
 
 1. **Strategy** — `Brand View.md` (identity, audience, pillars) and `Brand Voice.md` (voice, platform rules) are co-root documents influencing all downstream decisions.
 2. **Content Planning** — `Content Format.md` owns trigger-first planning (stages 1–3). `Carousels.md`, `Reels.md`, `Stories.md` define format purposes for selection.
-3. **Content Creation** — `Generating Content Prompts.md` orchestrates 5 AI agents: Post Idea Generator, Post Content Builder, Carousel Renderer, Story Idea Generator, Story Content Builder.
-4. **Carousel Render Pipeline** — Draft → JSON → React Renderer (Studio preview) → [Phase 6] Playwright → PNGs.
-5. **Repurposing** — Each carousel produces Instagram (Lebanese Arabic) and LinkedIn (English) outputs, governed by platform rewriting rules in `Brand Voice.md`.
-6. **Publishing** — Carousels render through `production/renderer/` (React Studio), data sourced from `production/workspace/`, exported via `production/export/` (Phase 6), and posted by the human-in-the-loop.
-7. **Continuous Improvement** — `Posted Titles.md` prevents idea duplication. Metadata gaps (missing dates, pillars, tags, Instagram titles/captions) tracked for future improvement.
+3. **Idea Discovery** — `01-Idea Discovery.md` surfaces content opportunities from real triggers.
+4. **Content Planning** — `02-Content Planning.md` evaluates the idea and produces an approved brief.
+5. **Content Creation** — `03-Post Content Builder.md` transforms the brief into a Markdown draft and canonical JSON.
+6. **Render Validation** — `04-Render Validation.md` confirms the JSON renders correctly in the React carousel renderer.
+7. **Export Assets** — `05-Export Assets.md` captures every slide as a PNG via the Playwright export pipeline.
+8. **Archive Published Post** — `06-Archive Published Post.md` creates a self-contained archive under `content/published/` and updates the memory index.
+9. **Repurposing** — Each carousel produces Instagram (Lebanese Arabic) and LinkedIn (English) outputs, governed by platform rewriting rules in `Brand Voice.md`.
+10. **Continuous Improvement** — `Posted Titles.md` prevents idea duplication. Metadata gaps (missing dates, pillars, tags, Instagram titles/captions) tracked for future improvement.
 
 ---
 
@@ -186,32 +194,41 @@ framework/strategy/
               Content Pipeline.md
                       │
                       ▼
-              framework/prompts/
-              Generating Content Prompts.md  (5 agents)
-                      │
-              ┌───────┼────────────────┐
-              ▼       ▼                ▼
-        content/drafts/          framework/memory/
-         carousel.md             Posted Titles.md
-              │
-              ▼
-        production/workspace/
-        carousel.json
-              │
-              ▼
-        production/renderer/
-        src/renderer/  (React, Vite)
-              │
-              ▼
-        production/export/
-        export-slides.js → n/*.png  [Phase 6]
-              │
-              ▼
-        content/published/
-        LinkedIn/  Instagram/
-
-        framework/model/
-        Content Model.md  (forward-looking, not yet consumed)
+               framework/prompts/
+               01-Idea Discovery.md
+                       │
+                       ▼
+               02-Content Planning.md
+                       │
+                       ▼
+               03-Post Content Builder.md
+                       │
+               ┌───────┴────────────────┐
+               ▼                        ▼
+         content/drafts/         production/workspace/
+          carousel.md             carousel.json
+               │                        │
+               └────────┬───────────────┘
+                        ▼
+                04-Render Validation.md
+                        │
+                        ▼
+                05-Export Assets.md
+                        │
+                        ▼
+         production/export/*.png
+                        │
+                        ▼
+                06-Archive Published Post.md
+                        │
+               ┌────────┴───────────┐
+               ▼                    ▼
+         content/published/   framework/memory/
+         <Platform>/<Post>/   Posted Titles.md
+           content.md
+           content.json
+           metadata.json
+           assets/
 ```
 
 ---
