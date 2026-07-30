@@ -1,3 +1,7 @@
+---
+name: content-reviewer
+---
+
 # Content Reviewer
 
 ## Purpose
