@@ -155,7 +155,7 @@ The Body is a discriminated union. Its structure depends on the format field.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| path  | string | Relative path under `Content Posted/` (e.g. `LinkedIn/Post 1/`) |
+| path  | string | Relative path under `content/published/` (e.g. `LinkedIn/Post 1/`) |
 | assets | string[] | List of asset filenames relative to the post folder |
 | metadata_file | string | Filename of the metadata file (default: `metadata.json`) |
 
@@ -349,12 +349,12 @@ decisions have been applied before the variant reaches the renderer.
 
 | Renderer | Input Variant Format | Output |
 | -------- | -------------------- | ------ |
-| HTML Carousel Template (`Carousel Structure/index.html`) | `carousel` | HTML page with populated slides |
-| Playwright Export Script (`Export Files/export-slides.js`) | HTML page | PNG slide images |
+| React Carousel Renderer (`production/renderer/`) | `carousel` | Rendered 1080×1080 slides in the Studio preview |
+| Playwright Export Pipeline (`production/export/export-slides.js`) | React DOM (via the `/export` route) | PNG slide images |
+| Studio Export Modal (`production/renderer/src/studio/ExportModal.tsx`) | React DOM (in-browser) | ZIP of PNGs or multi-page PDF |
 | LinkedIn Post (manual) | `post` (linkedin) | Text post |
 
 Future renderers (not implemented):
-- React renderer: reads `carousel` variant → renders components
 - Reel renderer: reads `reel` variant → produces recording instructions
 - Story renderer: reads `story` variant → produces frame-by-frame guide
 - X renderer: reads `post` (x) variant → produces formatted thread
@@ -367,7 +367,7 @@ A Content Item is serialized as JSON for:
 
 - AI prompt output (the model produces structured JSON)
 - Storage in the archive (`content.json` alongside `metadata.json`)
-- Input to renderers (the template receives populated data)
+- Input to renderers (the React renderer consumes the carousel variant's slide data)
 - Transfer between automation tools
 
 The JSON Schema in this document is the validation contract. Every Content Item must validate against it.

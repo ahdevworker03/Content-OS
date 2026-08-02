@@ -41,7 +41,9 @@ Social Media Content/
 ├── content/                                # Content lifecycle artifacts
 │   ├── ideas/                              # Future content ideas (empty)
 │   ├── drafts/                             # Working drafts (Post Content Builder output)
-│   │   └──  carousel.md                    # "This Summer, I'm Building Foundations" (231 lines)
+│   │   ├── carousel.md                     # "Why I Built a Portfolio in My First Year" (152 lines)
+│   │   ├── reel.md                         # Empty placeholder
+│   │   └── story.md                        # Empty placeholder
 │   └── published/                          # Archived published content by platform
 │       ├── LinkedIn/                       # content.md + content.json + metadata.json
 │       └── Instagram/
@@ -68,7 +70,7 @@ Social Media Content/
 │   │   ├── export-config.js                # Config: URL (/export), viewport, selector, output
 │   │   ├── export-slides.js                # Screenshots .slide → PNGs
 │   │   ├── studio-inspect.js               # Dev helper: inspect Studio DOM (slides, safety state)
-│   │   ├── extracted-slides/               # 8 PNGs (slide-01 through slide-08)
+│   │   ├── extracted-slides/               # PNG output directory (gitignored, regenerated on export)
 │   │   └── package.json                    # Deps: playwright ^1.61.1, http-server ^14.1.1
 └── README.md                               # This file
 ```
@@ -91,7 +93,7 @@ Six subdirectories organize the nine markdown files by concern:
 | `workflow/`  | `Content Format.md`             | Trigger-First planning logic (stages 1–3: Trigger → Idea → Format Selection).                                                                                                                 |
 |              | `Content Pipeline.md`           | Full lifecycle (stages 4–8: Draft → Review → Final Assets → Published → Archived), quality gates, ownership matrix.                                                                           |
 | `prompts/`   | `01-Idea Discovery.md` through `06-Archive Published Post.md` | 6 numbered workflow prompts, each with a single responsibility. See `README.md` in this directory for the operational guide.        |
-| `model/`     | `Content Model.md`              | Canonical JSON Schema (draft 2020-12) for Content Items — identity, trigger, metadata, platform variants, archive. 6 slide layouts, renderer interface. Forward-looking, not yet consumed.    |
+| `model/`     | `Content Model.md`              | Canonical JSON Schema (draft 2020-12) for Content Items — identity, trigger, metadata, platform variants, archive. 6 slide layouts, renderer interface. The workspace carousel (`production/workspace/carousel.json`) conforms to this model.    |
 | `memory/`    | `Posted Titles.md`              | Lightweight lookup table of published content. Per-post metadata lives in each post's `metadata.json`. |
 
 
@@ -99,7 +101,7 @@ Six subdirectories organize the nine markdown files by concern:
 
 **`ideas/`** — Empty directory reserved for future content idea capture.
 
-**`drafts/`** — Working drafts produced by the Post Content Builder agent. Currently houses ` carousel.md` (filename has a leading space) — a 7-slide draft for "This Summer, I'm Building Foundations" (Lebanese Arabic) with a LinkedIn adaptation (English). This is the bridge between content creation and the renderer.
+**`drafts/`** — Working drafts produced by the Post Content Builder agent. Currently houses `carousel.md` — an 8-slide draft for "Why I Built a Portfolio in My First Year" (Lebanese Arabic) with a LinkedIn adaptation (English). `reel.md` and `story.md` exist as empty placeholders for their respective formats. This is the bridge between content creation and the renderer.
 
 **`published/`** — Archives published content by platform. LinkedIn posts each have `content.md` (human-readable body), `content.json` (canonical Content Model), and `metadata.json` (archive metadata). Instagram carousel posts under `Instagram Carousel/` each have image assets in `assets/`, `content.md`, `content.json`, and `metadata.json`.
 
@@ -132,7 +134,7 @@ Six subdirectories organize the nine markdown files by concern:
 - `export-config.js` — All settings overridable via CLI (`--url`, `--output`, `--selector`, `--width`, `--height`, `--scale`, `--headless`). Defaults: URL `http://localhost:5173/export`, viewport 1920×1080 @2x, selector `.slide`, output to `extracted-slides/`, pattern `slide-{{n}}.png`
 - `export-slides.js` — Launches Chromium headless, navigates to the `/export` route, screenshots each `.slide` as PNG
 - `studio-inspect.js` — Development helper for inspecting the Studio DOM from Playwright
-- `extracted-slides/` — 8 PNGs (slide-01 through slide-08) for the current development carousel
+- `extracted-slides/` — Output directory for exported PNGs (slide-01, slide-02, …); regenerated on each export, currently empty
 
 The **Studio also exports client-side**: the Export modal (`ExportModal.tsx`) renders selected slides off-screen at 2× resolution via `html-to-image` and downloads them as a ZIP of PNGs or a single multi-page PDF (`jszip`, `jspdf`). This is independent of the Playwright pipeline — it does not touch the `/export` route or `production/export/*`.
 
@@ -244,7 +246,7 @@ framework/strategy/
 
 ## Known Gaps
 
-- **`.gitignore`** — Now present at root. Covers `node_modules/`, `dist/`, `*.tsbuildinfo`, `.DS_Store`, `Thumbs.db`. Remaining tracked `node_modules/` in sub-projects should be added. See issue #1.
+- **`.gitignore`** — Present at root and covers `node_modules/`, `dist/`, `*.tsbuildinfo`, `.DS_Store`, `Thumbs.db`. No `node_modules/` directories are tracked.
 - **Metadata completeness** — `published_date`, `content_pillar`, `trigger`, and `created_date` remain `PLACEHOLDER`/`null` for all posts. These were not recorded at publication time.
 - **Instagram captions** — Caption text was not visible in slide images; all Instagram posts use `PLACEHOLDER`.
-- **Draft filename** — `content/drafts/ carousel.md` has a leading space in its filename.
+- **Draft placeholders** — `content/drafts/reel.md` and `content/drafts/story.md` are empty placeholders awaiting their first drafts.

@@ -172,16 +172,16 @@ Every production step is assigned a responsible actor. This matrix defines who d
 | **Trigger**      | Capture raw experience | Human       | Real-life moments the creator chooses to document |
 | **Idea**         | Validate trigger       | Human       | Decides whether an experience is worth developing |
 | **Format Selection** | Choose format      | AI / Human  | AI proposes based on `Content Format.md` rules; Human approves |
-| **Draft**        | Generate first draft   | AI          | Uses `Carousels.md`, `Reels.md`, or `Stories.md` + `Brand Voice.md` via `Generating Content Prompts.md` |
+| **Draft**        | Generate first draft   | AI          | Uses `Carousels.md`, `Reels.md`, or `Stories.md` + `Brand Voice.md` via `framework/prompts/03-Post Content Builder.md` |
 |                  | Review draft           | Human       | Validates against quality gates |
-| **Final Assets** | Populate carousel template | AI / Automation | AI fills `Carousel Structure/index.html` placeholders; future Automation reads JSON directly |
-|                  | Export carousel slides | Automation (future) | Playwright script or similar tool exports to PNG |
+| **Final Assets** | Generate structured carousel JSON | AI | AI writes `production/workspace/carousel.json` (Content Model format); the React renderer (`production/renderer/`) renders it to slides |
+|                  | Export carousel slides | Automation | Playwright pipeline (`production/export/export-slides.js` against the `/export` route) or the Studio Export modal exports PNGs |
 |                  | Record reel            | Human       | In-the-moment recording per `Reels.md` |
 |                  | Edit reel              | Human       | Trim and basic edits |
 |                  | Write caption / format text | AI / Human | AI drafts per platform rules; Human tailors |
 | **Published**    | Post on platform       | Human       | Manual upload to Instagram, LinkedIn, X, or Stories |
 |                  | Track in Posted Titles | Human       | Add title + archive path to `Posted Titles.md` |
-| **Archived**     | Store assets           | Human       | Move final assets into `Content Posted/` per archive structure |
+| **Archived**     | Store assets           | Human       | Move final assets into `content/published/` per archive structure |
 |                  | Write metadata.json    | Human / AI  | Populate metadata fields (dates, tags, pillar) |
 |                  | Verify archive         | Human       | Confirm assets are grouped and paths are correct |
 
@@ -189,7 +189,7 @@ Every production step is assigned a responsible actor. This matrix defines who d
 
 When archiving, the production workflow must ensure:
 
-- **Carousels:** Rendered slides and source data (`sample-data.json`) are saved together. If visual assets are produced in a carousel format, they are stored in the post's `assets/` subfolder alongside the data file that produced them.
+- **Carousels:** Rendered slides and source data (`production/workspace/carousel.json`) are saved together. If visual assets are produced in a carousel format, they are stored in the post's `assets/` subfolder alongside the data file that produced them.
 - **Reels:** Video files and caption text are stored together in the post folder.
 - **Stories:** Captures (screenshots or exports) and timestamps are grouped in the post folder.
 - **LinkedIn / X posts:** Written post (`post.md`) is stored in the post folder. If visual assets are produced in the future, they are archived in an `assets/` subfolder alongside the written post.
@@ -197,7 +197,7 @@ When archiving, the production workflow must ensure:
 
 ### Production Layer Boundary
 
-The production layer (`Carousel Structure/`, `templates/`, `Export Files/`, `Content Posted/`) renders and archives content. It never defines:
+The production layer (`production/renderer/`, `production/workspace/`, `production/export/`, `content/published/`) renders and archives content. It never defines:
 
 - brand voice or tone
 - platform adaptation rules
@@ -205,4 +205,4 @@ The production layer (`Carousel Structure/`, `templates/`, `Export Files/`, `Con
 - planning or selection logic
 - quality gate criteria
 
-All of the above belong to framework documents in `Content Framework/` and are consumed by the production layer via @-references, template placeholders, or data files.
+All of the above belong to framework documents in `framework/` and are consumed by the production layer via @-references, structured data files, or the renderer's data pipeline.
