@@ -6,15 +6,25 @@ import type { BulletItem } from "../types";
 type BulletListSlideProps = {
   title: string;
   items: BulletItem[];
+  label?: string;
+  summary?: string;
   className?: string;
 };
 
-export default function BulletListSlide({ title, items, className = "" }: BulletListSlideProps) {
+export default function BulletListSlide({ title, items, label, summary, className = "" }: BulletListSlideProps) {
   return (
     <Slide className={`layout-bullet-list ${className}`}>
       <div className="layout-bullet-list__inner">
-        <Title as="h2">{title}</Title>
+        {label && <div className="s-label">{label}</div>}
+        <Title as="h2" size="experience">{title}</Title>
         <BulletList items={items} />
+        {summary && (
+          <div className="layout-bullet-list__summary flex-1 d-flex items-center">
+            <div className="box-l2">
+              <p className="s-body--summary">{summary}</p>
+            </div>
+          </div>
+        )}
       </div>
     </Slide>
   );

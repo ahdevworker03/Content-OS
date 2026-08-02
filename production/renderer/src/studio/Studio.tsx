@@ -1,4 +1,5 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Toolbar from "./Toolbar";
 import Preview from "./Preview";
@@ -7,6 +8,8 @@ import DebugPanel from "./DebugPanel";
 import { useCarousel } from "./useCarousel";
 import { useKeyboardNav } from "./useKeyboardNav";
 import { USE_WORKSPACE_DATA } from "../renderer/config";
+import { SafetyProvider } from "../renderer/safety";
+import "./theme.css";
 import "./Studio.css";
 
 export default function Studio() {
@@ -25,6 +28,8 @@ export default function Studio() {
     toggleDebug,
   } = useCarousel();
 
+  const [showSafety, setShowSafety] = useState(false);
+
   useKeyboardNav({
     currentIndex,
     totalSlides,
@@ -32,44 +37,54 @@ export default function Studio() {
     onNext: goNext,
   });
 
+  const navigate = useNavigate();
+
   const handleExport = useCallback(() => {
-    alert("Export integration coming in Phase 6");
+    navigate("/export");
+  }, [navigate]);
+
+  const handleToggleSafety = useCallback(() => {
+    setShowSafety((prev) => !prev);
   }, []);
 
   if (!carousel) return null;
 
   return (
-    <div className="studio">
-      <Toolbar
-        dataSource={USE_WORKSPACE_DATA ? "workspace" : "development"}
-        totalSlides={totalSlides}
-        onExport={handleExport}
-      />
-
-      <div className="studio__body">
-        <Sidebar
-          slides={carousel.slides}
-          currentIndex={currentIndex}
-          onSelect={goTo}
+    <SafetyProvider value={{ show: showSafety }}>
+      <div className="studio">
+        <Toolbar
+          dataSource={USE_WORKSPACE_DATA ? "workspace" : "development"}
+          totalSlides={totalSlides}
+          showSafety={showSafety}
+          onToggleSafety={handleToggleSafety}
+          onExport={handleExport}
         />
 
-        <main className="studio__main">
-          <Preview
-            slide={currentSlide}
-            scale={scale}
-            onScaleChange={setScale}
+        <div className="studio__body">
+          <Sidebar
+            slides={carousel.slides}
+            currentIndex={currentIndex}
+            onSelect={goTo}
           />
 
-          <div className="studio__panels">
-            <ValidationPanel warnings={warnings} />
-            <DebugPanel
+          <main className="studio__main">
+            <Preview
               slide={currentSlide}
-              isOpen={debugOpen}
-              onToggle={toggleDebug}
+              scale={scale}
+              onScaleChange={setScale}
             />
-          </div>
-        </main>
+
+            <div className="studio__panels">
+              <ValidationPanel warnings={warnings} />
+              <DebugPanel
+                slide={currentSlide}
+                isOpen={debugOpen}
+                onToggle={toggleDebug}
+              />
+            </div>
+          </main>
+        </div>
       </div>
-    </div>
+    </SafetyProvider>
   );
 }

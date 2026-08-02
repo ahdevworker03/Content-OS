@@ -1,21 +1,25 @@
+import { Fragment } from "react";
 import type { BulletItem } from "../../types";
 
 type BulletListProps = {
   items: BulletItem[];
+  variant?: "secondary" | "primary";
   className?: string;
 };
 
-export default function BulletList({ items, className = "" }: BulletListProps) {
+export default function BulletList({ items, variant = "secondary", className = "" }: BulletListProps) {
   return (
-    <ul className={`ui-bullet-list ${className}`}>
-      {items.map((item, i) => (
-        <li
-          key={i}
-          className={item.highlight ? "ui-bullet-list__item--highlight" : ""}
-        >
-          {item.text}
-        </li>
-      ))}
-    </ul>
+    <div className={`box-l${variant === "primary" ? " box-l2" : ""} ${className}`}>
+      <p className="ui-bullet-text">
+        {items.map((item, i) => (
+          <Fragment key={i}>
+            {i > 0 && <br />}
+            <span className={item.highlight ? "ui-bullet-text__highlight" : ""}>
+              • {item.text}
+            </span>
+          </Fragment>
+        ))}
+      </p>
+    </div>
   );
 }

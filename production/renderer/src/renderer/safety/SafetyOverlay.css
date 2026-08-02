@@ -1,0 +1,51 @@
+.safety-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.safety-overlay__canvas {
+  position: absolute;
+  inset: 0;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.safety-overlay__safe-area {
+  position: absolute;
+  top: calc(var(--slide-padding-y) * var(--slide-scale));
+  right: calc(var(--slide-padding-x) * var(--slide-scale));
+  bottom: calc(var(--slide-padding-bottom) * var(--slide-scale));
+  left: calc(var(--slide-padding-x) * var(--slide-scale));
+  border: 1px dashed rgba(59, 130, 246, 0.25);
+  background: rgba(59, 130, 246, 0.06);
+}
+
+.safety-overlay__profile-grid {
+  position: absolute;
+  inset: 0;
+  border: 1px dashed rgba(251, 191, 36, 0.3);
+  background: rgba(251, 191, 36, 0.06);
+}
+
+.safety-overlay__crosshair {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.safety-overlay__crosshair--h {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  transform: translateY(-50%);
+}
+
+.safety-overlay__crosshair--v {
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform: translateX(-50%);
+}

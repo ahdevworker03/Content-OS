@@ -1,20 +1,20 @@
 import { Slide } from "../components/slide";
 import Title from "../components/ui/Title";
-import Subtitle from "../components/ui/Subtitle";
 
 type CoverSlideProps = {
   title: string;
   subtitle: string;
+  username?: string;
   className?: string;
 };
 
-export default function CoverSlide({ title, subtitle, className = "" }: CoverSlideProps) {
+export default function CoverSlide({ title, subtitle, username, className = "" }: CoverSlideProps) {
   return (
     <Slide className={`layout-cover ${className}`}>
-      <div className="layout-cover__inner">
-        <Subtitle className="layout-cover__eyebrow">Cover</Subtitle>
-        <Title>{title}</Title>
-        <Subtitle className="layout-cover__subtitle">{subtitle}</Subtitle>
+      {username && <div className="layout-cover__username">{username}</div>}
+      <div className="layout-cover__center">
+        <Title size="xl">{title}</Title>
+        <div className="layout-cover__subtitle">{subtitle}</div>
       </div>
     </Slide>
   );

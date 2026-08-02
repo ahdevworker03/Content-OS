@@ -2,53 +2,91 @@
   "slides": [
     {
       "layout": "cover",
-      "title": "This Summer",
-      "subtitle": "I'm building foundations."
+      "title": "كدت ما أبلّش بموقع portfolio في سنتي الأولى.",
+      "subtitle": "بس ليش ندمان إنّي بدّيت بدري؟ 💭",
+      "username": "@abdallahhassoun.dev"
     },
     {
-      "layout": "bullet-list",
-      "title": "Key Features",
+      "layout": "box-list",
+      "title": "لما بدّيت قدّم ع trainings، اكتشفت شي مهم:",
+      "label": "REALIZATION",
       "items": [
-        { "text": "React 18 with TypeScript" },
-        { "text": "Component-based architecture" },
-        { "text": "Design system with CSS variables", "highlight": true },
-        { "text": "1080×1080 canvas output" }
-      ]
-    },
-    {
-      "layout": "arrow-list",
-      "title": "Pipeline",
-      "items": [
-        { "text": "Idea" },
-        { "text": "Design" },
-        { "text": "Develop" },
-        { "text": "Deploy" }
-      ]
-    },
-    {
-      "layout": "grid",
-      "title": "Specifications",
-      "items": [
-        { "label": "Resolution", "value": "1080×1080" },
-        { "label": "Format", "value": "PNG" },
-        { "label": "Framework", "value": "React" },
-        { "label": "Scaling", "value": "Responsive" }
+        { "heading": "الـ CV لحاله مش كفايه 🧾", "description": "" },
+        { "heading": "الـ portfolio الملموس هو يلي خلّاني أتأهل", "description": "" },
+        { "heading": "بيّن اللي قدامي شي يشوفو — مش بس يقرا", "description": "", "accent": true }
       ]
     },
     {
       "layout": "box-list",
-      "title": "Why This Matters",
+      "title": "كنت فكّري إنّو الـ portfolio لازم يكون full-stack تحفة.",
+      "sectionTag": "MINDSET",
+      "sectionTagVariant": "cons",
       "items": [
-        { "heading": "Performance", "description": "Lightweight rendering pipeline optimized for speed." },
-        { "heading": "Consistency", "description": "Unified design system across all slide layouts." },
-        { "heading": "Scalability", "description": "Easily extend with new layouts and components." }
+        { "heading": "React, TypeScript, animations, deployment...", "description": "" },
+        { "heading": "فكّري إنّو بدّي أتعلّم كلشي قبل ما أبلّش", "description": "" },
+        { "heading": "النتيجة؟ كنت عمأجّل عأجّل 🌀", "description": "", "accent": true }
+      ]
+    },
+    {
+      "layout": "arrow-list",
+      "title": "بناء الـ portfolio خلّاني أطبّق الأساسيّات بطريقة واقعية 🛠️",
+      "sectionTag": "EXPERIENCE",
+      "sectionTagVariant": "cons",
+      "items": [
+        { "text": "HTML/CSS/JS basic — مش مجرّد تمارين ع ورق" },
+        { "text": "شي شغّال، منشور، في ناس بتشوفو" },
+        { "text": "الـ learning by doing كانت أحسن طريقة أتعلّم فيها" }
+      ]
+    },
+    {
+      "layout": "arrow-list",
+      "title": "الـ portfolio مش بس علّمني — هو فتحلي أبواب 👀",
+      "sectionTag": "OPPORTUNITIES",
+      "sectionTagVariant": "cons",
+      "items": [
+        { "text": "لما قدمت ع trainings — كنت عم أوري شغلي، مش عم قول أنا بعرف" },
+        { "text": "فرص تدريب، منح، courses — كلها صارت أسهل لأنو في شي ملموس" },
+        { "text": "وجود portfolio خلّاني أتأهل حيث غيري ما تأهّل" }
+      ]
+    },
+    {
+      "layout": "bullet-list",
+      "title": "موجود > مثالي",
+      "label": "MY ADVICE",
+      "items": [
+        { "text": "إنّو تبلّش بدري أهم من إنّو يكون perfect 🎯", "highlight": true },
+        { "text": "الـ perfect ما بيجّي" },
+        { "text": "الـ موجود هو يلي بيفتحلك فرص" }
+      ],
+      "summary": "المثالي هو عدو الموجود."
+    },
+    {
+      "layout": "box-list",
+      "title": "هاد portfolio تاعي — بنيته أوّل سنة",
+      "label": "MY STORY",
+      "sectionTag": "PERSONAL",
+      "sectionTagVariant": "cons",
+      "items": [
+        { "heading": "بـ HTML/CSS/JS basic 🧩", "description": "" },
+        { "heading": "وهلق عم أشتغل عليه بـ React/TypeScript", "description": "" },
+        { "heading": "مو ضروري يكون masterpiece — بس ضروري يكون موجود", "description": "", "accent": true }
       ]
     },
     {
       "layout": "cta",
-      "badge": "New",
-      "title": "Ready to Build",
-      "subtitle": "Start creating content with the new renderer."
+      "badge": "YOUR TURN",
+      "title": "وأنت؟",
+      "subtitle": "في سنة أولى كان عندك portfolio ولا لسّا عم تفكّر؟ شو يلي منّعك تبلّش؟",
+      "label": "QUESTION",
+      "bulletRows": [
+        "شو يلي منّعك تبلّش؟",
+        "في شي ناقص عندك؟",
+        "ولا بس عم تستنى الوقت المثالي؟"
+      ],
+      "quote": "أفضل وقت لتبدأ هو اليوم.",
+      "cta": "إذا بدك تناقش الفكرة، أنا هون 👇",
+      "footerName": "Abdallah Hassoun · CS Student",
+      "footerHandle": "abdallahhassoun.dev@"
     }
   ]
 }

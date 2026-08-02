@@ -124,6 +124,7 @@ The workflow is successful when all of the following are true:
 - Do not modify files outside the format-specific output files defined by this workflow.
 - Always write the generated content directly into the corresponding draft file. Do not leave the final content only in the conversation.
 - Preserve consistency between the Markdown draft and the JSON file. They are two representations of the same content and must not diverge.
+- Assume the provided Content Brief has been approved. Do not revisit strategic decisions unless the brief is incomplete or internally inconsistent.
 
 ---
 

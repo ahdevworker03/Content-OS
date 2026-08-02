@@ -8,7 +8,7 @@
  */
 module.exports = {
   /** URL of the carousel HTML page to render. */
-  url: "http://localhost:8000/Carousel%20Structure/index.html",
+  url: "http://localhost:5173/export",
 
   /** Playwright browser launch options. */
   browser: {

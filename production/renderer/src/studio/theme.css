@@ -1,0 +1,34 @@
+/* ── Studio Theme ────────────────────────────────
+   Neutral dark editor tokens scoped to .studio.
+   Studio owns colors, borders, and shadows; it reuses
+   the shared neutral tokens (spacing, radius, font)
+   from index.css. Slides keep the brand palette.
+   ─────────────────────────────────────────────── */
+
+.studio {
+  /* ── Surface ─────────────────────────────── */
+  --studio-bg: #16161a;
+  --studio-bg-surface: #1d1d22;
+  --studio-bg-elevated: #26262d;
+
+  /* ── Border ──────────────────────────────── */
+  --studio-border: #2c2c34;
+  --studio-border-strong: #3a3a44;
+
+  /* ── Text ────────────────────────────────── */
+  --studio-text: #e8e8ed;
+  --studio-text-muted: #9a9aa5;
+  --studio-text-dim: #5f5f6b;
+
+  /* ── Accent ──────────────────────────────── */
+  --studio-accent: #7aa2ff;
+  --studio-bg-active: rgba(122, 162, 255, 0.12);
+
+  /* ── Status ──────────────────────────────── */
+  --studio-warning: #e8b04c;
+  --studio-danger: #f87171;
+
+  /* ── Shadow ──────────────────────────────── */
+  --studio-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --studio-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45);
+}

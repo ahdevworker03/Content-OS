@@ -1,100 +1,135 @@
 {
-  "PAGE_TITLE": "This Summer, I'm Building Foundations",
-  "LANG": "ar",
-  "DIRECTION": "rtl",
-  "DIRECTION_RTL": true,
-  "USERNAME": "@abdallahhassoun.dev",
-  "FOOTER_NAME": "Abdallah Hassoun · CS Student",
-  "FOOTER_HANDLE": "abdallahhassoun.dev@",
-  "SWIPE": "→",
-  "SLIDES": [
+  "identity": {
+    "id": "instagram-007",
+    "title": "Why I Built a Portfolio Website in My First Year of CS",
+    "lifecycle_stage": "draft"
+  },
+  "trigger": {
+    "description": "While applying for training opportunities, I realized that having a portfolio gave me something tangible to share beyond my CV.",
+    "insight": "Starting early mattered more than having a perfect portfolio.",
+    "hook": "I almost didn't build a portfolio in my first year. Glad I did."
+  },
+  "metadata": {
+    "platform": "instagram",
+    "primary_format": "carousel",
+    "language": "ar",
+    "content_pillar": "Personal reflections on the software development journey",
+    "tags": ["portfolio", "first-year-cs", "learning-in-public", "build-in-public", "web-development", "student-journey"],
+    "created_date": "2026-07-30",
+    "published_date": "",
+    "notes": "Portfolio was originally built with HTML/CSS/JS. Migrated later to React/TypeScript — migration is not part of this topic."
+  },
+  "variants": [
     {
-      "TYPE_COVER": true,
-      "NUMBER": "SLIDE 1 OF 7 — SUMMER BREAK",
-      "TITLE": "خلصت أول سنة Computer Science.",
-      "TEASERS": [
-        "وهلق عندي ٣ شهور...",
-        "وحاسس إنن ممكن يفرقوا أكتر من السنة كلها."
-      ]
+      "platform": "instagram",
+      "format": "carousel",
+      "language": "ar",
+      "body": {
+        "type": "carousel",
+        "slides": [
+          {
+            "layout": "cover",
+            "number": "SLIDE 1 OF 8",
+            "title": "كدت ما أبلّش بموقع portfolio في سنتي الأولى.",
+            "teasers": ["بس ليش ندمان إنّي بدّيت بدري؟ 💭"],
+            "swipe": "swipe →"
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 2 OF 8",
+            "section_tag": { "text": "TRIGGER", "class": "" },
+            "title": "لما بدّيت قدّم ع trainings، اكتشفت شي مهم:",
+            "items": [
+              { "text": "الـ CV لحاله مش كفايه 🧾", "accent": false },
+              { "text": "الـ portfolio الملموس هو يلي خلّاني أتأهل", "accent": true },
+              { "text": "بيّن اللي قدامي شي يشوفو — مش بس يقرا", "accent": false }
+            ],
+            "swipe": "swipe →"
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 3 OF 8",
+            "section_tag": { "text": "THE DOUBT", "class": "" },
+            "title": "كنت فكّري إنّو الـ portfolio لازم يكون full-stack تحفة.",
+            "items": [
+              { "text": "React, TypeScript, animations, deployment...", "accent": false },
+              { "text": "فكّري إنّو بدّي أتعلّم كلشي قبل ما أبلّش", "accent": false },
+              { "text": "النتيجة؟ كنت عمأجّل عأجّل 🌀", "accent": true }
+            ],
+            "swipe": "swipe →"
+          },
+          {
+            "layout": "arrow-list",
+            "number": "SLIDE 4 OF 8",
+            "section_tag": { "text": "LESSON 1", "class": "" },
+            "title": "بناء الـ portfolio خلّاني أطبّق الأساسيّات بطريقة واقعية 🛠️",
+            "items": [
+              { "text": "HTML/CSS/JS basic — مش مجرّد تمارين ع ورق", "accent": false },
+              { "text": "شي شغّال، منشور، في ناس بتشوفو", "accent": false },
+              { "text": "الـ learning by doing كانت أحسن طريقة أتعلّم فيها", "accent": true }
+            ],
+            "swipe": "swipe →"
+          },
+          {
+            "layout": "arrow-list",
+            "number": "SLIDE 5 OF 8",
+            "section_tag": { "text": "OUTCOME", "class": "" },
+            "title": "الـ portfolio مش بس علّمني — هو فتحلي أبواب 👀",
+            "items": [
+              { "text": "لما قدمت ع trainings — كنت عم أوري شغلي، مش عم قول \"أنا بعرف\"", "accent": false },
+              { "text": "فرص تدريب، منح، courses — كلها صارت أسهل لأنو في شي ملموس", "accent": false },
+              { "text": "وجود portfolio خلّاني أتأهل حيث غيري ما تأهّل", "accent": true }
+            ],
+            "swipe": "swipe →"
+          },
+          {
+            "layout": "bullet-list",
+            "number": "SLIDE 6 OF 8",
+            "section_tag": { "text": "LESSON", "class": "" },
+            "title": "موجود > مثالي",
+            "items": [
+              { "text": "إنّو تبلّش بدري أهم من إنّو يكون perfect 🎯", "accent": true },
+              { "text": "الـ perfect ما بيجّي", "accent": false },
+              { "text": "الـ موجود هو يلي بيفتحلك فرص", "accent": false }
+            ],
+            "summary": "Just start.",
+            "swipe": "swipe →"
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 7 OF 8",
+            "section_tag": { "text": "PROJECT BRIDGE", "class": "" },
+            "title": "هاد portfolio تاعي — بنيته أوّل سنة",
+            "items": [
+              { "text": "بـ HTML/CSS/JS basic 🧩", "accent": false },
+              { "text": "وهلق عم أشتغل عليه بـ React/TypeScript", "accent": false },
+              { "text": "مو ضروري يكون masterpiece — بس ضروري يكون موجود", "accent": true }
+            ],
+            "swipe": "swipe →"
+          },
+          {
+            "layout": "final-cta",
+            "number": "SLIDE 8 OF 8",
+            "title": "وأنت؟",
+            "cta": "في سنة أولى كان عندك portfolio ولا لسّا عم تفكّر؟ شو يلي منّعك تبلّش؟",
+            "swipe": "swipe →"
+          }
+        ]
+      },
+      "caption": "قديش منكن قاعد عمأجّل بناء portfolio لأنّك مستني تبقى \"جاهز\"؟\n\nأنا كنت هيك. فكّري إنّو لازم أكون full-stack expert قبل ما أبلّش. بس الحقيقة إنّو أوّل portfolio كان basic HTML/CSS/JS — وهو هيدا يلي خلّاني أتقدّم ع trainings وفتحلي فرق.\n\nأهم شي: ابلّش. الـ perfect ما بيجّي.\n\nشو رأيك؟ في سنة أولى جديلة تبني portfolio أو لا؟\n\n#CSStudent #PortfolioWebsite #FirstYearCS #LearningInPublic #BuildInPublic #ComputerScience",
+      "cta": "في سنة أولى كان عندك portfolio ولا لسّا عم تفكّر؟ شو يلي منّعك تبلّش؟"
     },
     {
-      "TYPE_BOX_LIST": true,
-      "NUMBER": "SLIDE 2 OF 7 — THE TRIGGER",
-      "LABEL": "FIRST YEAR",
-      "TITLE": "أول سنة علمتني كتير.",
-      "BOX_ITEMS": [
-        { "TEXT": "تعلمت HTML، CSS، JavaScript و TypeScript." },
-        { "TEXT": "بنيت مشاريع." },
-        { "TEXT": "وعملت Portfolio ونشرتو." },
-        { "TEXT": "بس كل ما كنت اشتغل على مشروع... كنت حس إنو في حدود للي بعرفو." },
-        { "TEXT": "مو لأني ما تعلمت... بس لأني بعدني بأول الطريق.", "ACCENT": true }
-      ]
-    },
-    {
-      "TYPE_BOX_LIST": true,
-      "NUMBER": "SLIDE 3 OF 7 — THE STRUGGLE",
-      "SECTION_TAG": "COURSE COLLECTOR",
-      "SECTION_TAG_CLASS": "cons",
-      "TITLE": "أول أسبوع من العطلة عملت أكبر غلطة.",
-      "BOX_ITEMS": [
-        { "TEXT": "فتحت YouTube..." },
-        { "TEXT": "وبلشت جمع كورسات." },
-        { "TEXT": "كل يوم كنت ضيف شي جديد." },
-        { "TEXT": "بعد كم يوم... صار عندي لستة أطول من المشاريع اللي خلصتها." }
-      ]
-    },
-    {
-      "TYPE_BOX_LIST": true,
-      "NUMBER": "SLIDE 4 OF 7 — THE REALIZATION",
-      "SECTION_TAG": "REALIZATION",
-      "SECTION_TAG_CLASS": "cons",
-      "TITLE": "وقتها انتبهت لشي.",
-      "BOX_ITEMS": [
-        { "TEXT": "أنا ما كنت محتار شو لازم أتعلم..." },
-        { "TEXT": "كنت محتار من وين بلّش." },
-        { "TEXT": "وفرق كبير بين التنين." },
-        { "TEXT": "لأنو إذا ضليت عم حضّر حتى بلّش..." },
-        { "TEXT": "رح يخلص الصيف وأنا بعدني عم حضّر.", "ACCENT": true }
-      ]
-    },
-    {
-      "TYPE_GRID_2X2": true,
-      "NUMBER": "SLIDE 5 OF 7 — MY PLAN",
-      "SECTION_TAG": "ROADMAP",
-      "SECTION_TAG_CLASS": "cons",
-      "TITLE": "قررت أخلي كل شي مرتبط بمشروع حقيقي.",
-      "GRID_ITEMS": [
-        { "LABEL": "React", "TEXT": "لأن أغلب الأفكار اللي ببالي بتحتاجه." },
-        { "LABEL": "TypeScript", "TEXT": "كل مشروع بعمله بخليني اكتشف تفاصيل بعدني ما بفهما." },
-        { "LABEL": "Git", "TEXT": "بدي أتعلم اشتغل متل أي فريق حقيقي." },
-        { "LABEL": "Linux", "TEXT": "بدي حسّن بيئة التطوير اللي بشتغل عليها كل يوم." }
-      ]
-    },
-    {
-      "TYPE_BULLET_LIST": true,
-      "NUMBER": "SLIDE 6 OF 7 — THE LESSON",
-      "LABEL": "MY FOCUS",
-      "TITLE": "إذا في شغلة بدي جرّبها هالصيف...",
-      "TITLE_CLASS": "s-title--experience",
-      "BULLET_ITEMS": [
-        { "TEXT": "أقضي وقت أقل عم حضّر... ووقت أكتر عم أبني." },
-        { "TEXT": "يمكن أعلق ساعات على Bug." },
-        { "TEXT": "يمكن أرجع أكتب نفس الكود مرتين." },
-        { "TEXT": "بس غالباً... هاد هو النوع من الشغل اللي رح يعلمني أكتر." }
-      ],
-      "SUMMARY": "اختر البناء، حتى لو كان أبطأ."
-    },
-    {
-      "TYPE_FINAL_CTA": true,
-      "NUMBER": "SLIDE 7 OF 7 — CLOSING",
-      "LABEL": "YOUR TURN",
-      "TITLE": "بعد ٣ شهور... شو رح يكون؟",
-      "FINAL_BULLET_ROWS": [
-        { "TEXT": "يا رح يكون عندي مشاريع جديدة أفتخر فيها..." },
-        { "TEXT": "أو رح يكون عندي لستة أطول بالكورسات اللي ناوي بلّش فيها." },
-        { "TEXT": "أنا عارف أي وحدة بدي اختار." }
-      ],
-      "CTA": "وإنت... شو ناوي تبني هالصيف؟ 👇"
+      "platform": "linkedin",
+      "format": "post",
+      "language": "en",
+      "body": {
+        "type": "post",
+        "content": "During my first year of Computer Science, I learned that starting a portfolio matters more than perfecting it.\n\nAt first, I almost didn't build one. I thought I needed to know more — React, TypeScript, deployment, animations. I told myself I'd build it once I was \"ready.\"\n\nBut when I started applying for training opportunities, I realized something: a CV alone wasn't enough. What made a difference was having something tangible to show — a live website that proved I could build.\n\nSo I built it. Simple. Static. HTML, CSS, and a bit of JavaScript.\n\nHere's what that experience taught me:\n\n**1. Building taught me more than studying.**\nApplying basic web technologies in a real, deployed project taught me more about HTML/CSS/JS than any tutorial ever did.\n\n**2. Having something to show changed the outcome.**\nWhen I applied for trainings, I wasn't just saying \"I know this\" — I was showing my work. That opened doors my CV alone couldn't.\n\n**3. Starting early matters more than being perfect.**\nMy portfolio wasn't a masterpiece. It was a static site. But it existed. And that made all the difference.\n\nWhat I learned most of all: waiting until I felt ready would have meant never starting. The portfolio I built in my first year taught me more than the perfect one I was waiting to build.",
+        "structure": "opening-insight"
+      },
+      "caption": "Starting early > waiting for perfection",
+      "cta": "Did you build a portfolio early in your studies, or are you still waiting until you feel ready? I'd love to hear your experience."
     }
   ]
 }
