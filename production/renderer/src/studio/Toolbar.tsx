@@ -1,25 +1,40 @@
+import { useState } from "react";
+import AboutModal from "./AboutModal";
+
 type ToolbarProps = {
   dataSource: "development" | "workspace";
+  projectName: string;
   totalSlides: number;
   showSafety: boolean;
   onToggleSafety: () => void;
   onExport: () => void;
 };
 
-export default function Toolbar({ dataSource, totalSlides, showSafety, onToggleSafety, onExport }: ToolbarProps) {
+export default function Toolbar({
+  dataSource,
+  projectName,
+  totalSlides,
+  showSafety,
+  onToggleSafety,
+  onExport,
+}: ToolbarProps) {
+  const [aboutOpen, setAboutOpen] = useState(false);
+
   return (
     <header className="studio-toolbar">
-      <span className="studio-toolbar__brand">Carousel Studio</span>
+      <div className="studio-toolbar__brand">
+        <span className="studio-toolbar__name">Carousel Studio</span>
+        <span className="studio-toolbar__project" title={projectName}>
+          {projectName}
+        </span>
+      </div>
 
       <div className="studio-toolbar__center">
         <span className="studio-toolbar__pill">
-          {dataSource === "development" ? "Development JSON" : "Workspace JSON"}
+          Data Source: {dataSource === "workspace" ? "Workspace" : "Local"}
         </span>
         <span className="studio-toolbar__meta">
-          v1.0.0
-        </span>
-        <span className="studio-toolbar__meta">
-          {totalSlides} {totalSlides === 1 ? "slide" : "slides"}
+          {totalSlides} {totalSlides === 1 ? "slide" : "slides"} · Saved
         </span>
       </div>
 
@@ -31,10 +46,21 @@ export default function Toolbar({ dataSource, totalSlides, showSafety, onToggleS
         >
           {showSafety ? "Safety On" : "Safety Off"}
         </button>
+        <button
+          className="studio-toolbar__info"
+          onClick={() => setAboutOpen(true)}
+          type="button"
+          aria-label="About"
+          title="About"
+        >
+          ⓘ
+        </button>
         <button className="studio-toolbar__export" onClick={onExport} type="button">
           Export
         </button>
       </div>
+
+      {aboutOpen && <AboutModal dataSource={dataSource} onClose={() => setAboutOpen(false)} />}
     </header>
   );
 }

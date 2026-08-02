@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Toolbar from "./Toolbar";
@@ -47,6 +47,12 @@ export default function Studio() {
     setShowSafety((prev) => !prev);
   }, []);
 
+  const projectName = useMemo(() => {
+    if (!carousel) return "";
+    const first = carousel.slides[0];
+    return "title" in first && first.title ? first.title : "Untitled Carousel";
+  }, [carousel]);
+
   if (!carousel) return null;
 
   return (
@@ -54,6 +60,7 @@ export default function Studio() {
       <div className="studio">
         <Toolbar
           dataSource={USE_WORKSPACE_DATA ? "workspace" : "development"}
+          projectName={projectName}
           totalSlides={totalSlides}
           showSafety={showSafety}
           onToggleSafety={handleToggleSafety}

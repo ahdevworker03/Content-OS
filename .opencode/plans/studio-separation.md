@@ -1,102 +1,95 @@
-# Studio Separation — Final Milestone Plan
+# Studio UX/UI — Fixes & Enhancements
 
 ## Context
 
-The renderer is frozen (finished): do **not** touch `Slide.tsx`, `layouts/*`, `components/ui/*`,
-`components/slide/*`, `index.css`, brand color tokens, or carousel data.
+The renderer and export pipeline stay frozen. Studio UI bugs/UX gaps reported across
+sidebar, header, debug/inspector, zoom, export, and styling. All paths below are
+relative to `production/renderer/`.
 
-The export pipeline is frozen too (this milestone has nothing to do with exporting):
-do **not** touch `src/export/*` or `production/export/*`.
+**Confirmed decisions:**
 
-Current couplings to remove:
-1. `src/studio/Studio.css` reuses renderer brand tokens (`var(--color-*)`) for all its chrome.
-   Because `--color-border` is `transparent`, Studio surfaces have invisible borders and no shadows.
-2. `.studio` sets no background, so the editor workspace shows `body`'s brand color (`#1a0f08`).
-3. `.studio-preview__slide { --slide-scale: 0.5 }` is redundant — `Preview.tsx` sets it inline
-   and `useCarousel.ts` defaults scale to `0.5`.
-4. The safe overlay computes geometry in JS from `SAFETY_CONFIG` (`renderer/safety/config.ts`),
-   duplicating values that already exist as renderer CSS tokens (`--slide-padding-y/x/bottom`,
-   `--slide-scale`). `SAFETY_CONFIG` has no consumers outside the overlay.
+- **Export:** client-side download modal (PNG ZIP + PDF) in Studio; `/export` route +
+  Playwright pipeline untouched (export QA stays byte-identical).
+- **Editing:** in-memory only (no writes to JSON files).
+- **Color:** amber brand accent (`#f5a84a` / `#e07b20`) on neutral graphite surfaces;
+  surfaces stay neutral.
+- **Plan file:** replaces the old (temporary) studio-separation plan.
 
-## Decisions (confirmed)
+## Phase 1 — Sidebar: slide cards
 
-- **Studio theme:** neutral dark editor (slate/graphite workspace) so slides stay the visual focus.
-- **Token split:** Studio owns colors + borders + shadows; reuses neutral shared tokens
-  (spacing, radius, font-size, font-family) from `index.css`.
-- **Overlay:** rewrite `src/renderer/safety/` only (treated as Studio tooling); the overlay
-  becomes CSS-driven and `config.ts` is **deprecated, not deleted** (kept for future
-  safe-area presets). `Slide.tsx`, renderer layouts/CSS, and exported output stay byte-identical.
+1. New `src/studio/SlideCard.tsx`: renders a scaled `SlideRenderer` thumbnail
+   (`--slide-scale ≈ 0.2`), slide-number overlay, layout pill badge (top-right:
+   Cover / Box List / CTA / …), and RTL title with ellipsis + `title` tooltip.
+2. Rework `src/studio/Sidebar.tsx` to use cards; widen sidebar to ~260px, item padding
+   12–16px; keep active highlight.
+3. CSS in `src/studio/Studio.css` (cards, pills, overlays, RTL direction, hover tooltip).
 
-## Phase A — Studio Theme
+**Validation:** 8 thumbnails render correctly, layout pills present, Arabic titles read
+correctly (RTL, no broken punctuation), hover shows full title, build clean.
 
-1. Create `src/studio/theme.css` — tokens scoped to `.studio`, organized into groups for
-   easier maintenance:
-   - **Surface** — `--studio-bg` (#16161a workspace), `--studio-bg-surface`, `--studio-bg-elevated`
-   - **Border** — `--studio-border`, `--studio-border-strong`
-   - **Text** — `--studio-text`, `--studio-text-muted`, `--studio-text-dim`
-   - **Accent** — `--studio-accent`, `--studio-bg-active`
-   - **Status** — `--studio-warning`, `--studio-danger`
-   - **Shadow** — `--studio-shadow-sm`, `--studio-shadow-md`
-2. Refactor `src/studio/Studio.css`: replace every `var(--color-*)` with `--studio-*`;
-   give `.studio` a workspace `background` + `color`; add real (non-transparent) borders and
-   subtle drop shadows on toolbar / sidebar / panels so it reads as an editor.
-3. Import `theme.css` in `src/studio/Studio.tsx` (before `Studio.css`).
+## Phase 2 — Header hierarchy
 
-**Validation:** zero `var(--color-*)` left in Studio CSS; `npm run build` clean; Studio renders
-with editor background distinct from slide brand background.
+1. Rework `src/studio/Toolbar.tsx`: left = brand + project name; center = status
+   (`8 slides · Saved`); right = actions.
+2. Relabel data-source pill → `Data Source: Local` / `Data Source: Workspace`.
+3. Move `v1.0.0` out of header into a small `AboutModal.tsx` (triggered by a
+   Settings/ℹ action).
+4. CSS updates.
 
-## Phase B — Preview Isolation
+**Validation:** header reads as a product UI (no raw dev strings); version only in
+About; build clean.
 
-The Preview owns exactly three things and nothing else:
+## Phase 3 — Inspector panel + dev-only debug
 
-1. **Zoom** — the preview scale (25/50/75/100%), set via `--slide-scale` inline style.
-2. **Centering** — the slide is centered in the preview viewport.
-3. **Scrolling** — the preview viewport scrolls when the slide exceeds it.
+1. `src/studio/useCarousel.ts`: add `updateSlide(index, patch)` (merge + re-validate)
+   for in-memory edits.
+2. New `src/studio/InspectorPanel.tsx` (right sidebar): structured inputs for Title,
+   Subtitle, Username, items — bound to live preview. Replaces bottom raw-JSON panel as
+   the primary surface.
+3. Keep raw JSON behind a dev-only toggle (`import.meta.env.DEV`); `DebugPanel` gated
+   so end-users never see it.
+4. Move validation warnings into the inspector (or keep as slim bottom strip).
 
-Nothing else. No theme paint, no brand chrome, no geometry, no layout overrides.
+**Validation:** editing a field updates the preview live; raw JSON invisible in a
+production build; build clean.
 
-Tasks:
-1. Delete `.studio-preview__slide { --slide-scale: 0.5 }` from `Studio.css` (scale is owned by
-   `Preview.tsx` state + inline style).
-2. Confirm `.studio-preview` only scales / centers / scrolls.
+## Phase 4 — Zoom: auto-fit + minimal pill
 
-**Validation:** `--slide-scale` inline matches the selected button at 25/50/75/100%; slide box
-= 1080px × scale; centered + scrollable.
+1. Default = **Fit to Screen** via `ResizeObserver` (scale = min(availW/1080,
+   availH/1080)); remove fixed 25/50/75/100 buttons.
+2. Minimal zoom pill bottom-right: `− · Fit · +`; optional `Ctrl`+scroll / pinch.
+3. Update `src/studio/types.ts` (`Scale` → number + fit mode), `Preview.tsx`,
+   `useCarousel.ts`.
 
-## Phase C — Safe Overlay (purely visual)
+**Validation:** slide fits container on resize; zoom pill overrides fit; preview still
+centers + scrolls; build clean.
 
-1. Rewrite `SafetyOverlay.css`:
-   - `.safety-overlay` unchanged (`absolute inset 0`, `z-index`, `pointer-events: none`).
-   - `.safety-overlay__canvas` and `.safety-overlay__profile-grid` → `inset: 0`.
-   - `.safety-overlay__safe-area` →
-     `top/right/bottom/left: calc(var(--slide-padding-y) / (var(--slide-padding-x)) /
-     (var(--slide-padding-bottom)) * var(--slide-scale))` — equals the `.slide__canvas` content
-     box exactly (single source of truth).
-   - Crosshair unchanged.
-2. Rewrite `SafetyOverlay.tsx`: drop `SAFETY_CONFIG` + JS geometry; render the fixed layers.
-3. **Deprecate** `src/renderer/safety/config.ts` — do **not** delete it. The overlay becomes
-   CSS-driven today, but the configuration object is kept (unused) for future extensibility,
-   e.g. safe-area presets (Instagram / LinkedIn / X / TikTok). Remove the `SAFETY_CONFIG`
-   export from `safety/index.ts` so the deprecated module has no consumers; keep the file with
-   a deprecation marker.
+## Phase 5 — Export modal (downloads)
 
-**Validation:** overlay safe-area coincides with `.slide__canvas` content box at 25/50/75/100%;
-no live `SAFETY_CONFIG` references remain; `Slide.tsx`/`index.css` untouched.
+1. Add deps: `html-to-image`, `jszip`, `jspdf` to `package.json`.
+2. New `src/studio/ExportModal.tsx`: grid previews with checkboxes + `Select All`;
+   buttons **Download ZIP (PNGs)** and **Download PDF**.
+3. Capture selected slides off-screen via `html-to-image` at export resolution; `jszip`
+   → ZIP; `jspdf` → one 1080×1080 page per slide.
+4. `/export` route, `src/export/*`, and `production/export/*` untouched.
 
-## Phase D — Studio QA (verification only)
+**Validation:** modal opens from Export; selection filters output; ZIP contains N PNGs;
+PDF has N pages; `/export` page + Playwright captures byte-identical to pre-milestone.
 
-1. `npm run build` clean.
-2. Studio looks like an editor (computed styles + pixel check: workspace bg ≠ slide brand bg;
-   surfaces/borders/shadows present).
-3. Renderer looks like the brand (slide bg `#1a0f08`, palette unchanged; export PNGs
-   byte-identical to pre-milestone captures).
-4. Export matches renderer (Studio preview @100% vs `/export` PNG diff, tolerance).
-5. **Studio theme changes do not modify exported PNGs** — the exports must be **byte-identical**
-   to the pre-milestone captures. If changing Studio CSS changes a PNG, the milestone failed.
-6. Overlay never changes exports (slide box identical with overlay on/off; export PNGs contain
-   no overlay colors; `ExportView` always `show:false`).
+## Phase 6 — Style refinements
+
+1. `src/studio/theme.css`: swap `--studio-accent` → amber `#f5a84a`,
+   `--studio-bg-active` → amber tint; surfaces/text/borders stay graphite.
+2. Relabel `Safety Off/On` → clearer label (e.g., `Safe Area` / `Layout Guides`).
+3. Fullscreen: add subtle top spacing/overlay so the browser "press Esc" banner doesn't
+   mask slide content (CSS handled by fullscreen state).
+4. Ensure focus rings/active borders use the amber accent.
+
+**Validation:** active highlights amber on neutral surfaces; safety label unambiguous;
+fullscreen doesn't hide slide top; build clean.
 
 ## Do-not-touch
 
 `Slide.tsx`, `layouts/*`, `components/ui/*`, `components/slide/*`, `index.css`,
-brand color tokens, carousel data, `src/export/*`, `production/export/*`.
+brand color tokens, carousel data, `src/export/*`, `production/export/*`. Renderer
+layouts and exported PNGs must remain byte-identical.
