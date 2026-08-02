@@ -1,16 +1,17 @@
-import { useCallback, useMemo, useState } from "react";
+import { lazy, Suspense, useCallback, useMemo, useState } from "react";
 import Sidebar from "./Sidebar";
 import Toolbar from "./Toolbar";
 import Preview from "./Preview";
 import InspectorPanel from "./InspectorPanel";
 import DebugPanel from "./DebugPanel";
-import ExportModal from "./ExportModal";
 import { useCarousel } from "./useCarousel";
 import { useKeyboardNav } from "./useKeyboardNav";
 import { USE_WORKSPACE_DATA } from "../renderer/config";
 import { SafetyProvider } from "../renderer/safety";
 import "./theme.css";
 import "./Studio.css";
+
+const ExportModal = lazy(() => import("./ExportModal"));
 
 export default function Studio() {
   const {
@@ -92,7 +93,9 @@ export default function Studio() {
       </div>
 
       {exportOpen && (
-        <ExportModal carousel={carousel} onClose={() => setExportOpen(false)} />
+        <Suspense fallback={null}>
+          <ExportModal carousel={carousel} onClose={() => setExportOpen(false)} />
+        </Suspense>
       )}
     </SafetyProvider>
   );
