@@ -1,23 +1,59 @@
+import { useCallback, useEffect, useRef, useState } from "react";
 import SlideRenderer from "../renderer/SlideRenderer";
 import type { SlideData } from "../types";
-import type { Scale } from "./types";
 
-const SCALES: { label: string; value: Scale }[] = [
-  { label: "25%", value: 0.25 },
-  { label: "50%", value: 0.5 },
-  { label: "75%", value: 0.75 },
-  { label: "100%", value: 1 },
-];
+const SLIDE_SIZE = 1080;
+const MIN_SCALE = 0.1;
+const MAX_SCALE = 3;
 
 type PreviewProps = {
   slide: SlideData | null;
-  scale: Scale;
-  onScaleChange: (scale: Scale) => void;
 };
 
-export default function Preview({ slide, scale, onScaleChange }: PreviewProps) {
+export default function Preview({ slide }: PreviewProps) {
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const [viewport, setViewport] = useState({ width: 0, height: 0 });
+  const [fit, setFit] = useState(true);
+  const [manualScale, setManualScale] = useState(1);
+
+  useEffect(() => {
+    const el = viewportRef.current;
+    if (!el) return;
+
+    const ro = new ResizeObserver((entries) => {
+      const rect = entries[0].contentRect;
+      setViewport({ width: rect.width, height: rect.height });
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  const fitScale =
+    viewport.width > 0 && viewport.height > 0
+      ? Math.min(viewport.width / SLIDE_SIZE, viewport.height / SLIDE_SIZE)
+      : 1;
+
+  const scale = fit ? fitScale : manualScale;
+  const percent = Math.round(scale * 100);
+
+  const zoomBy = useCallback((factor: number) => {
+    setFit(false);
+    setManualScale((s) => Math.min(MAX_SCALE, Math.max(MIN_SCALE, s * factor)));
+  }, []);
+
+  const handleWheel = useCallback(
+    (e: React.WheelEvent) => {
+      if (!e.ctrlKey && !e.metaKey) return;
+      e.preventDefault();
+      const factor = e.deltaY > 0 ? 0.9 : 1.1;
+      setFit(false);
+      setManualScale((s) => Math.min(MAX_SCALE, Math.max(MIN_SCALE, s * factor)));
+    },
+    [],
+  );
+
   return (
-    <div className="studio-preview">
+    <div className="studio-preview" ref={viewportRef} onWheel={handleWheel}>
       {slide ? (
         <div className="studio-preview__slide" style={{ "--slide-scale": scale } as React.CSSProperties}>
           <SlideRenderer slide={slide} />
@@ -26,18 +62,31 @@ export default function Preview({ slide, scale, onScaleChange }: PreviewProps) {
         <div className="studio-preview__empty">No slides</div>
       )}
 
-      <div className="studio-preview__controls">
-        <span className="studio-preview__label">Scale:</span>
-        {SCALES.map((s) => (
-          <button
-            key={s.value}
-            className={`studio-preview__scale-btn ${scale === s.value ? "studio-preview__scale-btn--active" : ""}`}
-            onClick={() => onScaleChange(s.value)}
-            type="button"
-          >
-            {s.label}
-          </button>
-        ))}
+      <div className="studio-preview__zoom">
+        <button
+          className="studio-preview__zoom-btn"
+          onClick={() => zoomBy(0.8)}
+          type="button"
+          aria-label="Zoom out"
+        >
+          −
+        </button>
+        <button
+          className={`studio-preview__zoom-fit ${fit ? "studio-preview__zoom-fit--active" : ""}`}
+          onClick={() => setFit(true)}
+          type="button"
+          title="Fit to screen"
+        >
+          {fit ? `${percent}% · Fit` : `${percent}%`}
+        </button>
+        <button
+          className="studio-preview__zoom-btn"
+          onClick={() => zoomBy(1.25)}
+          type="button"
+          aria-label="Zoom in"
+        >
+          +
+        </button>
       </div>
     </div>
   );

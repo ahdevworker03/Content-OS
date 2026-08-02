@@ -64,14 +64,14 @@ production build; build clean.
 **Validation:** slide fits container on resize; zoom pill overrides fit; preview still
 centers + scrolls; build clean.
 
-## Phase 5 — Export modal (downloads)
+## Phase 5 — Export modal (downloads) ✅
 
-1. Add deps: `html-to-image`, `jszip`, `jspdf` to `package.json`.
+1. Add deps: `html-to-image`, `jszip`, `jspdf` to `package.json`. ✅
 2. New `src/studio/ExportModal.tsx`: grid previews with checkboxes + `Select All`;
-   buttons **Download ZIP (PNGs)** and **Download PDF**.
+   buttons **Download ZIP (PNGs)** and **Download PDF**. ✅
 3. Capture selected slides off-screen via `html-to-image` at export resolution; `jszip`
-   → ZIP; `jspdf` → one 1080×1080 page per slide.
-4. `/export` route, `src/export/*`, and `production/export/*` untouched.
+   → ZIP; `jspdf` → one 1080×1080 page per slide. ✅ (2160×2160 @ 2×; 7-page PDF verified)
+4. `/export` route, `src/export/*`, and `production/export/*` untouched. ✅
 
 **Validation:** modal opens from Export; selection filters output; ZIP contains N PNGs;
 PDF has N pages; `/export` page + Playwright captures byte-identical to pre-milestone.

@@ -1,10 +1,10 @@
 import { useCallback, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Toolbar from "./Toolbar";
 import Preview from "./Preview";
-import ValidationPanel from "./ValidationPanel";
+import InspectorPanel from "./InspectorPanel";
 import DebugPanel from "./DebugPanel";
+import ExportModal from "./ExportModal";
 import { useCarousel } from "./useCarousel";
 import { useKeyboardNav } from "./useKeyboardNav";
 import { USE_WORKSPACE_DATA } from "../renderer/config";
@@ -16,7 +16,6 @@ export default function Studio() {
   const {
     carousel,
     currentIndex,
-    scale,
     debugOpen,
     warnings,
     currentSlide,
@@ -24,11 +23,12 @@ export default function Studio() {
     goTo,
     goNext,
     goPrev,
-    setScale,
     toggleDebug,
+    updateSlide,
   } = useCarousel();
 
   const [showSafety, setShowSafety] = useState(false);
+  const [exportOpen, setExportOpen] = useState(false);
 
   useKeyboardNav({
     currentIndex,
@@ -36,12 +36,6 @@ export default function Studio() {
     onPrev: goPrev,
     onNext: goNext,
   });
-
-  const navigate = useNavigate();
-
-  const handleExport = useCallback(() => {
-    navigate("/export");
-  }, [navigate]);
 
   const handleToggleSafety = useCallback(() => {
     setShowSafety((prev) => !prev);
@@ -64,7 +58,7 @@ export default function Studio() {
           totalSlides={totalSlides}
           showSafety={showSafety}
           onToggleSafety={handleToggleSafety}
-          onExport={handleExport}
+          onExport={() => setExportOpen(true)}
         />
 
         <div className="studio__body">
@@ -75,23 +69,31 @@ export default function Studio() {
           />
 
           <main className="studio__main">
-            <Preview
-              slide={currentSlide}
-              scale={scale}
-              onScaleChange={setScale}
-            />
+            <Preview slide={currentSlide} />
 
-            <div className="studio__panels">
-              <ValidationPanel warnings={warnings} />
-              <DebugPanel
-                slide={currentSlide}
-                isOpen={debugOpen}
-                onToggle={toggleDebug}
-              />
-            </div>
+            {import.meta.env.DEV && (
+              <div className="studio__panels">
+                <DebugPanel
+                  slide={currentSlide}
+                  isOpen={debugOpen}
+                  onToggle={toggleDebug}
+                />
+              </div>
+            )}
           </main>
+
+          <InspectorPanel
+            slide={currentSlide}
+            slideIndex={currentIndex}
+            warnings={warnings}
+            onUpdate={updateSlide}
+          />
         </div>
       </div>
+
+      {exportOpen && (
+        <ExportModal carousel={carousel} onClose={() => setExportOpen(false)} />
+      )}
     </SafetyProvider>
   );
 }
