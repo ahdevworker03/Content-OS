@@ -36,12 +36,19 @@ Workspace JSON / Dev JSON
           ▼
    UI Components            ─── shared primitives (Title, Subtitle, Badge, etc.)
           │
+          ├── Slide wrapper ─── reads safety context, overlays guides
           ▼
-       Studio               ─── orchestrates the pipeline, provides preview tools
+       Studio               ─── orchestrates the pipeline, provides editing/preview tools
           │
           ▼
      React → Browser
 ```
+
+### Safety overlay
+
+A cross-cutting concern sits between the `Slide` canvas and the consumers. The `SafetyProvider` context (`src/renderer/safety/context.tsx`) carries a single `show` boolean; the `Slide` wrapper reads it and, when true, renders a `SafetyOverlay` (canvas border, safe-area rectangle, profile grid, crosshairs) computed from the slide's CSS padding tokens and the current `--slide-scale`.
+
+The overlay is a **preview-time visual aid, never part of the rendered slide**. Consumers that must not show guides — sidebar/export thumbnails, the `/export` route, the export capture nodes — wrap their slides in `SafetyProvider value={{ show: false }}`. Because the overlay lives entirely in CSS and reacts to `--slide-scale`, it stays pixel-aligned with the slide at any zoom level.
 
 ### 2.1 Configuration
 
@@ -114,7 +121,7 @@ These primitives exist to prevent duplication. Layouts share common visual eleme
 
 ### 2.8 Studio
 
-The Studio is described in detail in [Section 7](#7-the-studio). Architecturally, it is the consumer of the rendering pipeline. It loads data, manages navigation state, and renders the `SlideRenderer` inside a scaled preview container.
+The Studio is described in detail in [Section 7](#7-the-studio). Architecturally, it is the consumer of the rendering pipeline. It loads data, manages navigation and in-memory edit state, and renders the `SlideRenderer` inside a scaled preview container. The Studio also provides a client-side export modal and a CSS-driven safety-guides overlay (see the safety section above).
 
 ---
 
@@ -194,17 +201,22 @@ production/workspace/carousel.json  or  src/data/carousel.json
          │
          │  [5] Stores Carousel in state
          │      Runs validateCarousel() → ValidationWarning[]
-         │      Manages current slide index, scale, debug toggle
+         │      Manages current slide index, debug toggle,
+         │      and in-memory edits via updateSlide(index, patch)
          │
          ▼
       Studio.tsx
          │
          │  [6] Passes currentSlide (SlideData) to Preview
+         │      Wraps tree in SafetyProvider (guides toggle)
+         │      Opens ExportModal with the full Carousel
          │
          ▼
       Preview.tsx
          │
-         │  [7] Applies CSS scale transform
+         │  [7] Auto-fits the 1080×1080 canvas to the viewport
+         │      (ResizeObserver + min(availW, availH) / 1080)
+         │      Applies --slide-scale; zoom pill overrides fit
          │      Renders SlideRenderer inside scaled container
          │
          ▼
@@ -240,9 +252,9 @@ production/workspace/carousel.json  or  src/data/carousel.json
 | 2 | Loader fetches or imports data | Isolates I/O from the rest of the system |
 | 3 | Adapter transforms schema | Prevents workspace schema from leaking into the renderer models |
 | 4 | Data is typed | Catches structural mismatches at compile time |
-| 5 | State hook manages carousel | Centralises navigation state, validation, and UI state |
+| 5 | State hook manages carousel | Centralises navigation state, validation, debug toggle, and in-memory edits |
 | 6 | Studio orchestrates rendering | Keeps the renderer pure — it never calls setState or manages UI |
-| 7 | Preview scales the canvas | Allows the 1080×1080 canvas to fit the browser viewport at any zoom level |
+| 7 | Preview auto-fits + scales the canvas | Fits the 1080×1080 canvas to the viewport automatically; the zoom pill overrides fit |
 | 8 | SlideRenderer routes to layout | Isolates routing logic from presentation logic |
 | 9 | Layout composes primitives | Each layout is self-contained and independent |
 | 10 | Primitives render HTML | Smallest reusable units; consistent styling across all layouts |
@@ -253,16 +265,17 @@ production/workspace/carousel.json  or  src/data/carousel.json
 
 ```
 src/
-├── renderer/        Pipeline: config, loader, adapter, router
+├── renderer/        Pipeline: config, loader, adapter, router, safety overlay
 ├── layouts/         Layout components (one per slide type)
 ├── components/
-│   ├── slide/       Base canvas wrapper
+│   ├── slide/       Base canvas wrapper (reads safety context)
 │   └── ui/          Reusable presentation primitives
-├── studio/          Development tools: preview, validation, debug, navigation
+├── studio/          Development tools: preview, inspector, export, debug, navigation
+├── export/          Frozen /export route for the Playwright capture pipeline
 ├── types/           Canonical type definitions (SlideData, Carousel)
 ├── data/            Sample carousel JSON (canonical format)
 ├── main.tsx         Entry point
-├── App.tsx          Root component
+├── App.tsx          Root component (routes: / → Studio, /export → ExportView)
 └── index.css        Global styles and design tokens
 ```
 
@@ -277,6 +290,8 @@ The core rendering pipeline. Every file in this directory is part of the data-to
 | `mapWorkspaceCarousel.ts` | Schema translation (adapter) |
 | `SlideRenderer.tsx` | Layout routing |
 | `UnsupportedSlide.tsx` | Graceful fallback for unknown layouts |
+| `safety/context.tsx` | `SafetyProvider` context (overlay visibility) |
+| `safety/SafetyOverlay.tsx` | Guide overlay rendered on demand (safe area, crosshairs) |
 
 ### `src/layouts/`
 
@@ -284,15 +299,19 @@ One file per layout type. Each component receives exactly the props its layout r
 
 ### `src/components/slide/`
 
-The `Slide` wrapper component that provides the 1080×1080 canvas container. Any component that renders a full slide must be wrapped in `Slide` to receive the correct dimensions, background, and border radius.
+The `Slide` wrapper component that provides the 1080×1080 canvas container. Any component that renders a full slide must be wrapped in `Slide` to receive the correct dimensions, background, and border radius. `Slide` reads the safety context and renders the guide overlay when enabled.
 
 ### `src/components/ui/`
 
 Atomic UI primitives shared across layouts. These are pure presentational components with no state, no side effects, and no knowledge of the renderer or the data model.
 
+### `src/export/`
+
+The frozen `/export` route (`ExportView.tsx`). Renders every slide in the carousel at full scale inside `SafetyProvider show: false`. This route is the stable capture target for the Playwright export pipeline in `production/export/` — its output must remain byte-identical.
+
 ### `src/studio/`
 
-A development environment — not part of the renderer. Manages state, provides navigation, validation reporting, JSON inspection, and scale controls. The studio imports and orchestrates the renderer but does not contain rendering logic.
+A development environment — not part of the renderer. Manages state, provides navigation, per-layout in-memory editing, validation reporting, JSON inspection, zoom, and client-side export. The studio imports and orchestrates the renderer but does not contain rendering logic. Only `Preview`, `SlideCard`, and the export thumbnails render slides, and always through `SlideRenderer`.
 
 ### `src/types/`
 
@@ -355,7 +374,7 @@ The canonical types (`SlideData`, `Carousel`, and the item types) are designed o
 
 ## 7. The Studio
 
-The Studio is a browser-based development environment that provides tooling around the rendering engine. It is **not part of the renderer** — it imports and orchestrates the renderer but does not perform rendering itself.
+The Studio is a browser-based development environment that provides tooling around the rendering engine. It is **not part of the renderer** — it imports and orchestrates the renderer but does not perform rendering itself. It runs at the `/` route (`Studio.tsx`).
 
 ### Role in the architecture
 
@@ -365,73 +384,101 @@ The Studio is a consumer of the renderer, not a component of it. This separation
 - The renderer can be used independently (e.g., from Playwright in the export pipeline).
 - The Studio can be replaced, extended, or removed without affecting the rendering pipeline.
 
+### Layout
+
+```
+┌──────────────────────── Toolbar ────────────────────────┐
+│ brand · project name │ Data Source · N slides · Saved │ actions │
+├─────────┬─────────────────────────────┬─────────────────┤
+│ Sidebar │          Preview            │   Inspector     │
+│ slide   │  (auto-fit 1080×1080)      │  per-layout     │
+│ cards   │                             │  fields +       │
+│         │         [− %·Fit +]         │  warnings       │
+├─────────┴─────────────────────────────┴─────────────────┤
+│ Debug panel (dev-only, `import.meta.env.DEV`)           │
+└─────────────────────────────────────────────────────────┘
+```
+
+- **`Toolbar`** — brand + project name (derived from the first slide title), center status (`Data Source: Local/Workspace` pill, `N slides · Saved`), and actions: Layout Guides toggle, About (ⓘ), Export.
+- **`Sidebar`** — renders one `SlideCard` per slide: a scaled thumbnail, slide number, layout pill, and the (RTL) title with ellipsis tooltip.
+- **`Preview`** — the current slide, auto-fitted to the viewport, with a zoom pill (see below).
+- **`InspectorPanel`** — structured inputs bound to the selected slide; live edits update the preview in memory.
+- **`DebugPanel`** — raw JSON inspector, compiled out of production builds.
+- **`ExportModal`** — client-side download of selected slides (see [Section 8](#8-export)).
+- **`AboutModal`** — version + data source info.
+
 ### Responsibilities
 
-**Preview**
+**Preview and zoom**
 
-Renders the current slide at configurable zoom levels (25%, 50%, 75%, 100%). The preview applies a CSS scale transform to the 1080×1080 canvas so it fits the browser viewport. The zoom control is purely visual — it does not affect the renderer or the data.
+`Preview.tsx` measures its own viewport with a `ResizeObserver` and auto-fits the 1080×1080 canvas (`scale = min(availW, availH) / 1080`). A bottom-right pill shows the current percentage (e.g. `77% · Fit`) with `−` / `+` buttons and a `Fit` reset; `Ctrl`+scroll zooms in 0.9/1.1 steps clamped to 0.1–3×. The zoom is purely visual — it never affects the renderer or the data.
 
 **Validation**
 
-On carousel load, the Studio runs `validateCarousel()` which checks every slide for structural issues: empty titles, missing items, unsupported layouts. Validation results are displayed in a dedicated panel with severity levels (warn / error). Validation is client-side and advisory — it does not block rendering.
+On carousel load, the Studio runs `validateCarousel()` (`studio/validation.ts`) which checks every slide for structural issues: empty titles, missing items, unsupported layouts. Results render inside the Inspector with severity levels (`warn` / `error`). Validation is client-side and advisory — it does not block rendering.
+
+**Editing (in-memory)**
+
+The Inspector edits the selected slide through `useCarousel.updateSlide(index, patch)`, which merges a partial `SlideData` patch into the carousel state. Edits update the preview live and are **never persisted** — there is no write-back to JSON files. This makes the Studio a safe scratch space for iterating on copy before exporting.
 
 **Debugging**
 
-A collapsible JSON inspector (`DebugPanel`) displays the raw canonical data for the currently selected slide. This allows developers to inspect the exact data structure reaching the renderer without opening browser developer tools.
+A collapsible JSON inspector (`DebugPanel`) displays the raw canonical data for the currently selected slide. It is gated behind `import.meta.env.DEV`, so it is absent from production builds and invisible to end users.
 
 **Navigation**
 
 The Studio provides three navigation mechanisms:
 
-- **Sidebar**: a clickable list of all slides showing layout type and title.
-- **Arrow keys**: keyboard shortcuts for previous/next slide.
-- **Go to / Go next / Go prev**: programmatic navigation methods exposed by the `useCarousel` hook.
+- **Sidebar**: clickable slide cards showing a thumbnail, layout type, and title.
+- **Arrow keys**: `useKeyboardNav` maps ←/→ to previous/next slide.
+- **Go to / Go next / Go prev**: programmatic navigation exposed by the `useCarousel` hook.
 
-Navigation is managed by simple index state. There is no routing library — slide navigation is linear and does not involve URL paths.
+Navigation is managed by simple index state. There is no routing library for slides — slide navigation is linear and does not involve URL paths. The only routes are `/` (Studio) and `/export` (capture route).
+
+**Layout guides**
+
+The `Layout Guides` toolbar toggle flips the `SafetyProvider` context for the whole Studio. When on, the `Slide` wrapper overlays the safety guides on the preview slide. `SlideCard` thumbnails and export capture nodes always set `show: false`, so guides never leak into screenshots or downloads.
 
 **Inspection**
 
-The `useCarousel` hook exposes the entire carousel state layout, validation warnings, and navigation controllers. The `Toolbar` displays the current data source (dev or workspace) and total slide count. A placeholder export button signals future export functionality.
+The `useCarousel` hook exposes the carousel state, current index, validation warnings, navigation controllers, and `updateSlide`. The `Toolbar` displays the current data source (dev or workspace) and total slide count, and the `Export` button opens the `ExportModal`.
 
 ### What the Studio does not do
 
 - It does not perform rendering — the `SlideRenderer` and layout components handle that.
-- It does not modify carousel data.
-- It does not persist state or save changes.
+- It does not persist carousel data — edits are in-memory only.
 - It does not transform or validate the workspace format — the adapter handles that before data reaches the Studio.
+- It does not ship debug tooling — `DebugPanel` is excluded from production builds.
 
 ---
 
-## 8. Export Readiness
+## 8. Export
 
 The renderer's responsibility ends at producing React components. It does not capture, save, or transmit rendered output. This boundary exists because rendering and export are architecturally separate concerns.
 
-### How the renderer prepares for export
+There are **two export paths**, both built on the same `SlideRenderer`:
 
-The renderer provides a pure, deterministic pipeline from data to components. This makes it straightforward for an export system to:
+### 8.1 Playwright pipeline (`/export` route)
 
-1. **Supply data**: pass a `Carousel` object to `SlideRenderer` for each slide.
-2. **Render to DOM**: mount the resulting components in a headless browser or rendering context.
-3. **Capture output**: screenshot each slide canvas at 1080×1080 pixels.
-
-Because the renderer has no side effects and no dependencies on the Studio, the export pipeline can reuse it without modification. The same `SlideRenderer` that powers the Studio preview also powers the export capture.
-
-### The export boundary
-
-The data flow for export will mirror the development data flow, but with the Studio replaced by an automated capture script:
+The frozen `/export` route (`src/export/ExportView.tsx`) renders every slide in the carousel at full scale (`--slide-scale: 1`) inside `SafetyProvider show: false`. The Playwright script in `production/export/export-slides.js` navigates to that route and screenshots each `.slide` element:
 
 ```
-Carousel → SlideRenderer → Layout → UI Components → React → Headless Browser → Image
+Carousel → SlideRenderer → Layout → UI Components → React → Headless Browser → PNG
 ```
 
-The export pipeline will:
+The route is deliberately static and stable — it is the byte-identical baseline for QA. Safety guides and the Studio never affect it.
 
-- Provide its own data source (not the Studio's).
-- Iterate through all slides programmatically.
-- Capture each slide canvas to an image file.
-- Handle batching, retries, and output naming.
+### 8.2 Studio export modal (client-side)
 
-These details belong to the export system's architecture document. The renderer's responsibility is simply to produce correct, consistent output for any valid `Carousel` input.
+The `ExportModal` (`src/studio/ExportModal.tsx`) exports in the browser without any server or Playwright dependency:
+
+1. Shows a grid of slide thumbnails with checkboxes and a **Select All** toggle.
+2. Renders the selected slides off-screen in a hidden capture container at `--slide-scale: 1`.
+3. Captures each `.slide` with `html-to-image` at `pixelRatio: 2` → 2160×2160 PNG.
+4. **Download ZIP (PNGs)**: collects the PNGs into a `jszip` archive (`slide-NN.png`).
+5. **Download PDF**: embeds each PNG onto its own 2160×2160 page via `jspdf`.
+
+The capture nodes are wrapped in `SafetyProvider show: false`, so guides never appear in downloads. This path is independent of `production/export/*` and the `/export` route — it does not modify or replace the Playwright baseline.
 
 ---
 
@@ -445,9 +492,9 @@ The architecture is designed for additive growth. Here is how common extension s
 2. Create a new layout component in `src/layouts/`.
 3. Add a new `case` in `SlideRenderer.tsx`.
 4. Add a mapping branch in `mapWorkspaceCarousel.ts`.
-5. Add validation rules in `validation.ts`.
+5. Add validation rules in `src/studio/validation.ts`.
 
-The compiler enforces exhaustiveness — every step is guided by type errors.
+The compiler enforces exhaustiveness — every step is guided by type errors. New layouts also benefit from the Inspector: if the layout has editable fields, add a branch in `src/studio/InspectorPanel.tsx` so the Studio can edit it in memory.
 
 ### New themes
 
@@ -464,7 +511,7 @@ The separation between UI primitives and layouts means theme changes propagate c
 Because `SlideRenderer` accepts typed data and produces React elements, alternative targets are possible:
 
 - **Static HTML**: render to string with `ReactDOMServer.renderToStaticMarkup`.
-- **PDF**: use a headless browser to render and capture each slide.
+- **PDF**: already supported client-side in the Studio's export modal via `jspdf`.
 - **Video frames**: export each slide as an image frame for video assembly.
 
 The renderer's output (React elements) is the same regardless of target. Only the capture mechanism changes.
@@ -481,4 +528,4 @@ The Studio is a standalone consumer of the renderer. Additional tools — side-b
 
 ## Summary
 
-The renderer is a layered, type-safe, presentation-only engine. It transforms structured data into visual slides through a pipeline of configurable, independently testable stages. The adapter layer insulates the renderer from schema changes in the content model. The Studio provides development tooling without coupling to the renderer. The architecture prioritises separation of concerns, strong typing, and additive extensibility — every new capability can be added without modifying existing, working code.
+The renderer is a layered, type-safe, presentation-only engine. It transforms structured data into visual slides through a pipeline of configurable, independently testable stages. The adapter layer insulates the renderer from schema changes in the content model. The Studio provides development tooling — auto-fit preview, in-memory editing, layout guides, validation, and client-side export — without coupling to the renderer, and a frozen `/export` route powers the byte-identical Playwright capture pipeline. The architecture prioritises separation of concerns, strong typing, and additive extensibility — every new capability can be added without modifying existing, working code.

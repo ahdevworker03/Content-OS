@@ -157,12 +157,13 @@ The `validateCarousel()` function must handle the new layout. Add a branch for t
 
 ### Step 6: Test inside the Studio
 
-Load the new layout in the Studio preview at all zoom levels (25%, 50%, 75%, 100%). Verify:
+Load the new layout in the Studio preview. Verify:
 
 - The slide renders correctly at 1080×1080.
+- The preview auto-fits the canvas and zoom (Fit / − / +, Ctrl+scroll) works.
 - Navigation prev/next works.
-- Validation panel shows correct results.
-- Debug panel shows the expected data structure.
+- The Inspector shows correct validation results.
+- The Debug panel shows the expected data structure.
 - The unsupported path degrades gracefully if the adapter mapping is missing.
 
 **Why:** The Studio is the primary development tool. Every layout should be verified in the same environment where developers will use it.
@@ -363,9 +364,9 @@ Use this checklist whenever creating or modifying a layout.
 | 7 | Workspace adapter updated in `mapWorkspaceCarousel.ts` | □ |
 | 8 | Validation rules added in `validation.ts` | □ |
 | 9 | Studio preview renders correctly | □ |
-| 10 | All zoom levels (25%, 50%, 75%, 100%) verified | □ |
+| 10 | Auto-fit + zoom (Fit / − / +, Ctrl+scroll) verified | □ |
 | 11 | Navigation (prev/next/sidebar) works | □ |
-| 12 | Validation panel shows correct results | □ |
+| 12 | Inspector shows correct validation results | □ |
 | 13 | Debug panel shows expected data structure | □ |
 | 14 | No architectural rules violated (see Section 6) | □ |
 | 15 | Sample data added to `src/data/carousel.json` (for dev mode) | □ |
@@ -379,7 +380,7 @@ Use this checklist whenever creating or modifying a layout.
 | 3 | No business logic, data loading, or mapping added | □ |
 | 4 | No state added | □ |
 | 5 | Visual consistency maintained with other layouts | □ |
-| 6 | Studio preview verified at all zoom levels | □ |
+| 6 | Studio preview verified at auto-fit and zoom levels | □ |
 | 7 | TypeScript compiles without errors | □ |
 
 ### Architectural violation checklist

@@ -50,23 +50,25 @@ Social Media Content/
 ├── production/                             # Render and export tooling
 │   ├── renderer/                           # React carousel renderer (Vite + React + TypeScript)
 │   │   ├── src/                            # TypeScript source
-│   │   │   ├── renderer/                   #   JSON loader, mapper, SlideRenderer
-│   │   │   ├── studio/                     #   Development Studio (toolbar, sidebar, preview)
+│   │   │   ├── renderer/                   #   JSON loader, mapper, SlideRenderer, safety overlay
+│   │   │   ├── studio/                     #   Studio: toolbar, sidebar cards, preview, inspector, export
+│   │   │   ├── export/                     #   ExportView (frozen /export route for the Playwright pipeline)
 │   │   │   ├── components/                 #   UI primitives + Slide canvas
 │   │   │   ├── layouts/                    #   6 slide layout components
 │   │   │   ├── types/                      #   Renderer-specific TypeScript types
-│   │   │   └── data/                       #   Development carousel JSON
+│   │   │   └── data/                       #   Development carousel JSON (8 slides, canonical format)
 │   │   ├── docs/                            # Renderer architecture documentation
 │   │   │   ├── 01-Renderer Architecture.md  #   Engine architecture, layers, data flow
 │   │   │   └── 02-Layout Development Guide.md #   Layout creation and modification guide
 │   │   ├── index.html                      # Vite entry HTML
-│   │   └── package.json                    # Deps: react, react-dom, vite, typescript
+│   │   └── package.json                    # Deps: react, react-dom, react-router-dom, vite, typescript, html-to-image, jspdf, jszip
 │   ├── workspace/                          # Active carousel data
-│   │   └── carousel.json                   # Current carousel structured data (ALL CAPS keys)
+│   │   └── carousel.json                   # Current carousel structured data (Content Model format)
 │   ├── export/                             # Playwright PNG export pipeline
-│   │   ├── export-config.js                # Config: URL, viewport, selector, output
+│   │   ├── export-config.js                # Config: URL (/export), viewport, selector, output
 │   │   ├── export-slides.js                # Screenshots .slide → PNGs
-│   │   ├── n/                              # 7 PNGs (slide-01 through slide-07)
+│   │   ├── studio-inspect.js               # Dev helper: inspect Studio DOM (slides, safety state)
+│   │   ├── extracted-slides/               # 8 PNGs (slide-01 through slide-08)
 │   │   └── package.json                    # Deps: playwright ^1.61.1, http-server ^14.1.1
 └── README.md                               # This file
 ```
@@ -107,27 +109,32 @@ Six subdirectories organize the nine markdown files by concern:
 
 **`renderer/`** is the React carousel rendering engine (Vite + React + TypeScript):
 
-- **`src/renderer/`** — Rendering pipeline: `loadCarousel.ts` loads JSON, `mapWorkspaceCarousel.ts` converts the Content Model to renderer models, `SlideRenderer.tsx` dispatches to the correct layout by type.
-- **`src/studio/`** — Development Studio interface: toolbar, sidebar, live preview, scale controls, validation panel, debug panel, keyboard navigation.
-- **`src/components/`** — Reusable UI primitives (`Title`, `Subtitle`, `BulletList`, `Badge`, `Footer`) and `Slide` canvas (1080×1080 with responsive scaling).
+- **`src/renderer/`** — Rendering pipeline: `loadCarousel.ts` loads JSON, `mapWorkspaceCarousel.ts` converts the Content Model to renderer models, `SlideRenderer.tsx` dispatches to the correct layout by type, `config.ts` selects the data source.
+- **`src/renderer/safety/`** — CSS-driven safety guides: `SafetyProvider` context + `SafetyOverlay` (canvas border, safe area, profile grid, crosshairs). Overlay state is controlled by the Studio; thumbnails and the `/export` route render with guides hidden.
+- **`src/studio/`** — The Studio development environment: toolbar, sidebar slide cards, live preview, inspector, export modal, about modal, dev-only debug panel. See `01-Renderer Architecture.md` §7.
+- **`src/export/`** — `ExportView.tsx`, the frozen `/export` route used by the Playwright capture pipeline. Renders every slide at full scale with safety guides disabled so screenshots stay byte-identical.
+- **`src/components/`** — Reusable UI primitives (`Title`, `Subtitle`, `BulletList`, `Badge`, `Footer`) and `Slide` canvas (1080×1080 with responsive scaling). `Slide` reads the safety context to overlay guides.
 - **`src/layouts/`** — 6 layout components (`CoverSlide`, `BulletListSlide`, `ArrowListSlide`, `GridSlide`, `BoxListSlide`, `CtaSlide`).
 - **`src/types/`** — Renderer-specific typed models (discriminated union `SlideData`).
-- **`src/data/carousel.json`** — Development carousel JSON (swappable to workspace data via config flag).
+- **`src/data/carousel.json`** — Development carousel JSON (8 slides, canonical format, swappable to workspace data via config flag).
 - **`docs/`** — Renderer architecture documentation:
   - `01-Renderer Architecture.md` — Engine architecture, layers, data flow, design decisions.
   - `02-Layout Development Guide.md` — Workflow and conventions for adding or modifying layouts.
 - **`index.css`** — Design system with CSS variables for colors, spacing, typography, radii, slide dimensions.
-- `package.json` — Dependencies: react, react-dom, vite, typescript.
+- `package.json` — Dependencies: react, react-dom, react-router-dom, vite, typescript, html-to-image, jspdf, jszip.
 
 **`workspace/`** holds the active carousel's working data:
 
-- `carousel.json` — ALL CAPS keyed JSON data for the current carousel (7 slides: "This Summer, I'm Building Foundations"). Loaded at runtime by the renderer via `loadCarousel.ts` → `mapWorkspaceCarousel.ts`.
+- `carousel.json` — Content Model–shaped JSON (identity, trigger, metadata, platform variants). Loaded at runtime by the renderer via `loadCarousel.ts` → `mapWorkspaceCarousel.ts` when `USE_WORKSPACE_DATA` is `true`.
 
 **`export/`** is the Playwright slide export pipeline:
 
-- `export-config.js` — All settings overridable via CLI (`--url`, `--output`, `--selector`, `--width`, `--height`, `--scale`, `--headless`). Defaults: URL localhost:8000, viewport 1920×1080 @2x, selector `.slide`, output to `extracted-slides/`, pattern `slide-{{n}}.png`
-- `export-slides.js` — Launches Chromium headless, navigates to carousel HTML, screenshots each `.slide` as PNG
-- `extracted-slides/` — 7 PNGs (slide-01 through slide-07) for the "This Summer, I'm Building Foundations" carousel
+- `export-config.js` — All settings overridable via CLI (`--url`, `--output`, `--selector`, `--width`, `--height`, `--scale`, `--headless`). Defaults: URL `http://localhost:5173/export`, viewport 1920×1080 @2x, selector `.slide`, output to `extracted-slides/`, pattern `slide-{{n}}.png`
+- `export-slides.js` — Launches Chromium headless, navigates to the `/export` route, screenshots each `.slide` as PNG
+- `studio-inspect.js` — Development helper for inspecting the Studio DOM from Playwright
+- `extracted-slides/` — 8 PNGs (slide-01 through slide-08) for the current development carousel
+
+The **Studio also exports client-side**: the Export modal (`ExportModal.tsx`) renders selected slides off-screen at 2× resolution via `html-to-image` and downloads them as a ZIP of PNGs or a single multi-page PDF (`jszip`, `jspdf`). This is independent of the Playwright pipeline — it does not touch the `/export` route or `production/export/*`.
 
 ---
 
@@ -148,11 +155,11 @@ Approved Content Brief
 content/drafts/carousel.md  ───  production/workspace/carousel.json
         │  (04) Render Validation                       │
         ▼                                               │
-Render Confirmation                                     │
-        │  (05) Export Assets                            │
+Render Confirmation (Studio preview)                    │
+        │  (05) Export Assets ────── Studio Export modal (ZIP/PDF, in-browser)
         ▼                                               │
-production/export/*.png                                  │
-        │  (06) Archive Published Post                   │
+production/export/*.png  (Playwright /export route)     │
+        │  (06) Archive Published Post                  │
         ▼                                               ▼
 content/published/<Platform>/<Post>/
   content.md  content.json  metadata.json  assets/
@@ -168,7 +175,7 @@ content/published/<Platform>/<Post>/
 4. **Content Planning** — `02-Content Planning.md` evaluates the idea and produces an approved brief.
 5. **Content Creation** — `03-Post Content Builder.md` transforms the brief into a Markdown draft and canonical JSON.
 6. **Render Validation** — `04-Render Validation.md` confirms the JSON renders correctly in the React carousel renderer.
-7. **Export Assets** — `05-Export Assets.md` captures every slide as a PNG via the Playwright export pipeline.
+7. **Export Assets** — `05-Export Assets.md` captures every slide as a PNG. Two paths: the Playwright pipeline screenshots the `/export` route (`production/export/export-slides.js`), or the Studio's Export modal downloads a ZIP of PNGs / a PDF directly in the browser.
 8. **Archive Published Post** — `06-Archive Published Post.md` creates a self-contained archive under `content/published/` and updates the memory index.
 9. **Repurposing** — Each carousel produces Instagram (Lebanese Arabic) and LinkedIn (English) outputs, governed by platform rewriting rules in `Brand Voice.md`.
 10. **Continuous Improvement** — `Posted Titles.md` prevents idea duplication. Metadata gaps (missing dates, pillars, tags, Instagram titles/captions) tracked for future improvement.
@@ -213,13 +220,15 @@ framework/strategy/
                 04-Render Validation.md
                         │
                         ▼
-                05-Export Assets.md
-                        │
-                        ▼
-         production/export/*.png
-                        │
-                        ▼
-                06-Archive Published Post.md
+                 05-Export Assets.md
+                         │
+                 ┌───────┴──────────┐
+                 ▼                  ▼
+         Studio Export modal   production/export/*.png
+         (ZIP / PDF, browser)  (Playwright /export route)
+                 │                  │
+                 ▼                  ▼
+                 06-Archive Published Post.md
                         │
                ┌────────┴───────────┐
                ▼                    ▼
