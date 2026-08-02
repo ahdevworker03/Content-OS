@@ -76,14 +76,14 @@ centers + scrolls; build clean.
 **Validation:** modal opens from Export; selection filters output; ZIP contains N PNGs;
 PDF has N pages; `/export` page + Playwright captures byte-identical to pre-milestone.
 
-## Phase 6 — Style refinements
+## Phase 6 — Style refinements ✅
 
 1. `src/studio/theme.css`: swap `--studio-accent` → amber `#f5a84a`,
-   `--studio-bg-active` → amber tint; surfaces/text/borders stay graphite.
-2. Relabel `Safety Off/On` → clearer label (e.g., `Safe Area` / `Layout Guides`).
+   `--studio-bg-active` → amber tint; surfaces/text/borders stay graphite. ✅
+2. Relabel `Safety Off/On` → clearer label (e.g., `Safe Area` / `Layout Guides`). ✅
 3. Fullscreen: add subtle top spacing/overlay so the browser "press Esc" banner doesn't
-   mask slide content (CSS handled by fullscreen state).
-4. Ensure focus rings/active borders use the amber accent.
+   mask slide content (CSS handled by fullscreen state). ✅ (`.studio:fullscreen { padding-top: 28px }`)
+4. Ensure focus rings/active borders use the amber accent. ✅
 
 **Validation:** active highlights amber on neutral surfaces; safety label unambiguous;
 fullscreen doesn't hide slide top; build clean.

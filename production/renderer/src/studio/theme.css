@@ -21,8 +21,8 @@
   --studio-text-dim: #5f5f6b;
 
   /* ── Accent ──────────────────────────────── */
-  --studio-accent: #7aa2ff;
-  --studio-bg-active: rgba(122, 162, 255, 0.12);
+  --studio-accent: #f5a84a;
+  --studio-bg-active: rgba(245, 168, 74, 0.14);
 
   /* ── Status ──────────────────────────────── */
   --studio-warning: #e8b04c;

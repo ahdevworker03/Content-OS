@@ -7,6 +7,19 @@
   color: var(--studio-text);
 }
 
+/* When the studio is shown via the browser Fullscreen API, the browser
+   overlays a "Press Esc to exit" banner at the top of the screen. Add top
+   spacing so it never masks the toolbar/slide content. */
+.studio:fullscreen {
+  padding-top: 28px;
+}
+
+.studio button:focus-visible,
+.studio input:focus-visible {
+  outline: 2px solid var(--studio-accent);
+  outline-offset: 2px;
+}
+
 /* ── Toolbar ───────────────────────────────────── */
 
 .studio-toolbar {

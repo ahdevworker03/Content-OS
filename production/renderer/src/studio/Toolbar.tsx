@@ -44,7 +44,7 @@ export default function Toolbar({
           onClick={onToggleSafety}
           type="button"
         >
-          {showSafety ? "Safety On" : "Safety Off"}
+          {showSafety ? "Safe Area" : "Layout Guides"}
         </button>
         <button
           className="studio-toolbar__info"
