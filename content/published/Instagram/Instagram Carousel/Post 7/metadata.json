@@ -1,0 +1,30 @@
+{
+  "id": "instagram-007",
+  "slug": "portfolio-first-year-cs",
+  "title": "ليش بلشت ببناء موقع Portfolio من أول سنة جامعة",
+  "type": "carousel",
+  "platforms": ["instagram"],
+  "publishedAt": "2026-08-13",
+  "createdAt": "2026-07-30",
+  "updatedAt": "2026-08-13",
+  "language": "ar",
+  "status": "published",
+  "tags": ["portfolio", "first-year-cs", "learning-in-public", "build-in-public", "web-development", "student-journey"],
+  "topics": ["portfolio", "first-year-cs", "web-development", "student-journey"],
+  "pillar": "Personal reflections on the software development journey",
+  "trigger": "While applying for training opportunities, I realized that having a portfolio gave me something tangible to share beyond my CV.",
+  "rendererVersion": null,
+  "schemaVersion": "1.0.0",
+  "assets": {
+    "count": 8,
+    "files": [
+      "assets/1.png", "assets/2.png", "assets/3.png", "assets/4.png",
+      "assets/5.png", "assets/6.png", "assets/7.png", "assets/8.png"
+    ],
+    "directory": "assets/"
+  },
+  "contentFiles": {
+    "contentMarkdown": "content.md",
+    "contentJson": "content.json"
+  }
+}

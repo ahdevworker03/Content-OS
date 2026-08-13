@@ -1,0 +1,23 @@
+{
+  "id": "linkedin-007",
+  "slug": "portfolio-first-year-cs",
+  "title": "During my first year of Computer Science, I learned that starting a portfolio matters more than perfecting it.",
+  "type": "post",
+  "platforms": ["linkedin"],
+  "publishedAt": "2026-08-13",
+  "createdAt": "2026-07-30",
+  "updatedAt": "2026-08-13",
+  "language": "en",
+  "status": "published",
+  "tags": ["portfolio", "first-year-cs", "learning-in-public", "build-in-public", "web-development", "student-journey"],
+  "topics": ["portfolio", "first-year-cs", "web-development", "student-journey"],
+  "pillar": "Personal reflections on the software development journey",
+  "trigger": "While applying for training opportunities, I realized that having a portfolio gave me something tangible to share beyond my CV.",
+  "rendererVersion": null,
+  "schemaVersion": "1.0.0",
+  "assets": [],
+  "contentFiles": {
+    "contentMarkdown": "content.md",
+    "contentJson": "content.json"
+  }
+}

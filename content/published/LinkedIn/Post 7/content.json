@@ -1,0 +1,42 @@
+{
+  "identity": {
+    "id": "linkedin-007",
+    "title": "During my first year of Computer Science, I learned that starting a portfolio matters more than perfecting it.",
+    "lifecycle_stage": "published"
+  },
+  "trigger": {
+    "description": "While applying for training opportunities, I realized that having a portfolio gave me something tangible to share beyond my CV.",
+    "insight": "Starting early mattered more than having a perfect portfolio.",
+    "hook": "I almost didn't build a portfolio in my first year. Glad I did."
+  },
+  "metadata": {
+    "platform": "linkedin",
+    "primary_format": "post",
+    "language": "en",
+    "content_pillar": "Personal reflections on the software development journey",
+    "tags": ["portfolio", "first-year-cs", "learning-in-public", "build-in-public", "web-development", "student-journey"],
+    "created_date": "2026-07-30",
+    "published_date": "2026-08-13",
+    "notes": ""
+  },
+  "variants": [
+    {
+      "platform": "linkedin",
+      "format": "post",
+      "language": "en",
+      "body": {
+        "type": "post",
+        "content": "During my first year of Computer Science, I learned that starting a portfolio matters more than perfecting it.\n\nAt first, I almost didn't build one. I thought I needed to know more — React, TypeScript, deployment, animations. I told myself I'd build it once I was \"ready.\"\n\nBut when I started applying for training opportunities, I realized something: a CV alone wasn't enough. What made a difference was having something tangible to show — a live website that proved I could build.\n\nSo I built it. Simple. Static. HTML, CSS, and a bit of JavaScript.\n\nHere's what that experience taught me:\n\n**1. Building taught me more than studying.**\nApplying basic web technologies in a real, deployed project taught me more about HTML/CSS/JS than any tutorial ever did.\n\n**2. Having something to show changed the outcome.**\nWhen I applied for trainings, I wasn't just saying \"I know this\" — I was showing my work. That opened doors my CV alone couldn't.\n\n**3. Starting early matters more than being perfect.**\nMy portfolio wasn't a masterpiece. It was a static site. But it existed. And that made all the difference.\n\nWhat I learned most of all: waiting until I felt ready would have meant never starting. The portfolio I built in my first year taught me more than the perfect one I was waiting to build.",
+        "structure": "opening-insight"
+      },
+      "caption": "Starting early > waiting for perfection",
+      "cta": "Did you build a portfolio early in your studies, or are you still waiting until you feel ready? I'd love to hear your experience."
+    }
+  ],
+  "archive": {
+    "path": "LinkedIn/Post 7/",
+    "assets": [],
+    "metadata_file": "metadata.json",
+    "content_files": ["content.md", "content.json"]
+  }
+}
