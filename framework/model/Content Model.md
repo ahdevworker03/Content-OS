@@ -50,15 +50,17 @@ The real-world experience that started the content. Every Content Item originate
 
 | Field           | Type   | Description |
 | --------------- | ------ | ----------- |
-| id              | string | Stable unique identifier (e.g. `instagram-001`, `linkedin-003`) |
+| id              | string | Stable unique identifier (e.g. `content-001`) |
 | title           | string | Human-readable title |
 | lifecycle_stage | string | Current stage: `trigger` \| `idea` \| `format_selection` \| `draft` \| `review` \| `final_assets` \| `published` \| `archived` |
+
+Content Item IDs are platform-neutral because platform-specific outputs are represented inside `variants`.
 
 ### Metadata
 
 | Field           | Type     | Description |
 | --------------- | -------- | ----------- |
-| platform        | string   | Target platform: `instagram` \| `linkedin` \| `x` \| `stories` |
+| platform        | string   | Target platform: `instagram` \| `linkedin` \| `x` |
 | primary_format  | string   | Content format: `carousel` \| `reel` \| `story` \| `post` |
 | language        | string   | Primary language code (e.g. `ar`, `en`) |
 | content_pillar  | string   | Pillar from Brand View.md this item belongs to |
@@ -73,7 +75,7 @@ A Platform Variant is one concrete output of a Content Item adapted for a specif
 
 | Field    | Type   | Required | Description |
 | -------- | ------ | -------- | ----------- |
-| platform | string | yes      | `instagram` \| `linkedin` \| `x` \| `stories` |
+| platform | string | yes      | `instagram` \| `linkedin` \| `x` |
 | format   | string | yes      | `carousel` \| `reel` \| `story` \| `post` |
 | language | string | yes      | Language code for this variant |
 | body     | Body   | yes      | Format-specific content structure |
@@ -141,6 +143,8 @@ The Body is a discriminated union. Its structure depends on the format field.
 }
 ```
 
+Stories are represented as `platform: "instagram"` with `format: "story"`.
+
 #### Post Body
 
 ```json
@@ -178,7 +182,7 @@ The following JSON Schema formalizes the content model. Every Content Item in th
       "type": "object",
       "required": ["id", "title", "lifecycle_stage"],
       "properties": {
-        "id": { "type": "string", "pattern": "^[a-z]+-[0-9]{3}$", "description": "e.g. instagram-001" },
+        "id": { "type": "string", "pattern": "^[a-z]+-[0-9]{3}$", "description": "e.g. content-001" },
         "title": { "type": "string" },
         "lifecycle_stage": { "type": "string", "enum": ["trigger", "idea", "format_selection", "draft", "review", "final_assets", "published", "archived"] }
       }
@@ -196,7 +200,7 @@ The following JSON Schema formalizes the content model. Every Content Item in th
       "type": "object",
       "required": ["platform", "primary_format", "language"],
       "properties": {
-        "platform": { "type": "string", "enum": ["instagram", "linkedin", "x", "stories"] },
+        "platform": { "type": "string", "enum": ["instagram", "linkedin", "x"] },
         "primary_format": { "type": "string", "enum": ["carousel", "reel", "story", "post"] },
         "language": { "type": "string" },
         "content_pillar": { "type": "string" },
@@ -213,7 +217,7 @@ The following JSON Schema formalizes the content model. Every Content Item in th
         "type": "object",
         "required": ["platform", "format", "language", "body"],
         "properties": {
-          "platform": { "type": "string", "enum": ["instagram", "linkedin", "x", "stories"] },
+          "platform": { "type": "string", "enum": ["instagram", "linkedin", "x"] },
           "format": { "type": "string", "enum": ["carousel", "reel", "story", "post"] },
           "language": { "type": "string" },
           "body": {

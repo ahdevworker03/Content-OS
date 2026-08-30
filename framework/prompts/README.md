@@ -121,22 +121,29 @@ This contract applies to every workflow. Adding a new workflow means defining al
 
 ### 03 — Post Content Builder
 
-**Purpose:** Transform the approved brief into a complete, publish-ready content package and its structured data representation.
+**Purpose:** Transform the approved brief into a complete, publish-ready content package for the selected primary format.
 
 **Inputs:** The confirmed brief from Content Planning. Strategy documents, format definitions, the Content Model schema, and any user-provided context, notes, or assets.
 
-**Outputs:** A content package specific to the format — for carousels: slide scripts, visual guidance, platform adaptations (Instagram in Lebanese Arabic, LinkedIn in English), and an Instagram caption. For reels: hook, spoken script, visual suggestions, on-screen text, and caption. Two files are written:
+**Outputs:** A format-specific content package determined by the selected primary format. The workflow writes authentic, trigger-driven content following the brand voice, produces platform-adapted versions where required, and writes the correct draft file:
 
-- `content/drafts/carousel.md` — human-readable Markdown draft.
-- `production/workspace/carousel.json` — structured data conforming to the Content Model, consumed directly by the React renderer.
+- **Carousel** — a Markdown draft and the canonical JSON:
+  - `content/drafts/carousel.md` — human-readable Markdown draft (slide scripts, visual guidance, platform adaptations, caption).
+  - `production/workspace/carousel.json` — structured data conforming to the Content Model, consumed directly by the React renderer.
+- **Reel** — a Markdown content package only:
+  - `content/drafts/reel.md` — hook, spoken script, visual suggestions, on-screen text, and caption.
+- **Story** — a Markdown content package only:
+  - `content/drafts/story.md` — story sequence, text overlays, visual guidance, interactive elements, and supporting notes.
+
+The selected primary format determines which draft file is written. Only Carousel produces the canonical JSON consumed by the React renderer; Reel and Story produce Markdown content packages only.
 
 **Responsibilities:**
 
 - Write authentic, trigger-driven content following the brand voice.
-- Produce platform-specific versions from the same story.
+- Produce the correct format-specific content package.
+- Include platform-adapted versions where required.
 - Provide visual guidance without designing slides.
-- Generate both the human-readable Markdown draft and the canonical JSON representation.
-- Ensure the JSON output matches the Content Model schema and covers all required fields.
+- Generate canonical JSON only for Carousel, because the current renderer consumes carousel data only.
 
 ---
 

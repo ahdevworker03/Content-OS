@@ -22,6 +22,7 @@ The following Framework documents must be consulted before producing content:
 - `framework/strategy/Brand Voice.md` — Voice, tone, platform rules, language strategy, rewriting rules, mandatory output package.
 - `framework/formats/Carousels.md` — Carousel types, structure, slide sequence, constraints (when format is carousel).
 - `framework/formats/Reels.md` — Reel types, structure, authenticity guidelines (when format is reel).
+- `framework/formats/Stories.md` — Story types, structure, unpolished standards, and engagement guidelines (when format is story).
 - `framework/model/Content Model.md` — Canonical JSON schema that the structured output must conform to.
 - `framework/memory/Posted Titles.md` — Published content index for duplication checking.
 
@@ -87,7 +88,7 @@ The workflow is successful when all of the following are true:
 
 - **Brand Voice followed** — Writing aligns with the voice attributes, tonal range, writing style guidelines, and platform rules defined in Brand Voice.md.
 - **Content matches approved brief** — The selected idea, trigger, format, and creative direction from the brief are preserved.
-- **Required fields complete** — All mandatory fields in the Content Model are populated with meaningful values.
+- **Required fields complete** — For Carousel content, all mandatory fields in the Content Model are populated with meaningful values.
 - **No duplicate titles** — The post title does not appear in `framework/memory/Posted Titles.md`. If a similar topic exists, the angle must be substantially different.
 - **Platform adaptations included** — Platform-specific versions follow the Platform Rewriting Rules in Brand Voice.md (language, tone, structure per platform).
 - **Content grounded in real experience** — The trigger is authentic, and the content does not fabricate experiences, projects, achievements, or emotions.
@@ -105,13 +106,25 @@ The workflow is successful when all of the following are true:
 
 3. **Check for duplication.** Search `framework/memory/Posted Titles.md` for the proposed title and topic. If a near-duplicate exists, adjust the angle to make it substantially different, or flag the issue.
 
-4. **Write the Markdown draft.** Produce the complete content package following the format-specific structure and the brand voice rules. For carousels: write the slide sequence (Hook → Trigger → Body → Project Bridge → CTA), visual guidance per slide, LinkedIn adaptation, and Instagram caption. For reels: write the hook, spoken script, visual suggestions, on-screen text, and caption.
+4. **Write the Markdown draft for the selected format.** Produce the complete content package following the format-specific structure and the brand voice rules.
 
-5. **Generate the JSON representation.** Transform the content from step 4 into structured JSON that conforms to the Content Model schema. Map every piece of content to its corresponding field. Ensure all required blocks (identity, trigger, metadata, variants) are populated.
+5. **Branch by the selected primary format.**
 
-6. **Validate consistency.** Cross-check the Markdown draft and the JSON output. The story, slide content, platform adaptations, and captions must match. The JSON must be the structured equivalent of what the Markdown expresses in human-readable form.
+   **Carousel:**
+   - Read `framework/formats/Carousels.md`.
+   - Write the slide sequence (Hook → Trigger → Body → Project Bridge → CTA), visual guidance per slide, LinkedIn adaptation, and Instagram caption to `content/drafts/carousel.md`.
+   - Generate the JSON representation into `production/workspace/carousel.json`. Transform the content into structured JSON that conforms to the Content Model schema, mapping every piece of content to its corresponding field and populating all required blocks (identity, trigger, metadata, variants).
+   - Validate consistency: cross-check the Markdown draft and the JSON output. The slide content, platform adaptations, and captions must match. The JSON must be the structured equivalent of what the Markdown expresses in human-readable form.
 
-7. **Write both output files.** Save `content/drafts/carousel.md` and `production/workspace/carousel.json`. Overwrite them with the final validated versions.
+   **Reel:**
+   - Read `framework/formats/Reels.md`.
+   - Write the hook, spoken script, visual suggestions, on-screen text, and caption to `content/drafts/reel.md`.
+   - Do not generate carousel JSON.
+
+   **Story:**
+   - Read `framework/formats/Stories.md`.
+   - Write the story sequence, text overlays, visual guidance, interactive elements, and supporting notes to `content/drafts/story.md`.
+   - Do not generate carousel JSON.
 
 ---
 

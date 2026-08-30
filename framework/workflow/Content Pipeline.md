@@ -138,12 +138,14 @@ If any gate is not passed, the draft returns to the Draft stage with revision no
 
 **Input:** Published post and its metadata.
 
-**Output:** Archived post with consistent folder-per-post structure.
+**Output:** Archived post stored under the canonical archive convention `content/published/<platform>/<YYYY-MM-DD-slug>/`.
 
 **Process:**
 - Store captions, scripts, source files, and exported assets together.
 - Include metadata (publishing date, platform, pillar, format, tags, status).
 - Cross-reference with `Posted Titles.md`.
+
+Archive maintenance — creating the archive directory, writing `metadata.json`, organizing assets, and updating `Posted Titles.md` — is performed by Workflow 06 and can be AI-assisted.
 
 ---
 
@@ -175,15 +177,15 @@ Every production step is assigned a responsible actor. This matrix defines who d
 | **Draft**        | Generate first draft   | AI          | Uses `Carousels.md`, `Reels.md`, or `Stories.md` + `Brand Voice.md` via `framework/prompts/03-Post Content Builder.md` |
 |                  | Review draft           | Human       | Validates against quality gates |
 | **Final Assets** | Generate structured carousel JSON | AI | AI writes `production/workspace/carousel.json` (Content Model format); the React renderer (`production/renderer/`) renders it to slides |
-|                  | Export carousel slides | Automation | Playwright pipeline (`production/export/export-slides.js` against the `/export` route) or the Studio Export modal exports PNGs |
+|                  | Export carousel slides | Automation / Human-assisted | Carousel export happens through the Studio Export Modal (in-browser ZIP/PDF, normal manual path) or the Playwright pipeline (`production/export/export-slides.js` against the frozen `/export` route, automation/baseline path) |
 |                  | Record reel            | Human       | In-the-moment recording per `Reels.md` |
 |                  | Edit reel              | Human       | Trim and basic edits |
 |                  | Write caption / format text | AI / Human | AI drafts per platform rules; Human tailors |
 | **Published**    | Post on platform       | Human       | Manual upload to Instagram, LinkedIn, X, or Stories |
-|                  | Track in Posted Titles | Human       | Add title + archive path to `Posted Titles.md` |
-| **Archived**     | Store assets           | Human       | Move final assets into `content/published/` per archive structure |
-|                  | Write metadata.json    | Human / AI  | Populate metadata fields (dates, tags, pillar) |
-|                  | Verify archive         | Human       | Confirm assets are grouped and paths are correct |
+|                  | Track in Posted Titles | AI / Human  | Add title + archive path to `Posted Titles.md`; Workflow 06 can perform this update |
+| **Archived**     | Store assets           | AI / Human  | Move final assets into `content/published/` per the canonical archive convention; Workflow 06 can organize them |
+|                  | Write metadata.json    | AI / Human  | Populate metadata fields (dates, tags, pillar); Workflow 06 can generate it |
+|                  | Verify archive         | AI / Human  | Confirm assets are grouped and paths are correct; Workflow 06 verifies archive completeness |
 
 ### Archive Output Requirements
 

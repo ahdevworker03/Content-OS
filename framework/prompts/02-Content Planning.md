@@ -74,7 +74,7 @@ Planning is successful when all of the following are true:
 - **Platform strategy defined.** Each target platform has a clear role and the content will be adapted accordingly.
 - **Brief sufficient for execution.** The Post Content Builder can produce content from the brief alone, without needing to make strategic decisions.
 - **No creative ambiguity remains.** Every element of the brief is specific enough to guide content creation.
-- **The audience should leave believing:** "I don't have to wait until I'm an expert to start building", without feeling they were lectured.
+- **Audience takeaway is clear.** The brief defines what the audience should understand, feel, or do after engaging with the content, and that takeaway matches the selected idea, trigger, key insight, and intended outcome.
 
 ---
 

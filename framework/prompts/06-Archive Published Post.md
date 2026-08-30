@@ -40,9 +40,20 @@ No other Framework documents are required for this workflow. Strategy, format, b
 
 A complete, self-contained archive entry under:
 
+`content/published/<platform>/<YYYY-MM-DD-slug>/`
+
+For example:
+
 `content/published/
     instagram/
         2026-07-28-react-state-machine/`
+
+Conventions for the archive path:
+
+- `<platform>` is lowercase: `instagram`, `linkedin`, or `x`.
+- `<YYYY-MM-DD-slug>` starts with the published date, followed by a short, descriptive, lowercase, hyphen-separated slug derived from the content title.
+- The directory must never overwrite an existing archive directory. If the target path already exists, stop and report the conflict.
+- All archived artifacts are preserved exactly — content, metadata, JSON, assets, and captions are never regenerated or edited.
 
 The archive must contain:
 
@@ -76,9 +87,7 @@ The workflow is successful when all of the following are true:
 
 1. **Verify publication details.** Confirm the platform, post URL, publish date, and any platform-specific identifiers. If details are missing or ambiguous, flag them before proceeding.
 
-2. **Create the archive directory.** Create the directory `content/published/
-instagram/
-    2026-07-28-react-state-machine/` using the published platform and a descriptive post name that matches the content title.
+2. **Create the archive directory.** Determine the canonical path `content/published/<platform>/<YYYY-MM-DD-slug>/`. Use the lowercase platform folder (`instagram`, `linkedin`, or `x`). Generate a date-prefixed slug from the published date (ISO 8601 `YYYY-MM-DD`) and a short, descriptive, lowercase, hyphen-separated slug derived from the content title. Never overwrite an existing archive directory — if the target path already exists, stop and report the conflict.
 
 3. **Copy Markdown.** Copy `content/drafts/carousel.md` into the archive directory as `content.md`. Preserve the file exactly — do not edit, reformat, or truncate.
 
