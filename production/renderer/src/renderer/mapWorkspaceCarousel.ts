@@ -3,100 +3,129 @@ import type {
   SlideData,
 } from "../types";
 
+/**
+ * Workspace carousel in the Content Model shape produced by Workflow 03.
+ *
+ * The carousel slides live inside the carousel platform variant:
+ *   variants[].body.slides
+ *
+ * Each slide uses lowercase layout names and lowercase snake_case fields
+ * (title, subtext, handle, section_tag, items[].text/accent, summary,
+ * questions, highlight, cta, footer).
+ */
+type WorkspaceItem = { text?: string; accent?: boolean };
+type WorkspaceFooter = { name?: string; role?: string; handle?: string };
+
 type WorkspaceSlide = {
-  TYPE_COVER?: true;
-  TYPE_BOX_LIST?: true;
-  TYPE_GRID_2X2?: true;
-  TYPE_BULLET_LIST?: true;
-  TYPE_FINAL_CTA?: true;
-  TITLE?: string;
-  NUMBER?: string;
-  LABEL?: string;
-  TEASERS?: string[];
-  BOX_ITEMS?: { TEXT?: string; ACCENT?: true }[];
-  GRID_ITEMS?: { LABEL?: string; TEXT?: string }[];
-  BULLET_ITEMS?: { TEXT?: string; ACCENT?: true }[];
-  CTA?: string;
-  SUMMARY?: string;
-  FINAL_BULLET_ROWS?: { TEXT?: string }[];
+  layout?: string;
+  number?: string;
+  title?: string;
+  subtext?: string;
+  handle?: string;
+  section_tag?: { text?: string; class?: string };
+  subtag?: string;
+  items?: WorkspaceItem[];
+  summary?: string;
+  questions?: string[];
+  highlight?: string;
+  cta?: string;
+  footer?: WorkspaceFooter;
+  swipe?: string;
+  grid_items?: { label?: string; text?: string }[];
 };
 
 type WorkspaceCarousel = {
-  PAGE_TITLE?: string;
-  SLIDES?: WorkspaceSlide[];
+  variants?: Array<{
+    format?: string;
+    body?: {
+      type?: string;
+      slides?: WorkspaceSlide[];
+    };
+  }>;
 };
 
-const KNOWN_TYPES = new Set([
-  "TYPE_COVER",
-  "TYPE_BOX_LIST",
-  "TYPE_GRID_2X2",
-  "TYPE_BULLET_LIST",
-  "TYPE_FINAL_CTA",
-]);
-
-function detectLayout(slide: Record<string, unknown>): string {
-  if (slide.TYPE_COVER) return "cover";
-  if (slide.TYPE_BOX_LIST) return "box-list";
-  if (slide.TYPE_GRID_2X2) return "grid";
-  if (slide.TYPE_BULLET_LIST) return "bullet-list";
-  if (slide.TYPE_FINAL_CTA) return "cta";
-
-  const found = Object.keys(slide).find(
-    (k) => k.startsWith("TYPE_") && !KNOWN_TYPES.has(k),
-  );
-  return found ?? "__unsupported";
+/** Extract the section tag text from the Content Model slide's section_tag object. */
+function sectionTagOf(slide: WorkspaceSlide): string | undefined {
+  return slide.section_tag?.text?.trim() || undefined;
 }
 
 function mapSlide(slide: WorkspaceSlide): SlideData {
-  const layout = detectLayout(slide);
+  const layout = slide.layout ?? "__unsupported";
 
   switch (layout) {
     case "cover":
       return {
         layout: "cover",
-        title: slide.TITLE ?? "",
-        subtitle: (slide.TEASERS ?? []).join(" "),
+        title: slide.title ?? "",
+        subtitle: slide.subtext ?? "",
+        username: slide.handle || undefined,
       };
 
     case "box-list":
       return {
         layout: "box-list",
-        title: slide.TITLE ?? "",
-        items: (slide.BOX_ITEMS ?? []).map((item) => ({
-          heading: item.TEXT ?? "",
+        title: slide.title ?? "",
+        items: (slide.items ?? []).map((item) => ({
+          heading: item.text ?? "",
           description: "",
+          accent: item.accent ?? false,
         })),
+        sectionTag: sectionTagOf(slide),
+        label: slide.subtag || undefined,
       };
 
-    case "grid":
+    case "arrow-list":
       return {
-        layout: "grid",
-        title: slide.TITLE ?? "",
-        items: (slide.GRID_ITEMS ?? []).map((item) => ({
-          label: item.LABEL ?? "",
-          value: item.TEXT ?? "",
-        })),
+        layout: "arrow-list",
+        title: slide.title ?? "",
+        // ArrowItem has no accent field; only the text is rendered.
+        items: (slide.items ?? []).map((item) => ({ text: item.text ?? "" })),
+        sectionTag: sectionTagOf(slide),
       };
 
     case "bullet-list":
       return {
         layout: "bullet-list",
-        title: slide.TITLE ?? "",
-        items: (slide.BULLET_ITEMS ?? []).map((item) => ({
-          text: item.TEXT ?? "",
-          highlight: item.ACCENT ?? false,
+        title: slide.title ?? "",
+        items: (slide.items ?? []).map((item) => ({
+          text: item.text ?? "",
+          highlight: item.accent ?? false,
         })),
+        // BulletListSlide has no sectionTag — the tag renders as the label.
+        label: slide.subtag || sectionTagOf(slide),
+        summary: slide.summary || undefined,
       };
 
-    case "cta":
+    case "final-cta":
       return {
         layout: "cta",
-        badge: slide.LABEL ?? "",
-        title: slide.TITLE ?? "",
-        subtitle: slide.CTA ?? "",
+        badge: sectionTagOf(slide) ?? "",
+        title: slide.title ?? "",
+        // subtitle is not rendered while bulletRows are present.
+        subtitle: "",
+        bulletRows: slide.questions,
+        quote: slide.highlight || undefined,
+        cta: slide.cta || undefined,
+        footerName: slide.footer
+          ? [slide.footer.name, slide.footer.role].filter(Boolean).join(" · ") || undefined
+          : undefined,
+        footerHandle: slide.footer?.handle || undefined,
+      };
+
+    case "grid":
+    case "grid-2x2":
+      return {
+        layout: "grid",
+        title: slide.title ?? "",
+        items: (slide.grid_items ?? []).map((item) => ({
+          label: item.label ?? "",
+          value: item.text ?? "",
+        })),
+        sectionTag: sectionTagOf(slide),
       };
 
     default:
+      // slide.swipe and slide.number have no renderer equivalent — ignored.
       return {
         layout: "__unsupported",
         originalLayout: layout,
@@ -105,15 +134,9 @@ function mapSlide(slide: WorkspaceSlide): SlideData {
 }
 
 export function mapWorkspaceCarousel(raw: WorkspaceCarousel): Carousel {
-  const slides: SlideData[] = [];
-
-  if (raw && Array.isArray(raw.SLIDES)) {
-    for (const slide of raw.SLIDES) {
-      if (slide && typeof slide === "object") {
-        slides.push(mapSlide(slide));
-      }
-    }
-  }
-
-  return { slides };
+  const carouselVariant = (raw.variants ?? []).find(
+    (v) => v.format === "carousel" || v.body?.type === "carousel",
+  );
+  const slides = carouselVariant?.body?.slides ?? [];
+  return { slides: slides.map(mapSlide) };
 }
