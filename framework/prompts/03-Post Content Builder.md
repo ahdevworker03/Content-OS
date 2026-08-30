@@ -28,6 +28,26 @@ The following Framework documents must be consulted before producing content:
 
 ---
 
+## Required Skills
+
+When creating or polishing content, use the relevant writing skills:
+
+- `student-builder-voice` — always use for all formats and platforms.
+- `lebanese-arabic-writing` — use for Arabic Instagram, Stories, Reels, and X content.
+- `arabic-technical-language` — use whenever Arabic content includes programming, CS, software, or project terminology.
+- `carousel-copy-polish` — use for Instagram carousel drafts before final validation.
+- `linkedin-reflection-writing` — use for LinkedIn platform variants.
+
+Skills should improve writing quality without changing the approved content brief, selected format, trigger, core idea, or content boundaries.
+
+---
+
+## Skill Usage Rule
+
+The agent must not generate final publish-ready copy before applying the relevant writing skills for the selected platform and format.
+
+---
+
 ## Inputs
 
 - **Approved content brief** — The confirmed brief from Content Planning, including the selected idea, trigger, format, and creative direction.
