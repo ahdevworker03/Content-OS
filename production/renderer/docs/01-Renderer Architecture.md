@@ -54,8 +54,8 @@ The overlay is a **preview-time visual aid, never part of the rendered slide**. 
 
 A single file (`config.ts`) exposes a boolean toggle that determines the data source:
 
-- **Dev mode** (`USE_WORKSPACE_DATA = false`): imports a local `carousel.json` at build time. The dev file already uses the canonical type format, so no transformation is needed.
-- **Workspace mode** (`USE_WORKSPACE_DATA = true`): fetches the workspace `carousel.json` at runtime and passes it through the adapter layer.
+- **Workspace mode** (`USE_WORKSPACE_DATA = true`, the default): fetches `/carousel.json` — the Content Model workspace file at `production/workspace/carousel.json`, served by Vite via `publicDir: "../workspace"` — and passes it through the adapter layer.
+- **Sample mode** (`USE_WORKSPACE_DATA = false`): imports the bundled sample `carousel.json` at build time. The sample file already uses the canonical type format, so no transformation is needed. This mode exists as a development convenience and fallback.
 
 This layer exists so that the same codebase can be developed against stable local data and later connected to external data without structural changes.
 
@@ -67,7 +67,7 @@ The loader exists to isolate data-fetching logic. No other part of the system ne
 
 ### 2.3 Adapter / Mapper
 
-The adapter (`mapWorkspaceCarousel.ts`) is a pure transformation function that converts the workspace JSON format (UPPER_CASE field names, `TYPE_*` boolean layout flags) into the canonical internal format (camelCase, `layout` string discriminator).
+The adapter (`mapWorkspaceCarousel.ts`) is a pure transformation function that converts the Content Model workspace JSON into the canonical internal format (camelCase fields, `layout` string discriminator). It selects the carousel variant from the Content Item's `variants` array, reads `variant.body.slides`, and maps authoring fields (`subtext`, `handle`, `questions`, `highlight`, `footer`, `items`) into renderer fields (`subtitle`, `username`, `bulletRows`, `quote`, footer fields, typed item arrays).
 
 This layer is the **only file in the system that understands both schemas**. The renderer models remain entirely unaware of the workspace schema. This is the most important architectural boundary in the system — see [Section 6](#6-the-adapter-layer).
 
@@ -166,30 +166,33 @@ The architecture is inherently additive. New layouts can be added by creating a 
 The complete rendering pipeline transforms raw JSON into rendered React DOM. Every transformation has a specific purpose.
 
 ```
-production/workspace/carousel.json  or  src/data/carousel.json
+production/workspace/carousel.json   served by Vite as /carousel.json
          │
          │  [1] Configuration selects data source
          │
          ▼
       config.ts
          │
-         │  USE_WORKSPACE_DATA = true   → fetch workspace JSON
-         │  USE_WORKSPACE_DATA = false  → import dev JSON at build time
+         │  USE_WORKSPACE_DATA = true   → fetch /carousel.json (default)
+         │  USE_WORKSPACE_DATA = false  → import sample JSON at build time
          │
          ▼
     loadCarousel.ts
          │
          │  [2] Returns Promise<Carousel>
-         │      - workspace path: raw JSON → mapWorkspaceCarousel() → Carousel
-         │      - dev path:       JSON import → cast as Carousel
+         │      - workspace path: fetch("/carousel.json") → mapWorkspaceCarousel() → Carousel
+         │      - fallback: if the workspace fetch/mapping fails or yields 0 slides → sample JSON
+         │      - sample path: JSON import → cast as Carousel
          │
          ▼
    mapWorkspaceCarousel.ts   (workspace path only)
          │
          │  [3] Pure transformation:
-         │      - TYPE_COVER → "cover", TYPE_BULLET_LIST → "bullet-list", etc.
-         │      - UPPER_CASE fields → camelCase fields
-         │      - unknown TYPE_* → "__unsupported" (graceful degradation)
+         │      - finds the carousel variant, reads variant.body.slides
+         │      - maps Content Model authoring fields → renderer SlideData
+         │        (subtext → subtitle, handle → username, questions → bulletRows,
+         │         highlight → quote, footer → footerName/footerHandle, ...)
+         │      - unknown layouts → "__unsupported" (graceful degradation)
          │
          ▼
    Renderer Models (types/index.ts)
@@ -329,7 +332,7 @@ The adapter (`mapWorkspaceCarousel.ts`) is the single most important architectur
 
 ### Why the renderer never consumes the Content Model directly
 
-The workspace JSON format uses a schema that is optimised for content authoring — it uses `TYPE_*` boolean flags, UPPER_CASE field names, and conditional field presence based on type. The canonical renderer schema is optimised for presentation — it uses a `layout` string discriminator, camelCase field names, and typed item arrays per layout.
+The Content Model JSON is the authoring/workspace schema — it is optimised for content authoring (a Content Item with `identity`, `metadata`, `variants`, and carousel slides using authoring fields such as `subtext`, `handle`, `questions`, `highlight`, and `footer`). The canonical renderer schema is optimised for presentation — it uses a `layout` string discriminator, camelCase field names, and typed item arrays per layout (`subtitle`, `username`, `bulletRows`, `quote`, footer fields).
 
 If the renderer consumed the workspace schema directly:
 
@@ -346,7 +349,7 @@ Centralising the translation in a single file means:
 
 - **The translation logic is testable in isolation.** A change to the mapping can be verified with a single unit test file.
 - **The workspace schema is documented implicitly.** The adapter file is a living specification of which workspace fields map to which canonical fields.
-- **Adding a new layout requires a single change to the adapter.** One new `case` in `detectLayout` and one mapping function. No other file needs to know about the workspace format.
+- **Adding a new layout requires a single change to the adapter.** One new `case` in the adapter's layout switch and one mapping function. No other file needs to know about the workspace format.
 
 ### Why this makes future schema changes easier
 
@@ -467,6 +470,8 @@ Carousel → SlideRenderer → Layout → UI Components → React → Headless B
 ```
 
 The route is deliberately static and stable — it is the byte-identical baseline for QA. Safety guides and the Studio never affect it.
+
+The `/export` route renders whatever `loadCarousel()` returns, so it shows the same data as the Studio preview. With workspace data enabled (the default), `/export` renders the approved Content Model workspace carousel (`production/workspace/carousel.json` served as `/carousel.json`). The Playwright pipeline screenshots exactly what that route renders — therefore, in the default configuration, exported PNGs come from the approved workspace carousel, not from sample data.
 
 ### 8.2 Studio export modal (client-side)
 

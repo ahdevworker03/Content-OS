@@ -17,8 +17,9 @@ Every layer in the renderer has a clearly defined boundary. A layout sits at the
 ```
 Layer               Responsibility                              Knows about
 ─────────────────────────────────────────────────────────────────────────────
-Workspace JSON      Raw content format (TYPE_* flags,           Workspace schema
-                    UPPER_CASE fields)
+Workspace JSON      Content Model carousel                    Content Model schema
+                    (variants[].body.slides, authoring         (workspace schema)
+                    fields like subtext, handle, questions)
 
 Adapter             Transforms workspace format to canonical    Both schemas
                     types. Only file that knows both schemas.
@@ -137,17 +138,16 @@ case "timeline":
 
 ### Step 4: Update the workspace adapter
 
-Add a new `TYPE_*` detection branch in `mapWorkspaceCarousel.ts` and a mapping function that transforms workspace fields into the new canonical type.
+Add a new `layout` branch in `mapWorkspaceCarousel.ts` and a mapping function that transforms the Content Model authoring fields into the new canonical type. The adapter selects the carousel variant from `variants`, reads `variant.body.slides`, and maps `layout` strings (`cover`, `box-list`, `arrow-list`, `grid-2x2`, `bullet-list`, `final-cta`) plus authoring fields (`subtext`, `handle`, `questions`, `highlight`, `footer`, `items`) into renderer `SlideData`.
 
 ```
-detectLayout:
-  TYPE_TIMELINE → "timeline"
+layout: "timeline"  (Content Model) → "timeline" (renderer)
 
 mapping:
-  TYPE_TIMELINE → TimelineSlideData
+  timeline slide → TimelineSlideData
 ```
 
-**Why:** The adapter is the only file that understands the workspace schema. Without this step, workspace data containing the new layout type would be mapped to `__unsupported`.
+**Why:** The adapter is the only file that understands the workspace (Content Model) schema. Without this step, workspace data containing the new layout type would be mapped to `__unsupported`.
 
 ### Step 5: Verify validation
 
@@ -312,10 +312,10 @@ Layouts render slides. Slides are static canvases. State belongs in the Studio, 
 
 ```
 // ❌ Wrong: layout accesses raw workspace fields
-slide.TITLE  // workspace field name
+slide.subtext   // Content Model workspace field name
 ```
 
-The renderer models are the contract. A layout should never reference workspace field names, `TYPE_*` flags, or any external schema. If the layout needs a field that is not in the renderer models, the models need to be extended through the proper channels (new variant, adapter update).
+The renderer models are the contract. A layout should never reference Content Model workspace field names (e.g., `subtext`, `handle`, `questions`) or any external schema. If the layout needs a field that is not in the renderer models, the models need to be extended through the proper channels (new variant, adapter update).
 
 ---
 
@@ -391,7 +391,7 @@ If the answer to any of these is "yes", the approach is wrong:
 |---|---|
 | Does the layout import from `renderer/` or `studio/`? | No |
 | Does the layout call `fetch` or any async function? | No |
-| Does the layout reference workspace field names (`TYPE_*`, `UPPER_CASE`)? | No |
+| Does the layout reference Content Model workspace field names (`subtext`, `handle`, `questions`, ...)? | No |
 | Does the layout contain `useState` or `useEffect`? | No |
 | Does the layout validate or transform its input? | No |
 | Does the layout duplicate markup from another layout? | No |
