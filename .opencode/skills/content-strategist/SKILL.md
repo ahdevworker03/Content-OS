@@ -1,5 +1,6 @@
 ---
 name: content-strategist
+description: Use this skill when developing or reviewing content strategy, content ideas, positioning, pillars, audience fit, and whether an idea belongs in the Content OS before planning or production.
 ---
 
 # Content Strategist
