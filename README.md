@@ -14,64 +14,60 @@ Design philosophy: every piece of content originates from a real trigger (a bug,
 
 ```
 Social Media Content/
+├── .opencode/                              # opencode configuration
+│   └── skills/                             # Agent skills (used by Workflow 03 and pre/post production)
+│       ├── lebanese-arabic-writing         # Lebanese Arabic copy for Instagram/Stories/Reels/X
+│       ├── student-builder-voice           # Student-builder voice across formats
+│       ├── arabic-technical-language       # Arabic prose + English technical terms
+│       ├── carousel-copy-polish            # Carousel slide copy polish
+│       ├── linkedin-reflection-writing     # LinkedIn reflections (English)
+│       ├── content-strategist              # Pre-production consultation skill
+│       └── content-reviewer                # Pre-publication review skill
 ├── framework/                              # Brand strategy, formats, workflow, prompts, model, memory
 │   ├── strategy/                           # Creator identity and voice
-│   │   ├── Brand View.md                   # Identity, audience, pillars, boundaries (110 lines)
-│   │   └── Brand Voice.md                  # Voice, tone, platform rules, language strategy (335 lines)
+│   │   ├── Brand View.md                   # Identity, audience, pillars, boundaries
+│   │   └── Brand Voice.md                  # Voice, tone, platform rules, language strategy
 │   ├── formats/                            # Content format definitions
-│   │   ├── Carousels.md                    # 4 types, 5-slide structure (149 lines)
-│   │   ├── Reels.md                        # 3 types, authenticity rules (122 lines)
-│   │   └── Stories.md                      # 5 categories, ephemeral content (123 lines)
+│   │   ├── Carousels.md                    # Carousel types and structure
+│   │   ├── Reels.md                        # Reel types, authenticity rules
+│   │   └── Stories.md                      # Story categories, ephemeral content
 │   ├── workflow/                           # Planning and production lifecycle
-│   │   ├── Content Format.md               # Trigger-First planning (stages 1-3, 104 lines)
-│   │   └── Content Pipeline.md             # Full lifecycle (stages 4-8), quality gates (208 lines)
+│   │   ├── Content Format.md               # Trigger-First planning (stages 1-3)
+│   │   └── Content Pipeline.md             # Full lifecycle (stages 4-8), quality gates, ownership
 │   ├── prompts/                            # AI agent workflow prompts
 │   │   ├── 01-Idea Discovery.md            # Surface post ideas
 │   │   ├── 02-Content Planning.md          # Approve content brief
 │   │   ├── 03-Post Content Builder.md      # Write content package + JSON
 │   │   ├── 04-Render Validation.md         # Validate React rendering
-│   │   ├── 05-Export Assets.md             # Export PNG slide images
+│   │   ├── 05-Export Assets.md             # Export slide images
 │   │   ├── 06-Archive Published Post.md    # Archive post and update index
 │   │   └── README.md                       # Operational guide
 │   ├── model/                              # Canonical content data model
-│   │   └── Content Model.md                # JSON Schema (draft 2020-12), renderer interface (373 lines)
-│   ├── memory/                             # Published content index
-│   │   └── Posted Titles.md                # Duplication prevention lookup table (30 lines)
+│   │   └── Content Model.md                # Content Item JSON Schema, renderer interface
+│   └── memory/                             # Published content index
+│       └── Posted Titles.md                # Duplication prevention lookup table
 │
 ├── content/                                # Content lifecycle artifacts
-│   ├── ideas/                              # Future content ideas (empty)
+│   ├── ideas/                              # Captured content ideas (e.g. migration-series.md)
 │   ├── drafts/                             # Working drafts (Post Content Builder output)
-│   │   ├── carousel.md                     # "Why I Built a Portfolio in My First Year" (152 lines)
-│   │   ├── reel.md                         # Empty placeholder
-│   │   └── story.md                        # Empty placeholder
+│   │   ├── carousel.md                     # Carousel draft (when one is in progress)
+│   │   ├── reel.md                         # Reel draft (when one exists)
+│   │   └── story.md                        # Story draft (when one exists)
 │   └── published/                          # Archived published content by platform
-│       ├── LinkedIn/                       # content.md + content.json + metadata.json
-│       └── Instagram/
-│           └── Instagram Carousel/         # assets/ + content.md + content.json + metadata.json
+│       ├── instagram/                      # <YYYY-MM-DD-slug>/ — content.md, content.json, metadata.json, assets/
+│       ├── linkedin/                       # <YYYY-MM-DD-slug>/ — content.md, content.json, metadata.json
+│       └── x/                              # Reserved for future X posts
 │
 ├── production/                             # Render and export tooling
 │   ├── renderer/                           # React carousel renderer (Vite + React + TypeScript)
-│   │   ├── src/                            # TypeScript source
-│   │   │   ├── renderer/                   #   JSON loader, mapper, SlideRenderer, safety overlay
-│   │   │   ├── studio/                     #   Studio: toolbar, sidebar cards, preview, inspector, export
-│   │   │   ├── export/                     #   ExportView (frozen /export route for the Playwright pipeline)
-│   │   │   ├── components/                 #   UI primitives + Slide canvas
-│   │   │   ├── layouts/                    #   6 slide layout components
-│   │   │   ├── types/                      #   Renderer-specific TypeScript types
-│   │   │   └── data/                       #   Development carousel JSON (8 slides, canonical format)
-│   │   ├── docs/                            # Renderer architecture documentation
-│   │   │   ├── 01-Renderer Architecture.md  #   Engine architecture, layers, data flow
-│   │   │   └── 02-Layout Development Guide.md #   Layout creation and modification guide
-│   │   ├── index.html                      # Vite entry HTML
-│   │   └── package.json                    # Deps: react, react-dom, react-router-dom, vite, typescript, html-to-image, jspdf, jszip
+│   │   ├── src/                            # Source: renderer pipeline, Studio, layouts, types, sample data
+│   │   ├── docs/                           # Renderer + Studio architecture docs (01-06)
+│   │   └── index.html / package.json       # Vite entry and dependencies
 │   ├── workspace/                          # Active carousel data
-│   │   └── carousel.json                   # Current carousel structured data (Content Model format)
-│   ├── export/                             # Playwright PNG export pipeline
-│   │   ├── export-config.js                # Config: URL (/export), viewport, selector, output
-│   │   ├── export-slides.js                # Screenshots .slide → PNGs
-│   │   ├── studio-inspect.js               # Dev helper: inspect Studio DOM (slides, safety state)
-│   │   ├── extracted-slides/               # PNG output directory (gitignored, regenerated on export)
-│   │   └── package.json                    # Deps: playwright ^1.61.1, http-server ^14.1.1
+│   │   └── carousel.json                   # Content Model carousel, served as /carousel.json
+│   └── export/                             # Playwright PNG export pipeline
+│       ├── export-config.js                # Export settings (URL, viewport, selector, output)
+│       └── export-slides.js                # Screenshots .slide → PNGs
 └── README.md                               # This file
 ```
 
@@ -81,7 +77,7 @@ Social Media Content/
 
 ### `framework/` — Strategic Core
 
-Six subdirectories organize the nine markdown files by concern:
+Six subdirectories organize the framework markdown files by concern:
 
 | Subdirectory | File                            | Description                                                                                                                                                                                   |
 | ------------ | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -99,13 +95,16 @@ Six subdirectories organize the nine markdown files by concern:
 
 ### `content/` — Lifecycle Artifacts
 
-**`ideas/`** — Empty directory reserved for future content idea capture.
+**`ideas/`** — Captured content ideas awaiting the next Idea Discovery / Content Planning run (e.g. `migration-series.md`). Not a requirement for any workflow; ideas may also live only in conversation.
 
-**`drafts/`** — Working drafts produced by the Post Content Builder agent. Currently houses `carousel.md` — an 8-slide draft for "Why I Built a Portfolio in My First Year" (Lebanese Arabic) with a LinkedIn adaptation (English). `reel.md` and `story.md` exist as empty placeholders for their respective formats. This is the bridge between content creation and the renderer.
+**`drafts/`** — Working drafts produced by the Post Content Builder agent. `carousel.md` currently holds an 8-slide carousel draft (Lebanese Arabic) with a LinkedIn adaptation (English). `reel.md` and `story.md` exist as files and are populated when a reel or story draft is generated. A draft file may legitimately be empty until its format is used.
 
-**`published/`** — Archives published content by platform. LinkedIn posts each have `content.md` (human-readable body), `content.json` (canonical Content Model), and `metadata.json` (archive metadata). Instagram carousel posts under `Instagram Carousel/` each have image assets in `assets/`, `content.md`, `content.json`, and `metadata.json`.
+**`published/`** — Archived published content, one folder per post under a lowercase platform directory using the canonical convention `content/published/<platform>/<YYYY-MM-DD-slug>/`:
 
-**Archive improvements:** All posts follow the self-contained per-post structure (`content.md` + `content.json` + `metadata.json`; Instagram posts additionally include `assets/`). Caption text for Instagram was not visible in slide images — left as `PLACEHOLDER`. Some metadata fields (`published_date`, `content_pillar`, `trigger`) remain as `PLACEHOLDER` or `null` due to missing original records.
+- `content/published/instagram/2026-08-13-portfolio-first-year-cs/`
+- `content/published/linkedin/2026-08-13-portfolio-first-year-cs/`
+
+Each post folder contains `content.md` (human-readable body), `content.json` (canonical Content Model), and `metadata.json` (archive metadata); Instagram carousels additionally include an `assets/` folder with the slide images. Older posts without a recorded publish date use an `unknown-date-` slug prefix (e.g. `content/published/instagram/unknown-date-first-month-in-cs/`). The old `Instagram/Instagram Carousel/Post N/` and `LinkedIn/Post N/` paths were migrated to this convention.
 
 ### `production/` — Render and Export Tooling
 
@@ -118,25 +117,39 @@ Six subdirectories organize the nine markdown files by concern:
 - **`src/components/`** — Reusable UI primitives (`Title`, `Subtitle`, `BulletList`, `Badge`, `Footer`) and `Slide` canvas (1080×1080 with responsive scaling). `Slide` reads the safety context to overlay guides.
 - **`src/layouts/`** — 6 layout components (`CoverSlide`, `BulletListSlide`, `ArrowListSlide`, `GridSlide`, `BoxListSlide`, `CtaSlide`).
 - **`src/types/`** — Renderer-specific typed models (discriminated union `SlideData`).
-- **`src/data/carousel.json`** — Development carousel JSON (8 slides, canonical format, swappable to workspace data via config flag).
-- **`docs/`** — Renderer architecture documentation:
-  - `01-Renderer Architecture.md` — Engine architecture, layers, data flow, design decisions.
-  - `02-Layout Development Guide.md` — Workflow and conventions for adding or modifying layouts.
+- **`src/data/carousel.json`** — Bundled sample carousel (canonical format). Used as a fallback when workspace loading fails or yields no slides, and as the data source in sample mode (`USE_WORKSPACE_DATA = false`).
+- **`docs/`** — Renderer and Studio architecture documentation (`01`–`06`): engine architecture, data flow, layout development guide, Studio design/UX, and polish plan.
 - **`index.css`** — Design system with CSS variables for colors, spacing, typography, radii, slide dimensions.
 - `package.json` — Dependencies: react, react-dom, react-router-dom, vite, typescript, html-to-image, jspdf, jszip.
 
 **`workspace/`** holds the active carousel's working data:
 
-- `carousel.json` — Content Model–shaped JSON (identity, trigger, metadata, platform variants). Loaded at runtime by the renderer via `loadCarousel.ts` → `mapWorkspaceCarousel.ts` when `USE_WORKSPACE_DATA` is `true`.
+- `carousel.json` — the approved Content Model carousel (identity, trigger, metadata, `variants` → carousel slides). Vite serves the workspace directory as static assets (`publicDir: "../workspace"`), so the file is available as `/carousel.json`. The renderer uses workspace data by default (`USE_WORKSPACE_DATA = true`): `loadCarousel.ts` fetches `/carousel.json` and `mapWorkspaceCarousel.ts` maps the Content Model authoring fields into renderer slide types. If loading fails or produces no slides, the bundled sample data is used as a fallback.
 
 **`export/`** is the Playwright slide export pipeline:
 
 - `export-config.js` — All settings overridable via CLI (`--url`, `--output`, `--selector`, `--width`, `--height`, `--scale`, `--headless`). Defaults: URL `http://localhost:5173/export`, viewport 1920×1080 @2x, selector `.slide`, output to `extracted-slides/`, pattern `slide-{{n}}.png`
 - `export-slides.js` — Launches Chromium headless, navigates to the `/export` route, screenshots each `.slide` as PNG
 - `studio-inspect.js` — Development helper for inspecting the Studio DOM from Playwright
-- `extracted-slides/` — Output directory for exported PNGs (slide-01, slide-02, …); regenerated on each export, currently empty
+- `extracted-slides/` — Output directory for exported PNGs (slide-01, slide-02, …); gitignored and regenerated on each export
 
 The **Studio also exports client-side**: the Export modal (`ExportModal.tsx`) renders selected slides off-screen at 2× resolution via `html-to-image` and downloads them as a ZIP of PNGs or a single multi-page PDF (`jszip`, `jspdf`). This is independent of the Playwright pipeline — it does not touch the `/export` route or `production/export/*`.
+
+Both export paths render whatever `loadCarousel()` loads. Because workspace data is the default, the frozen `/export` route and the Playwright pipeline render and export the approved workspace carousel (`/carousel.json`), not sample data.
+
+---
+
+## Writing Skills
+
+Agent skills live in `.opencode/skills/`. Workflow 03 (`03-Post Content Builder.md`) requires the relevant writing skills before final copy is produced:
+
+- `lebanese-arabic-writing` — natural Lebanese Arabic for Instagram, Stories, Reels, and X copy.
+- `student-builder-voice` — the student-builder voice across all formats and platforms.
+- `arabic-technical-language` — Arabic prose with natural English developer terms.
+- `carousel-copy-polish` — tightening carousel slide copy (hooks, one-idea-per-slide, CTAs).
+- `linkedin-reflection-writing` — LinkedIn adaptations in English (reflective, not corporate).
+
+Two consultation skills also exist: `content-strategist` (evaluating/prioritising ideas before production) and `content-reviewer` (reviewing drafted content before publishing). They are advisory and sit outside the numbered workflows.
 
 ---
 
@@ -163,7 +176,7 @@ Render Confirmation (Studio preview)                    │
 production/export/*.png  (Playwright /export route)     │
         │  (06) Archive Published Post                  │
         ▼                                               ▼
-content/published/<Platform>/<Post>/
+content/published/<platform>/<YYYY-MM-DD-slug>/
   content.md  content.json  metadata.json  assets/
 ```
 
@@ -235,7 +248,7 @@ framework/strategy/
                ┌────────┴───────────┐
                ▼                    ▼
          content/published/   framework/memory/
-         <Platform>/<Post>/   Posted Titles.md
+         <platform>/<YYYY-MM-DD-slug>/   Posted Titles.md
            content.md
            content.json
            metadata.json
@@ -246,7 +259,8 @@ framework/strategy/
 
 ## Known Gaps
 
-- **`.gitignore`** — Present at root and covers `node_modules/`, `dist/`, `*.tsbuildinfo`, `.DS_Store`, `Thumbs.db`. No `node_modules/` directories are tracked.
-- **Metadata completeness** — `published_date`, `content_pillar`, `trigger`, and `created_date` remain `PLACEHOLDER`/`null` for all posts. These were not recorded at publication time.
-- **Instagram captions** — Caption text was not visible in slide images; all Instagram posts use `PLACEHOLDER`.
-- **Draft placeholders** — `content/drafts/reel.md` and `content/drafts/story.md` are empty placeholders awaiting their first drafts.
+- **Reel/Story archive guidance** — Workflow 06 inputs are still carousel-centric (`carousel.md`/`carousel.json`/PNG assets). A clearer Reel/Story archive branch is still needed.
+- **Content Item IDs** — the Content Model now prefers platform-neutral IDs (e.g. `content-001`), but existing published/workspace IDs are still platform-specific (`instagram-007`, `linkedin-001`, …) until migrated.
+- **Idea persistence** — `content/ideas/` exists, but Workflow 01 does not yet write recommended ideas there; persistence is optional and may be added later.
+- **Skill duplication** — the writing skills overlap on voice and Arabic rules. Acceptable for now; may be consolidated only if it becomes a maintenance issue.
+- **Metadata completeness (older posts)** — posts archived before the current convention may lack recorded publish dates (folders use `unknown-date-…`) and may have placeholder pillar/trigger fields.
