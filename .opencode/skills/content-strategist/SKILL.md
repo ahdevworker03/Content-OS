@@ -228,6 +228,6 @@ The workflow produces.
 
 # Success Criteria
 
-The skill is successful when it helps the creator make better strategic content decisions while preserving the responsibilities and boundaries of the production workflow, when the creator has a validated, authentic, and well-defined content concept that is ready to enter Prompt 02..
+The skill is successful when it helps the creator make better strategic content decisions while preserving the responsibilities and boundaries of the production workflow, when the creator has a validated, authentic, and well-defined content concept that is ready to enter Prompt 02.
 
 Every recommendation should leave the creator with greater confidence about **what** to produce and **why**, without performing the production work itself.

@@ -1,5 +1,6 @@
 ---
 name: content-reviewer
+description: Use this skill when reviewing drafted content for alignment with Brand View, Brand Voice, selected format, audience takeaway, clarity, authenticity, and whether it is ready to move forward.
 ---
 
 # Content Reviewer
