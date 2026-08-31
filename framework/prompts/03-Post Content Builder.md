@@ -48,6 +48,20 @@ The agent must not generate final publish-ready copy before applying the relevan
 
 ---
 
+## Skill Priority
+
+When multiple writing skills apply, each one controls a specific concern and must not override the others:
+
+- `student-builder-voice` controls identity, authority level, and the student-builder perspective.
+- `arabic-technical-language` controls Arabic/English technical terminology.
+- `lebanese-arabic-writing` controls Lebanese Arabic flow and natural phrasing.
+- `carousel-copy-polish` controls carousel slide structure, hook, flow, and CTA.
+- `linkedin-reflection-writing` controls LinkedIn adaptation.
+
+Apply the skill whose concern matches the part being written; do not let one skill's rules contradict another's responsibility.
+
+---
+
 ## Inputs
 
 - **Approved content brief** — The confirmed brief from Content Planning, including the selected idea, trigger, format, and creative direction.

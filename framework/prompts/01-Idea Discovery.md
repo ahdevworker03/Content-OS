@@ -55,6 +55,8 @@ The workflow produces one or more recommended content ideas. Each recommendation
 
 The selected recommendation becomes the official input for Content Planning.
 
+**Optional persistence.** By default, recommendations are delivered in the conversation. If the user asks to save the ideas, write them to `content/ideas/<YYYY-MM-DD-short-topic>.md` as simple Markdown — never JSON, never a database. The file is a lightweight reference that Workflow 02 can later read when selecting an idea.
+
 ---
 
 ## Success Criteria
@@ -93,6 +95,8 @@ Idea Discovery is successful when all of the following are true:
 
 9. **Select the idea or ideas to move into Content Planning.** Confirm which recommendations are ready for workflow 02. If multiple ideas are strong, identify the highest-priority one.
 
+10. **Save ideas if requested (optional).** If the user wants the ideas saved, write a simple Markdown file to `content/ideas/<YYYY-MM-DD-short-topic>.md`. Use today's date (ISO 8601 `YYYY-MM-DD`) and a short, lowercase, hyphen-separated topic slug. Include: the source trigger, the recommended ideas with their suggested format, audience fit, and why each idea belongs in the Content OS. Do not create JSON, databases, or other structured files. If the user did not ask to save, deliver the ideas in conversation only and skip this step.
+
 ---
 
 ## Constraints
@@ -104,6 +108,7 @@ Idea Discovery is successful when all of the following are true:
 - Never begin planning or outlining the content. Planning belongs to workflow 02, and content creation belongs to workflow 03.
 - Never write scripts, slides, captions, posts, or any content output.
 - Never make production decisions about rendering, export, or archiving.
+- Persistence is optional. Never create JSON, databases, or structured storage for ideas. If saving, use simple Markdown under `content/ideas/` only when the user asks.
 
 ---
 
