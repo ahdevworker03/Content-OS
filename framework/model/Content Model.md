@@ -94,26 +94,37 @@ The Body is a discriminated union. Its structure depends on the format field.
   "slides": [
     {
       "layout": "cover | box-list | arrow-list | grid-2x2 | bullet-list | final-cta",
-      "number": "SLIDE 1 OF 8 — COVER",
-      "section_tag": { "text": "TAG", "class": "style-class" },
-      "label": "Optional label",
+      "number": "SLIDE 1 OF 8",
+      "section_tag": { "text": "SECTION TAG", "class": "" },
+      "subtag": "Optional secondary label",
       "title": "Slide heading",
-      "teasers": ["Cover subtitle lines"],
+      "subtext": "Cover subtitle (cover only)",
+      "handle": "@handle (cover only)",
       "items": [
-        { "text": "Content with <span>html</span>", "accent": false }
+        { "text": "Item text", "accent": false },
+        { "text": "Accented item", "accent": true }
       ],
       "grid_items": [
-        { "label": "Card title", "text": "Card body" }
+        { "label": "Card label", "text": "Card body" }
       ],
-      "summary": "Highlighted summary text",
-      "quote": "Final quote",
-      "cta": "Call to action question",
-      "big_number": "Optional large decorative number",
+      "summary": "Bullet-list summary (bullet-list only)",
+      "questions": ["CTA question rows (final-cta only)"],
+      "highlight": "Highlighted CTA quote (final-cta only)",
+      "cta": "Call to action (final-cta only)",
+      "footer": { "name": "Name", "role": "Role", "handle": "@handle" },
       "swipe": "swipe →"
     }
   ]
 }
 ```
+
+Field usage by layout:
+- `cover` — `title`, `subtext`, `handle`.
+- `box-list` / `arrow-list` — `title`, `section_tag`, `subtag`, `items` (`text`, `accent`).
+- `bullet-list` — `title`, `section_tag`/`subtag`, `items`, `summary`.
+- `grid-2x2` — `title`, `section_tag`, `grid_items` (`label`, `text`).
+- `final-cta` — `title`, `section_tag`, `questions`, `highlight`, `cta`, `footer` (`name`, `role`, `handle`).
+- `number` and `swipe` are optional chrome on any slide and are ignored by the renderer.
 
 #### Reel Body
 
@@ -254,19 +265,22 @@ The following JSON Schema formalizes the content model. Every Content Item in th
           "items": {
             "type": "object",
             "required": ["layout", "number", "title"],
+            "additionalProperties": false,
             "properties": {
               "layout": { "type": "string", "enum": ["cover", "box-list", "arrow-list", "grid-2x2", "bullet-list", "final-cta"] },
               "number": { "type": "string" },
               "section_tag": { "type": "object", "properties": { "text": { "type": "string" }, "class": { "type": "string" } } },
-              "label": { "type": "string" },
+              "subtag": { "type": "string" },
               "title": { "type": "string" },
-              "teasers": { "type": "array", "items": { "type": "string" } },
+              "subtext": { "type": "string" },
+              "handle": { "type": "string" },
               "items": { "type": "array", "items": { "type": "object", "properties": { "text": { "type": "string" }, "accent": { "type": "boolean" } } } },
               "grid_items": { "type": "array", "items": { "type": "object", "properties": { "label": { "type": "string" }, "text": { "type": "string" } } } },
               "summary": { "type": "string" },
-              "quote": { "type": "string" },
+              "questions": { "type": "array", "items": { "type": "string" } },
+              "highlight": { "type": "string" },
               "cta": { "type": "string" },
-              "big_number": { "type": "string" },
+              "footer": { "type": "object", "properties": { "name": { "type": "string" }, "role": { "type": "string" }, "handle": { "type": "string" } } },
               "swipe": { "type": "string" }
             }
           }

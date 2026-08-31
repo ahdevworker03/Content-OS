@@ -73,17 +73,19 @@ function validateSlide(slide: SlideData, index: number): ValidationWarning[] {
       break;
 
     case "cta":
-      if (slide.badge.trim() === "") {
+      if (slide.badge.trim() === "" && (slide.label ?? "").trim() === "") {
         warnings.push({
           severity: "warn",
-          message: "Missing badge",
+          message: "Missing badge or label",
           slideIndex: index,
         });
       }
-      if (slide.subtitle.trim() === "") {
+      // subtitle only renders when there are no bulletRows, so a final CTA
+      // with questions (bulletRows) does not require a subtitle.
+      if (slide.subtitle.trim() === "" && (slide.bulletRows ?? []).length === 0) {
         warnings.push({
           severity: "warn",
-          message: "Missing subtitle",
+          message: "Missing subtitle or bullet rows",
           slideIndex: index,
         });
       }

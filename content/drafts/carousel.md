@@ -13,8 +13,8 @@ While applying for training opportunities, I realized that having a portfolio ga
 **Visual:** Screenshot of the portfolio homepage — slightly blurred, with the text overlay standing out. A phone or laptop mockup showing the site.
 
 **Text:**
-كدت ما أبلّش بموقع portfolio في سنتي الأولى.
-بس ليش ندمان إنّي بدّيت بدري؟ 💭
+ليش بلشت ببناء موقع Portfolio من أول سنة جامعة
+وليش كان لازم ابدأ أبكر؟
 
 ---
 
@@ -23,9 +23,10 @@ While applying for training opportunities, I realized that having a portfolio ga
 **Visual:** A simple split screen. Left side: a CV PDF icon. Right side: a browser window with the portfolio open. Highlight on the right.
 
 **Text:**
-لما بدّيت قدّم ع trainings، اكتشفت شي مهم:
-الـ CV لحاله مش كفايه. 🧾
-بيّن اللي قدامي portfolio ملموس بشوفو — هيدا يلي خلّاني أتأهل.
+لما بدّيت قدّم على internships، اكتشفت شي مهم:
+الـ CV لحاله مش كافي 📑
+الـ portfolio الملموس هو يلي خلّاني لاقي فرص
+اللي قدامي عمم يوف شي ملموس مش بس عم يقرأ
 
 ---
 
@@ -34,10 +35,10 @@ While applying for training opportunities, I realized that having a portfolio ga
 **Visual:** Left side with a thought bubble: "Full-stack masterpiece? React? TypeScript? Animations?" Right side with a simple "NO" and a checkmark next to "Static HTML/CSS/JS."
 
 **Text:**
-كنت فكّري إنّو الـ portfolio لازم يكون full-stack تحفة.
-React, TypeScript, animations, deployment pipeline...
-فكّري إنّو بدّي أتعلّم كلشي قبل ما أبلّش.
-النتيجة؟ كنت عمأجّل عأجّل. 🌀
+كنت فكّر إنّه الـ portfolio لازم يكون full-stack كامل.
+...React, TypeScript, animations, deployment
+فكّرت إنّه لازم أتعلم كلشي قبل ما أبلّش
+النتيجة؟ كنت عم أجّل للأمر 🌀
 
 ---
 
@@ -46,10 +47,10 @@ React, TypeScript, animations, deployment pipeline...
 **Visual:** A code snippet from the portfolio's HTML/CSS/JS — simple, clean, recognizable code. Highlight a few lines that show basic structure.
 
 **Text:**
-أول شي تعلمته:
-بناء الـ portfolio خلّاني أطبّق basic HTML/CSS/JS بطريقة واقعية. 🛠️
-مش مجرّد تمارين ع ورق — شي شغّال، منشور، في ناس بتشوفو.
-الـ learning by doing مش مجرد شعار. هيي كانت أحسن طريقة أتعلّم فيها الأساسيّات.
+بناء الـ portfolio خلّاني أطبّق الأساسيّات بطريقة واقعية 🛠️
+HTML/CSS/JS – مش مجرّد تمارين ع ورق
+شي شغّال، منشور، في ناس بتشوفه
+الـ learning by doing كانت أحسن طريقة أتعلم فيها
 
 ---
 
@@ -58,10 +59,10 @@ React, TypeScript, animations, deployment pipeline...
 **Visual:** A simple timeline or checklist: "Trainings ✓ — Internships ✓ — Courses ✓" with the portfolio icon connected to each.
 
 **Text:**
-ولما قدمت ع trainings:
-ما كنت عم قول "أنا بعرف" — كنت عم أوري شغلي. 👀
-فرص تدريب، منح، courses — كلها صارت أسهل لأنّو كان في شي ملموس لأوريه.
-الـ portfolio مش بس علّمني — هو فتحلي أبواب.
+الـ portfolio مش بس علّمني – هو فتحلي أبواب 👀
+لما قدمت ع trainings – كنت عم أوري شغلي، مش عم قول أنا بعرف
+فرص تدريب، منح، courses – كلها صارت أسهل لأنه في شي ملموس
+صار عندي مكان لعرض شخصي ومهاراتي وأعمالي
 
 ---
 
@@ -70,11 +71,11 @@ React, TypeScript, animations, deployment pipeline...
 **Visual:** Minimal text slide. Big text: "موجود > مثالي" with a subtle arrow or line through "مثالي."
 
 **Text:**
-الخلاصة:
-إنّو تبلّش بدري أهم من إنّو يكون perfect. 🎯
-الـ perfect ما بيجّي.
-الـ موجود هو يلي بيفتحلك فرص.
-Just start.
+موجود > مثالي
+بلّش بدري أهم من إنّ يكون full-stack بمة technology 🎯
+الـ موجود هو يلي بيفتحلك فرص
+وبخليك تطبق شو عرفت
+المثالي هو عدو الموجود.
 
 ---
 
@@ -83,10 +84,10 @@ Just start.
 **Visual:** Screenshot of the actual portfolio — the current version. Clean, one full-screen mockup.
 
 **Text:**
-هاد portfolio تاعي:
-بنيته أوّل سنة بـ HTML/CSS/JS، وهلق عم أشتغل عليه بـ React/TypeScript. 🧩
-مو ضروري يكون masterpiece.
-بس ضروري يكون موجود.
+هاد portfolio تاعي – بنيته أوّل سنة
+🧩 بـ HTML/CSS/JS basic
+وهلق عم أشتغل عليه بـ React/TypeScript
+ورح يكون بوابة تعلمي للغة Typescript ومكتبة React ويكون مشروع بذاته
 
 ---
 
@@ -96,23 +97,21 @@ Just start.
 
 **Text:**
 وأنت؟
-في سنة أولى كان عندك portfolio ولا لسّا عم تفكّر؟
-شو يلي منّعك تبلّش؟
-احكيلي بالتعليقات 👇
+شو يلي منّعك تبّلش؟
+في شي ناقص عندك؟
+ولا بس عم تستنى الوقت المثالي؟
+أفضل وقت لتبدأ هو اليوم.
+إذا بدك تناقش الفكرة، أنا هون 👇
 
 ---
 
 ### Instagram Caption
 
-قديش منكن قاعد عمأجّل بناء portfolio لأنّك مستني تبقى "جاهز"؟
+كم واحد قاعد عمأجّل بناء الموقع الشخصي لأنه مستني يصير "جاهز" أو "full-stack dev"؟
 
-أنا كنت هيك. فكّري إنّو لازم أكون full-stack expert قبل ما أبلّش. بس الحقيقة إنّو أوّل portfolio كان basic HTML/CSS/JS — وهو هيدا يلي خلّاني أتقدّم ع trainings وفتحلي فرق.
+أنا كنت هيك. فكّرت إنّو لازم أكون full-stack expert قبل ما أبلّش. بس الحقيقة إنّو أوّل portfolio كان basic HTML/CSS/JS — وهو هيدا يلي ساعدني لاقي فرص.
 
-أهم شي: ابلّش. الـ perfect ما بيجّي.
-
-شو رأيك؟ في سنة أولى جديلة تبني portfolio أو لا؟
-
-#CSStudent #PortfolioWebsite #FirstYearCS #LearningInPublic #BuildInPublic #ComputerScience
+أهم شي: ببلّش فيه. الـ perfect ما بيجّي.
 
 ---
 
