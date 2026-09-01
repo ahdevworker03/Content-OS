@@ -132,7 +132,7 @@ Good:
 
 Good:
 
-> بعد ساعة debugging، فهمت إنو المشكلة مش بالكود نفسه، بل بطريقة تفكيري بالمشكلة.
+> بعد ساعة debugging، فهمت انه المشكلة مش بالكود نفسه، بل بطريقة تفكيري بالمشكلة.
 
 Avoid overly formal MSA:
 
@@ -166,12 +166,44 @@ Write the way a Lebanese student actually speaks. These are the default choices:
 - `بيظهر` / `عم يظهر` / `بان` for "to appear", not invented verb forms like `بيبان`
 - `تبع` pairs with `شو` (`تبع شو`), never with `إيش` (`تبع إيش`)
 - `عم` stays one word before the verb (`عم أشتغل`, `عم يشتغل`), never merged into `عمم`
+- `هونيك` for "over there", not `هونك`
+- `التلخبط` for feeling lost/confused, not `التلخبوط`
+- `انه` as the default written form of "that" in this voice (فهمت انه... / لاحظت انه...). This creator prefers `انه` in written Lebanese Arabic. Do not use `إنو` unless the creator explicitly asks for it in a specific sentence.
 
 Do not force a dialect spelling onto a word just to look Lebanese. If a plain natural Arabic sentence sounds better than a forced dialect one, use it.
 
 The test is always: would a Beirut CS student say this sentence out loud in a voice note?
 
 Reject or rewrite any wording that drifts into another Arabic dialect (Palestinian, Jordanian, Syrian, Egyptian, Gulf, or MSA), even if the sentence is understandable.
+
+---
+
+## Verb/Object-Ending Spelling Convention
+
+When a colloquial verb carries an attached object pronoun meaning "it" (put it, take it, wear it, fix it, move it), the creator's written voice spells the ending as `ه`, not `و`.
+
+Avoid:
+
+- أحطو → write حطه
+- آخدو → write آخده
+- البسو → write البسه
+- حاطّو → write حاطه
+- بعدّلو → write بعدله
+- بنقلو → write بنقله
+
+Examples in context:
+
+- حطه هون، وشوف إذا بخف الموضوع. (not أحطو هون)
+- بنقله لمكان أوضح، وبعدله الـ imports. (not بنقلو / بعدّلو)
+- ما كنت عارف وين حاطه بالأصل. (not حاطّو)
+
+Important — this is a spelling convention for the attached object pronoun, not a blanket rule that every final `و` becomes `ه`. Judge by grammar: if the `و` is the object "it" attached to the verb, write `ه`. Do not change:
+
+- Plural verb endings: عم يكتبو، بيكتبو، عم يشتغلو
+- Possessives: عندو، إلو
+- Any `و` that is part of the verb form itself rather than a pronoun object
+
+When in doubt, read the sentence: if you are attaching "it" to the verb, write `ه`.
 
 ---
 
@@ -272,7 +304,7 @@ Example:
 
 بالأول ضيّعت وقتي عم أبدّل classes هيك وهيك.
 
-بعدين رجعت فتحت الـ layout منيح، وشفت إنو المشكلة مش من الـ gap نفسه، بل من طريقة توزيع العناصر.
+بعدين رجعت فتحت الـ layout منيح، وشفت انه المشكلة مش من الـ gap نفسه، بل من طريقة توزيع العناصر.
 
 هون فهمت شغلة صغيرة:
 مش كل مشكلة UI بتنحل بزيادة class.
@@ -281,9 +313,56 @@ Example:
 
 ---
 
+## Natural Wording Over Formal Qualifiers
+
+Conversational posts should not sound analytical. Avoid formal qualifiers such as:
+
+- بسهولة نسبية
+- نسبياً
+- بشكل عام
+- غالباً ما
+
+Prefer simpler spoken Lebanese meaning. The exact wording depends on context.
+
+Too formal:
+
+> الـ code كتبتو بسهولة نسبية.
+
+Natural alternative:
+
+> كتابة الـ code نفسها ما كانت هي المشكلة.
+
+### Early-stage student belief phrasing
+
+When expressing an early-stage student belief, prefer natural reasoning over a self-labeling line.
+
+Natural:
+
+> المشاريع أساساً بعدها صغيرة، شو فرقت إذا حطيت الملف هون أو هونيك؟
+
+Avoid the artificial framing:
+
+> أنا لسا طالب — شو الفرق إذا حطيت الملف هون أو هونيك؟
+
+This is an example of the type of natural reasoning to aim for, not a fixed sentence to reuse in every post.
+
+### State wording
+
+When the intended meaning is "is it working?", use:
+
+> شغال؟ تمام، كمّل.
+
+Not:
+
+> اشتغل؟ تمام، كمّل.
+
+---
+
 ## English Technical Terms
 
 Which technical terms stay in English is decided by the `arabic-technical-language` skill. Do not duplicate its term lists here.
+
+This skill owns Lebanese phrasing, spelling conventions, dialect consistency, and natural spoken flow. The `arabic-technical-language` skill owns Arabic vs English technical terminology. Keep the two concerns separate.
 
 Keep one rule in this skill:
 
@@ -310,7 +389,7 @@ Acceptable:
 
 Acceptable:
 
-> المشكلة كانت إنو الـ component عم يستقبل props ناقصة.
+> المشكلة كانت انه الـ component عم يستقبل props ناقصة.
 
 Acceptable:
 
@@ -377,7 +456,7 @@ Instead of:
 
 Write:
 
-> هالـ bug خلاني أنتبه إنو كنت عم خمّن أكتر ما كنت عم أقرأ.
+> هالـ bug خلاني أنتبه انه كنت عم خمّن أكتر ما كنت عم أقرأ.
 
 Instead of:
 
@@ -400,7 +479,7 @@ Bad:
 Good:
 
 > كنت زمان أول ما يطلعلي error، أنسخه على طول على ChatGPT.
-> بعدين انتبهت إنو نص المشكلة كانت مكتوبة قدامي، بس أنا ما كنت عم أقراها.
+> بعدين انتبهت انه نص المشكلة كانت مكتوبة قدامي، بس أنا ما كنت عم أقراها.
 
 ---
 
@@ -426,7 +505,7 @@ Bad:
 Good:
 
 > بالبداية كنت شايف state و props نفس الشي تقريباً.
-> بس لما بلشت أبني components حقيقية، فهمت إنو الفرق بينهم هو اللي بخلّي الصفحة تتحرك صح.
+> بس لما بلشت أبني components حقيقية، فهمت انه الفرق بينهم هو اللي بخلّي الصفحة تتحرك صح.
 
 ---
 
@@ -466,6 +545,24 @@ Good CTA:
 Bad CTA:
 
 > لا تنسَ الإعجاب والمتابعة للمزيد من المحتوى المفيد.
+
+---
+
+## Avoid AI-Style CTAs
+
+Avoid CTAs that sound manufactured. These fail the voice:
+
+- an explicit "I am still learning" appended only to prove humility — e.g. `احكيلي وين عم بتلخبط أكتر، أنا لسا عم أتعلم 👇`
+- generic engagement invitations
+- overly constructed social-media phrasing
+
+Prefer simple peer questions that could genuinely be said in conversation:
+
+- إنت وين بتضيع أكتر بهالموضوع؟
+- صار معك نفس الشي؟
+- شو أكتر شغلة بتضيعك لما المشروع يكبر؟
+
+Do not force a CTA if the carousel already ends naturally.
 
 ---
 
@@ -535,6 +632,7 @@ Before accepting Arabic content, check:
 - Is there any generic motivation?
 - Is the content grounded in an actual project, bug, confusion, or learning moment?
 - Would this sound normal if said in a voice note to another CS student?
+- Would the creator actually say this sentence naturally in a conversation? Reject technically-correct-but-unnatural phrasing, unnecessary explanatory language, artificial humility, social-media engagement formulas, and formal qualifiers inside casual speech.
 
 If the answer is no, rewrite.
 

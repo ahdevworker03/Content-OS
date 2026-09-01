@@ -2,7 +2,7 @@
   "identity": {
     "id": "content-008",
     "title": "وين رح ضع هيدا الكود؟ — Where the Code Goes",
-    "lifecycle_stage": "draft"
+    "lifecycle_stage": "published"
   },
   "trigger": {
     "description": "I was adding a new feature, but I slowed down because the project had grown and I was not sure where the new code should go. The issue was not only writing the code — it was knowing where the code should belong.",
@@ -14,7 +14,14 @@
     "primary_format": "carousel",
     "language": "ar",
     "content_pillar": "System understanding through implementation",
-    "tags": ["file-structure", "code-organization", "feature-development", "web-development", "student-project", "learning-in-public"],
+    "tags": [
+      "file-structure",
+      "code-organization",
+      "feature-development",
+      "web-development",
+      "student-project",
+      "learning-in-public"
+    ],
     "created_date": "2026-09-01",
     "published_date": null,
     "notes": "LinkedIn variant is a fresh reflection, not a translation. No story follow-up planned for this idea."
@@ -38,48 +45,96 @@
           {
             "layout": "box-list",
             "number": "SLIDE 2 OF 8",
-            "section_tag": { "text": "TRIGGER", "class": "" },
+            "section_tag": {
+              "text": "TRIGGER",
+              "class": ""
+            },
             "title": "كنت عم أضيف feature جديدة على مشروعي.",
             "items": [
-              { "text": "المشروع كان كبّر شوي عن أول — ما عاد ملف ولا اتنين.", "accent": false },
-              { "text": "كتابة الـ code نفسها ما كانت هي المشكلة.", "accent": false },
-              { "text": "بس وقفت قدام سؤال واحد: وين حطه؟", "accent": true }
+              {
+                "text": "المشروع كان كبّر شوي عن أول — ما عاد ملف ولا اتنين.",
+                "accent": false
+              },
+              {
+                "text": "كتابة الـ code نفسها ما كانت هي المشكلة.",
+                "accent": false
+              },
+              {
+                "text": "بس وقفت قدام سؤال واحد: وين حطه؟",
+                "accent": true
+              }
             ],
             "swipe": "swipe →"
           },
           {
             "layout": "box-list",
             "number": "SLIDE 3 OF 8",
-            "section_tag": { "text": "BELIEF", "class": "" },
+            "section_tag": {
+              "text": "BELIEF",
+              "class": ""
+            },
             "title": "أول ما بلشت، كنت مفكر الـ file structure شغلة شكلية.",
             "items": [
-              { "text": "يعني folders منظمة، والمشروع بيبقى نضيف.", "accent": false },
-              { "text": "المشاريع أساساً بعدها صغيرة، شو فرقت إذا حطيت الملف هون أو هونيك؟", "accent": true },
-              { "text": "كان كل تفكيري: شغال؟ تمام، كمّل.", "accent": false }
+              {
+                "text": "يعني folders منظمة، والمشروع بيبقى نضيف.",
+                "accent": false
+              },
+              {
+                "text": "المشاريع أساساً بعدها صغيرة، شو فرقت إذا حطيت الملف هون أو هونيك؟",
+                "accent": true
+              },
+              {
+                "text": "كان كل تفكيري: شغال؟ تمام، كمّل.",
+                "accent": false
+              }
             ],
             "swipe": "swipe →"
           },
           {
             "layout": "arrow-list",
             "number": "SLIDE 4 OF 8",
-            "section_tag": { "text": "FRICTION", "class": "" },
+            "section_tag": {
+              "text": "FRICTION",
+              "class": ""
+            },
             "title": "لما المشروع كبّر، حسّيت إني بضيع وقت بالقرار، مش بالكتابة.",
             "items": [
-              { "text": "أول ما بفتح المشروع بعد أسبوع، بضيّع وقت عم دوّر وين كل شي.", "accent": false },
-              { "text": "بحط الـ file بمكان، وبعد شوي بكتشف انه مش هون مكانه — بنقله، وبعدله الـ imports.", "accent": false },
-              { "text": "وصار النقل والترتيب ياخد مني وقت أكتر من كتابة الكود نفسه.", "accent": true }
+              {
+                "text": "أول ما بفتح المشروع بعد أسبوع، بضيّع وقت عم دوّر وين كل شي.",
+                "accent": false
+              },
+              {
+                "text": "بحط الـ file بمكان، وبعد شوي بكتشف انه مش هون مكانه — بنقله، وبعدله الـ imports.",
+                "accent": false
+              },
+              {
+                "text": "وصار النقل والترتيب ياخد مني وقت أكتر من كتابة الكود نفسه.",
+                "accent": true
+              }
             ],
             "swipe": "swipe →"
           },
           {
             "layout": "bullet-list",
             "number": "SLIDE 5 OF 8",
-            "section_tag": { "text": "REALIZATION", "class": "" },
+            "section_tag": {
+              "text": "REALIZATION",
+              "class": ""
+            },
             "title": "هون فهمت: الترتيب مش للتجميل، هو لتقليل التلخبط.",
             "items": [
-              { "text": "المشكلة إني ما عم أعرف نظّم صح.", "accent": true },
-              { "text": "كل ما كان واضح وين بيروح كل ملف، كل ما قراري بيصير أسرع.", "accent": false },
-              { "text": "ما محتاج 50 folder ولا structure معقدة — بس شي واضح، وكل ملف إلو مكان.", "accent": false }
+              {
+                "text": "المشكلة إني ما عم أعرف نظّم صح.",
+                "accent": true
+              },
+              {
+                "text": "كل ما كان واضح وين بيروح كل ملف، كل ما قراري بيصير أسرع.",
+                "accent": false
+              },
+              {
+                "text": "ما محتاج 50 folder ولا structure معقدة — بس شي واضح، وكل ملف إلو مكان.",
+                "accent": false
+              }
             ],
             "summary": "الـ structure مش رفاهية ولا شكل — هو وقت بتوفره بعدين.",
             "swipe": "swipe →"
@@ -87,31 +142,58 @@
           {
             "layout": "box-list",
             "number": "SLIDE 6 OF 8",
-            "section_tag": { "text": "PROJECT", "class": "" },
+            "section_tag": {
+              "text": "PROJECT",
+              "class": ""
+            },
             "title": "عملت تعديل صغير على مشروعي — بس خفف عني كتير.",
             "items": [
-              { "text": "اللي بلّشت جرّبه إنّي قرّب الملفات المرتبطة بنفس الـ feature من بعض.", "accent": true },
-              { "text": "أول ما بضيف شي، بسأل نفسي: ليش أنا حاطه هون؟", "accent": false },
-              { "text": "وإذا ما لقيت جواب واضح، بنقل الملف لمكان أوضح.", "accent": false }
+              {
+                "text": "اللي بلّشت جرّبه إنّي قرّب الملفات المرتبطة بنفس الـ feature من بعض.",
+                "accent": true
+              },
+              {
+                "text": "أول ما بضيف شي، بسأل نفسي: ليش أنا حاطه هون؟",
+                "accent": false
+              },
+              {
+                "text": "وإذا ما لقيت جواب واضح، بنقل الملف لمكان أوضح.",
+                "accent": false
+              }
             ],
             "swipe": "swipe →"
           },
           {
             "layout": "arrow-list",
             "number": "SLIDE 7 OF 8",
-            "section_tag": { "text": "TAKEAWAY", "class": "" },
+            "section_tag": {
+              "text": "TAKEAWAY",
+              "class": ""
+            },
             "title": "كل ما الـ structure بيصير أوضح، وقت القرار بقصر.",
             "items": [
-              { "text": "مش مطلوب ترتيب مثالي — بس انه أوصل لأي ملف بسرعة.", "accent": false },
-              { "text": "وكل ما أضيف feature، بعرف تقريباً وين بيروح.", "accent": false },
-              { "text": "هيك وقت البحث والقرار صار أقل… ووقت الكتابة صار أكبر.", "accent": true }
+              {
+                "text": "مش مطلوب ترتيب مثالي — بس انه أوصل لأي ملف بسرعة.",
+                "accent": false
+              },
+              {
+                "text": "وكل ما أضيف feature، بعرف تقريباً وين بيروح.",
+                "accent": false
+              },
+              {
+                "text": "هيك وقت البحث والقرار صار أقل… ووقت الكتابة صار أكبر.",
+                "accent": true
+              }
             ],
             "swipe": "swipe →"
           },
           {
             "layout": "final-cta",
             "number": "SLIDE 8 OF 8",
-            "section_tag": { "text": "YOUR TURN", "class": "" },
+            "section_tag": {
+              "text": "YOUR TURN",
+              "class": ""
+            },
             "title": "وصلت لهالمرحلة؟",
             "questions": [
               "صار الكود أسهل كتابة من إنك تعرف وين تحطه؟",
@@ -142,5 +224,23 @@
       "caption": "The slow part was not writing the code. It was finding its place.",
       "cta": "Was there a moment when a slowdown taught you what organization actually means for you?"
     }
-  ]
+  ],
+  "archive": {
+    "path": "instagram/2026-09-01-where-the-code-goes/",
+    "assets": [
+      "assets/slide-01.png",
+      "assets/slide-02.png",
+      "assets/slide-03.png",
+      "assets/slide-04.png",
+      "assets/slide-05.png",
+      "assets/slide-06.png",
+      "assets/slide-07.png",
+      "assets/slide-08.png"
+    ],
+    "metadata_file": "metadata.json",
+    "content_files": [
+      "content.md",
+      "content.json"
+    ]
+  }
 }

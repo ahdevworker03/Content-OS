@@ -119,7 +119,8 @@
   color: var(--studio-accent);
 }
 
-.studio-toolbar__info {
+.studio-toolbar__info,
+.studio-toolbar__theme {
   width: 28px;
   height: 28px;
   display: inline-flex;
@@ -134,7 +135,8 @@
   line-height: 1;
 }
 
-.studio-toolbar__info:hover {
+.studio-toolbar__info:hover,
+.studio-toolbar__theme:hover {
   border-color: var(--studio-accent);
   color: var(--studio-accent);
 }

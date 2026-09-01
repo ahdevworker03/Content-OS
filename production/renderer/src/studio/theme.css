@@ -1,11 +1,43 @@
 /* ── Studio Theme ────────────────────────────────
-   Neutral dark editor tokens scoped to .studio.
-   Studio owns colors, borders, and shadows; it reuses
-   the shared neutral tokens (spacing, radius, font)
-   from index.css. Slides keep the brand palette.
+   Studio UI tokens for light and dark themes.
+   Light is the default (`:root`); dark is applied via
+   `[data-theme="dark"]` on <html> (set by Studio from
+   localStorage `studio-theme`). Studio owns these colors,
+   borders, and shadows; it reuses the shared neutral tokens
+   (spacing, radius, font) from index.css. Slides keep the
+   brand palette (`--color-*`) and never use `--studio-*`,
+   so renderer/export output is identical in both themes.
    ─────────────────────────────────────────────── */
 
-.studio {
+:root {
+  /* ── Surface ─────────────────────────────── */
+  --studio-bg: #f5f5f7;
+  --studio-bg-surface: #ffffff;
+  --studio-bg-elevated: #ececef;
+
+  /* ── Border ──────────────────────────────── */
+  --studio-border: #e2e2e8;
+  --studio-border-strong: #cfcfd8;
+
+  /* ── Text ────────────────────────────────── */
+  --studio-text: #1c1c22;
+  --studio-text-muted: #5d5d69;
+  --studio-text-dim: #8a8a96;
+
+  /* ── Accent ──────────────────────────────── */
+  --studio-accent: #b45309;
+  --studio-bg-active: rgba(180, 83, 9, 0.12);
+
+  /* ── Status ──────────────────────────────── */
+  --studio-warning: #a16207;
+  --studio-danger: #dc2626;
+
+  /* ── Shadow ──────────────────────────────── */
+  --studio-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --studio-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="dark"] {
   /* ── Surface ─────────────────────────────── */
   --studio-bg: #16161a;
   --studio-bg-surface: #1d1d22;

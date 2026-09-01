@@ -134,13 +134,16 @@ body {
 .ui-title--xl { font-size: calc(var(--font-size-3xl) * var(--slide-scale)); }
 .ui-title--lg {
   font-size: calc(var(--font-size-4xl) * var(--slide-scale));
-  margin-bottom: calc(30px * var(--slide-scale));
+  margin-bottom: calc(44px * var(--slide-scale));
 }
-.ui-title--md { font-size: calc(var(--font-size-2xl) * var(--slide-scale)); }
+.ui-title--md {
+  font-size: calc(var(--font-size-2xl) * var(--slide-scale));
+  margin-bottom: calc(44px * var(--slide-scale));
+}
 .ui-title--sm { font-size: calc(3.125rem * var(--slide-scale)); }
 .ui-title--experience {
   font-size: calc(3.375rem * var(--slide-scale));
-  margin-bottom: calc(36px * var(--slide-scale));
+  margin-bottom: calc(44px * var(--slide-scale));
 }
 .ui-title--advice {
   font-size: calc(3.25rem * var(--slide-scale));
@@ -177,6 +180,8 @@ body {
   margin-bottom: calc(40px * var(--slide-scale));
   direction: ltr;
   text-align: center;
+  color: var(--color-accent);
+  background: var(--color-bg-accent);
 }
 
 .ui-badge--win {
@@ -221,6 +226,9 @@ body {
   font-size: calc(24px * var(--slide-scale));
   color: var(--color-text);
   margin-bottom: calc(6px * var(--slide-scale));
+}
+.footer-line .footer-name:last-child {
+  margin-bottom: 0;
 }
 .footer-handle {
   font-family: var(--font-mono);
@@ -505,8 +513,13 @@ body {
 }
 
 .final-box {
-  background: var(--color-bg);
+  background: var(--color-bg-accent);
   border-color: var(--color-accent);
+}
+
+.final-box .s-body--final {
+  color: var(--color-accent);
+  font-weight: var(--font-weight-semibold);
 }
 
 .accent-border {

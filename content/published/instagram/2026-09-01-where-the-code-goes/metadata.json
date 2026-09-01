@@ -1,0 +1,54 @@
+{
+  "id": "content-008",
+  "slug": "where-the-code-goes",
+  "title": "وين رح ضع هيدا الكود؟ — Where the Code Goes",
+  "type": "carousel",
+  "platforms": [
+    "instagram"
+  ],
+  "publishedAt": "2026-09-01",
+  "createdAt": "2026-09-01",
+  "updatedAt": "2026-09-01",
+  "language": "ar",
+  "status": "published",
+  "tags": [
+    "file-structure",
+    "code-organization",
+    "feature-development",
+    "web-development",
+    "student-project",
+    "learning-in-public"
+  ],
+  "topics": [
+    "file-structure",
+    "code-organization",
+    "web-development",
+    "student-project"
+  ],
+  "pillar": "System understanding through implementation",
+  "trigger": "I was adding a new feature, but I slowed down because the project had grown and I was not sure where the new code should go. The issue was not only writing the code — it was knowing where the code should belong.",
+  "rendererVersion": null,
+  "schemaVersion": "1.0.0",
+  "primaryFormat": "carousel",
+  "archivePath": "instagram/2026-09-01-where-the-code-goes/",
+  "sourceDraftPath": "content/drafts/carousel.md",
+  "structuredSourcePath": "production/workspace/carousel.json",
+  "assets": {
+    "count": 8,
+    "files": [
+      "assets/slide-01.png",
+      "assets/slide-02.png",
+      "assets/slide-03.png",
+      "assets/slide-04.png",
+      "assets/slide-05.png",
+      "assets/slide-06.png",
+      "assets/slide-07.png",
+      "assets/slide-08.png"
+    ],
+    "directory": "assets/"
+  },
+  "contentFiles": {
+    "contentMarkdown": "content.md",
+    "contentJson": "content.json"
+  }
+}

@@ -1,4 +1,4 @@
-import { lazy, Suspense, useCallback, useMemo, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import Sidebar from "./Sidebar";
 import Toolbar from "./Toolbar";
 import Preview from "./Preview";
@@ -12,6 +12,19 @@ import "./theme.css";
 import "./Studio.css";
 
 const ExportModal = lazy(() => import("./ExportModal"));
+
+const THEME_KEY = "studio-theme";
+const DEFAULT_THEME = "dark";
+type StudioTheme = "light" | "dark";
+
+function getInitialTheme(): StudioTheme {
+  try {
+    const saved = localStorage.getItem(THEME_KEY);
+    return saved === "light" ? "light" : DEFAULT_THEME;
+  } catch {
+    return DEFAULT_THEME;
+  }
+}
 
 export default function Studio() {
   const {
@@ -30,6 +43,20 @@ export default function Studio() {
 
   const [showSafety, setShowSafety] = useState(false);
   const [exportOpen, setExportOpen] = useState(false);
+  const [theme, setTheme] = useState<StudioTheme>(getInitialTheme);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    try {
+      localStorage.setItem(THEME_KEY, theme);
+    } catch {
+      /* storage unavailable — theme still applies for this session */
+    }
+  }, [theme]);
+
+  const handleToggleTheme = useCallback(() => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  }, []);
 
   useKeyboardNav({
     currentIndex,
@@ -58,6 +85,8 @@ export default function Studio() {
           projectName={projectName}
           totalSlides={totalSlides}
           showSafety={showSafety}
+          theme={theme}
+          onToggleTheme={handleToggleTheme}
           onToggleSafety={handleToggleSafety}
           onExport={() => setExportOpen(true)}
         />
