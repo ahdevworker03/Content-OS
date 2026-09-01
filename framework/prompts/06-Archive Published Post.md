@@ -59,6 +59,13 @@ Conventions for the archive path:
 - The directory must never overwrite an existing archive directory. If the target path already exists, stop and report the conflict.
 - All archived artifacts are preserved exactly — content, metadata, JSON, assets, and captions are never regenerated or edited.
 
+Archive date handling:
+
+- New archives must use a verified published date in the path (`YYYY-MM-DD`).
+- If archiving a legacy/migrated post and no reliable published date exists, use `unknown-date-<slug>` as the prefix.
+- Never invent or estimate publish dates.
+- If the real publish date is later verified, the archive folder may be renamed and all references (metadata, `content.json`, `Posted Titles.md`) must be updated to match.
+
 The archive contains:
 
 - `content.md` — Human-readable post body copied from the format-specific Markdown draft.
