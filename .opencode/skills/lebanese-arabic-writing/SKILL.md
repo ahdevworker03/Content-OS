@@ -124,7 +124,7 @@ Examples:
 
 Good:
 
-> كنت عم جرّب أظبط الـ layout، وفجأة كل شي خرب.
+> كنت عم جرّب أضبّط الـ layout، وفجأة كل شي خرب.
 
 Good:
 
@@ -147,6 +147,31 @@ Avoid overly formal MSA:
 - مما لا شك فيه
 
 These phrases make the content sound like an article, not a student learning in public.
+
+---
+
+## Lebanese Dialect Guardrails
+
+Write the way a Lebanese student actually speaks. These are the default choices:
+
+- `شو` for "what", not `إيش`
+- `شي` / `شغلة` for "thing", not `إشي`
+- `كل شي` not `كل إشي`
+- `ليش` for "why", not `ليهو` or `إيش السبب`
+- `إلو` / `عندو` / `إلها` / `عندها` for "his / hers / belongs to", never `ليهو`
+- `مش` for negation, not `ليس` or `غير`
+- `بعدني` where "I still..." is meant
+- `عم دور` / `عم فتش` for "I am looking for", not `أبحث عن`
+- `هيدا` / `هيدي` / `هول` where natural
+- `بيظهر` / `عم يظهر` / `بان` for "to appear", not invented verb forms like `بيبان`
+- `تبع` pairs with `شو` (`تبع شو`), never with `إيش` (`تبع إيش`)
+- `عم` stays one word before the verb (`عم أشتغل`, `عم يشتغل`), never merged into `عمم`
+
+Do not force a dialect spelling onto a word just to look Lebanese. If a plain natural Arabic sentence sounds better than a forced dialect one, use it.
+
+The test is always: would a Beirut CS student say this sentence out loud in a voice note?
+
+Reject or rewrite any wording that drifts into another Arabic dialect (Palestinian, Jordanian, Syrian, Egyptian, Gulf, or MSA), even if the sentence is understandable.
 
 ---
 
@@ -243,9 +268,9 @@ Example:
 
 فكرت إنها 10 دقايق وبتخلص.
 
-بس فجأة صار في spacing غريب، وكل ما أصلّح شي، يخرب شي تاني.
+بس فجأة صار في spacing غريب، وكل ما أصلّح شي، بيخرب شي تاني.
 
-بالأول ضيّعت وقتي أبدّل classes عشوائياً.
+بالأول ضيّعت وقتي عم أبدّل classes هيك وهيك.
 
 بعدين رجعت فتحت الـ layout منيح، وشفت إنو المشكلة مش من الـ gap نفسه، بل من طريقة توزيع العناصر.
 
@@ -258,50 +283,12 @@ Example:
 
 ## English Technical Terms
 
-Keep English terms when they are natural in developer speech:
+Which technical terms stay in English is decided by the `arabic-technical-language` skill. Do not duplicate its term lists here.
 
-- bug
-- API
-- endpoint
-- deploy
-- component
-- state
-- props
-- hook
-- layout
-- frontend
-- backend
-- database
-- query
-- schema
-- migration
-- terminal
-- commit
-- branch
-- repo
-- framework
-- middleware
-- authentication
-- validation
-- responsive
+Keep one rule in this skill:
 
-Use Arabic for general words when Arabic is natural:
-
-- مشكلة
-- فكرة
-- تجربة
-- مشروع
-- خطوة
-- سبب
-- نتيجة
-- شرح
-- طريقة
-- ملف
-- صفحة
-- صورة
-- قرار
-- خطأ
-- حل
+- Use English terms when a Lebanese developer would say them in English.
+- Keep normal words in Arabic.
 
 Good:
 
@@ -347,9 +334,9 @@ Good hooks:
 - كنت مفكرها مشكلة CSS… طلعت أعمق من هيك.
 - ضيّعت ساعة على bug، والسبب كان سطر واحد.
 - أكتر شي خدعني بـ React بالبداية كان بسيط كتير.
-- كنت عم أصلّح UI، بس المشكلة طلعت بطريقة تفكيري.
+- كنت عم أصلّح UI، بس المشكلة طلعت من طريقة تفكيري.
 - أول مرة فهمت معنى API كانت لما خرب معي request بسيط.
-- مش كل error لازم تنسخه على ChatGPT فوراً.
+- مش كل error لازم تنسخه على ChatGPT على طول.
 - في bug خلاني أفهم ليش القراءة أهم من التخمين.
 
 Avoid generic hooks:
@@ -412,8 +399,8 @@ Bad:
 
 Good:
 
-> كنت زمان أول ما يطلعلي error، أنسخه فوراً على ChatGPT.
-> بعدين انتبهت إنو نص المشكلة كانت مكتوبة قدامي، بس أنا ما كنت عم إقراها.
+> كنت زمان أول ما يطلعلي error، أنسخه على طول على ChatGPT.
+> بعدين انتبهت إنو نص المشكلة كانت مكتوبة قدامي، بس أنا ما كنت عم أقراها.
 
 ---
 
@@ -426,7 +413,7 @@ Bad:
 Good:
 
 > كنت مفكر Operating System مادة نظرية زيادة.
-> بس لما بلشت أستعمل Linux يومياً، فهمت إنها مش بعيدة عن البرمجة متل ما كنت مفكر.
+> بس لما بلشت أستعمل Linux كل يوم، فهمت إنها مش بعيدة عن البرمجة متل ما كنت مفكر.
 
 ---
 
@@ -451,7 +438,7 @@ Bad:
 
 Good:
 
-> لما الملف صار طويل، بلشت ضيع جواه.
+> لما الملف صار طويل، بلشت أضيع جواه.
 > هون فهمت ليش ترتيب الكود مش رفاهية، خصوصاً لما المشروع يكبر شوي.
 
 ---
@@ -537,7 +524,8 @@ Bad:
 
 Before accepting Arabic content, check:
 
-- Does it sound like Lebanese Arabic?
+- Does it sound like Lebanese Arabic, not a mix of dialects?
+- Is there any dialect leakage from another Arabic dialect (Palestinian, Jordanian, Syrian, Egyptian, Gulf, or MSA)? Reject or rewrite it even if the sentence is understandable.
 - Does it sound like a student, not a teacher?
 - Is there a real trigger?
 - Are English technical terms used naturally?
@@ -577,6 +565,7 @@ The final Arabic should be:
 - clear,
 - short,
 - natural,
+- Lebanese in dialect, without leakage from other dialects,
 - grounded,
 - technically understandable,
 - emotionally honest without exaggeration,
