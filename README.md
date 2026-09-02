@@ -61,13 +61,20 @@ Social Media Content/
 ├── production/                             # Render and export tooling
 │   ├── renderer/                           # React carousel renderer (Vite + React + TypeScript)
 │   │   ├── src/                            # Source: renderer pipeline, Studio, layouts, types, sample data
-│   │   ├── docs/                           # Renderer + Studio architecture docs (01-06)
-│   │   └── index.html / package.json       # Vite entry and dependencies
+│   │   ├── package.json                    # Renderer dependencies and scripts
+│   │   └── vite.config.ts                  # Vite config (serves ../workspace as /carousel.json)
 │   ├── workspace/                          # Active carousel data
 │   │   └── carousel.json                   # Content Model carousel, served as /carousel.json
 │   └── export/                             # Playwright PNG export pipeline
 │       ├── export-config.js                # Export settings (URL, viewport, selector, output)
 │       └── export-slides.js                # Screenshots .slide → PNGs
+│
+├── docs/                                   # Project documentation by concern
+│   ├── product/                            # Product-level docs (roadmap, requirements)
+│   ├── architecture/                       # Engine + Studio architecture docs (01, 03)
+│   ├── design/                             # Studio design system, UX, polish plans (04–06)
+│   └── development/                        # Layout development guide (02)
+│
 └── README.md                               # This file
 ```
 
@@ -118,8 +125,6 @@ Each post folder contains `content.md` (human-readable body), `content.json` (ca
 - **`src/layouts/`** — 6 layout components (`CoverSlide`, `BulletListSlide`, `ArrowListSlide`, `GridSlide`, `BoxListSlide`, `CtaSlide`).
 - **`src/types/`** — Renderer-specific typed models (discriminated union `SlideData`).
 - **`src/data/carousel.json`** — Bundled sample carousel (canonical format). Used as a fallback when workspace loading fails or yields no slides, and as the data source in sample mode (`USE_WORKSPACE_DATA = false`).
-- **`docs/`** — Renderer and Studio architecture documentation (`01`–`06`): engine architecture, data flow, layout development guide, Studio design/UX, and polish plan.
-- **`index.css`** — Design system with CSS variables for colors, spacing, typography, radii, slide dimensions.
 - `package.json` — Dependencies: react, react-dom, react-router-dom, vite, typescript, html-to-image, jspdf, jszip.
 
 **`workspace/`** holds the active carousel's working data:
@@ -136,6 +141,17 @@ Each post folder contains `content.md` (human-readable body), `content.json` (ca
 The **Studio also exports client-side**: the Export modal (`ExportModal.tsx`) renders selected slides off-screen at 2× resolution via `html-to-image` and downloads them as a ZIP of PNGs or a single multi-page PDF (`jszip`, `jspdf`). This is independent of the Playwright pipeline — it does not touch the `/export` route or `production/export/*`.
 
 Both export paths render whatever `loadCarousel()` loads. Because workspace data is the default, the frozen `/export` route and the Playwright pipeline render and export the approved workspace carousel (`/carousel.json`), not sample data.
+
+### `docs/` — Documentation by Concern
+
+Top-level documentation, split by purpose:
+
+- **`product/`** — Product-level documentation (requirements, roadmap).
+- **`architecture/`** — `01-Renderer Architecture.md`, `03-Studio Architecture.md`.
+- **`design/`** — `04-Studio Design System.md`, `05-Studio UX Guidelines.md`, `06-Studio Polish Plan.md`.
+- **`development/`** — `02-Layout Development Guide.md`.
+
+(These were previously under `production/renderer/docs/`.)
 
 ---
 
