@@ -97,7 +97,7 @@ A layout's simplicity is the measure of the architecture's success. Every comple
 
 ## 4. Creating a New Layout
 
-The architecture supports additive growth. A new layout requires changes in up to five places, each with a specific purpose.
+The architecture supports additive growth. A new layout requires changes in a small fixed set of places, each with a specific purpose., each with a specific purpose.
 
 ### Step 1: Add a renderer model (if required)
 
@@ -176,21 +176,21 @@ Load the new layout in the Studio preview. Verify:
 
 These changes affect only the layout component and do not ripple upstream:
 
-| Change | What to modify |
-|---|---|
-| Typography (font size, weight, color) | Layout component or shared primitive |
-| Spacing (padding, margin, gap) | Layout component |
-| Alignment (centered vs. left-aligned) | Layout component |
-| Composition (reordering elements) | Layout component |
-| Responsive scaling behavior | Layout component (works with `--slide-scale`) |
+| Change                                | What to modify                                |
+| ------------------------------------- | --------------------------------------------- |
+| Typography (font size, weight, color) | Layout component or shared primitive          |
+| Spacing (padding, margin, gap)        | Layout component                              |
+| Alignment (centered vs. left-aligned) | Layout component                              |
+| Composition (reordering elements)     | Layout component                              |
+| Responsive scaling behavior           | Layout component (works with `--slide-scale`) |
 
 ### Changes that require upstream updates
 
-| Change | What else to update |
-|---|---|
-| Adding a new field to a slide | Renderer model, adapter, validation, the layout props |
-| Renaming a field in the workspace | Adapter only |
-| Changing the layout identifier string | Renderer model, adapter, SlideRenderer, validation |
+| Change                                       | What else to update                                                   |
+| -------------------------------------------- | --------------------------------------------------------------------- |
+| Adding a new field to a slide                | Renderer model, adapter, validation, the layout props                 |
+| Renaming a field in the workspace            | Adapter only                                                          |
+| Changing the layout identifier string        | Renderer model, adapter, SlideRenderer, validation                    |
 | Adding a new variation of an existing layout | New variant in models, new or modified adapter mapping, new component |
 
 ### What should never change
@@ -353,50 +353,50 @@ Use this checklist whenever creating or modifying a layout.
 
 ### New layout checklist
 
-| # | Step | Done |
-|---|---|---|
-| 1 | Renderer model added to `types/index.ts` (if new concept) | □ |
-| 2 | New type variant added to `SlideData` union | □ |
-| 3 | Layout component created in `src/layouts/` | □ |
-| 4 | Component exported from `src/layouts/index.ts` | □ |
-| 5 | Case added to `SlideRenderer.tsx` switch | □ |
-| 6 | TypeScript compiles without errors | □ |
-| 7 | Workspace adapter updated in `mapWorkspaceCarousel.ts` | □ |
-| 8 | Validation rules added in `validation.ts` | □ |
-| 9 | Studio preview renders correctly | □ |
-| 10 | Auto-fit + zoom (Fit / − / +, Ctrl+scroll) verified | □ |
-| 11 | Navigation (prev/next/sidebar) works | □ |
-| 12 | Inspector shows correct validation results | □ |
-| 13 | Debug panel shows expected data structure | □ |
-| 14 | No architectural rules violated (see Section 6) | □ |
-| 15 | Sample data added to `src/data/carousel.json` (for dev mode) | □ |
+| #   | Step                                                         | Done |
+| --- | ------------------------------------------------------------ | ---- |
+| 1   | Renderer model added to `types/index.ts` (if new concept)    | □    |
+| 2   | New type variant added to `SlideData` union                  | □    |
+| 3   | Layout component created in `src/layouts/`                   | □    |
+| 4   | Component exported from `src/layouts/index.ts`               | □    |
+| 5   | Case added to `SlideRenderer.tsx` switch                     | □    |
+| 6   | TypeScript compiles without errors                           | □    |
+| 7   | Workspace adapter updated in `mapWorkspaceCarousel.ts`       | □    |
+| 8   | Validation rules added in `validation.ts`                    | □    |
+| 9   | Studio preview renders correctly                             | □    |
+| 10  | Auto-fit + zoom (Fit / − / +, Ctrl+scroll) verified          | □    |
+| 11  | Navigation (prev/next/sidebar) works                         | □    |
+| 12  | Inspector shows correct validation results                   | □    |
+| 13  | Debug panel shows expected data structure                    | □    |
+| 14  | No architectural rules violated (see Section 6)              | □    |
+| 15  | Sample data added to `src/data/carousel.json` (for dev mode) | □    |
 
 ### Existing layout modification checklist
 
-| # | Step | Done |
-|---|---|---|
-| 1 | Change is limited to layout component (not models/adapter/validation) | □ |
-| 2 | Shared UI components used where possible | □ |
-| 3 | No business logic, data loading, or mapping added | □ |
-| 4 | No state added | □ |
-| 5 | Visual consistency maintained with other layouts | □ |
-| 6 | Studio preview verified at auto-fit and zoom levels | □ |
-| 7 | TypeScript compiles without errors | □ |
+| #   | Step                                                                  | Done |
+| --- | --------------------------------------------------------------------- | ---- |
+| 1   | Change is limited to layout component (not models/adapter/validation) | □    |
+| 2   | Shared UI components used where possible                              | □    |
+| 3   | No business logic, data loading, or mapping added                     | □    |
+| 4   | No state added                                                        | □    |
+| 5   | Visual consistency maintained with other layouts                      | □    |
+| 6   | Studio preview verified at auto-fit and zoom levels                   | □    |
+| 7   | TypeScript compiles without errors                                    | □    |
 
 ### Architectural violation checklist
 
 If the answer to any of these is "yes", the approach is wrong:
 
-| Question | OK? |
-|---|---|
-| Does the layout import from `renderer/` or `studio/`? | No |
-| Does the layout call `fetch` or any async function? | No |
-| Does the layout reference Content Model workspace field names (`subtext`, `handle`, `questions`, ...)? | No |
-| Does the layout contain `useState` or `useEffect`? | No |
-| Does the layout validate or transform its input? | No |
-| Does the layout duplicate markup from another layout? | No |
-| Does the layout contain business logic? | No |
-| Does the layout hardcode colors, fonts, or spacing instead of using shared components? | No |
+| Question                                                                                               | OK? |
+| ------------------------------------------------------------------------------------------------------ | --- |
+| Does the layout import from `renderer/` or `studio/`?                                                  | No  |
+| Does the layout call `fetch` or any async function?                                                    | No  |
+| Does the layout reference Content Model workspace field names (`subtext`, `handle`, `questions`, ...)? | No  |
+| Does the layout contain `useState` or `useEffect`?                                                     | No  |
+| Does the layout validate or transform its input?                                                       | No  |
+| Does the layout duplicate markup from another layout?                                                  | No  |
+| Does the layout contain business logic?                                                                | No  |
+| Does the layout hardcode colors, fonts, or spacing instead of using shared components?                 | No  |
 
 ---
 
