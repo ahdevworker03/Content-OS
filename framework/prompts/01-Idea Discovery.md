@@ -55,7 +55,7 @@ The workflow produces one or more recommended content ideas. Each recommendation
 
 The selected recommendation becomes the official input for Content Planning.
 
-**Optional persistence.** By default, recommendations are delivered in the conversation. If the user asks to save the ideas, write them to `content/ideas/<YYYY-MM-DD-short-topic>.md` as simple Markdown — never JSON, never a database. The file is a lightweight reference that Workflow 02 can later read when selecting an idea.
+**Optional persistence.** By default, recommendations are delivered in the conversation. If the user asks to save a selected idea, create `content/ideas/<YYYY-MM-DD-project-slug>/idea.json`, with optional curated supporting resources beside it. Follow `framework/model/idea.schema.json`; see `framework/CONTENT_IDEA_CAPTURE_RULES.md` for capture guidance. This manual, user-driven discovery and saving flow is separate from automatic project-agent capture after completed and verified work.
 
 ---
 
@@ -95,7 +95,7 @@ Idea Discovery is successful when all of the following are true:
 
 9. **Select the idea or ideas to move into Content Planning.** Confirm which recommendations are ready for workflow 02. If multiple ideas are strong, identify the highest-priority one.
 
-10. **Save ideas if requested (optional).** If the user wants the ideas saved, write a simple Markdown file to `content/ideas/<YYYY-MM-DD-short-topic>.md`. Use today's date (ISO 8601 `YYYY-MM-DD`) and a short, lowercase, hyphen-separated topic slug. Include: the source trigger, the recommended ideas with their suggested format, audience fit, and why each idea belongs in the Content OS. Do not create JSON, databases, or other structured files. If the user did not ask to save, deliver the ideas in conversation only and skip this step.
+10. **Save ideas if requested (optional).** If the user wants a selected idea saved, create its own folder at `content/ideas/<YYYY-MM-DD-project-slug>/` with a required `idea.json` and optional curated supporting resources. Use the date and a short, lowercase, hyphen-separated project/topic slug. Follow `framework/model/idea.schema.json` and `framework/CONTENT_IDEA_CAPTURE_RULES.md`; keep format, platform, and brand recommendations in the conversation for Content Planning rather than adding fields outside the schema. If the user did not ask to save, deliver the recommendations in conversation only and skip this step.
 
 ---
 
@@ -108,7 +108,7 @@ Idea Discovery is successful when all of the following are true:
 - Never begin planning or outlining the content. Planning belongs to workflow 02, and content creation belongs to workflow 03.
 - Never write scripts, slides, captions, posts, or any content output.
 - Never make production decisions about rendering, export, or archiving.
-- Persistence is optional. Never create JSON, databases, or structured storage for ideas. If saving, use simple Markdown under `content/ideas/` only when the user asks.
+- Persistence in this manual workflow is optional and user-directed. When saving, use the idea folder and `idea.json` representation defined by `framework/model/idea.schema.json`; automatic project-agent capture remains a separate behavior governed by `framework/CONTENT_IDEA_CAPTURE_RULES.md`.
 
 ---
 

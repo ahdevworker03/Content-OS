@@ -81,6 +81,8 @@ A **Post** is the main content item the user creates. It represents one publisha
 
 **Current:** posts exist as files in ideas, drafts, and published archives.
 
+An **Idea** is the raw input before the Content Brief. It may be entered by the user or automatically captured by an agent from real, completed work.
+
 **Future:** posts may become persisted product records.
 
 **Note:** database fields are not defined here.

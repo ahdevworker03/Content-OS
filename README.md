@@ -102,7 +102,7 @@ Six subdirectories organize the framework markdown files by concern:
 
 ### `content/` — Lifecycle Artifacts
 
-**`ideas/`** — Captured content ideas awaiting the next Idea Discovery / Content Planning run (e.g. `migration-series.md`). Not a requirement for any workflow; ideas may also live only in conversation.
+**`ideas/`** — Captured ideas, one folder per idea, with a required `idea.json` and optional curated supporting resources. Manual saves follow `framework/model/idea.schema.json`; automatic project-agent capture follows `framework/CONTENT_IDEA_CAPTURE_RULES.md`.
 
 **`drafts/`** — Working drafts produced by the Post Content Builder agent. `carousel.md` currently holds an 8-slide carousel draft (Lebanese Arabic) with a LinkedIn adaptation (English). `reel.md` and `story.md` exist as files and are populated when a reel or story draft is generated. A draft file may legitimately be empty until its format is used.
 

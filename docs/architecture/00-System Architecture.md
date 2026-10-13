@@ -90,7 +90,7 @@ Much of this is currently expressed as **Markdown** because the system is still 
 ideas → drafts → published
 ```
 
-- `content/ideas/` — captured content ideas awaiting planning.
+- `content/ideas/` — raw ideas awaiting planning, captured manually by the user or automatically by project/coding agents after completed and verified work. Each idea has its own folder with a required `idea.json` and may include a small curated set of supporting resources. The format is defined by `framework/model/idea.schema.json`; capture behavior is defined by `framework/CONTENT_IDEA_CAPTURE_RULES.md`.
 - `content/drafts/` — working drafts produced by the content builder.
 - `content/published/` — the published archive, one folder per post under `content/published/<platform>/<YYYY-MM-DD-slug>/`.
 
@@ -160,7 +160,7 @@ Today the Content Model is a Markdown document plus an embedded JSON Schema expr
 
 Current persistence is file-based:
 
-- ideas → Markdown (`content/ideas/…`)
+- ideas → `content/ideas/<YYYY-MM-DD-project-slug>/` (required `idea.json`, optional curated supporting resources; see `framework/model/idea.schema.json` and `framework/CONTENT_IDEA_CAPTURE_RULES.md`)
 - drafts → Markdown (`content/drafts/…`)
 - active carousel → `production/workspace/carousel.json`
 - published posts → `content/published/<platform>/<YYYY-MM-DD-slug>/` (`content.md`, `content.json`, `metadata.json`, `assets/`)

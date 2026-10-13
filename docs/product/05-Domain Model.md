@@ -175,9 +175,10 @@ The **Post** is the main domain object — one publishable idea or content item.
 
 ## 11. Idea
 
-An **Idea** is the raw starting input from the user — a rough thought, learning moment, project update, story, lesson, professional insight, or business message.
+An **Idea** is raw source material before the Content Brief. It can originate from direct user input, a learning moment, a project update, or completed implementation, debugging, product, client, university, or workflow work captured automatically by an agent.
 
-- **Current:** may be stored in `content/ideas/`.
+- **Current representation:** `content/ideas/<YYYY-MM-DD-project-slug>/`, with a required `idea.json` and optional curated supporting resources. The JSON follows `framework/model/idea.schema.json`; automatic capture follows `framework/CONTENT_IDEA_CAPTURE_RULES.md`.
+- **Automatic capture boundary:** the project agent preserves raw material only. Content OS later owns publication decisions, duplicate detection, platform and format choice, brand voice, and final content.
 - **Next:** entered through the product's creation flow.
 
 **Relationships:** Idea becomes Content Brief; Idea belongs to Post.
@@ -390,7 +391,7 @@ Idea → Brief → Draft → Review → Validated → Exported → Published →
 | Domain Object | Current Representation |
 |---|---|
 | Brand | Brand View / Brand Voice / writing skills |
-| Idea | `content/ideas/...` |
+| Idea | `content/ideas/<YYYY-MM-DD-project-slug>/` with required `idea.json` and optional curated supporting resources |
 | Draft/Post | `content/drafts/...` |
 | Active Carousel | `production/workspace/carousel.json` |
 | Content Model | `framework/model/Content Model.md` |
