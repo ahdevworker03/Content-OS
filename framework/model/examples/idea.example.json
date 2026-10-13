@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-13-markab-payment-query-performance",
+  "captured_at": "2026-10-13T19:30:00+03:00",
+  "project": {
+    "name": "Markab",
+    "repository": "vehicle-rental-platform",
+    "area": "Rental financial data loading"
+  },
+  "idea": {
+    "title": "Caching was not the performance fix",
+    "type": "engineering-learning",
+    "summary": "While improving rental-page performance, caching initially looked useful, but measurement showed repeated payment aggregation work was the more relevant bottleneck."
+  },
+  "context": {
+    "goal": "Improve rental page performance.",
+    "situation": "Financial information on the rental page was loading slowly.",
+    "problem": "The request path was performing repeated aggregation work.",
+    "initial_thoughts": "Caching was considered as a possible solution.",
+    "investigation": "Measurement showed repeated database work was responsible for much of the delay.",
+    "decision": "Optimize the existing query path before introducing caching.",
+    "implementation": "Reduced unnecessary repeated aggregation work.",
+    "result": "The path improved without adding caching infrastructure."
+  },
+  "content_value": {
+    "learning_points": [
+      "Measure the real bottleneck before adding caching.",
+      "Trace performance through the actual execution path.",
+      "More infrastructure is not automatically a better optimization."
+    ],
+    "story_points": [
+      "Caching initially looked like the solution.",
+      "Measurement contradicted that assumption.",
+      "The final fix stayed inside the existing data path."
+    ],
+    "possible_angles": [
+      "I nearly added caching to solve the wrong problem.",
+      "Measure before adding infrastructure."
+    ]
+  },
+  "resources": [
+    {
+      "file": "before.png",
+      "description": "Relevant before-state evidence."
+    },
+    {
+      "file": "after.png",
+      "description": "Relevant after-state evidence."
+    },
+    {
+      "file": "query-example.ts",
+      "description": "Short extracted code snippet showing the important implementation detail.",
+      "source": "apps/api/src/services/rentals.ts"
+    }
+  ],
+  "notes": []
+}

@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-os.local/schemas/idea.schema.json",
+  "title": "Content OS Idea Capture",
+  "description": "Raw content-opportunity capture produced automatically by project agents after completed and verified work. This is source material for Content OS, not publish-ready content.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "captured_at",
+    "project",
+    "idea",
+    "context",
+    "content_value",
+    "resources"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Usually matches the idea folder name: YYYY-MM-DD-<project>-<short-slug>."
+    },
+    "captured_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "repository": {
+          "type": "string"
+        },
+        "area": {
+          "type": "string"
+        }
+      }
+    },
+    "idea": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "type",
+        "summary"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Free-form descriptive category such as engineering-learning, debugging-story, milestone, client-learning, architecture-decision, etc. Not a strict enum."
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Concise factual summary of why this work may be useful content source material."
+        }
+      }
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "situation",
+        "result"
+      ],
+      "properties": {
+        "goal": {
+          "type": "string"
+        },
+        "situation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "problem": {
+          "type": "string"
+        },
+        "initial_thoughts": {
+          "type": "string"
+        },
+        "investigation": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string"
+        },
+        "implementation": {
+          "type": "string"
+        },
+        "result": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "content_value": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "learning_points"
+      ],
+      "properties": {
+        "learning_points": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "default": []
+        },
+        "story_points": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "default": []
+        },
+        "possible_angles": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "default": [],
+          "description": "Possible raw framing angles only. Do not choose a platform, post format, brand voice, or final hook."
+        }
+      }
+    },
+    "resources": {
+      "type": "array",
+      "description": "Small, curated, potentially publishable/supporting assets stored in the same idea folder. Not project backups.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "file",
+          "description"
+        ],
+        "properties": {
+          "file": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Relative filename inside the idea folder."
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source": {
+            "type": "string",
+            "description": "Optional original project location for traceability/documentation only."
+          }
+        }
+      },
+      "default": []
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    }
+  }
+}
