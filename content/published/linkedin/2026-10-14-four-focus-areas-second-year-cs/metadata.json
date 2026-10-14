@@ -1,0 +1,38 @@
+{
+  "id": "content-009",
+  "slug": "four-focus-areas-second-year-cs",
+  "title": "As I start my second year of Computer Science, I’ve set four connected focus areas for the year.",
+  "type": "post",
+  "platforms": [
+    "linkedin"
+  ],
+  "primaryFormat": "post",
+  "publishedAt": "2026-10-14",
+  "publishedUrl": "https://lnkd.in/p/d3jA6mBG",
+  "archivePath": "content/published/linkedin/2026-10-14-four-focus-areas-second-year-cs/",
+  "sourceDraftPath": "content/drafts/carousel.md",
+  "createdAt": "2026-10-14",
+  "updatedAt": "2026-10-14",
+  "language": "en",
+  "status": "published",
+  "tags": [
+    "second-year-cs",
+    "learning-in-public",
+    "student-builder",
+    "typescript",
+    "systems-thinking",
+    "communication"
+  ],
+  "topics": [
+    "computer-science",
+    "web-development",
+    "real-systems",
+    "product-communication"
+  ],
+  "pillar": "Personal reflections on the software development journey",
+  "assets": [],
+  "notes": "Text-only LinkedIn publication; no carousel assets were provided.",
+  "contentFiles": {
+    "contentMarkdown": "content.md"
+  }
+}

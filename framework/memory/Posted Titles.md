@@ -22,6 +22,7 @@ Archive folders with an `unknown-date-` prefix are legacy migrated posts where n
 | 5   | `content/published/linkedin/unknown-date-read-error-messages/` | I used to copy error messages into ChatGPT without reading them. Here's why that was a mistake. |
 | 6   | `content/published/linkedin/unknown-date-summer-building-foundations/` | After my first year of Computer Science, I realized there's a difference between preparing to build and actually building. |
 | 7   | `content/published/linkedin/2026-08-13-portfolio-first-year-cs/` | During my first year of Computer Science, I learned that starting a portfolio matters more than perfecting it. |
+| 8   | `content/published/linkedin/2026-10-14-four-focus-areas-second-year-cs/` | As I start my second year of Computer Science, I’ve set four connected focus areas for the year. |
 
 ---
 

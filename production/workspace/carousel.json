@@ -1,23 +1,29 @@
 {
   "identity": {
-    "id": "content-008",
-    "title": "وين رح ضع هيدا الكود؟ — Where the Code Goes",
+    "id": "content-009",
+    "title": "Four areas I want to grow in during my second year of CS",
     "lifecycle_stage": "draft"
   },
   "trigger": {
-    "description": "I was adding a new feature, but I slowed down because the project had grown and I was not sure where the new code should go. The issue was not only writing the code — it was knowing where the code should belong.",
-    "insight": "When the project grows, file structure stops being cosmetic. It helps reduce the time spent deciding where code belongs and makes future changes easier.",
-    "hook": "أصعب شي ما كان أكتب الكود… كان ألاقيه بعدين."
+    "description": "Starting my second year of Computer Science and reflecting on the four areas I want to focus on this year: core CS subjects, deeper TypeScript practice, understanding real systems through building, and communicating the value of what I build.",
+    "insight": "I want to connect university foundations with focused technical practice, learning how systems behave through building, and communicating the value of what I make. These are goals I am beginning to work toward, not completed achievements.",
+    "hook": "بلّشت سنتي التانية بـ CS… وهول أربع شغلات بدي ركّز عليهن"
   },
   "metadata": {
     "platform": "instagram",
     "primary_format": "carousel",
     "language": "ar",
-    "content_pillar": "System understanding through implementation",
-    "tags": ["file-structure", "code-organization", "feature-development", "web-development", "student-project", "learning-in-public"],
-    "created_date": "2026-09-01",
-    "published_date": null,
-    "notes": "LinkedIn variant is a fresh reflection, not a translation. No story follow-up planned for this idea."
+    "content_pillar": "Personal reflections on the software development journey",
+    "tags": [
+      "computer-science",
+      "student-builder",
+      "learning-in-public",
+      "typescript",
+      "systems-thinking",
+      "communication"
+    ],
+    "created_date": "2026-10-14",
+    "notes": "Primary Instagram Project Thinking carousel with a distinct English LinkedIn reflection. Focus areas are plans, not achievements."
   },
   "variants": [
     {
@@ -29,106 +35,78 @@
         "slides": [
           {
             "layout": "cover",
-            "number": "SLIDE 1 OF 8",
-            "handle": "@abdallahhassoun.dev",
-            "title": "أصعب شي ما كان أكتب الكود… كان ألاقيه بعدين.",
-            "subtext": "وليش هالمشكلة ما ظهرت إلا لما المشروع كبر؟",
-            "swipe": "swipe →"
+            "number": "SLIDE 1 OF 7",
+            "title": "بلّشت سنتي التانية بـ CS…",
+            "subtext": "وهول أربع شغلات بدي ركّز عليهن",
+            "swipe": "اسحب →"
           },
           {
             "layout": "box-list",
-            "number": "SLIDE 2 OF 8",
-            "section_tag": { "text": "TRIGGER", "class": "" },
-            "title": "كنت عم أضيف feature جديدة على مشروعي.",
+            "number": "SLIDE 2 OF 7",
+            "section_tag": { "text": "السياق", "class": "" },
+            "title": "عم فكّر كيف بدي خلّي هالسنة أكتر من مواد بدرسها لحالها.",
             "items": [
-              { "text": "المشروع كان كبّر شوي عن أول — ما عاد ملف ولا اتنين.", "accent": false },
-              { "text": "كتابة الـ code نفسها ما كانت هي المشكلة.", "accent": false },
-              { "text": "بس وقفت قدام سؤال واحد: وين حطه؟", "accent": true }
+              { "text": "بدي اربط اللي عم بتعلّمه بالجامعة بالـ building، وبفهم كيف الـ systems بتشتغل.", "accent": false },
+              { "text": "هيدي خطة عم بلّش فيها — مش إنجازات خلصت.", "accent": true }
             ],
-            "swipe": "swipe →"
+            "swipe": "اسحب →"
           },
           {
             "layout": "box-list",
-            "number": "SLIDE 3 OF 8",
-            "section_tag": { "text": "BELIEF", "class": "" },
-            "title": "أول ما بلشت، كنت مفكر الـ file structure شغلة شكلية.",
+            "number": "SLIDE 3 OF 7",
+            "section_tag": { "text": "١ — الأساسيات", "class": "" },
+            "title": "أول شي، بدي افهم مواد الـ CS الأساسية بعمق.",
             "items": [
-              { "text": "يعني folders منظمة، والمشروع بيبقى نضيف.", "accent": false },
-              { "text": "المشاريع أساساً بعدها صغيرة، شو فرقت إذا حطيت الملف هون أو هونيك؟", "accent": true },
-              { "text": "كان كل تفكيري: شغال؟ تمام، كمّل.", "accent": false }
+              { "text": "مثل databases، software engineering، وnetworking، لأنّي بدي افهم المفاهيم الأساسية لبناء software حقيقي.", "accent": true }
             ],
-            "swipe": "swipe →"
+            "swipe": "اسحب →"
           },
           {
-            "layout": "arrow-list",
-            "number": "SLIDE 4 OF 8",
-            "section_tag": { "text": "FRICTION", "class": "" },
-            "title": "لما المشروع كبّر، حسّيت إني بضيع وقت بالقرار، مش بالكتابة.",
+            "layout": "box-list",
+            "number": "SLIDE 4 OF 7",
+            "section_tag": { "text": "٢ — تركيز تقني", "class": "" },
+            "title": "بدي اتعمّق أكتر بـ TypeScript للـ web development، لأنّي بقدر استعملها بالـ frontend والـ backend.",
             "items": [
-              { "text": "أول ما بفتح المشروع بعد أسبوع، بضيّع وقت عم دوّر وين كل شي.", "accent": false },
-              { "text": "بحط الـ file بمكان، وبعد شوي بكتشف انه مش هون مكانه — بنقله، وبعدله الـ imports.", "accent": false },
-              { "text": "وصار النقل والترتيب ياخد مني وقت أكتر من كتابة الكود نفسه.", "accent": true }
+              { "text": "عم فكّر فيها مع React للـ frontend، وExpress للـ backend، وPrisma للـ database layer — يعني اتعامل مع أكتر من جزء بالـ system بنفس اللغة.", "accent": true }
             ],
-            "swipe": "swipe →"
+            "swipe": "اسحب →"
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 5 OF 7",
+            "section_tag": { "text": "٣ — فهم الـ systems", "class": "" },
+            "title": "كمان بدي إفهم كيف أجزاء الـ system بتحكي مع بعضها.",
+            "items": [
+              { "text": "كيف بيمشي الـ data بين frontend وbackend؟ وكيف بيتحمّل الـ system استعمال حقيقي؟", "accent": false },
+              { "text": "هيدا بدي اتعلّمه من building وتجربة حقيقية، خطوة خطوة.", "accent": true }
+            ],
+            "swipe": "اسحب →"
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 6 OF 7",
+            "section_tag": { "text": "٤ — التواصل", "class": "" },
+            "title": "وفي شغلة ما بدي اعتبرها بتصير لحالها: كيف اشرح فكرتي والـ product اللي ببنيه.",
+            "items": [
+              { "text": "بدي اتعلّم اشرح قيمة الـ product، وكيف بيعه، واتواصل مع ناس عندن خبرة أكتر مني.", "accent": true },
+              { "text": "عم فكّر إنو وجود product قوي لحاله ما بكفّي إذا ما عرفت أوصل قيمته.", "accent": false }
+            ],
+            "swipe": "اسحب →"
           },
           {
             "layout": "bullet-list",
-            "number": "SLIDE 5 OF 8",
-            "section_tag": { "text": "REALIZATION", "class": "" },
-            "title": "هون فهمت: الترتيب مش للتجميل، هو لتقليل التلخبط.",
+            "number": "SLIDE 7 OF 7",
+            "section_tag": { "text": "وين بدي وصل", "class": "" },
+            "title": "هول مش أربع أهداف منفصلين بالنسبة إلي.",
             "items": [
-              { "text": "المشكلة إني ما عم أعرف نظّم صح.", "accent": true },
-              { "text": "كل ما كان واضح وين بيروح كل ملف، كل ما قراري بيصير أسرع.", "accent": false },
-              { "text": "ما محتاج 50 folder ولا structure معقدة — بس شي واضح، وكل ملف إلو مكان.", "accent": false }
-            ],
-            "summary": "الـ structure مش رفاهية ولا شكل — هو وقت بتوفره بعدين.",
-            "swipe": "swipe →"
-          },
-          {
-            "layout": "box-list",
-            "number": "SLIDE 6 OF 8",
-            "section_tag": { "text": "PROJECT", "class": "" },
-            "title": "عملت تعديل صغير على مشروعي — بس خفف عني كتير.",
-            "items": [
-              { "text": "اللي بلّشت جرّبه إنّي قرّب الملفات المرتبطة بنفس الـ feature من بعض.", "accent": true },
-              { "text": "أول ما بضيف شي، بسأل نفسي: ليش أنا حاطه هون؟", "accent": false },
-              { "text": "وإذا ما لقيت جواب واضح، بنقل الملف لمكان أوضح.", "accent": false }
-            ],
-            "swipe": "swipe →"
-          },
-          {
-            "layout": "arrow-list",
-            "number": "SLIDE 7 OF 8",
-            "section_tag": { "text": "TAKEAWAY", "class": "" },
-            "title": "كل ما الـ structure بيصير أوضح، وقت القرار بقصر.",
-            "items": [
-              { "text": "مش مطلوب ترتيب مثالي — بس انه أوصل لأي ملف بسرعة.", "accent": false },
-              { "text": "وكل ما أضيف feature، بعرف تقريباً وين بيروح.", "accent": false },
-              { "text": "هيك وقت البحث والقرار صار أقل… ووقت الكتابة صار أكبر.", "accent": true }
-            ],
-            "swipe": "swipe →"
-          },
-          {
-            "layout": "final-cta",
-            "number": "SLIDE 8 OF 8",
-            "section_tag": { "text": "YOUR TURN", "class": "" },
-            "title": "وصلت لهالمرحلة؟",
-            "questions": [
-              "صار الكود أسهل كتابة من إنك تعرف وين تحطه؟",
-              "شو أول شي حسيت لازم يتغير لما المشروع كبّر عندك؟",
-              "وين بتضيّع وقتك أكتر — كتابة الكود ولا قرار المكان؟"
-            ],
-            "highlight": "كل ملف بمكان واضح — يعني قرار أقل لما ترجع للمشروع.",
-            "cta": "صار معك نفس الشي؟",
-            "footer": {
-              "name": "Abdallah Hassoun",
-              "role": "CS Student"
-            }
+              { "text": "بدي جرّب اربط الأساسيات بالـ building، افهم الـ system من التجربة، واتعلّم اوصل قيمة اللي عم بعمله.", "accent": true },
+              { "text": "بعدني عم جرّب رتّب هالمسار — وهيدي نقطة البداية.", "accent": false }
+            ]
           }
         ]
       },
-      "caption": "بتفتكر أول ما كبّر مشروعك، شو صار أصعب فيه ؟ عندي صار: وين أحط الكود الجديد (:\n\nالمشكلة ما كانت بكتابة الـ code نفسها. بس أول ما تفتح المشروع بعد أسبوع وتبلّش تدوّر: هيدا الملف وين مكانه؟ وهيدا الـ folder تبع شو؟ — هون بيروح الوقت.\n\nعملت شي بسيط مع حالي: كل ملفات الـ feature وحدة مع بعض، وكل ملف لازم أعرف ليش موجود بهالمكان.\n\nما صار عندي ترتيب مثالي — بس صار عندي وقت أقل بالتلخبط، ووقت أكثر للكتابة.\n\nأنت وين بتضيع أكتر بهالموضوع؟",
-      "cta": "صار معك نفس الشي؟"
+      "caption": "بلّشت سنتي التانية بـ CS، وصرت فكّر كيف اربط الجامعة بالـ building.\n\nهالسنة بدي ركّز على فهم مواد أساسية مثل databases وsoftware engineering وnetworking، واتعمّق أكتر بـ TypeScript. وبنفس الوقت، بدي إفهم كيف الـ systems بتشتغل لما أجرّب إبنيها، واتعلّم اشرح قيمة اللي عم بعمله.\n\nبعدني عم رتّب هالأولويات وعم جرّب شوف كيف بيكمّلوا بعض. مش عم شارك نتائج وصلتلا — هيدي الأشياء اللي بدي اشتغل عليها.\n\nإنتو كيف بتربطوا بين مواد الجامعة والتطبيق العملي؟",
+      "cta": "إنتو كيف بتربطوا بين مواد الجامعة والتطبيق العملي؟"
     },
     {
       "platform": "linkedin",
@@ -136,11 +114,10 @@
       "language": "en",
       "body": {
         "type": "post",
-        "content": "I used to think file structure was mostly cosmetic — folders organized so the project looks clean.\n\nThat changed while I was adding a new feature to my web project. Writing the code was not the hard part. One small decision was: where does this code actually belong? In the feature, in a new file, next to the shared utilities? Every option looked reasonable, and none looked obviously right.\n\nThe code took minutes. The decision took longer. And a week later, I was searching where everything was again.\n\nSo I started with something simple: related files in one place, and each file needed a clear answer to \"why am I here?\" The slowdown did not disappear, but it got smaller — and less frequent.\n\nI am still shaping this in my project. For me, the real shift was understanding that structure is not about impressing anyone. It is about making the next change easier.\n\nWas there a moment when a slowdown taught you what organization actually means for you? What is the first sign your codebase has outgrown \"just drop it somewhere\"?",
-        "structure": "opening-insight"
+        "content": "Starting my second year of Computer Science has made me think about how I want to use the year, beyond getting through courses one at a time.\n\nI want to understand foundations like databases, software engineering, and networking, while going deeper with TypeScript for web development. I’m also interested in learning how a real system behaves when its frontend, backend, and database have to work together and people actually use it. I’m still figuring out what that kind of learning looks like in practice.\n\nOne part I don’t want to leave until later is communication. I want to get better at explaining an idea, presenting what I build, and communicating its value. I also want to learn how to sell what I build. Building something and helping someone understand why it matters feel connected to me, even though I’m still learning both.\n\nThese are focus areas I’m setting for myself, not things I’ve already mastered. I’m hoping to connect university fundamentals with more deliberate building and clearer communication as the year unfolds.\n\nHow have you connected what you study with what you build?",
+        "structure": "reflection"
       },
-      "caption": "The slow part was not writing the code. It was finding its place.",
-      "cta": "Was there a moment when a slowdown taught you what organization actually means for you?"
+      "cta": "How have you connected what you study with what you build?"
     }
   ]
 }

@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-14-markab-migration-safe-release-gate",
+  "captured_at": "2026-10-14T11:25:39+03:00",
+  "project": {
+    "name": "Markab",
+    "area": "Production release automation"
+  },
+  "idea": {
+    "title": "Automating deployment without automating an unsafe rollback",
+    "type": "engineering-learning",
+    "summary": "A small manual GitHub Actions gate can automate an existing VPS release while keeping database migration recovery under explicit operator control."
+  },
+  "context": {
+    "goal": "Close the remaining Step 65 production deployment automation gap while preserving the proven release procedure.",
+    "situation": "The production API image, backup, migration, readiness, and frontend release already had manual runbooks, but no coordinated manual-gated workflow.",
+    "problem": "A generic rollback to an old API can be unsafe after an incompatible migration, and a frontend released before API readiness can expose a mismatched contract.",
+    "investigation": "The existing CI, GHCR image publisher, Compose services, backup script, migration script, Cloudflare Pages project, and Step 65 runbooks were traced before implementation.",
+    "decision": "Require a passing CI run and verified digest for an exact main commit, serialize manual deployment, stop the old API, verify an off-server backup, migrate, require clean status and readiness, then publish the matching frontend. Restart the old API only when failure occurs before migration starts.",
+    "implementation": "Added a manual deployment workflow and a short VPS release script using existing Compose backup and migration services. A disposable simulation exercised preflight, backup, migration, status, and success branches.",
+    "result": "Local workflow/configuration checks and failure simulations passed. A fresh Docker build was blocked by package-registry timeouts, and the controlled live deployment/rehearsal is still required before Step 65 can close."
+  },
+  "content_value": {
+    "learning_points": [
+      "A manual dispatch can be a practical approval boundary when a protected environment reviewer gate is unavailable.",
+      "The safe restart decision changes at the moment migration begins; after that, schema compatibility must be established before old code runs.",
+      "An immutable image digest, commit SHA, and frontend release marker give operators one release identity across components."
+    ],
+    "story_points": [
+      "The deployment path already existed as tested manual steps and scripts.",
+      "The automation reused those steps and made backup and readiness hard gates.",
+      "Failure simulations showed backup failure restarts the old API, while migration and status failures leave it stopped.",
+      "The live rehearsal and Docker image build remain honest open evidence."
+    ],
+    "possible_angles": [
+      "Where automatic rollback becomes unsafe during a database release.",
+      "How to add a manual deployment gate without adding a deployment platform."
+    ]
+  },
+  "resources": [],
+  "notes": []
+}

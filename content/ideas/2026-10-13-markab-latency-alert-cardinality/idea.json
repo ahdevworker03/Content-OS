@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-13-markab-latency-alert-cardinality",
+  "captured_at": "2026-10-13T21:55:49+03:00",
+  "project": {
+    "name": "Markab",
+    "repository": "markab",
+    "area": "Production observability"
+  },
+  "idea": {
+    "title": "A latency alert can flap because of query cardinality",
+    "type": "debugging-story",
+    "summary": "Repeated latency alert emails were caused by request-specific labels retained through LogQL aggregation, not by an application latency defect. Collapsing labels before aggregation returned the read alert to one aggregate series."
+  },
+  "context": {
+    "goal": "Make staging and production read and mutation latency alerts produce stable aggregate results.",
+    "situation": "Staging latency alerts repeatedly moved between FIRING and RESOLVED and created many alert instances.",
+    "problem": "The queries retained request-specific labels after JSON parsing, multiplying alert instances.",
+    "investigation": "The issue was in alert-query label cardinality; the application itself was not the cause.",
+    "decision": "Collapse the parsed stream to responseTime before unwrapping and aggregating, and preserve the approved thresholds and saved firing semantics.",
+    "implementation": "Applied `| keep responseTime` followed by `| unwrap responseTime` to staging and production read/mutation latency queries.",
+    "result": "The corrected staging read latency rule produces one aggregate series; GET/read P95 remains above 500 ms and mutation P95 above 800 ms as the alert thresholds."
+  },
+  "content_value": {
+    "learning_points": [
+      "Alert cardinality can create noisy notifications even when application performance is not defective.",
+      "Inspect labels retained by a log query before changing service code or thresholds.",
+      "Apply query fixes consistently across environments while preserving intended thresholds and firing behavior."
+    ],
+    "story_points": [
+      "Repeated FIRING/RESOLVED emails initially looked like an application latency issue.",
+      "The root cause was request-specific labels multiplying alert instances.",
+      "A small query pipeline correction collapsed the series."
+    ],
+    "possible_angles": [
+      "When noisy latency alerts point to query cardinality instead of slow code.",
+      "How one retained label can multiply alert instances and email flapping."
+    ]
+  },
+  "resources": [
+    {
+      "file": "query-fragment.logql",
+      "description": "The minimal label-collapsing query fragment recorded for the fix.",
+      "source": "docs/operations/step-65-observability-runbook.md"
+    }
+  ],
+  "notes": []
+}

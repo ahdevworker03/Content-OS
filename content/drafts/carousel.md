@@ -1,146 +1,104 @@
-# Carousel Draft — وين رح ضع هيدا الكود؟ (Where the Code Goes)
-
-## Core Insight Statement
-
-When the project grows, file structure stops being cosmetic — it reduces the time spent deciding where code belongs and makes future changes easier.
-
----
+# Instagram Carousel — أربع شغلات رح ركّز عليهن بسنتي التانية بـ CS
 
 ## Instagram Carousel (Lebanese Arabic)
 
-### Slide 1 — Cover / Hook
+### Slide 1 — Cover
 
-**Visual:** Minimal dark background, big centered text. A subtle cursor or folder icon fading in the corner. No mockup — the hook is the visual.
-
-**Text:**
-أصعب شي ما كان أكتب الكود… كان ألاقيه بعدين.
-وليش هالمشكلة ما ظهرت إلا لما المشروع كبر؟
-
----
-
-### Slide 2 — The Trigger
-
-**Visual:** Split screen: small simple project on the left (few files), grown messy project on the right (many folders). Highlight moves to the right side.
+**Visual:** A real study-planning page on a desk. Four short handwritten labels branch from “سنتي التانية بـ CS”; keep the layout simple and personal.
 
 **Text:**
-كنت عم أضيف feature جديدة على مشروعي.
-المشروع كان كبّر شوي عن أول — ما عاد ملف ولا اتنين.
-كتابة الـ code نفسها ما كانت هي المشكلة.
-بس وقفت قدام سؤال واحد: وين حطه؟
 
----
+بلّشت سنتي التانية بـ CS…
+وهول أربع شغلات رح ركّز عليهن
 
-### Slide 3 — Previous Belief
+### Slide 2 — Context
 
-**Visual:** A thought bubble: a tidy folder icon with a checkmark. Under it, a shrugging "وشو الفرق؟" energy. Keep it light and honest.
+**Visual:** Close-up of university notes beside a blank planning page. No fabricated grades, project screens, or results.
 
 **Text:**
-أول ما بلشت، كنت مفكر الـ file structure شغلة شكلية.
-يعني folders منظمة، والمشروع بيبقى نضيف.
-المشاريع أساساً بعدها صغيرة، شو فرقت إذا حطيت الملف هون أو هونيك؟
-كان كل تفكيري: شغال؟ تمام، كمّل.
 
----
+قررت خلّي هالسنة أكتر من مواد بدرسها لحالها.
 
-### Slide 4 — Friction
+هالسنة رح اربط اللي عم بتعلّمه بالجامعة بالـ building، وركّز على فهم كيف الـ systems بتشتغل.
 
-**Visual:** A file being dragged between two folders, arrow bouncing back and forth. Small imports list crossing out and re-pointing.
+هيدي خطة تركيزي لهالسنة — بعدني ما حقّقت هالأهداف.
 
-**Text:**
-لما المشروع كبّر، حسّيت إني بضيع وقت بالقرار، مش بالكتابة.
-أول ما بفتح المشروع بعد أسبوع، بضيّع وقت عم دوّر وين كل شي.
-بحط الـ file بمكان، وبعد شوي بكتشف انه مش هون مكانه — بنقله، وبعدله الـ imports.
-وصار النقل والترتيب ياخد مني وقت أكتر من كتابة الكود نفسه.
+### Slide 3 — University foundations
 
----
-
-### Slide 5 — Realization
-
-**Visual:** Minimal text slide. Big headline, three lines, then a highlighted summary box at the bottom.
+**Visual:** A notebook with “Databases / Software Engineering / Networking” written as subjects to focus on.
 
 **Text:**
-هون فهمت: الترتيب مش للتجميل، هو لتقليل التلخبط.
-المشكلة إني ما عم أعرف نظّم صح.
-كل ما كان واضح وين بيروح كل ملف، كل ما قراري بيصير أسرع.
-ما محتاج 50 folder ولا structure معقدة — بس شي واضح، وكل ملف إلو مكان.
-الـ structure مش رفاهية ولا شكل — هو وقت بتوفره بعدين.
 
----
+أول شي، رح ركّز على فهم مواد الـ CS الأساسية بعمق.
 
-### Slide 6 — Project Bridge
+مثل databases، software engineering، وnetworking، لأن فهم هالمفاهيم أساسي لبناء software حقيقي.
 
-**Visual:** Screenshot-style view of a small feature group: files for one feature sitting together in one place. Clean, real, not polished to perfection.
+### Slide 4 — Focused technical depth
+
+**Visual:** A simple handwritten map: TypeScript → React / Express → Prisma. Present it as a learning direction, not a completed stack diagram.
 
 **Text:**
-عملت تعديل صغير على مشروعي — بس خفف عني كتير.
-اللي بلّشت جرّبه إنّي قرّب الملفات المرتبطة بنفس الـ feature من بعض.
-أول ما بضيف شي، بسأل نفسي: ليش أنا حاطه هون؟
-وإذا ما لقيت جواب واضح، بنقل الملف لمكان أوضح.
 
----
+كمان رح اتعمّق بـ TypeScript للـ web development، لأنّي بقدر استعملها بالـ frontend والـ backend.
 
-### Slide 7 — Small Takeaway
+رح اشتغل فيها مع React للـ frontend، وExpress للـ backend، وPrisma للـ database layer — يعني غطّي أكتر من جزء بالـ system بنفس اللغة.
 
-**Visual:** Two stacked arrow lines: "قرار أقل" shrinking, "وقت كتابة" growing. Simple, concrete — no slogans.
+### Slide 5 — Understanding real systems
+
+**Visual:** A hand-drawn frontend ↔ backend ↔ database flow. Label it as questions to explore; no traffic charts or claimed metrics.
 
 **Text:**
-كل ما الـ structure بيصير أوضح، وقت القرار بقصر.
-مش مطلوب ترتيب مثالي — بس انه أوصل لأي ملف بسرعة.
-وكل ما أضيف feature، بعرف تقريباً وين بيروح.
-هيك وقت البحث والقرار صار أقل… ووقت الكتابة صار أكبر.
 
----
+كمان رح ركّز على فهم كيف أجزاء الـ system بتحكي مع بعضها.
 
-### Slide 8 — Peer CTA
+رح اشتغل على أسئلة مثل: كيف بيمشي الـ data بين frontend وbackend؟ وكيف بيتحمّل الـ system استعمال حقيقي؟
 
-**Visual:** Question-first layout. Three short lines with dots, then a highlighted one-liner box, then the CTA box. Footer below.
+رح اتعلّم هالشي من building وتجربة حقيقية، خطوة خطوة.
+
+### Slide 6 — Communicating what I build
+
+**Visual:** A page with three prompts: “الفكرة؟ لمين؟ شو قيمتها؟” beside a student’s rough presentation notes.
 
 **Text:**
-وصلت لهالمرحلة؟
-صار الكود أسهل كتابة من إنك تعرف وين تحطه؟
-شو أول شي حسيت لازم يتغير لما المشروع كبّر عندك؟
-وين بتضيّع وقتك أكتر — كتابة الكود ولا قرار المكان؟
-كل ملف بمكان واضح — يعني قرار أقل لما ترجع للمشروع.
-صار معك نفس الشي؟
 
----
+ورح خصّص وقت كمان لتعلّم كيف اشرح فكرتي والـ product اللي ببنيه.
 
-### Instagram Caption
+رح اتعلّم اشرح قيمة الـ product وكيف بيعه، واتواصل مع ناس عندن خبرة أكتر مني.
 
-بتفتكر أول ما كبّر مشروعك، شو صار أصعب فيه ؟ عندي صار: وين أحط الكود الجديد (:
+بالنسبة إلي، بناء product قوي لحاله ما بكفّي إذا ما عرفت أوصل قيمته.
 
-المشكلة ما كانت بكتابة الـ code نفسها. بس أول ما تفتح المشروع بعد أسبوع وتبلّش تدوّر: هيدا الملف وين مكانه؟ وهيدا الـ folder تبع شو؟ — هون بيروح الوقت.
+### Slide 7 — Outcome
 
-عملت شي بسيط مع حالي: كل ملفات الـ feature وحدة مع بعض، وكل ملف لازم أعرف ليش موجود بهالمكان.
+**Visual:** Return to the four-part planning page. Draw light connecting lines between studying, focused practice, building, and explaining; avoid a “roadmap to success” look.
 
-ما صار عندي ترتيب مثالي — بس صار عندي وقت أقل بالتلخبط، ووقت أكثر للكتابة.
+**Text:**
 
-أنت وين بتضيع أكتر بهالموضوع؟
+هول أربع أولويات رح اشتغل عليهن كمسار واحد.
 
----
+رح اربط الأساسيات بالـ building، افهم الـ system من التجربة، واتعلّم اوصل قيمة اللي عم بعمله.
 
-## LinkedIn Adaptation (English)
+هيدي الخطة اللي رح بلّش فيها هالسنة، ولسّه قدّامي كتير اتعلّمه.
 
-**Headline:** The slow part was not writing the code. It was finding its place.
+## Instagram Caption
 
----
+بلّشت سنتي التانية بـ CS، وحدّدت كيف رح اربط الجامعة بالـ building.
 
-**Body:**
+هالسنة رح ركّز على فهم مواد أساسية مثل databases وsoftware engineering وnetworking، واتعمّق بـ TypeScript. وبنفس الوقت، رح اشتغل على فهم كيف الـ systems بتشتغل من خلال building وتجربة حقيقية، واتعلّم اشرح قيمة اللي عم بعمله.
 
-I used to think file structure was mostly cosmetic — folders organized so the project looks clean.
+هيدي أربع أولويات عملية لهالسنة: أساسيات أقوى، تركيز تقني أعمق، فهم للـ systems من خلال البناء، وتواصل أوضح عن قيمة الـ product. بعدني ببداية هالمسار، وهيدي خطة الشغل اللي رح التزم فيها.
 
-That changed while I was adding a new feature to my web project. Writing the code was not the hard part. One small decision was: where does this code actually belong? In the feature, in a new file, next to the shared utilities? Every option looked reasonable, and none looked obviously right.
+إنتو كيف بتربطوا بين مواد الجامعة والتطبيق العملي؟
 
-The code took minutes. The decision took longer. And a week later, I was searching where everything was again.
+## LinkedIn Adaptation
 
-So I started with something simple: related files in one place, and each file needed a clear answer to "why am I here?" The slowdown did not disappear, but it got smaller — and less frequent.
+As I start my second year of Computer Science, I’ve set four connected focus areas for the year. My plan goes beyond completing courses one at a time.
 
-I am still shaping this in my project. For me, the real shift was understanding that structure is not about impressing anyone. It is about making the next change easier.
+I’ll focus on understanding foundation subjects like databases, software engineering, and networking, while building deeper TypeScript skills for web development. Using TypeScript across a web stack gives me a practical way to connect that technical focus with the systems I’m planning to build.
 
-Was there a moment when a slowdown taught you what organization actually means for you? What is the first sign your codebase has outgrown "just drop it somewhere"?
+I’m also planning to learn how real systems behave through building: how the frontend, backend, and database work together, and what changes when people use the system.
 
----
+Alongside that, I’ll work on explaining ideas, presenting what I build, and communicating and selling its value. I see that communication as part of building, and I’m still learning how to do it well.
 
-**CTA:** Was there a moment when a slowdown taught you what organization actually means for you?
+These are the areas I’m committing to focus on this year, not skills I’ve already mastered. My plan is to connect university fundamentals with deeper technical practice, learning through real systems, and clearer communication as I build.
 
-**Tags:** #WebDevelopment #CSStudent #LearningInPublic #CodeOrganization #StudentDeveloper
+How have you connected what you study with what you build?
