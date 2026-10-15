@@ -1,0 +1,164 @@
+{
+  "identity": {
+    "id": "content-009",
+    "title": "Four areas that connect CS study to building software",
+    "lifecycle_stage": "draft"
+  },
+  "trigger": {
+    "description": "Starting my second year of Computer Science and examining how foundations, TypeScript practice, systems thinking, and product communication connect to building software.",
+    "insight": "Developer judgment grows through connected foundations, focused technical practice, understanding how systems behave through building, and communicating product value. The creator is beginning to explore this connection, not claiming mastery.",
+    "hook": "مواد الـ CS مش منفصلة عن الـ building"
+  },
+  "metadata": {
+    "platform": "instagram",
+    "primary_format": "carousel",
+    "language": "ar",
+    "content_pillar": "Clear explanations of systems, decisions, and tradeoffs from real software work",
+    "tags": [
+      "computer-science",
+      "developer-in-practice",
+      "learning-in-public",
+      "typescript",
+      "systems-thinking",
+      "communication"
+    ],
+    "created_date": "2026-10-14",
+    "notes": "Explanation-led Project Thinking carousel. The four areas are a model the creator is beginning to explore, not completed outcomes."
+  },
+  "variants": [
+    {
+      "platform": "instagram",
+      "format": "carousel",
+      "language": "ar",
+      "body": {
+        "type": "carousel",
+        "slides": [
+          {
+            "layout": "cover",
+            "number": "SLIDE 1 OF 7",
+            "title": "مواد الـ CS مش منفصلة",
+            "subtext": "عن الـ building",
+            "swipe": "اسحب →"
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 2 OF 7",
+            "section_tag": {
+              "text": "السياق",
+              "class": ""
+            },
+            "title": "بلّشت سنتي التانية بـ CS، وصرت اسأل: كيف هالمواد بتأثر على software ببنيه؟",
+            "items": [
+              {
+                "text": "مش كمواد لحالن، بس كأجزاء بتأثر على كيف بفكّر بالـ building.",
+                "accent": false
+              },
+              {
+                "text": "هيدا الربط عم جرّب افهمه ببداية هالسنة.",
+                "accent": true
+              }
+            ],
+            "swipe": "اسحب →"
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 3 OF 7",
+            "section_tag": {
+              "text": "١ — الأساسيات",
+              "class": ""
+            },
+            "title": "الأساسيات بتغيّر القرار قبل ما اكتب code.",
+            "items": [
+              {
+                "text": "databases، software engineering، وnetworking بيعطوني طريقة أفهم فيها الـ system قبل ما قرّر كيف ابنِيه.",
+                "accent": true
+              }
+            ],
+            "swipe": "اسحب →"
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 4 OF 7",
+            "section_tag": {
+              "text": "٢ — تركيز تقني",
+              "class": ""
+            },
+            "title": "TypeScript مش بس للـ frontend.",
+            "items": [
+              {
+                "text": "بتخلّيني اشتغل بنفس اللغة بالـ frontend والـ backend.",
+                "accent": false
+              },
+              {
+                "text": "ومع React، Express، وPrisma، بصير أسهل أفهم كيف الأجزاء بتكمل بعضها.",
+                "accent": true
+              }
+            ],
+            "swipe": "اسحب →"
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 5 OF 7",
+            "section_tag": {
+              "text": "٣ — فهم الـ systems",
+              "class": ""
+            },
+            "title": "الـ system مش مجموعة أجزاء بتشتغل لحالا.",
+            "items": [
+              {
+                "text": "المهم كيف الـ data بتمشي بين الـ frontend والـ backend، وكيف كل جزء بيتأثر بالتاني.",
+                "accent": false
+              },
+              {
+                "text": "هالشي بيوضح أكتر من building وتجربة حقيقية، خطوة خطوة.",
+                "accent": true
+              }
+            ],
+            "swipe": "اسحب →"
+          },
+          {
+            "layout": "box-list",
+            "number": "SLIDE 6 OF 7",
+            "section_tag": {
+              "text": "٤ — التواصل",
+              "class": ""
+            },
+            "title": "والـ product مش بس implementation.",
+            "items": [
+              {
+                "text": "قيمة الـ product بتبين أكتر لما نعرف: لمين هو، شو بحل، وليش حدا يهتم فيه.",
+                "accent": true
+              },
+              {
+                "text": "هيدا جزء من التفكير بالـ product، مش شغلة بتصير بعد الـ code.",
+                "accent": false
+              }
+            ],
+            "swipe": "اسحب →"
+          },
+          {
+            "layout": "bullet-list",
+            "number": "SLIDE 7 OF 7",
+            "section_tag": {
+              "text": "وين بدي وصل",
+              "class": ""
+            },
+            "title": "هول مش أربع مسارات منفصلين.",
+            "items": [
+              {
+                "text": "أساسيات أقوى، building أعمق، فهم أوضح للـ system، وتواصل أوضح عن قيمة الـ product.",
+                "accent": true
+              },
+              {
+                "text": "هيدي الطريقة اللي عم جرّب اربط فيهن الدراسة بالـ building، ولسّه عم بلّش فيها.",
+                "accent": false
+              }
+            ]
+          }
+        ]
+      },
+      "caption": "مواد الـ CS، الـ building، وفهم الـ product مش مسارات منفصلة.\n\nبلّشت سنتي التانية بـ CS، وعم جرّب أربط بين الأساسيات مثل databases وsoftware engineering وnetworking، وبين TypeScript، فهم الـ systems، والتفكير بقيمة الـ product.\n\nبالنسبة إلي، هالربط بيعطي الـ building اتجاه أوضح: ما بوقف عند code، وبفكّر كمان بالـ system وبقيمة اللي عم بنِيه. هيدي فكرة عم جرّبها ببداية هالسنة، مش نتيجة وصلتلا.\n\nأي جزء بتحسّوه منفصل عن الـ building، وهو مش منفصل؟",
+      "cta": "أي جزء بتحسّوه منفصل عن الـ building، وهو مش منفصل؟"
+    }
+  ]
+}

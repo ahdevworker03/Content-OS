@@ -38,3 +38,4 @@ Archive folders with an `unknown-date-` prefix are legacy migrated posts where n
 | 6   | `content/published/instagram/unknown-date-summer-building-foundations/` | هالصيف عم أبني أساسات — This Summer, I'm Building Foundations | Carousel |
 | 7   | `content/published/instagram/2026-08-13-portfolio-first-year-cs/` | ليش بلشت ببناء موقع Portfolio من أول سنة جامعة | Carousel |
 | 8   | `content/published/instagram/2026-09-01-where-the-code-goes/` | وين رح ضع هيدا الكود؟ — Where the Code Goes | Carousel |
+| 9   | `content/published/instagram/2026-10-16-four-focus-areas-second-year-cs/` | مواد الـ CS مش منفصلة عن الـ building | Carousel |
