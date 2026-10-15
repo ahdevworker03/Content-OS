@@ -32,11 +32,11 @@ All of these currently live in one repository because the product is still a sin
 
 ## 3. Top-Level Repository Responsibilities
 
-### `.opencode/`
-Agent configuration and skills. Holds the writing/consultation skills that shape content quality (voice, Arabic, technical language, carousel copy, LinkedIn reflection, strategy, review).
+### `.agents/skills/`
+Codex project skills that guide writing and consultation (voice, Arabic, technical language, carousel copy, LinkedIn reflection, strategy, review). Each skill is stored in its own directory with a `SKILL.md` entrypoint.
 
-**Belongs here:** agent skills and any agent tooling.
-**Does not belong here:** product application code, renderer code, content artifacts, framework documents.
+**Belongs here:** repository-specific agent skills.
+**Does not belong here:** product application code, renderer code, content artifacts, framework documents, or Codex user-level configuration.
 
 ### `framework/`
 The content-intelligence layer — strategy, format rules, workflow prompts, the content model, and published-content memory. See §4.
@@ -71,9 +71,9 @@ The entry point for a human or agent reading the repository. It describes the st
 
 `framework/` is currently the **content-intelligence layer**. It contains everything that decides *what* content to make and *how* it should sound:
 
-- **strategy** — brand identity (`Brand View.md`) and voice (`Brand Voice.md`).
-- **format rules** — `Carousels.md`, `Reels.md`, `Stories.md`.
-- **planning rules** — `Content Format.md` and `Content Pipeline.md` (the lifecycle).
+- **strategy** — brand identity (`Brand Strategy.md`) and voice (`Brand Strategy.md`).
+- **format rules** — `Carousels.md` and `Brand Strategy.md` for supported content guidance.
+- **planning rules** — `Content Workflow.md` (format selection and lifecycle).
 - **workflow prompts** — `01`–`07`, the agent-executed steps from idea through canonical writing and adaptation to variant-specific archive.
 - **content model** — `Content Model.md`, the structured Carousel contract consumed by the renderer.
 - **published-title memory** — `Posted Titles.md`, the duplication-prevention index.
@@ -90,9 +90,9 @@ Much of this is currently expressed as **Markdown** because the system is still 
 ideas → drafts → published
 ```
 
-- `content/ideas/` — raw ideas awaiting planning, captured manually by the user or automatically by project/coding agents after completed and verified work. Each idea has its own folder with a required `idea.json` and may include a small curated set of supporting resources. The format is defined by `framework/model/idea.schema.json`; capture behavior is defined by `framework/CONTENT_IDEA_CAPTURE_RULES.md`.
+- `content/ideas/` — raw ideas awaiting planning, captured manually by the user or automatically by project/coding agents after completed and verified work. Each idea has its own folder with a required `idea.json` and may include a small curated set of supporting resources. The format is defined by `framework/model/idea.schema.json`; capture behavior is defined by `framework/Content idea capture rules.md`.
 - `content/drafts/post.md` — format-neutral canonical meaning and factual source for adaptations.
-- `content/drafts/carousel.md`, `reel.md`, `story.md`, and `linkedin.md` — standalone variants produced only when approved by the brief.
+- `content/drafts/carousel.md` and `linkedin.md` — standalone variants produced only when approved by the brief.
 - `content/published/` — the published archive, one folder per published platform variant under `content/published/<platform>/<YYYY-MM-DD-slug>/`.
 
 For the current single-user Content OS, file-based persistence is appropriate and sufficient. It is **not** the permanent persistence architecture for a future SaaS product — that would move to a database. Until then, files remain the source of truth.
@@ -163,9 +163,9 @@ Today the Content Model is a Markdown document plus an embedded JSON Schema expr
 
 Current persistence is file-based:
 
-- ideas → `content/ideas/<YYYY-MM-DD-project-slug>/` (required `idea.json`, optional curated supporting resources; see `framework/model/idea.schema.json` and `framework/CONTENT_IDEA_CAPTURE_RULES.md`)
+- ideas → `content/ideas/<YYYY-MM-DD-project-slug>/` (required `idea.json`, optional curated supporting resources; see `framework/model/idea.schema.json` and `framework/Content idea capture rules.md`)
 - canonical content → `content/drafts/post.md`
-- approved adaptations → standalone Markdown files under `content/drafts/` (`carousel.md`, `reel.md`, `story.md`, `linkedin.md`)
+- approved adaptations → standalone Markdown files under `content/drafts/` (`carousel.md`, `linkedin.md`)
 - active carousel → `production/workspace/carousel.json`
 - published variants → `content/published/<platform>/<YYYY-MM-DD-slug>/`; `content.md` and `metadata.json` are required, while Carousel JSON/assets and other platform assets are included only for that published variant.
 - published-content index → `framework/memory/Posted Titles.md`

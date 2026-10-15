@@ -76,14 +76,14 @@ Explain a concept from a student's perspective.
 - The Project Bridge must reference a real implementation from active project work.
 - The CTA must invite peer discussion, not feedback-for-the-creator.
 
-For writing style, tone, and voice guidelines — including plain language, jargon handling, and teaching tone — refer to `Brand Voice.md`.
+For writing style, tone, and voice guidelines — including plain language, jargon handling, and teaching tone — refer to `Brand Strategy.md`.
 
 ### What to Avoid
 
 - A carousel that explains a concept without showing it in your own code.
 - Slide sequences that repeat the same point — each slide should introduce new information or a new perspective.
 - Starting without a trigger. Carousels must originate from a real learning moment.
-- For voice-related constraints (teaching tone, over-explanation, jargon), refer to `Brand Voice.md`.
+- For voice-related constraints (teaching tone, over-explanation, jargon), refer to `Brand Strategy.md`.
 
 ---
 
@@ -148,7 +148,7 @@ Document the progress of my own project in public.
 - Grounded in actual work — show real commits, real decisions, real tradeoffs.
 - The progress or problem must be visible, not abstract. Include screenshots, code diffs, or architecture sketches.
 - Follow the same mandatory structure (Hook → Trigger → Body → Project Bridge → CTA) with the project as context.
-- For writing style and tone, refer to `Brand Voice.md`.
+- For writing style and tone, refer to `Brand Strategy.md`.
 
 ### Distinction from Project Thinking
 

@@ -6,7 +6,7 @@ const { chromium } = require("playwright");
   await page.goto("http://localhost:5174/", { waitUntil: "networkidle" });
   await page.waitForTimeout(600);
 
-  await page.screenshot({ path: "/tmp/opencode/studio-full.png" });
+  await page.screenshot({ path: "/tmp/content-os-studio-full.png" });
 
   // Sidebar list
   const items = await page.locator(".studio-sidebar__item").all();
@@ -14,7 +14,7 @@ const { chromium } = require("playwright");
   for (let i = 0; i < Math.min(items.length, 3); i++) {
     await items[i].click();
     await page.waitForTimeout(250);
-    const slide = await page.locator(".studio-preview__slide").screenshot({ path: `/tmp/opencode/slide-${i}.png` });
+    const slide = await page.locator(".studio-preview__slide").screenshot({ path: `/tmp/content-os-studio-slide-${i}.png` });
     sidebars.push(await items[i].innerText().catch(() => ""));
   }
 

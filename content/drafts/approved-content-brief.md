@@ -45,7 +45,7 @@ For LinkedIn, build a separate reflective narrative in English: start from the s
 
 ## Supporting context
 
-Source material: `content/drafts/reel.md`, “The Four Things I’m Focusing on This Year.” Preserve its authentic trigger and four priorities:
+Source material: the approved brief’s own supporting context, “The Four Things I’m Focusing on This Year.” Preserve its authentic trigger and four priorities:
 
 1. Understand core subjects such as databases, software engineering, and networking.
 2. Go deeper with TypeScript for web development across React and Express, with Prisma in the database layer.
@@ -56,10 +56,8 @@ These are stated areas of focus, not completed accomplishments. The source does 
 
 ## Required references
 
-- `framework/strategy/Brand View.md` — identity, audience, and content pillars.
-- `framework/strategy/Brand Voice.md` — voice, language, and platform-specific adaptation rules.
+- `framework/strategy/Brand Strategy.md` — identity, audience, content pillars, voice, language, and platform-specific adaptation rules.
 - `framework/formats/Carousels.md` — Project Thinking carousel purpose and structure.
-- `content/drafts/reel.md` — source experience and supporting context only; its Reel structure is not binding.
 - Workflow 04’s `linkedin-reflection-writing` skill for the LinkedIn adaptation step.
 
 ## Constraints

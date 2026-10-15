@@ -24,7 +24,7 @@ The model must never be designed around one implementation.
 
 ### Content Item
 
-A Content Item represents one atomic piece of content from trigger through archive. Every content piece — carousel, reel, story, LinkedIn post, X thread — is a Content Item.
+A Content Item represents one atomic piece of content from trigger through archive. Every content piece — Instagram Carousel or LinkedIn post — is a Content Item.
 
 A Content Item contains:
 
@@ -60,10 +60,10 @@ Content Item IDs are platform-neutral because platform-specific outputs are repr
 
 | Field           | Type     | Description |
 | --------------- | -------- | ----------- |
-| platform        | string   | Target platform: `instagram` \| `linkedin` \| `x` |
-| primary_format  | string   | Content format: `carousel` \| `reel` \| `story` \| `post` |
+| platform        | string   | Target platform: `instagram` \| `linkedin` |
+| primary_format  | string   | Content format: `carousel` \| `post` |
 | language        | string   | Primary language code (e.g. `ar`, `en`) |
-| content_pillar  | string   | Pillar from Brand View.md this item belongs to |
+| content_pillar  | string   | Pillar from Brand Strategy.md this item belongs to |
 | tags            | string[] | Descriptive tags for search and categorization |
 | created_date    | string   | ISO 8601 date when the item entered production |
 | published_date  | string   | ISO 8601 date when published (empty if not yet published) |
@@ -75,8 +75,8 @@ A Platform Variant is one concrete output of a Content Item adapted for a specif
 
 | Field    | Type   | Required | Description |
 | -------- | ------ | -------- | ----------- |
-| platform | string | yes      | `instagram` \| `linkedin` \| `x` |
-| format   | string | yes      | `carousel` \| `reel` \| `story` \| `post` |
+| platform | string | yes      | `instagram` \| `linkedin` |
+| format   | string | yes      | `carousel` \| `post` |
 | language | string | yes      | Language code for this variant |
 | body     | Body   | yes      | Format-specific content structure |
 | caption  | string | no       | Platform caption / description text |
@@ -134,42 +134,12 @@ Field usage by layout:
 - Legacy `box-list`, `arrow-list`, `bullet-list`, `grid` / `grid-2x2`, `cta`, and `final-cta` values remain accepted during migration. `final-cta` maps to `closing`, retaining its footer and question data in the renderer model.
 - `number`, `swipe`, and generic section labels are not rendered in the personal slide artwork. The footer is the fixed `abdallahhassoun.dev` handle.
 
-#### Reel Body
-
-```json
-{
-  "type": "reel",
-  "duration_seconds": 45,
-  "hook": "Opening hook text",
-  "script": "Spoken script or outline",
-  "visual_suggestions": ["IDE screen recording", "terminal close-up"],
-  "on_screen_text": ["Key text overlay 1", "Key text overlay 2"]
-}
-```
-
-#### Story Body
-
-```json
-{
-  "type": "story",
-  "frames": [
-    {
-      "asset_type": "photo | video | text | talking-head | screen-recording | ai-image",
-      "text": "Frame text or spoken line",
-      "interaction": { "type": "poll | slider | this-or-that", "options": ["A", "B"] }
-    }
-  ]
-}
-```
-
-Stories are represented as `platform: "instagram"` with `format: "story"`.
-
 #### Post Body
 
 ```json
 {
   "type": "post",
-  "content": "Full text content for LinkedIn or X post. Supports markdown formatting.",
+  "content": "Full text content for LinkedIn post. Supports markdown formatting.",
   "structure": "opening-insight | context | reflection | lesson | discussion"
 }
 ```
@@ -219,8 +189,8 @@ The following JSON Schema formalizes the content model. Every Content Item in th
       "type": "object",
       "required": ["platform", "primary_format", "language"],
       "properties": {
-        "platform": { "type": "string", "enum": ["instagram", "linkedin", "x"] },
-        "primary_format": { "type": "string", "enum": ["carousel", "reel", "story", "post"] },
+        "platform": { "type": "string", "enum": ["instagram", "linkedin"] },
+        "primary_format": { "type": "string", "enum": ["carousel", "post"] },
         "language": { "type": "string" },
         "content_pillar": { "type": "string" },
         "tags": { "type": "array", "items": { "type": "string" } },
@@ -236,16 +206,14 @@ The following JSON Schema formalizes the content model. Every Content Item in th
         "type": "object",
         "required": ["platform", "format", "language", "body"],
         "properties": {
-          "platform": { "type": "string", "enum": ["instagram", "linkedin", "x"] },
-          "format": { "type": "string", "enum": ["carousel", "reel", "story", "post"] },
+          "platform": { "type": "string", "enum": ["instagram", "linkedin"] },
+          "format": { "type": "string", "enum": ["carousel", "post"] },
           "language": { "type": "string" },
           "body": {
             "type": "object",
             "required": ["type"],
             "oneOf": [
               { "$ref": "#/$defs/carousel-body" },
-              { "$ref": "#/$defs/reel-body" },
-              { "$ref": "#/$defs/story-body" },
               { "$ref": "#/$defs/post-body" }
             ]
           },
@@ -322,43 +290,6 @@ The following JSON Schema formalizes the content model. Every Content Item in th
       },
       "required": ["type", "slides"]
     },
-    "reel-body": {
-      "type": "object",
-      "properties": {
-        "type": { "const": "reel" },
-        "duration_seconds": { "type": "integer", "maximum": 60 },
-        "hook": { "type": "string" },
-        "script": { "type": "string" },
-        "visual_suggestions": { "type": "array", "items": { "type": "string" } },
-        "on_screen_text": { "type": "array", "items": { "type": "string" } }
-      },
-      "required": ["type"]
-    },
-    "story-body": {
-      "type": "object",
-      "properties": {
-        "type": { "const": "story" },
-        "frames": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "asset_type": { "type": "string", "enum": ["photo", "video", "text", "talking-head", "screen-recording", "ai-image"] },
-              "text": { "type": "string" },
-              "interaction": {
-                "type": "object",
-                "properties": {
-                  "type": { "type": "string", "enum": ["poll", "slider", "this-or-that"] },
-                  "options": { "type": "array", "items": { "type": "string" } }
-                }
-              }
-            },
-            "required": ["asset_type"]
-          }
-        }
-      },
-      "required": ["type"]
-    },
     "post-body": {
       "type": "object",
       "properties": {
@@ -406,10 +337,6 @@ decisions have been applied before the variant reaches the renderer.
 | Studio Export Modal (`production/renderer/src/studio/ExportModal.tsx`) | React DOM (in-browser) | ZIP of PNGs or multi-page PDF |
 | LinkedIn Post (manual) | `post` (linkedin) | Text post |
 
-Future renderers (not implemented):
-- Reel renderer: reads `reel` variant → produces recording instructions
-- Story renderer: reads `story` variant → produces frame-by-frame guide
-- X renderer: reads `post` (x) variant → produces formatted thread
 
 ---
 

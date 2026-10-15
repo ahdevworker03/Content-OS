@@ -5,7 +5,7 @@ Each entry references the archive location where full assets, content, and metad
 
 Per-post metadata (dates, pillars, tags, asset lists) lives inside each post's `metadata.json` in the archive. This file is a lightweight lookup table only.
 
-New entries must use the canonical archive path convention `content/published/<platform>/<YYYY-MM-DD-slug>/`, with a lowercase platform folder (`instagram`, `linkedin`, or `x`) and a date-prefixed slug. This file is only a lightweight index — full metadata lives inside each post's archive folder.
+New entries must use the canonical archive path convention `content/published/<platform>/<YYYY-MM-DD-slug>/`, with a lowercase platform folder (`instagram` or `linkedin`) and a date-prefixed slug. This file is only a lightweight index — full metadata lives inside each post's archive folder.
 
 Archive folders with an `unknown-date-` prefix are legacy migrated posts where no reliable original publish date was available during migration. Keep them as `unknown-date-...` unless the exact publish date is later verified. Do not replace `unknown-date-` with estimated or guessed dates.
 
