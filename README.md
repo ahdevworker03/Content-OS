@@ -15,7 +15,7 @@ Design philosophy: every piece of content originates from a real trigger (a bug,
 ```
 Social Media Content/
 ├── .opencode/                              # opencode configuration
-│   └── skills/                             # Agent skills (used by Workflow 03 and pre/post production)
+│   └── skills/                             # Agent skills (canonical writing in Workflow 03; variant adaptation in Workflow 04)
 │       ├── lebanese-arabic-writing         # Lebanese Arabic copy for Instagram/Stories/Reels/X
 │       ├── student-builder-voice           # Student-builder voice across formats
 │       ├── arabic-technical-language       # Arabic prose + English technical terms
@@ -32,15 +32,16 @@ Social Media Content/
 │   │   ├── Reels.md                        # Reel types, authenticity rules
 │   │   └── Stories.md                      # Story categories, ephemeral content
 │   ├── workflow/                           # Planning and production lifecycle
-│   │   ├── Content Format.md               # Trigger-First planning (stages 1-3)
-│   │   └── Content Pipeline.md             # Full lifecycle (stages 4-8), quality gates, ownership
+│   │   ├── Content Format.md               # Format-selection guidance
+│   │   └── Content Pipeline.md             # Idea-to-archive lifecycle and stage ownership
 │   ├── prompts/                            # AI agent workflow prompts
 │   │   ├── 01-Idea Discovery.md            # Surface post ideas
 │   │   ├── 02-Content Planning.md          # Approve content brief
-│   │   ├── 03-Post Content Builder.md      # Write content package + JSON
-│   │   ├── 04-Render Validation.md         # Validate React rendering
-│   │   ├── 05-Export Assets.md             # Export slide images
-│   │   ├── 06-Archive Published Post.md    # Archive post and update index
+│   │   ├── 03-Post Content Builder.md      # Write only canonical content to post.md
+│   │   ├── 04-Format Adaptation.md         # Create only approved standalone variants
+│   │   ├── 05-Render Validation.md         # Validate Carousel rendering where applicable
+│   │   ├── 06-Export Assets.md              # Export Carousel assets where applicable
+│   │   ├── 07-Archive Published Post.md    # Archive exact published variant
 │   │   └── README.md                       # Operational guide
 │   ├── model/                              # Canonical content data model
 │   │   └── Content Model.md                # Content Item JSON Schema, renderer interface
@@ -48,14 +49,16 @@ Social Media Content/
 │       └── Posted Titles.md                # Duplication prevention lookup table
 │
 ├── content/                                # Content lifecycle artifacts
-│   ├── ideas/                              # Captured content ideas (e.g. migration-series.md)
-│   ├── drafts/                             # Working drafts (Post Content Builder output)
-│   │   ├── carousel.md                     # Carousel draft (when one is in progress)
-│   │   ├── reel.md                         # Reel draft (when one exists)
-│   │   └── story.md                        # Story draft (when one exists)
-│   └── published/                          # Archived published content by platform
-│       ├── instagram/                      # <YYYY-MM-DD-slug>/ — content.md, content.json, metadata.json, assets/
-│       ├── linkedin/                       # <YYYY-MM-DD-slug>/ — content.md, content.json, metadata.json
+│   ├── ideas/                              # Captured content ideas
+│   ├── drafts/                             # Canonical source and approved standalone variants
+│   │   ├── post.md                         # Format-neutral canonical content (Workflow 03)
+│   │   ├── carousel.md                     # Instagram Carousel adaptation (Workflow 04)
+│   │   ├── reel.md                         # Instagram Reel adaptation (when approved)
+│   │   ├── story.md                        # Instagram Story adaptation (when approved)
+│   │   └── linkedin.md                     # LinkedIn Post adaptation (when approved)
+│   └── published/                          # Exact published variants by platform
+│       ├── instagram/                      # Variant-specific content/metadata; Carousel JSON/assets only for Carousel
+│       ├── linkedin/                       # Standalone LinkedIn post content and metadata
 │       └── x/                              # Reserved for future X posts
 │
 ├── production/                             # Render and export tooling
@@ -93,10 +96,10 @@ Six subdirectories organize the framework markdown files by concern:
 | `formats/`   | `Carousels.md`                  | 4 carousel types, mandatory 5-slide structure (Hook → Trigger → Body → Project Bridge → CTA).                                                                                                 |
 |              | `Reels.md`                      | 3 reel types, authenticity rules (no staging), visible learning environment required.                                                                                                         |
 |              | `Stories.md`                    | 5 story categories, unpolished 24h ephemeral, low-friction interactions.                                                                                                                      |
-| `workflow/`  | `Content Format.md`             | Trigger-First planning logic (stages 1–3: Trigger → Idea → Format Selection).                                                                                                                 |
-|              | `Content Pipeline.md`           | Full lifecycle (stages 4–8: Draft → Review → Final Assets → Published → Archived), quality gates, ownership matrix.                                                                           |
-| `prompts/`   | `01-Idea Discovery.md` through `06-Archive Published Post.md` | 6 numbered workflow prompts, each with a single responsibility. See `README.md` in this directory for the operational guide.        |
-| `model/`     | `Content Model.md`              | Canonical JSON Schema (draft 2020-12) for Content Items — identity, trigger, metadata, platform variants, archive. 6 slide layouts, renderer interface. The workspace carousel (`production/workspace/carousel.json`) conforms to this model.    |
+| `workflow/`  | `Content Format.md`             | Trigger-first format-selection guidance used during brief planning.                                                                                                                           |
+|              | `Content Pipeline.md`           | Canonical lifecycle from Idea through exact-variant archive, stage ownership, and quality checks.                                                                                             |
+| `prompts/`   | `01-Idea Discovery.md` through `07-Archive Published Post.md` | 7 numbered workflow prompts. `README.md` lists stage ownership and output contracts. |
+| `model/`     | `Content Model.md`              | Structured Carousel contract and renderer interface. The workspace carousel (`production/workspace/carousel.json`) conforms to this model.                                                      |
 | `memory/`    | `Posted Titles.md`              | Lightweight lookup table of published content. Per-post metadata lives in each post's `metadata.json`. |
 
 
@@ -104,14 +107,14 @@ Six subdirectories organize the framework markdown files by concern:
 
 **`ideas/`** — Captured ideas, one folder per idea, with a required `idea.json` and optional curated supporting resources. Manual saves follow `framework/model/idea.schema.json`; automatic project-agent capture follows `framework/CONTENT_IDEA_CAPTURE_RULES.md`.
 
-**`drafts/`** — Working drafts produced by the Post Content Builder agent. `carousel.md` currently holds an 8-slide carousel draft (Lebanese Arabic) with a LinkedIn adaptation (English). `reel.md` and `story.md` exist as files and are populated when a reel or story draft is generated. A draft file may legitimately be empty until its format is used.
+**`drafts/`** — `post.md` is the format-neutral canonical source written by Workflow 03. Workflow 04 creates only approved standalone adaptations in `carousel.md`, `reel.md`, `story.md`, or `linkedin.md`. LinkedIn never lives inside `carousel.md`. Carousel alone also produces `production/workspace/carousel.json`. Draft files may be empty until their workflow is run.
 
-**`published/`** — Archived published content, one folder per post under a lowercase platform directory using the canonical convention `content/published/<platform>/<YYYY-MM-DD-slug>/`:
+**`published/`** — Archived published content, one folder per published platform variant under a lowercase platform directory using the canonical convention `content/published/<platform>/<YYYY-MM-DD-slug>/`:
 
 - `content/published/instagram/2026-08-13-portfolio-first-year-cs/`
 - `content/published/linkedin/2026-08-13-portfolio-first-year-cs/`
 
-Each post folder contains `content.md` (human-readable body), `content.json` (canonical Content Model), and `metadata.json` (archive metadata); Instagram carousels additionally include an `assets/` folder with the slide images. Older posts without a recorded publish date use an `unknown-date-` slug prefix (e.g. `content/published/instagram/unknown-date-first-month-in-cs/`). The old `Instagram/Instagram Carousel/Post N/` and `LinkedIn/Post N/` paths were migrated to this convention.
+Each archive folder preserves one exact published platform variant in `content.md` plus `metadata.json`. Carousel JSON and exported slide assets are included only for a published Carousel; other variant-specific assets are included only when they were published. Older posts without a recorded publish date use an `unknown-date-` slug prefix (e.g. `content/published/instagram/unknown-date-first-month-in-cs/`). The old `Instagram/Instagram Carousel/Post N/` and `LinkedIn/Post N/` paths were migrated to this convention.
 
 ### `production/` — Render and Export Tooling
 
@@ -157,7 +160,7 @@ Top-level documentation, split by purpose:
 
 ## Writing Skills
 
-Agent skills live in `.opencode/skills/`. Workflow 03 (`03-Post Content Builder.md`) requires the relevant writing skills before final copy is produced:
+Agent skills live in `.opencode/skills/`. Workflow 03 (`03-Post Content Builder.md`) uses `student-builder-voice` for the canonical draft. Workflow 04 applies the relevant platform and format writing skills to approved variants:
 
 - `lebanese-arabic-writing` — natural Lebanese Arabic for Instagram, Stories, Reels, and X copy.
 - `student-builder-voice` — the student-builder voice across all formats and platforms.
@@ -171,29 +174,21 @@ Two consultation skills also exist: `content-strategist` (evaluating/prioritisin
 
 ## Production Pipeline
 
-The end-to-end pipeline moves from idea to published archive through six workflows:
+The lifecycle moves from Idea through canonical meaning and approved variants to the exact published-variant archive:
 
 ```
-User Context / Learning Activity
-        │  (01) Idea Discovery
-        ▼
-Content Idea
-        │  (02) Content Planning
-        ▼
-Approved Content Brief
-        │  (03) Post Content Builder
-        ▼
-content/drafts/carousel.md  ───  production/workspace/carousel.json
-        │  (04) Render Validation                       │
-        ▼                                               │
-Render Confirmation (Studio preview)                    │
-        │  (05) Export Assets ────── Studio Export modal (ZIP/PDF, in-browser)
-        ▼                                               │
-production/export/*.png  (Playwright /export route)     │
-        │  (06) Archive Published Post                  │
-        ▼                                               ▼
-content/published/<platform>/<YYYY-MM-DD-slug>/
-  content.md  content.json  metadata.json  assets/
+Idea
+  → (02) Approved Content Brief
+  → (03) Canonical Content Draft: content/drafts/post.md
+  → (04) Format / Platform Adaptation: approved standalone variants
+       Carousel → carousel.md + production/workspace/carousel.json
+       Reel → reel.md | Story → story.md | LinkedIn → linkedin.md
+  → (05) Render Validation (Carousel only, where applicable)
+  → (06) Export (Carousel only, where applicable)
+  → Publish the selected variant
+  → (07) Archive the exact published variant
+       content/published/<platform>/<YYYY-MM-DD-slug>/
+       content.md + metadata.json; Carousel data/assets only for Carousel
 ```
 
 ---
@@ -201,81 +196,42 @@ content/published/<platform>/<YYYY-MM-DD-slug>/
 ## System Workflow
 
 1. **Strategy** — `Brand View.md` (identity, audience, pillars) and `Brand Voice.md` (voice, platform rules) are co-root documents influencing all downstream decisions.
-2. **Content Planning** — `Content Format.md` owns trigger-first planning (stages 1–3). `Carousels.md`, `Reels.md`, `Stories.md` define format purposes for selection.
+2. **Content Planning** — `Content Format.md` provides format-selection guidance. Workflow 02 records the approved primary format, target platforms, and required variants in the brief.
 3. **Idea Discovery** — `01-Idea Discovery.md` surfaces content opportunities from real triggers.
 4. **Content Planning** — `02-Content Planning.md` evaluates the idea and produces an approved brief.
-5. **Content Creation** — `03-Post Content Builder.md` transforms the brief into a Markdown draft and canonical JSON.
-6. **Render Validation** — `04-Render Validation.md` confirms the JSON renders correctly in the React carousel renderer.
-7. **Export Assets** — `05-Export Assets.md` captures every slide as a PNG. Two paths: the Playwright pipeline screenshots the `/export` route (`production/export/export-slides.js`), or the Studio's Export modal downloads a ZIP of PNGs / a PDF directly in the browser.
-8. **Archive Published Post** — `06-Archive Published Post.md` creates a self-contained archive under `content/published/` and updates the memory index.
-9. **Repurposing** — Each carousel produces Instagram (Lebanese Arabic) and LinkedIn (English) outputs, governed by platform rewriting rules in `Brand Voice.md`.
-10. **Continuous Improvement** — `Posted Titles.md` prevents idea duplication. Metadata gaps (missing dates, pillars, tags, Instagram titles/captions) tracked for future improvement.
+5. **Canonical Content** — Workflow 03 writes only format-neutral substance to `content/drafts/post.md`.
+6. **Format / Platform Adaptation** — Workflow 04 creates only the variants approved in the brief. Carousel JSON is generated only for Carousel; LinkedIn is a standalone `linkedin.md`.
+7. **Render Validation** — Workflow 05 validates Carousel rendering where applicable.
+8. **Export Assets** — Workflow 06 exports validated Carousel slides through the Studio or Playwright path where applicable.
+9. **Publish** — The creator publishes the selected approved variant manually.
+10. **Archive** — Workflow 07 archives the exact copy and applicable assets published on that platform and updates `Posted Titles.md`.
 
 ---
 
 ## Document Relationships
 
+```text
+01 Idea Discovery
+    → 02 Content Planning: Approved Content Brief
+    → 03 Post Content Builder: content/drafts/post.md
+    → 04 Format Adaptation: only approved standalone variants
+         Instagram Carousel → carousel.md + production/workspace/carousel.json
+         Instagram Reel → reel.md
+         Instagram Story → story.md
+         LinkedIn Post → linkedin.md
+    → 05 Render Validation (Carousel, where applicable)
+    → 06 Export Assets (Carousel, where applicable)
+    → Manual Publish
+    → 07 Archive Published Post: exact published variant + Posted Titles.md
 ```
-framework/strategy/
-  Brand View.md  ──────────►  Brand Voice.md
-                                │
-        ├─── framework/formats/ ◄─────┘
-        │     Carousels.md, Reels.md, Stories.md
-        │
-        └─── framework/workflow/
-              Content Pipeline.md ◄──────┘
-                      │
-                      ▼
-              Content Format.md  ──►  formats/
-                      │
-                      ▼
-              Content Pipeline.md
-                      │
-                      ▼
-               framework/prompts/
-               01-Idea Discovery.md
-                       │
-                       ▼
-               02-Content Planning.md
-                       │
-                       ▼
-               03-Post Content Builder.md
-                       │
-               ┌───────┴────────────────┐
-               ▼                        ▼
-         content/drafts/         production/workspace/
-          carousel.md             carousel.json
-               │                        │
-               └────────┬───────────────┘
-                        ▼
-                04-Render Validation.md
-                        │
-                        ▼
-                 05-Export Assets.md
-                         │
-                 ┌───────┴──────────┐
-                 ▼                  ▼
-         Studio Export modal   production/export/*.png
-         (ZIP / PDF, browser)  (Playwright /export route)
-                 │                  │
-                 ▼                  ▼
-                 06-Archive Published Post.md
-                        │
-               ┌────────┴───────────┐
-               ▼                    ▼
-         content/published/   framework/memory/
-         <platform>/<YYYY-MM-DD-slug>/   Posted Titles.md
-           content.md
-           content.json
-           metadata.json
-           assets/
-```
+
+The canonical draft owns content meaning and factual boundaries. Workflow 04 may change presentation but must preserve that meaning; substantive changes return to Workflow 03. Carousel JSON and assets remain Carousel-specific. A LinkedIn archive contains the standalone LinkedIn publication, not Instagram content.
 
 ---
 
 ## Known Gaps
 
-- **Reel/Story archive guidance** — Workflow 06 inputs are still carousel-centric (`carousel.md`/`carousel.json`/PNG assets). A clearer Reel/Story archive branch is still needed.
+- **Variant archive inputs** — Workflow 07 selects the standalone source matching the actual publication; LinkedIn is archived independently from any Instagram variant.
 - **Content Item IDs** — the Content Model now prefers platform-neutral IDs (e.g. `content-001`), but existing published/workspace IDs are still platform-specific (`instagram-007`, `linkedin-001`, …) until migrated.
 - **Idea persistence** — `content/ideas/` exists, but Workflow 01 does not yet write recommended ideas there; persistence is optional and may be added later.
 - **Skill duplication** — the writing skills overlap on voice and Arabic rules. Acceptable for now; may be consolidated only if it becomes a maintenance issue.

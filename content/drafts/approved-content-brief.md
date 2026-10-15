@@ -60,7 +60,7 @@ These are stated areas of focus, not completed accomplishments. The source does 
 - `framework/strategy/Brand Voice.md` — voice, language, and platform-specific adaptation rules.
 - `framework/formats/Carousels.md` — Project Thinking carousel purpose and structure.
 - `content/drafts/reel.md` — source experience and supporting context only; its Reel structure is not binding.
-- Workflow 03’s `linkedin-reflection-writing` skill for the later LinkedIn drafting step.
+- Workflow 04’s `linkedin-reflection-writing` skill for the LinkedIn adaptation step.
 
 ## Constraints
 
@@ -78,4 +78,4 @@ These are stated areas of focus, not completed accomplishments. The source does 
 - Ground visuals in the actual plan: for example, a simple study/build/understand/communicate map or a privacy-safe student planning artifact. Do not fabricate project screenshots or implementation proof.
 - The LinkedIn version must be independently structured and more deliberate, with reflective reasoning about balancing university foundations and practical building. Keep it modest and personal; avoid prescriptive takeaways.
 - Preserve the distinction between what I plan to focus on and what I have already done.
-- Workflow 02 is complete here. Workflow 03 owns drafting both platform versions.
+- Workflow 02 is complete here. Workflow 03 owns the canonical format-neutral draft; Workflow 04 owns the approved platform adaptations.

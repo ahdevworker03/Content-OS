@@ -1,4 +1,4 @@
-# 05 — Export Assets
+# 06 — Export Assets
 
 ## Purpose
 
@@ -24,7 +24,7 @@ No other Framework documents are required for this workflow. Strategy, format, b
 
 ## Inputs
 
-- **Validated React renderer application** — The renderer in `production/renderer/` that has already been confirmed render-ready by workflow 04.
+- **Validated React renderer application** — The renderer in `production/renderer/` that has already been confirmed render-ready by Workflow 05.
 - **`production/workspace/carousel.json`** — The canonical structured data that the renderer consumes to display each slide.
 - **Export configuration** — Settings that control the export process: viewport dimensions, output directory, file naming pattern, CSS selector for slide capture, scale factor, and headless mode.
 - **Export mechanism** — One of the two supported paths:
@@ -51,7 +51,7 @@ The selected export mechanism must preserve the rendered slide output. The workf
 
 Export is successful when all of the following are true:
 
-- **Render Validation completed.** Workflow 04 confirmed the carousel is render-ready before export began.
+- **Render Validation completed.** Workflow 05 confirmed the carousel is render-ready before export began.
 - **React renderer successfully started.** The renderer launched and is serving the carousel content.
 - **Carousel loaded successfully.** `carousel.json` was loaded without errors and all slides are displayed.
 - **Selected export mechanism preserved rendered slide output.** The Studio Export Modal or Playwright pipeline captured the rendered slides without altering layout or content.
@@ -67,7 +67,7 @@ Export is successful when all of the following are true:
 
 ## Workflow
 
-1. **Confirm the carousel has already passed Render Validation.** Verify that workflow 04 completed successfully and the carousel is confirmed render-ready. If validation has not been performed or failed, stop and report the missing prerequisite.
+1. **Confirm the carousel has already passed Render Validation.** Verify that Workflow 05 completed successfully and the carousel is confirmed render-ready. If validation has not been performed or failed, stop and report the missing prerequisite.
 
 2. **Launch the React renderer if it is not already running.** Start the renderer application with the export configuration. Ensure the renderer is serving the carousel and accessible to the selected export mechanism.
 
@@ -93,8 +93,8 @@ Export is successful when all of the following are true:
 - Never redesign or reorder slides.
 - Never export before Render Validation has confirmed the carousel is render-ready.
 - The selected export mechanism must preserve rendered slide output.
-- Never perform rendering validation or content validation. Validation belongs to workflow 04.
-- Never archive exported assets or update the posted-titles index. Archiving belongs to workflow 06.
+- Never perform rendering validation or content validation. Validation belongs to Workflow 05.
+- Never archive exported assets or update the posted-titles index. Archiving belongs to Workflow 07.
 - Never update repository files outside the configured export directory.
 - Never silently ignore export failures. Every failure must be reported.
 

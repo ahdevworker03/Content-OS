@@ -74,8 +74,8 @@ The entry point for a human or agent reading the repository. It describes the st
 - **strategy** — brand identity (`Brand View.md`) and voice (`Brand Voice.md`).
 - **format rules** — `Carousels.md`, `Reels.md`, `Stories.md`.
 - **planning rules** — `Content Format.md` and `Content Pipeline.md` (the lifecycle).
-- **workflow prompts** — `01`–`06`, the agent-executed steps from idea to archive.
-- **content model** — `Content Model.md`, the canonical structured contract.
+- **workflow prompts** — `01`–`07`, the agent-executed steps from idea through canonical writing and adaptation to variant-specific archive.
+- **content model** — `Content Model.md`, the structured Carousel contract consumed by the renderer.
 - **published-title memory** — `Posted Titles.md`, the duplication-prevention index.
 
 Much of this is currently expressed as **Markdown** because the system is still file-based and agent-driven. The Markdown documents are the working implementation of the intelligence layer, not just documentation of it.
@@ -91,8 +91,9 @@ ideas → drafts → published
 ```
 
 - `content/ideas/` — raw ideas awaiting planning, captured manually by the user or automatically by project/coding agents after completed and verified work. Each idea has its own folder with a required `idea.json` and may include a small curated set of supporting resources. The format is defined by `framework/model/idea.schema.json`; capture behavior is defined by `framework/CONTENT_IDEA_CAPTURE_RULES.md`.
-- `content/drafts/` — working drafts produced by the content builder.
-- `content/published/` — the published archive, one folder per post under `content/published/<platform>/<YYYY-MM-DD-slug>/`.
+- `content/drafts/post.md` — format-neutral canonical meaning and factual source for adaptations.
+- `content/drafts/carousel.md`, `reel.md`, `story.md`, and `linkedin.md` — standalone variants produced only when approved by the brief.
+- `content/published/` — the published archive, one folder per published platform variant under `content/published/<platform>/<YYYY-MM-DD-slug>/`.
 
 For the current single-user Content OS, file-based persistence is appropriate and sufficient. It is **not** the permanent persistence architecture for a future SaaS product — that would move to a database. Until then, files remain the source of truth.
 
@@ -140,13 +141,15 @@ The system has three related but distinct data contracts, arranged in this flow:
 
 ```
 Content Intelligence
-  → Content Model
-    → Adapter
-      → Renderer Models
-        → Studio / Renderer
+  → Canonical Content Draft
+    → Format / Platform Variants
+      → Carousel Content Model (when applicable)
+        → Adapter
+          → Renderer Models
+            → Studio / Renderer
 ```
 
-- **`framework/model/Content Model.md`** — the canonical **authoring/content contract**. Content generation writes data that conforms to it; validation checks against it; export and archive store it (`content.json` / `metadata.json`). It is the single source of truth for what a content item *is*.
+- **`framework/model/Content Model.md`** — the structured Carousel contract consumed by the renderer. Workflow 04 creates `production/workspace/carousel.json` only when a Carousel is approved; canonical meaning remains in `content/drafts/post.md`.
 - **Adapter layer** (`mapWorkspaceCarousel.ts`) — the boundary that understands both schemas. It translates Content Model workspace data into renderer data.
 - **Renderer models** (`Carousel`, `SlideData`) — the canonical **presentation/runtime contract** used by the Studio and the renderer.
 
@@ -161,9 +164,10 @@ Today the Content Model is a Markdown document plus an embedded JSON Schema expr
 Current persistence is file-based:
 
 - ideas → `content/ideas/<YYYY-MM-DD-project-slug>/` (required `idea.json`, optional curated supporting resources; see `framework/model/idea.schema.json` and `framework/CONTENT_IDEA_CAPTURE_RULES.md`)
-- drafts → Markdown (`content/drafts/…`)
+- canonical content → `content/drafts/post.md`
+- approved adaptations → standalone Markdown files under `content/drafts/` (`carousel.md`, `reel.md`, `story.md`, `linkedin.md`)
 - active carousel → `production/workspace/carousel.json`
-- published posts → `content/published/<platform>/<YYYY-MM-DD-slug>/` (`content.md`, `content.json`, `metadata.json`, `assets/`)
+- published variants → `content/published/<platform>/<YYYY-MM-DD-slug>/`; `content.md` and `metadata.json` are required, while Carousel JSON/assets and other platform assets are included only for that published variant.
 - published-content index → `framework/memory/Posted Titles.md`
 
 Note: `production/workspace/carousel.json` is the current **single-active-carousel working mechanism**. It holds exactly one carousel at a time and is not suitable as primary persistence for multi-post or multi-user use. When persistent multi-post management arrives, it will stop being the product's primary persistence mechanism — though it may remain useful as a development fixture, renderer input, test fixture, or debugging tool.
@@ -192,7 +196,7 @@ The following parts are **transitional** — appropriate for the current stage, 
 - file-based content persistence
 - the single global carousel workspace
 - Studio/renderer co-location
-- the manual, agent-driven workflow (run prompts 01 → 06 by hand)
+- the manual, agent-driven workflow (run prompts 01 → 07 by hand, with Carousel validation/export only where applicable)
 - the repository-based archive and published-title index
 
 These are not architectural mistakes. They are the simplest correct implementation for a single-creator, agent-assisted workflow. Each will change only when the product genuinely requires it.

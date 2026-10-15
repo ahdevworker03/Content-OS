@@ -2,121 +2,72 @@
 
 ## Purpose
 
-Transform a selected content idea into an approved production-ready content brief. This workflow evaluates the idea against the brand strategy, defines the creative direction, and produces a complete brief that the Post Content Builder can execute without making strategic decisions. It is responsible for planning only — it does not write final content, render slides, export assets, or archive posts.
-
----
+Turn one selected idea into an approved Content Brief that fixes the idea, audience, primary format, target platforms, and every required variant before canonical writing begins.
 
 ## Scope
 
-This workflow begins after a content idea has been selected from the Idea Discovery workflow.
-
-It ends when a complete content brief has been approved and is ready for the Post Content Builder workflow.
-
----
+This workflow starts with a selected idea and ends with one approved Content Brief. It makes planning decisions only. It does not write canonical content, adapt variants, render, export, publish, or archive.
 
 ## Required Reading
 
-- `framework/strategy/Brand View.md` — Creator identity, audience, content pillars, boundaries.
-- `framework/strategy/Brand Voice.md` — Voice, tone, platform rules, language strategy, rewriting rules, mandatory output package.
-
-Additional format or workflow documents should only be consulted if the selected format or creative direction requires clarification. Renderer and production documents are not required for planning.
-
----
+- `framework/strategy/Brand View.md` — creator identity, audience, pillars, and boundaries.
+- `framework/strategy/Brand Voice.md` — platform voice and language rules.
+- Relevant format rules only when needed to choose or constrain a format.
 
 ## Inputs
 
-- **Selected content idea** — The recommended idea from Idea Discovery, including its core concept, trigger, suggested format, hook angle, and audience value.
-- **User context** — Any additional information provided about the current learning journey, recent projects, or specific goals.
-- **Supporting project material** — Code snippets, screenshots, project references, or notes that help ground the brief in real experience.
-- **Framework strategy documents** — Brand View and Brand Voice, as listed in Required Reading.
-- **Previous planning decisions** — If this content continues or references an existing concept or series, the relevant context from prior briefs or published content.
+- The selected content idea and its authentic trigger.
+- User context and supporting material.
+- Relevant earlier planning decisions, if this continues an existing idea or series.
 
----
+## Output — Approved Content Brief
 
-## Outputs
+Produce exactly one narrative brief with:
 
-The workflow produces exactly one artifact:
+- Working title
+- Core idea
+- Trigger
+- Audience problem
+- Key insight
+- Intended outcome
+- Content pillar
+- **Primary format** — the main format for this content item.
+- **Target platforms** — every platform this item is intended for.
+- **Required variants** — each approved platform and format pair, such as Instagram Carousel and LinkedIn Post.
+- Creative direction
+- Supporting context
+- Required references
+- Constraints
+- Notes for the Post Content Builder
 
-### Approved Content Brief
-
-The brief is the official input for the Post Content Builder (workflow 03). It must contain, at minimum:
-
-- **Working title** — A descriptive title for the content piece.
-- **Core idea** — One sentence summarising what the post is about.
-- **Trigger** — The real experience that originated the idea.
-- **Audience problem** — What the audience struggles with or needs to understand.
-- **Key insight** — The single most important takeaway the audience should gain.
-- **Intended outcome** — What the audience should feel, think, or do after engaging.
-- **Content pillar** — The pillar from Brand View that this content belongs to.
-- **Target platforms** — Which platforms the content will be published on.
-- **Primary format** — Carousel, reel, story, or post.
-- **Creative direction** — The narrative angle, tone, and any specific approach to use.
-- **Supporting context** — Relevant background, project references, or recent content this builds on.
-- **Required references** — Any Framework documents or external resources the builder must consult.
-- **Constraints** — Any format, platform, or brand boundaries the builder must respect.
-- **Notes for the Post Content Builder** — Guidance, warnings, or priorities for the execution phase.
-
-The brief must be complete enough that workflow 03 can execute without making strategic or brand decisions.
-
----
-
-## Success Criteria
-
-Planning is successful when all of the following are true:
-
-- **Idea aligns with Brand View.** The content fits the creator identity, serves the target audience, and falls within an established content pillar.
-- **Audience clearly identified.** The brief knows who the content is for.
-- **Trigger is authentic.** The idea originates from a real experience, not a hypothetical topic.
-- **Insight is clear and valuable.** The key takeaway is specific and worth learning.
-- **Desired outcome defined.** The brief states what the audience should gain from the content.
-- **Content pillar selected.** The pillar matches the idea and is consistent with the creator's focus areas.
-- **Format is appropriate.** The selected format fits the idea, trigger, and platform.
-- **Platform strategy defined.** Each target platform has a clear role and the content will be adapted accordingly.
-- **Brief sufficient for execution.** The Post Content Builder can produce content from the brief alone, without needing to make strategic decisions.
-- **No creative ambiguity remains.** Every element of the brief is specific enough to guide content creation.
-- **Audience takeaway is clear.** The brief defines what the audience should understand, feel, or do after engaging with the content, and that takeaway matches the selected idea, trigger, key insight, and intended outcome.
-
----
+The required variants must be explicit and compatible with the primary format and platform rules. A target platform without a corresponding required variant is incomplete.
 
 ## Workflow
 
-1. **Review the selected idea.** Read the idea from workflow 01 in full. Understand the core concept, trigger, suggested format, and the rationale behind the recommendation.
+1. Review the selected idea, trigger, and supporting context.
+2. Check fit with Brand View, Brand Voice, the audience, and existing published titles.
+3. Define the audience problem, key insight, outcome, and content pillar.
+4. Choose the **primary format**.
+5. Choose **target platforms** and list each **required variant** as a platform/format pair.
+6. Set the shared creative direction and constraints. Resolve strategy decisions here; do not delegate them to later workflows.
+7. Review the brief for completeness and approve it for Workflow 03.
 
-2. **Gather supporting context.** Collect any user-provided context, project material, or notes that will help shape the brief. Identify connections to the current learning journey or recent published content.
+## Success Criteria
 
-3. **Consult the required Framework documents.** Read Brand View and Brand Voice. Ensure every planning decision is consistent with the creator's identity, audience, voice rules, and platform strategy.
-
-4. **Define the audience problem.** Articulate what the target audience struggles with or needs to understand. This frames why the content matters.
-
-5. **Define the trigger.** Confirm the real experience that started the idea. Ensure it is specific and authentic enough to anchor the entire content piece.
-
-6. **Identify the key insight.** Distil the most valuable takeaway from the trigger and idea. The insight is the reason the content exists.
-
-7. **Select the appropriate content pillar.** Map the idea to one of the pillars defined in Brand View. This ensures the content stays within the creator's focus areas.
-
-8. **Select the primary format.** Choose carousel, reel, story, or post based on the idea's requirements. Consider the trigger depth, audience value, and platform expectations. Refer to the relevant format document only if additional clarification is needed.
-
-9. **Determine the target platforms.** Decide where the content will be published. For each platform, confirm that the format is appropriate and that platform-specific adaptation rules from Brand Voice can be applied.
-
-10. **Define the creative direction.** Describe the narrative approach, tone, and angle. Specify any structural preferences, hook strategy, or storytelling techniques that the builder should follow.
-
-11. **Compile the production brief.** Write the complete brief with all required sections. Ensure every field is populated with specific, actionable information.
-
-12. **Verify the brief is complete.** Check every element against the success criteria. Confirm that no strategic decisions remain for the Post Content Builder. If anything is missing or ambiguous, resolve it before approving.
-
----
+- The trigger is authentic and specific.
+- The idea aligns with the brand, audience, and an established content pillar.
+- Primary format, target platforms, and required variants are all explicit.
+- Each required variant has a clear role and follows the platform strategy.
+- The brief defines the meaning, intended takeaway, and boundaries needed by the canonical draft.
+- No creative or strategic decisions remain for Workflow 03 or Workflow 04.
 
 ## Constraints
 
-- Never generate the final content. Content creation belongs to workflow 03.
-- Never write carousel slides, reel scripts, story frames, or post copy.
-- Never produce JSON or structured data output. This workflow produces a narrative brief only.
-- Never make rendering or design decisions. Those belong to workflows 04 and 05.
-- Never export assets or archive content. Those belong to workflows 05 and 06.
-- Never include placeholders or incomplete sections in the brief. If a field cannot be filled, flag it rather than leaving it ambiguous.
-
----
+- Do not write the canonical draft or any platform/format copy.
+- Do not generate structured data, slides, visuals, or assets.
+- Do not render, export, publish, or archive.
+- Do not leave required fields blank or use unresolved placeholders.
 
 ## Completion
 
-This workflow ends immediately after the content brief has been completed, reviewed against the success criteria, and confirmed ready for workflow 03. No further workflows are executed automatically. The agent stops.
+Stop after the approved brief is complete. The next stage is Workflow 03 — Post Content Builder.

@@ -10,7 +10,7 @@ This document defines the **user-facing product workflows** — how a user moves
 - where does AI assist?
 - where does deterministic rendering/export matter?
 
-This is **not** the internal framework prompt workflow (01–06). It is a product workflow document, not a database design, API spec, or implementation plan.
+This is **not** the internal framework prompt workflow (01–07). It is a product workflow document, not a database design, API spec, or implementation plan.
 
 ---
 
@@ -106,7 +106,7 @@ System responsibility:
 
 ## 7. Step 4 — AI Brief
 
-The system turns the raw idea into a concise **Content Brief**, including working title, core idea, target audience, angle, takeaway, tone, platform/format, suggested slide structure, design direction (if useful), and constraints or risks.
+The system turns the raw idea into a concise **Content Brief**, including working title, core idea, audience, angle, takeaway, tone, primary format, target platforms, required platform/format variants, design direction (if useful), and constraints.
 
 User action: approve, edit, regenerate, or change direction.
 
@@ -124,9 +124,9 @@ The system should update the brief, keep changes understandable, and avoid gener
 
 ## 9. Step 6 — Generate Content
 
-The system creates the carousel title, slide sequence, slide purpose per slide, slide copy, CTA/footer where relevant, and **structured Content Model data**.
+The system first creates format-neutral canonical content: trigger, reasoning, key points, supported examples, factual boundaries, takeaway, and CTA intent. It then adapts only the variants approved in the brief. For a Carousel, this produces slide sequence, slide purpose, copy, and **structured Content Model data**; a LinkedIn post is a separate standalone variant.
 
-**Important:** generated content should be structured, not just plain text. The system should preserve user voice/preferences, brand rules, platform constraints, and Content Model compatibility.
+**Important:** canonical meaning must be established before platform/format adaptation. Structured Carousel data is generated only for the Carousel variant; other variants remain standalone platform artifacts.
 
 ---
 
@@ -182,11 +182,11 @@ The system produces deterministic final assets, ensures preview matches export, 
 
 **Archive** records what was actually published.
 
-**Current:** stored under `content/published/<platform>/<YYYY-MM-DD-slug>/`, including content, structured JSON, metadata, and assets where applicable; `Posted Titles.md` helps prevent duplication.
+**Current:** stored per published platform variant under `content/published/<platform>/<YYYY-MM-DD-slug>/`. The archive preserves the exact published copy and applicable assets/data; Carousel JSON/assets are included only for a published Carousel. `Posted Titles.md` helps prevent duplication.
 
 **Future:** archive may become a product history view or database-backed record.
 
-**Important:** archive should preserve the final published state, not an earlier draft.
+**Important:** archive the exact variant that appeared on the platform, not automatically the primary format or a shared multi-platform package.
 
 ---
 
@@ -242,10 +242,12 @@ A short continuity mapping between the current internal system and future produc
 |---|---|
 | Workflow 01 — Idea Discovery | Describe Idea / capture idea |
 | Workflow 02 — Content Planning | AI Brief |
-| Workflow 03 — Post Content Builder | Generate Content |
-| Workflow 04 — Render Validation | Preview / Validate |
-| Workflow 05 — Export Assets | Export |
-| Workflow 06 — Archive Published Post | Archive |
+| Workflow 03 — Post Content Builder | Write canonical content |
+| Workflow 04 — Format Adaptation | Create approved variants |
+| Workflow 05 — Render Validation | Preview / Validate Carousel where applicable |
+| Workflow 06 — Export Assets | Export Carousel where applicable |
+| Manual Publish | Publish the approved platform variant |
+| Workflow 07 — Archive Published Post | Archive the exact published variant |
 
 This section exists only to show continuity. The product UX must not expose these workflow numbers to normal users.
 

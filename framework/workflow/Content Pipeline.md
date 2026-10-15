@@ -1,210 +1,123 @@
 # Content Pipeline
 
-This document is the sole owner of the complete Content Lifecycle, from trigger to archive.
+This document owns the Content OS lifecycle and workflow handoffs. `Content Format.md` defines idea and format-selection principles; the numbered prompt for each stage owns execution details.
 
-Format selection — given a trigger, deciding which content format to use — is owned by `Content Format.md`, which provides the detailed rules for the Trigger, Idea, and Format Selection stages.
+## Canonical lifecycle
 
----
-
-## Content Lifecycle
-
-The full journey from trigger to archive follows these stages:
-
+```text
+Idea
+→ Approved Content Brief
+→ Canonical Content Draft
+→ Format / Platform Adaptation
+→ Render Validation (where applicable)
+→ Export (where applicable)
+→ Publish
+→ Archive the exact published variant
 ```
-Trigger → Idea → Format Selection → Draft → Review → Final Assets → Published → Archived
-```
 
-Stages 1–3 are planning decisions owned by `Content Format.md`. Stages 4–8 are production responsibilities owned by this document.
+Publishing is a manual platform action between Workflow 06 and Workflow 07; it is not a repository-writing workflow.
 
----
+## Stages and owners
 
-## Stage by Stage
+### 1. Idea
 
-### 1. Trigger
+An authentic experience, question, or observation is selected for development.
 
-**Purpose:** Capture a real experience that could become content.
+- **Owner:** Workflow 01 — `framework/prompts/01-Idea Discovery.md`
+- **Output:** selected idea with its trigger and supporting context.
 
-**Input:** A daily experience — a bug, a lecture, a conversation, a struggle, or a small win.
+### 2. Approved Content Brief
 
-**Output:** A raw trigger statement.
+Planning fixes what the post means, who it serves, how it is framed, and where it will appear.
 
-**Owner:** `Content Format.md`
+- **Owner:** Workflow 02 — `framework/prompts/02-Content Planning.md`
+- **Output:** approved brief with primary format, target platforms, and explicit required variants.
 
----
+### 3. Canonical Content Draft
 
-### 2. Idea
+The canonical draft records meaning and evidence without format or platform presentation.
 
-**Purpose:** Validate whether the trigger is worth developing into content.
+- **Owner:** Workflow 03 — `framework/prompts/03-Post Content Builder.md`
+- **Output:** only `content/drafts/post.md`.
+- **Owns:** core idea, trigger, reasoning, key points, supported examples, factual claims/boundaries, intended takeaway, CTA intent, and wording to preserve.
 
-**Input:** Raw trigger statement.
+### 4. Format / Platform Adaptation
 
-**Output:** A validated content idea with a clear insight.
+Each approved variant is written as a standalone artifact. Adaptation changes presentation only; it preserves the canonical meaning and factual boundaries.
 
-**Owner:** `Content Format.md`
+- **Owner:** Workflow 04 — `framework/prompts/04-Format Adaptation.md`
+- **Outputs, only when approved:**
+  - Instagram Carousel: `content/drafts/carousel.md` and `production/workspace/carousel.json`.
+  - Instagram Reel: `content/drafts/reel.md`.
+  - Instagram Story: `content/drafts/story.md`.
+  - LinkedIn Post: `content/drafts/linkedin.md`.
+- LinkedIn content never lives inside another platform's draft.
+- Only Carousel produces renderer JSON.
 
----
+### 5. Render Validation (where applicable)
 
-### 3. Format Selection
+Validate the adapted Carousel in the React renderer. This stage applies only when an Instagram Carousel variant is approved.
 
-**Purpose:** Choose the appropriate format based on the validated idea.
+- **Owner:** Workflow 05 — `framework/prompts/05-Render Validation.md`
+- **Input:** `production/workspace/carousel.json`.
+- **Output:** render-ready confirmation or a failure report.
 
-**Input:** Validated content idea.
+### 6. Export (where applicable)
 
-**Output:** Selected format and target platform.
+Export slide assets from a validated Carousel. This stage applies only when Carousel assets are required.
 
-**Owner:** `Content Format.md`
+- **Owner:** Workflow 06 — `framework/prompts/06-Export Assets.md`
+- **Input:** validated carousel workspace data.
+- **Output:** exported slide images/package ready for manual publication.
 
-Once a format is selected, proceed to Draft below.
+### 7. Publish
 
----
+The creator publishes the chosen approved variant on its target platform. Publishing remains outside the repository and requires an explicit human action.
 
-### 4. Draft
+### 8. Archive the exact published variant
 
-**Purpose:** Write the first version of the content in the selected format.
+Archive what appeared on the platform, not automatically the primary format or latest shared package.
 
-**Input:** Validated content idea with selected format and platform.
+- **Owner:** Workflow 07 — `framework/prompts/07-Archive Published Post.md`
+- **Inputs:** exact published copy, platform, variant format, verified date, URL/identifier, and applicable assets.
+- **Output:** a platform-specific archive containing only that variant, accurate metadata, and applicable variant-specific data/assets; update `framework/memory/Posted Titles.md`.
+- Carousel JSON and exported slide assets are Carousel-only. A LinkedIn archive uses the standalone LinkedIn post and any LinkedIn assets actually published.
 
-**Output:** Complete first draft.
+## Adaptation invariant
 
-**Process:**
-- Follow the format-specific structure defined in the relevant format document:
-  - `Carousels.md` for carousel slide sequence and constraints.
-  - `Reels.md` for reel hook, structure, pacing, and recording expectations.
-  - `Stories.md` for story categories, unpolished standards, and engagement patterns.
-- Follow brand voice and writing guidelines defined in `Brand Voice.md`.
-- Apply platform-specific adaptation rules defined in `Brand Voice.md` (language, tone, structure per platform).
+Format/platform adaptation may change presentation, structure, pacing, hook form, length, language, formatting, and CTA expression. It must not silently change:
 
----
+- Canonical meaning or reasoning
+- Factual claims or supported examples
+- Experiences or achievements
+- Uncertainty or factual boundaries
+- Intended takeaway or CTA intent
 
-### 5. Review
+Every variant must be traceable to `content/drafts/post.md`. If substantive content needs to change, return to Workflow 03, update the canonical draft, then regenerate affected variants in Workflow 04.
 
-**Purpose:** Validate the draft against quality criteria before producing final assets.
+## Quality checks
 
-**Input:** Complete first draft.
+- The brief names all intended platforms and required variants.
+- Canonical claims and examples are supported by the source material.
+- Every variant matches the canonical meaning and its platform/format rules.
+- Carousel Markdown and JSON agree before render validation.
+- Validation and export run only for variants that require them.
+- Publication is separate from export.
+- Archive copy matches the exact published variant, with no unrelated platform package.
 
-**Output:** Approved draft ready for final asset production, or a revision request.
+## Production ownership
 
-**Quality Gates:**
+| Stage | Owner | Responsibility |
+|---|---|---|
+| Idea | Human / Workflow 01 | Select an authentic experience and context. |
+| Brief | Human / Workflow 02 | Approve direction and required variants. |
+| Canonical draft | Workflow 03 | Define meaning, evidence, and boundaries in `post.md`. |
+| Adaptation | Workflow 04 | Produce only approved standalone variants; generate Carousel JSON only when needed. |
+| Render validation | Workflow 05 | Validate the Carousel renderer output when applicable. |
+| Export | Workflow 06 | Export Carousel assets when applicable. |
+| Publish | Human | Publish the selected variant on the platform. |
+| Archive | Workflow 07 | Preserve the exact published variant and update the title index. |
 
-1. **Trigger authenticity:** Does the content originate from a real, specific experience?
-2. **Voice alignment:** Does it sound like a student peer, not a teacher? (Refer to `Brand Voice.md` for full voice rules.)
-3. **Format compliance:** Does it follow the structure and constraints of its selected format? (Refer to the relevant format document.)
-4. **Visual authenticity:** Does it look grounded in a real learning environment, not over-produced or AI-generated?
-5. **Student-centricity:** Does it reflect the student reality — exams, deadlines, real constraints?
+## Production boundary
 
-If any gate is not passed, the draft returns to the Draft stage with revision notes.
-
----
-
-### 6. Final Assets
-
-**Purpose:** Produce the publishable assets — visuals, captions, formatted text.
-
-**Input:** Approved draft.
-
-**Output:** Complete, publishable content piece ready for the target platform.
-
-**Process:**
-- For carousels: render slide visuals following the structure in `Carousels.md`.
-- For reels: record or assemble video clips following `Reels.md` recording and pacing expectations.
-- For stories: capture and post in-the-moment content following `Stories.md`.
-- For LinkedIn and X posts: format the text using `Brand Voice.md` platform rules.
-- Prepare platform-adapted versions as defined in the Mandatory Output Package (`Brand Voice.md`).
-
----
-
-### 7. Published
-
-**Purpose:** Post the content on the target platform.
-
-**Input:** Complete publishable assets.
-
-**Output:** Published post.
-
-**Process:**
-- Post on the target platform following its specific requirements.
-- For carousels: export slides and upload to Instagram.
-- For reels: upload video with caption to Instagram.
-- For LinkedIn: post the formatted text and any visuals.
-- For X: post the text or thread.
-- For stories: post to Instagram stories.
-- Track the published title in `Posted Titles.md` to prevent future duplication.
-
----
-
-### 8. Archived
-
-**Purpose:** Preserve the published content with metadata for future reference.
-
-**Input:** Published post and its metadata.
-
-**Output:** Archived post stored under the canonical archive convention `content/published/<platform>/<YYYY-MM-DD-slug>/`.
-
-**Process:**
-- Store captions, scripts, source files, and exported assets together.
-- Include metadata (publishing date, platform, pillar, format, tags, status).
-- Cross-reference with `Posted Titles.md`.
-
-Archive maintenance — creating the archive directory, writing `metadata.json`, organizing assets, and updating `Posted Titles.md` — is performed by Workflow 06 and can be AI-assisted.
-
----
-
-## Quality Gates Summary
-
-Five pipeline-owned quality checks applied during the Review stage:
-
-| Gate                  | What It Validates                              |
-| --------------------- | ---------------------------------------------- |
-| Trigger authenticity  | Content originates from a real, specific trigger |
-| Voice alignment       | Student perspective, never authoritative       |
-| Format compliance     | Structure and constraints match selected format |
-| Visual authenticity   | Looks grounded, not over-produced              |
-| Student-centricity    | Reflects student reality (exams, deadlines)    |
-
-All five gates must pass before content moves to Final Assets.
-
----
-
-## Production Ownership
-
-Every production step is assigned a responsible actor. This matrix defines who does what — it is not a workflow redesign. Steps that currently require human judgement are marked Human. Steps that can be fully delegated are marked AI. Steps planned for future automation are marked Automation.
-
-| Stage            | Step                    | Owner       | Notes |
-| ---------------- | ----------------------- | ----------- | ----- |
-| **Trigger**      | Capture raw experience | Human       | Real-life moments the creator chooses to document |
-| **Idea**         | Validate trigger       | Human       | Decides whether an experience is worth developing |
-| **Format Selection** | Choose format      | AI / Human  | AI proposes based on `Content Format.md` rules; Human approves |
-| **Draft**        | Generate first draft   | AI          | Uses `Carousels.md`, `Reels.md`, or `Stories.md` + `Brand Voice.md` via `framework/prompts/03-Post Content Builder.md` |
-|                  | Review draft           | Human       | Validates against quality gates |
-| **Final Assets** | Generate structured carousel JSON | AI | AI writes `production/workspace/carousel.json` (Content Model format); the React renderer (`production/renderer/`) renders it to slides |
-|                  | Export carousel slides | Automation / Human-assisted | Carousel export happens through the Studio Export Modal (in-browser ZIP/PDF, normal manual path) or the Playwright pipeline (`production/export/export-slides.js` against the frozen `/export` route, automation/baseline path) |
-|                  | Record reel            | Human       | In-the-moment recording per `Reels.md` |
-|                  | Edit reel              | Human       | Trim and basic edits |
-|                  | Write caption / format text | AI / Human | AI drafts per platform rules; Human tailors |
-| **Published**    | Post on platform       | Human       | Manual upload to Instagram, LinkedIn, X, or Stories |
-|                  | Track in Posted Titles | AI / Human  | Add title + archive path to `Posted Titles.md`; Workflow 06 can perform this update |
-| **Archived**     | Store assets           | AI / Human  | Move final assets into `content/published/` per the canonical archive convention; Workflow 06 can organize them |
-|                  | Write metadata.json    | AI / Human  | Populate metadata fields (dates, tags, pillar); Workflow 06 can generate it |
-|                  | Verify archive         | AI / Human  | Confirm assets are grouped and paths are correct; Workflow 06 verifies archive completeness |
-
-### Archive Output Requirements
-
-When archiving, the production workflow must ensure:
-
-- **Carousels:** Rendered slides and source data (`production/workspace/carousel.json`) are saved together. If visual assets are produced in a carousel format, they are stored in the post's `assets/` subfolder alongside the data file that produced them.
-- **Reels:** Video files and caption text are stored together in the post folder.
-- **Stories:** Captures (screenshots or exports) and timestamps are grouped in the post folder.
-- **LinkedIn / X posts:** Written post (`post.md`) is stored in the post folder. If visual assets are produced in the future, they are archived in an `assets/` subfolder alongside the written post.
-- **All formats:** Metadata follows the schema defined during archiving (`id`, `title`, `status`, `published_date`, `platform`, `primary_format`, `content_pillar`, `language`, `tags`, `related_assets`, `notes`).
-
-### Production Layer Boundary
-
-The production layer (`production/renderer/`, `production/workspace/`, `production/export/`, `content/published/`) renders and archives content. It never defines:
-
-- brand voice or tone
-- platform adaptation rules
-- format-specific constraints
-- planning or selection logic
-- quality gate criteria
-
-All of the above belong to framework documents in `framework/` and are consumed by the production layer via @-references, structured data files, or the renderer's data pipeline.
+The renderer and export tools consume Carousel-specific structured presentation data. They do not define canonical meaning, platform strategy, brand voice, or adaptation boundaries; those remain upstream in the brief, canonical draft, and Workflow 04.

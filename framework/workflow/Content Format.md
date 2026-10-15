@@ -1,10 +1,10 @@
 # Content Format
 
-This document owns the planning logic for the first three stages of the Content Lifecycle: **Trigger → Idea → Format Selection**.
+This document defines format-selection principles used while planning an approved idea. Workflow 01 selects ideas; Workflow 02 approves the brief, primary format, target platforms, and required variants.
 
 It answers the question: **"Given a trigger, what content format should this become?"**
 
-The complete Content Lifecycle (Trigger → Idea → Format Selection → Draft → Review → Final Assets → Published → Archived) is owned by `Content Pipeline.md`. This document provides the detailed rules for the planning stages within that lifecycle.
+The complete lifecycle is defined in `Content Pipeline.md`: **Idea → Approved Content Brief → Canonical Content Draft → Format / Platform Adaptation → Render Validation (where applicable) → Export (where applicable) → Publish → Archive the exact published variant**. This document provides format-selection guidance only.
 
 ---
 
@@ -99,6 +99,6 @@ Regardless of format, every piece should aim to:
 
 ## Relationship to the Content Lifecycle
 
-The planning decisions in this document correspond to the **Trigger, Idea, and Format Selection** stages of the Content Lifecycle defined in `Content Pipeline.md`.
+The planning decisions in this document inform idea evaluation and format selection. Workflow 02 records the approved primary format, target platforms, and required variants in the Content Brief.
 
-`Content Format.md` answers only **"what format should this become?"** It does not describe how drafts are written, how visuals are created, how content is reviewed, or how it is published. Those production stages — Draft, Review, Final Assets, Published, Archived — are owned by `Content Pipeline.md`.
+`Content Format.md` answers only **"which format fits this idea?"** It does not define canonical writing, adaptation, rendering, export, publication, or archive behavior. Those lifecycle stages are owned by `Content Pipeline.md` and their numbered workflow prompts.

@@ -21,14 +21,12 @@ User
     → Brand
       → Post
         → Content Brief
-          → Content Model
-            → Carousel
-              → Slides
-                → Layout + Theme / Design Direction
-                  → Preview
-                    → Validation
-                      → Export
-                        → Publication / Archive
+          → Canonical Content Draft
+            → Format / Platform Variants
+              → Carousel Content Model (where applicable)
+                → Carousel → Slides → Layout + Theme / Design Direction
+                  → Preview → Validation → Export (where applicable)
+                    → Publication → Archive the exact published variant
 ```
 
 Layout and Theme / Design Direction are shown together because they are **parallel rendering influences**, not a strict chain: Layout controls slide structure, Theme controls reusable visual styling, and Design Direction is the user/AI style intent that may influence theme selection or overrides. They are combined before preview/rendering.
@@ -77,7 +75,7 @@ A **Brand** represents the identity used to shape content and design. It may inc
 
 ## 6. Post
 
-A **Post** is the main content item the user creates. It represents one publishable idea across one or more platforms/formats, and may have a title, idea/trigger, platform, format, lifecycle state, content brief, generated content, visual output, exports, and publication/archive metadata.
+A **Post** is the main content item the user creates. It represents one idea across approved platforms/formats and progresses from Content Brief to canonical content, standalone variants, applicable assets, publication, and archive.
 
 **Current:** posts exist as files in ideas, drafts, and published archives.
 
@@ -91,7 +89,7 @@ An **Idea** is the raw input before the Content Brief. It may be entered by the 
 
 ## 7. Content Brief
 
-A **Content Brief** is the planning layer between a raw idea and final content. It captures core idea, audience, platform, format, angle, takeaway, tone, structure direction, and constraints.
+A **Content Brief** is the planning layer between an Idea and canonical content. It captures core idea, audience, primary format, target platforms, required platform/format variants, angle, takeaway, tone, structure direction, and constraints.
 
 **Purpose:** prevent random generation by forcing structure before writing.
 
@@ -99,13 +97,19 @@ A **Content Brief** is the planning layer between a raw idea and final content. 
 
 **Future:** generated and edited inside the product application.
 
+### Canonical Content Draft
+
+The **Canonical Content Draft** is the format-neutral written source at `content/drafts/post.md`. It records the core idea, authentic trigger, reasoning, key points, supported examples, claims and factual boundaries, intended takeaway, CTA intent, and wording worth preserving.
+
+Workflow 03 owns this source. It contains no slides, timing, platform captions, LinkedIn paragraph structure, visual directions, or renderer JSON. Workflow 04 adapts it into only the variants approved in the brief.
+
 ---
 
 ## 8. Content Model
 
-The **Content Model** is the canonical **authoring/content contract**. It defines what a structured content item is before rendering.
+The **Content Model** is the structured contract for Carousel content consumed by the renderer.
 
-**Current:** documented in `framework/model/Content Model.md`, used for generated carousel JSON and archived `content.json`.
+**Current:** documented in `framework/model/Content Model.md`, used for Carousel workspace JSON and Carousel archives. It does not replace canonical meaning in `post.md`.
 
 **Important:** the Studio and renderer do not consume the Content Model directly. The Adapter translates Content Model data into Renderer Models.
 
@@ -117,7 +121,7 @@ The **Content Model** is the canonical **authoring/content contract**. It define
 
 A **Carousel** is a post format made of ordered slides. It contains a sequence of slides, platform-specific content, visual structure, and exportable assets.
 
-**Current:** the active working carousel is stored in `production/workspace/carousel.json`.
+**Current:** the active Carousel variant is stored in `production/workspace/carousel.json`; its adapted Markdown is `content/drafts/carousel.md`.
 
 **Future:** multiple carousels may exist as posts or post versions inside the product.
 
@@ -225,7 +229,7 @@ The system may translate a Design Direction into a Theme or theme overrides.
 
 **Archive** is the permanent record of published content.
 
-**Current:** stored under `content/published/<platform>/<YYYY-MM-DD-slug>/`, including content, metadata, structured JSON, and assets where applicable; `Posted Titles.md` helps prevent duplication.
+**Current:** each published platform variant is stored under `content/published/<platform>/<YYYY-MM-DD-slug>/`, with the exact published copy and metadata. Carousel JSON/assets are included only for a published Carousel; `Posted Titles.md` helps prevent duplication.
 
 **Future:** archive may become a product history/database view.
 
@@ -262,9 +266,11 @@ An **Asset** is a generated or uploaded media file used by or produced from a po
 - A User works inside a Workspace.
 - A Workspace can contain Brands.
 - A Brand guides Posts.
-- A Post starts from an idea and becomes a Content Brief.
-- A Content Brief becomes structured Content Model data.
-- Carousel is one format of Post.
+- A Post starts from an Idea and receives an approved Content Brief.
+- Workflow 03 turns the brief into a canonical Content Draft.
+- Workflow 04 adapts the canonical draft into the brief's required standalone variants.
+- The Content Model structures Carousel presentation data only.
+- Carousel is one possible format/platform variant of a Post.
 - A Carousel contains Slides.
 - Slides use Layouts.
 - Themes style the rendered output.
@@ -285,8 +291,9 @@ An **Asset** is a generated or uploaded media file used by or produced from a po
 | Workspace     | No product workspace; repository is the environment            | Product-level container for content/brands/posts |
 | Brand         | Markdown framework files (Brand View, Brand Voice)             | Editable product data                            |
 | Post          | Files in ideas, drafts, published                              | Persisted product record                         |
-| Content Brief | Output of Workflow 02                                          | Generated/edited in the application              |
-| Content Model | `framework/model/Content Model.md`                             | Typed authoring contract (code/schema)           |
+| Content Brief | Workflow 02 output: primary format, platforms, required variants | Generated/edited in the application              |
+| Canonical Content Draft | `content/drafts/post.md`, format-neutral substance | Persisted post source                            |
+| Content Model | Carousel renderer contract in `framework/model/Content Model.md` | Typed Carousel contract                          |
 | Carousel      | Single active carousel in `production/workspace/carousel.json` | Multiple posts/post versions                     |
 | Slide         | One unit in a carousel (purpose + copy + layout)               | Same concept, managed per post                   |
 | Layout        | Renderer React components                                      | Suggested/selected by the system                 |
