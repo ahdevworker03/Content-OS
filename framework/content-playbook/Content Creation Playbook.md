@@ -23,7 +23,7 @@
 
 ## Purpose
 
-Discover, evaluate, and recommend high-potential content ideas grounded in real experience and aligned with the creator's brand strategy. This workflow identifies content opportunities from the creator's current learning journey, recent projects, and technical discoveries. It is responsible for idea generation and selection only — it does not plan content, write content, render, export, or archive.
+Discover, evaluate, and recommend high-potential content ideas grounded in real work and aligned with the creator's brand strategy. This workflow identifies content opportunities from current systems, decisions, projects, technical discoveries, and relevant learning context. It is responsible for idea generation and selection only — it does not plan content, write content, render, export, or archive.
 
 ---
 
@@ -46,7 +46,7 @@ It ends when one or more recommended content ideas have been selected for Conten
 
 ## Inputs
 
-- **Current user context** — Where the creator is in their learning journey, what they are studying, and what is occupying their attention.
+- **Current user context** — What the creator is building, investigating, deciding, studying, or trying to understand.
 - **Recent projects** — Active or recently completed project work that could generate authentic content.
 - **Learning experiences** — Lectures, tutorials, books, or courses the creator is currently engaged with.
 - **Technical discoveries** — Bugs solved, concepts understood, tools learned, or workflows improved.
@@ -100,7 +100,7 @@ Idea Discovery is successful when all of the following are true:
 
 1. **Gather current context.** Collect all available input from the user — their current projects, learning focus, recent discoveries, and any notes or material they have shared.
 
-2. **Review recent work and learning.** Identify the most interesting or significant experiences from the creator's recent activity. Look for bugs, breakthroughs, confusions, decisions, or concepts that could anchor authentic content.
+2. **Review recent work and context.** Identify the most interesting or significant systems, decisions, bugs, breakthroughs, confusions, or concepts from the creator's recent activity that could anchor authentic content.
 
 3. **Consult Brand View.** Confirm the creator's identity, audience, pillars, and boundaries. Ensure every candidate idea will fit within the established brand strategy.
 

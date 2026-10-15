@@ -1,21 +1,21 @@
 # Carousels
 
-Carousels are the main educational documentation format.
-They are structured slide-by-slide walkthroughs that guide the reader through a learning journey.
+Carousels are a visual format for making a technical or product idea easy to follow.
+They can explain a system, a decision, a tradeoff, a pattern, or a real development experience.
 
 ## What Problems a Carousel Solves
 
-Carousels transform a learning experience into a shareable, structured narrative.
-They are chosen when a concept needs explanation — when the reader needs to follow the thinking, not just see the conclusion.
+Carousels transform a real problem or idea into a shareable, structured narrative.
+They are chosen when the reader needs to follow the reasoning, not just see the conclusion.
 
 Carousels are best for:
 
-- Concepts (What I learned)
-- Explanations (How I understood it)
-- Comparisons (What I chose)
-- Reflections (Why it was hard)
-- Thought processes
-- Lessons from learning and building
+- Concepts and system behavior
+- Technical or product explanations
+- Comparisons and tradeoffs
+- Decisions and thought processes
+- Debugging patterns
+- Reflections when the experience itself adds value
 
 ---
 
@@ -24,9 +24,9 @@ Carousels are best for:
 A good carousel respects the reader's time. Every slide must advance the narrative; remove any slide that only repeats or pads.
 
 - The trigger must be specific enough to anchor an entire carousel. A generic trigger produces a generic carousel.
-- The explanation must be grounded in your own code or project work. Hypothetical examples weaken the format.
+- The explanation must be grounded in real code, project work, supplied evidence, or an approved source. Hypothetical examples weaken the format.
 - Each slide introduces exactly one idea. A slide that tries to do two things does neither.
-- The Project Bridge is not optional — it proves the concept was applied, not just studied.
+- Use project context or evidence when it proves the point; do not force a personal project update into a broader explanation.
 - The CTA invites peer discussion, not feedback for the creator.
 
 ## Personal Account Renderer Layouts
@@ -47,8 +47,8 @@ Explain a concept from the perspective of a developer working through it.
 
 1. **Slide 1: Hook** (The "Facepalm" or "Aha!" moment)
 2. **Slide 2: The Trigger** (The specific bug, lecture, or project feature that forced me to learn this)
-3. **Slides 3-X: Body** (Explain the concept using "I found" logic)
-4. **Slide X-1: Project Bridge** (A snippet of the "Car Rental System" showing this concept in action)
+3. **Slides 3-X: Body** (Explain the system, decision, or concept with concrete reasoning)
+4. **Slide X-1: Evidence or context** (A real project example, supplied evidence, or a concise limitation when it helps)
 5. **Slide X: Community CTA** (Beginner-friendly question: "What part of this is still confusing?")
 
 ### Possible ideas
@@ -72,8 +72,8 @@ Explain a concept from the perspective of a developer working through it.
 ### Format Constraints
 
 - Every slide must serve the narrative progression. Remove any slide that does not advance the explanation.
-- The concept must be demonstrated through your own code or project work — no hypothetical examples.
-- The Project Bridge must reference a real implementation from active project work.
+- The concept must be supported by real code, project work, supplied evidence, or an approved source — no hypothetical examples.
+- Use a project example when it improves the explanation; do not make the post an update about the creator unless that is the intended subject.
 - The CTA must invite peer discussion, not feedback-for-the-creator.
 
 For writing style, tone, and voice guidelines — including plain language, jargon handling, and teaching tone — refer to `Brand Strategy.md`.
@@ -91,22 +91,22 @@ For writing style, tone, and voice guidelines — including plain language, jarg
 
 ### Purpose
 
-Share a topic while adding the developer's practical perspective.
+Explain a topic with practical context when that context adds value.
 
 ### What these posts should do
 
-- Explain what I learned
-- Show why it matters to me
-- Show what I learned from it personally
-- Compare my expectation versus reality
+- Explain the relevant concept, system behavior, or tradeoff
+- Show why it matters in practical work
+- Add personal context only when it clarifies the reasoning
+- Compare expectations and reality when the contrast teaches something useful
 
 ### Structure
 
-Follow the same mandatory structure (Hook → Trigger → Body → Project Bridge → CTA) with the personal perspective woven through the explanation. The Body slides should alternate between concept explanation and personal reaction.
+Follow the same structure (Hook → Trigger or problem → Body → Evidence or context → CTA). The body should prioritize the explanation; personal reaction is optional.
 
 ### Distinction from Educational Documentation
 
-This type adds the subjective layer: not just what I learned, but how I felt about it, what surprised me, and how my understanding changed.
+This type adds context when it improves the explanation. It is not a requirement to center feelings, progress, or the creator's story.
 
 ---
 

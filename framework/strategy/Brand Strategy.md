@@ -9,7 +9,7 @@ This document defines a reusable content system for Instagram and LinkedIn.
 
 It is designed for a Lebanese developer studying Computer Science, building real projects, and documenting the work in public for an Arabic-speaking audience.
 
-The goal is to maintain consistency, authenticity, and a developer-in-practice narrative across platforms.
+The goal is to make real software work understandable and useful, with a developer-in-practice perspective across platforms.
 
 **Brand Strategy.md** is the authority for all writing voice, tone, and stylistic decisions. This document owns creator identity, audience, messaging lens, content boundaries, and content pillars — not writing style.
 
@@ -20,16 +20,16 @@ The goal is to maintain consistency, authenticity, and a developer-in-practice n
 - Lebanese developer studying Computer Science
 - Focus on web development and software engineering through real projects
 - Learning by building, debugging, and iterating in real environments
-- Documenting progress, mistakes, and insights in public
-- Sharing reflective, experience-based understanding rather than theoretical explanations
-- Translating confusion into structured clarity through practice
+- Explaining systems, decisions, tradeoffs, and patterns through real work
+- Using personal experience as evidence when it adds useful context
+- Turning technical complexity into structured clarity for other builders
 
 ---
 
 ## Audience
 
-- Primary audience: Arabic-speaking Computer Science students across the Arab world
-- Secondary audience: developers and learners interested in practical software development journeys
+- Primary audience: Arabic-speaking CS students and early developers across the Arab world
+- Secondary audience: developers and learners interested in practical software development
 
 ---
 
@@ -37,21 +37,20 @@ The goal is to maintain consistency, authenticity, and a developer-in-practice n
 
 Every content piece must pass through this lens:
 
-- I learn through building real projects
-- I understand concepts through debugging real problems
-- I turn confusion into clarity through reflection
-- Every piece of content must originate from a real trigger (bug, lecture, project issue, implementation challenge)
-- I document the process, not just the final result
-- Insight is derived from experience, not abstraction
+- Start with a real system, problem, decision, observation, or implementation trigger.
+- Explain the technical or product idea clearly enough to be useful beyond the creator's own situation.
+- Use the creator's experience, uncertainty, or project context when it proves the point or makes the reasoning clearer.
+- Let the reader understand what changed, what matters, or what to examine in similar work.
+- Keep insight grounded in evidence rather than abstraction, trends, or borrowed advice.
 
 ---
 
 ## Main Message
 
-- I develop my software engineering judgment by building real systems.
-- I share what I struggle with and what I discover through practice.
-- I document my journey honestly, not as an expert.
-- I grow through experience, iteration, and problem-solving.
+- I make practical software development ideas clearer through real systems work.
+- I share useful reasoning about implementation, debugging, architecture, and product decisions.
+- I use my own work honestly as context, not as the subject of every post.
+- I build understanding through experience, iteration, and problem-solving.
 
 ---
 
@@ -62,15 +61,18 @@ Every content piece must pass through this lens:
 - Not abstract CS theory without real context
 - Not random posting without a real learning trigger
 - Not polished or artificially “perfect developer” storytelling
+- Not a personal diary where the audience gets no useful idea beyond my update
+- Not an advice account built on unsupported universal rules
 
 ---
 
 ## Behavioral Rules for Content
 
-- Every post must originate from a real trigger (bug, lecture, confusion, project issue)
-- Every insight must be tied to a real experience or implementation detail
-- Show process and reasoning, not only conclusions
-- Include student-life context when naturally relevant
+- Every post must originate from a real trigger, system, problem, decision, or implementation detail.
+- Every post must give the audience a clear technical, product, or reasoning takeaway.
+- Personal context is optional unless it is needed to establish evidence or explain the reasoning.
+- Show relevant process and reasoning, not only conclusions.
+- Include university context when it explains the work or decision
 
 ---
 
@@ -80,7 +82,8 @@ Every content piece must pass through this lens:
 - Debugging experiences and problem-solving processes
 - System understanding through implementation
 - Applied learning of software engineering concepts inside real projects
-- Personal reflections on the software development journey
+- Clear explanations of systems, decisions, and tradeoffs from real software work
+- Personal reflections on the software development journey when the experience itself is the valuable subject
 
 ---
 
@@ -102,17 +105,17 @@ This brand is not about presenting expertise.
 
 It is about:
 
-- Learning in public through real development work
-- Building understanding through implementation and debugging
-- Documenting confusion → clarity transitions
-- Sharing honest developer experiences, including the constraints of university when relevant
+- Making real development work more understandable
+- Explaining implementation, debugging, systems, and product decisions clearly
+- Sharing honest context when it helps prove or clarify the point
+- Helping peers examine similar problems without presenting universal advice
 - Growing through continuous practice, iteration, and real project work
 
 ---
 
 ## Core Statement
 
-I am a Lebanese developer studying Computer Science, building real projects, debugging real problems, and documenting the process of turning confusion into understanding.
+I am a Lebanese developer studying Computer Science who explains real software work, systems, and decisions through practical, evidence-based content.
 
 # Brand Voice
 
@@ -125,10 +128,10 @@ Content decisions about what to post are owned by `Brand Strategy.md` (creator i
 ## Communication Personality
 
 - A Lebanese developer studying Computer Science and working in public
-- Honest, grounded, and reflective
+- Clear, grounded, and useful
 - Professional in structure, never authoritative in tone
 - Comfortable with uncertainty and learning-in-progress
-- Relatable and experience-driven
+- Evidence-driven, whether the evidence is personal work, a concrete system, or an approved source
 - Clear and simple, never unnecessarily complex
 
 ---
@@ -136,10 +139,20 @@ Content decisions about what to post are owned by `Brand Strategy.md` (creator i
 ## Voice Attributes
 
 - **Clear and grounded** — Avoid jargon unless technically necessary. When used, explain naturally within context.
-- **Honest developer perspective** — Speak from real work, not borrowed authority. Use "I discovered," "I struggled with," "I learned," or "I changed my approach" rather than "you should," "the right way is."
-- **Reflective, not instructional** — Document what happened and what it taught you. Do not lecture or prescribe.
+- **Evidence-led, not self-centered** — Use first person only when it establishes context, evidence, or a change in reasoning. The system, problem, decision, or concept may be the subject of the post.
+- **Useful, not prescriptive** — Explain what happened, what matters, and what to examine. Do not lecture, prescribe universal rules, or turn every post into advice.
 - **Comfortable with uncertainty** — Use phrases like "I'm still figuring this out," "this is what I understand so far," "I might be wrong but."
 - **Grounded in real constraints** — Reference university, deadlines, project scope, or other constraints when they explain the development work; do not make student life the default subject.
+
+## Perspective Balance
+
+Personal context gives a post credibility; it does not have to carry the post.
+
+- Start with the reader-relevant problem, decision, system behavior, or concept when that is the useful subject.
+- Use "I" to introduce the real trigger, a concrete observation, or a supported limitation.
+- Keep the personal story brief when the main value is an explanation.
+- Make the reader leave with a clearer model, question, or tradeoff to apply to similar work.
+- Do not manufacture a personal story when a concrete system or decision already explains the point.
 
 ---
 
@@ -161,10 +174,10 @@ In all contexts: never authoritative, never generic, never purely theoretical.
 ## Writing Style Guidelines
 
 - Prioritize clarity over complexity or depth for its own sake.
-- Avoid teaching tone; prioritize reflection and documentation.
+- Avoid unsupported teaching tone; prioritize clear explanation and relevant evidence.
 - Show process and reasoning, not only conclusions.
 - Use simple sentence structures. Favor short paragraphs.
-- Lead with the trigger (the bug, the confusion, the question) before explaining the resolution.
+- Lead with the most useful entry point: a problem, decision, system behavior, question, or real trigger.
 - Keep language conversational — write how you would explain to a peer, not to a class.
 - For Arabic content: write in conversational Lebanese Arabic, integrating English technical terms naturally.
 - For English content: use clear, professional language with a reflective tone.
@@ -176,9 +189,10 @@ In all contexts: never authoritative, never generic, never purely theoretical.
 ### Do
 
 - Start every piece from a real experience or trigger.
-- Use first-person perspective throughout.
-- Acknowledge mistakes, confusion, and wrong turns.
-- Connect insights to the specific implementation or problem that taught them.
+- Make the central technical or product idea clear before adding personal context.
+- Use first person when it adds evidence, a real limitation, or a concrete observation.
+- Connect insights to a specific implementation, system behavior, decision, or problem.
+- Give the audience a practical way to understand or examine a similar situation.
 - Keep language natural and conversational.
 - Include university context when it explains the work or decision.
 
@@ -188,6 +202,7 @@ In all contexts: never authoritative, never generic, never purely theoretical.
 - Use generic motivational statements.
 - Post abstract theory without a real-world trigger.
 - Write in a polished, "perfect developer" voice.
+- Turn every post into a personal update or a list of advice.
 - Over-explain or add complexity for its own sake.
 - Use a robotic or overly formal tone.
 
@@ -200,7 +215,7 @@ These rules define how the core brand voice adapts to each platform. They descri
 ### Instagram
 
 **Purpose**
-Primary platform for documenting development work, visual storytelling, and community building. Instagram is where practical developer thinking is documented through Carousels.
+Primary platform for making development work, systems, and decisions understandable through visual storytelling.
 
 **Target communication style**
 Conversational Lebanese Arabic with English technical terms embedded naturally. The writing should feel like talking to a peer who shares the same learning context.
@@ -212,7 +227,7 @@ Medium as a baseline, with range depending on the chosen format. Carousel depth 
 Close to the core reflective tone with a conversational feel. Carousel tone guidance is defined in Carousels.md. Never authoritative.
 
 **Audience expectations**
-Arabic-speaking CS students and early developers across the Arab world. They expect authentic, experience-based development content, not tutorials. They value practical reasoning and honest learning.
+Arabic-speaking CS students and early developers across the Arab world. They expect practical development content that makes real work clearer without becoming generic tutorials or unsupported advice.
 
 **Language usage**
 Lebanese Arabic as the primary language. English technical terms (API, bug, deploy, framework, function) are preserved in their original form and embedded naturally within Arabic sentences. Code snippets remain in English.
@@ -225,13 +240,13 @@ Low-friction community CTAs: "What part of this is still confusing?" "Have you r
 ### LinkedIn
 
 **Purpose**
-Professional platform for structured reflections and career-oriented documentation. LinkedIn is where the same learning experiences are framed as professional growth narratives.
+Professional platform for structured explanations, reflections, and career-oriented documentation grounded in real engineering work.
 
 **Target communication style**
 English only. Professional but never corporate. Structured and polished while maintaining an evidence-based developer perspective.
 
 **Expected level of depth**
-Medium-to-high. LinkedIn posts expand on the same ideas shared on Instagram but with more structured reasoning, professional framing, and emphasis on growth and process. Format-specific writing rules are defined in `framework/formats/linkedin.md`.
+Medium-to-high. LinkedIn posts expand an engineering idea with structured reasoning, professional framing, and relevant evidence. Format-specific writing rules are defined in `framework/formats/linkedin.md`.
 
 **Tone adaptation**
 More polished and structured than Instagram. The reflective tone remains but is presented with professional framing. Developer-led, never expert-posturing. Less casual, more deliberate.
@@ -294,10 +309,10 @@ These rules define how a single content idea is transformed for different platfo
 
 ### What Remains Consistent Across Platforms
 
-- **Core insight**: The underlying learning, discovery, or experience is the same across all platforms.
-- **Brand voice attributes**: Honest developer perspective, reflective, experience-driven, clear and grounded.
+- **Core insight**: The underlying system, decision, discovery, or experience is the same across all platforms.
+- **Brand voice attributes**: Evidence-led, useful, clear, grounded, and appropriately limited.
 - **Trigger-first principle**: Every piece of content originates from a real trigger regardless of platform.
-- **First-person perspective**: Always "I" language, never "you should" or authoritative framing.
+- **Perspective balance**: Use first person for evidence and context; lead with the system, problem, decision, or concept when it better serves the audience. Avoid authoritative "you should" framing.
 - **No generic content**: No platform receives generic, triggerless content.
 
 ### What Changes by Platform

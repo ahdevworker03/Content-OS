@@ -1,19 +1,19 @@
 {
   "identity": {
     "id": "content-009",
-    "title": "Four development focus areas for my second year in CS",
+    "title": "Four areas that connect CS study to building software",
     "lifecycle_stage": "draft"
   },
   "trigger": {
-    "description": "Starting my second year of Computer Science and defining the four areas I want to strengthen as I build software: foundations, TypeScript practice, systems thinking, and product communication.",
-    "insight": "I want to build stronger developer judgment through fundamentals, focused technical practice, learning how systems behave through building, and communicating the value of what I make. These are goals I am beginning to work toward, not completed achievements.",
-    "hook": "بدي إبني software أحسن… وهاي أربع ركائز رح ركّز عليهن"
+    "description": "Starting my second year of Computer Science and examining how foundations, TypeScript practice, systems thinking, and product communication connect to building software.",
+    "insight": "Developer judgment grows through connected foundations, focused technical practice, understanding how systems behave through building, and communicating product value. The creator is beginning to explore this connection, not claiming mastery.",
+    "hook": "مواد الـ CS مش منفصلة عن الـ building"
   },
   "metadata": {
     "platform": "instagram",
     "primary_format": "carousel",
     "language": "ar",
-    "content_pillar": "Personal reflections on the software development journey",
+    "content_pillar": "Clear explanations of systems, decisions, and tradeoffs from real software work",
     "tags": [
       "computer-science",
       "developer-in-practice",
@@ -23,7 +23,7 @@
       "communication"
     ],
     "created_date": "2026-10-14",
-    "notes": "Instagram Project Thinking carousel. The four development focus areas are plans, not completed outcomes."
+    "notes": "Explanation-led Project Thinking carousel. The four areas are a model the creator is beginning to explore, not completed outcomes."
   },
   "variants": [
     {
@@ -36,8 +36,8 @@
           {
             "layout": "cover",
             "number": "SLIDE 1 OF 7",
-            "title": "بدي إبني software أحسن…",
-            "subtext": "وهاي أربع ركائز رح ركّز عليهن",
+            "title": "مواد الـ CS مش منفصلة",
+            "subtext": "عن الـ building",
             "swipe": "اسحب →"
           },
           {
@@ -47,14 +47,14 @@
               "text": "السياق",
               "class": ""
             },
-            "title": "بلّشت سنتي التانية بـ CS، وقررت ما خلّي الجامعة مسار لحالها.",
+            "title": "بلّشت سنتي التانية بـ CS، وصرت اسأل: كيف هالمواد بتأثر على software ببنيه؟",
             "items": [
               {
-                "text": "بدي اربط الأساسيات بالـ building، وركّز على فهم كيف الـ systems بتشتغل.",
+                "text": "مش كمواد لحالن، بس كأجزاء بتأثر على كيف بفكّر بالـ building.",
                 "accent": false
               },
               {
-                "text": "هيدي خطة تركيزي لهالسنة، ولسّه عم بلّش فيها.",
+                "text": "هيدا الربط عم جرّب افهمه ببداية هالسنة.",
                 "accent": true
               }
             ],
@@ -67,10 +67,10 @@
               "text": "١ — الأساسيات",
               "class": ""
             },
-            "title": "الأساسيات مش بس مواد جامعة بالنسبة إلي.",
+            "title": "الأساسيات بتغيّر القرار قبل ما اكتب code.",
             "items": [
               {
-                "text": "databases، software engineering، وnetworking بيعطوني فهم أقوى قبل ما قرّر كيف ابنِي software.",
+                "text": "databases، software engineering، وnetworking بيعطوني طريقة أفهم فيها الـ system قبل ما قرّر كيف ابنِيه.",
                 "accent": true
               }
             ],
@@ -83,14 +83,14 @@
               "text": "٢ — تركيز تقني",
               "class": ""
             },
-            "title": "بدي قوّي استخدامي لـ TypeScript بالـ web development.",
+            "title": "TypeScript مش بس للـ frontend.",
             "items": [
               {
-                "text": "بقدر استعملها بالـ frontend والـ backend.",
+                "text": "بتخلّيني اشتغل بنفس اللغة بالـ frontend والـ backend.",
                 "accent": false
               },
               {
-                "text": "رح اشتغل فيها مع React للـ frontend، وExpress للـ backend، وPrisma للـ database layer — يعني افهم أكتر من جزء بالـ system بنفس اللغة.",
+                "text": "ومع React، Express، وPrisma، بصير أسهل أفهم كيف الأجزاء بتكمل بعضها.",
                 "accent": true
               }
             ],
@@ -103,14 +103,14 @@
               "text": "٣ — فهم الـ systems",
               "class": ""
             },
-            "title": "ما بكفّي كل جزء يشتغل لحاله.",
+            "title": "الـ system مش مجموعة أجزاء بتشتغل لحالا.",
             "items": [
               {
-                "text": "بدي افهم كيف أجزاء الـ system بتحكي مع بعضها: كيف بيمشي الـ data بين frontend وbackend؟ وكيف بيتحمّل الـ system استعمال حقيقي؟",
+                "text": "المهم كيف الـ data بتمشي بين الـ frontend والـ backend، وكيف كل جزء بيتأثر بالتاني.",
                 "accent": false
               },
               {
-                "text": "رح اتعلّم هالشي من building وتجربة حقيقية، خطوة خطوة.",
+                "text": "هالشي بيوضح أكتر من building وتجربة حقيقية، خطوة خطوة.",
                 "accent": true
               }
             ],
@@ -123,14 +123,14 @@
               "text": "٤ — التواصل",
               "class": ""
             },
-            "title": "والـ product مش بس شو بعمل تقنياً.",
+            "title": "والـ product مش بس implementation.",
             "items": [
               {
-                "text": "بدي اتعلّم اشرح قيمة الـ product وكيف بيعه، واتواصل مع ناس عندن خبرة أكتر مني.",
+                "text": "قيمة الـ product بتبين أكتر لما نعرف: لمين هو، شو بحل، وليش حدا يهتم فيه.",
                 "accent": true
               },
               {
-                "text": "بالنسبة إلي، بناء product قوي لحاله ما بكفّي إذا ما عرفت أوصل قيمته.",
+                "text": "هيدا جزء من التفكير بالـ product، مش شغلة بتصير بعد الـ code.",
                 "accent": false
               }
             ],
@@ -143,22 +143,22 @@
               "text": "وين بدي وصل",
               "class": ""
             },
-            "title": "هول أربع ركائز بدي ابنِي عليهن.",
+            "title": "هول مش أربع مسارات منفصلين.",
             "items": [
               {
-                "text": "أساسيات أوضح، building أعمق، فهم أفضل للـ system، وتواصل أوضح عن قيمة اللي عم بعمله.",
+                "text": "أساسيات أقوى، building أعمق، فهم أوضح للـ system، وتواصل أوضح عن قيمة الـ product.",
                 "accent": true
               },
               {
-                "text": "هيدي الخطة اللي رح بلّش فيها هالسنة، ولسّه قدّامي كتير اتعلّمه.",
+                "text": "هيدي الطريقة اللي عم جرّب اربط فيهن الدراسة بالـ building، ولسّه عم بلّش فيها.",
                 "accent": false
               }
             ]
           }
         ]
       },
-      "caption": "بلّشت سنتي التانية بـ CS، وقررت استعملها كجزء من المسار اللي بدي ابني فيه software أحسن.\n\nهالسنة رح ركّز على foundations مثل databases وsoftware engineering وnetworking، وقوّي استخدامي لـ TypeScript. وبنفس الوقت، بدي افهم أكتر كيف الـ systems بتشتغل من خلال building وتجربة حقيقية، واتعلّم اشرح قيمة الـ product اللي عم بعمله.\n\nهيدي أربع ركائز بدي ابنِي عليهن: foundations أقوى، تركيز تقني أعمق، فهم للـ systems من خلال البناء، وتواصل أوضح عن قيمة الـ product. بعدني ببداية هالمسار، وهيدي خطة الشغل اللي رح التزم فيها.\n\nإنتو كيف بتربطوا بين مواد الجامعة والتطبيق العملي؟",
-      "cta": "إنتو كيف بتربطوا بين مواد الجامعة والتطبيق العملي؟"
+      "caption": "مواد الـ CS، الـ building، وفهم الـ product مش مسارات منفصلة.\n\nبلّشت سنتي التانية بـ CS، وعم جرّب أربط بين الأساسيات مثل databases وsoftware engineering وnetworking، وبين TypeScript، فهم الـ systems، والتفكير بقيمة الـ product.\n\nبالنسبة إلي، هالربط بيعطي الـ building اتجاه أوضح: ما بوقف عند code، وبفكّر كمان بالـ system وبقيمة اللي عم بنِيه. هيدي فكرة عم جرّبها ببداية هالسنة، مش نتيجة وصلتلا.\n\nأي جزء بتحسّوه منفصل عن الـ building، وهو مش منفصل؟",
+      "cta": "أي جزء بتحسّوه منفصل عن الـ building، وهو مش منفصل؟"
     }
   ]
 }

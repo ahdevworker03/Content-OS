@@ -1,15 +1,15 @@
-# Instagram Carousel — أربع ركائز بدي قوّيهن وأنا عم إبني software
+# Instagram Carousel — شو بيربط مواد الـ CS بالـ building؟
 
 ## Instagram Carousel (Lebanese Arabic)
 
 ### Slide 1 — Cover
 
-**Visual:** A real planning page on a desk. Four short handwritten labels branch from “أبني software أحسن”; keep the layout simple and personal.
+**Visual:** A simple four-part system map on a desk: foundations → practice → systems → product value. Keep it clear and practical, not like a personal planner.
 
 **Text:**
 
-بدي إبني software أحسن…
-وهاي أربع ركائز رح ركّز عليهن
+مواد الـ CS مش منفصلة
+عن الـ building
 
 ### Slide 2 — Context
 
@@ -17,11 +17,12 @@
 
 **Text:**
 
-بلّشت سنتي التانية بـ CS، وقررت ما خلّي الجامعة مسار لحالها.
+بلّشت سنتي التانية بـ CS، وصرت اسأل:
+كيف هالمواد بتأثر على software ببنيه؟
 
-بدي اربط الأساسيات بالـ building، وركّز على فهم كيف الـ systems بتشتغل.
+مش كمواد لحالن، بس كأجزاء بتأثر على كيف بفكّر بالـ building.
 
-هيدي خطة تركيزي لهالسنة، ولسّه عم بلّش فيها.
+هيدا الربط عم جرّب افهمه ببداية هالسنة.
 
 ### Slide 3 — Engineering foundations
 
@@ -29,9 +30,9 @@
 
 **Text:**
 
-الأساسيات مش بس مواد جامعة بالنسبة إلي.
+الأساسيات بتغيّر القرار قبل ما اكتب code.
 
-databases، software engineering، وnetworking بيعطوني فهم أقوى قبل ما قرّر كيف ابنِي software.
+databases، software engineering، وnetworking بيعطوني طريقة أفهم فيها الـ system قبل ما قرّر كيف ابنِيه.
 
 ### Slide 4 — Focused technical depth
 
@@ -39,11 +40,11 @@ databases، software engineering، وnetworking بيعطوني فهم أقوى �
 
 **Text:**
 
-بدي قوّي استخدامي لـ TypeScript بالـ web development.
+TypeScript مش بس للـ frontend.
 
-بقدر استعملها بالـ frontend والـ backend.
+بتخلّيني اشتغل بنفس اللغة بالـ frontend والـ backend.
 
-رح اشتغل فيها مع React للـ frontend، وExpress للـ backend، وPrisma للـ database layer — يعني افهم أكتر من جزء بالـ system بنفس اللغة.
+ومع React، Express، وPrisma، بصير أسهل أفهم كيف الأجزاء بتكمل بعضها.
 
 ### Slide 5 — Understanding real systems
 
@@ -51,11 +52,11 @@ databases، software engineering، وnetworking بيعطوني فهم أقوى �
 
 **Text:**
 
-ما بكفّي كل جزء يشتغل لحاله.
+الـ system مش مجموعة أجزاء بتشتغل لحالا.
 
-بدي افهم كيف أجزاء الـ system بتحكي مع بعضها: كيف بيمشي الـ data بين frontend وbackend؟ وكيف بيتحمّل الـ system استعمال حقيقي؟
+المهم كيف الـ data بتمشي بين الـ frontend والـ backend، وكيف كل جزء بيتأثر بالتاني.
 
-رح اتعلّم هالشي من building وتجربة حقيقية، خطوة خطوة.
+هالشي بيوضح أكتر من building وتجربة حقيقية، خطوة خطوة.
 
 ### Slide 6 — Communicating what I build
 
@@ -63,11 +64,11 @@ databases، software engineering، وnetworking بيعطوني فهم أقوى �
 
 **Text:**
 
-والـ product مش بس شو بعمل تقنياً.
+والـ product مش بس implementation.
 
-بدي اتعلّم اشرح قيمة الـ product وكيف بيعه، واتواصل مع ناس عندن خبرة أكتر مني.
+قيمة الـ product بتبين أكتر لما نعرف: لمين هو، شو بحل، وليش حدا يهتم فيه.
 
-بالنسبة إلي، بناء product قوي لحاله ما بكفّي إذا ما عرفت أوصل قيمته.
+هيدا جزء من التفكير بالـ product، مش شغلة بتصير بعد الـ code.
 
 ### Slide 7 — Outcome
 
@@ -75,18 +76,18 @@ databases، software engineering، وnetworking بيعطوني فهم أقوى �
 
 **Text:**
 
-هول أربع ركائز بدي ابنِي عليهن.
+هول مش أربع مسارات منفصلين.
 
-أساسيات أوضح، building أعمق، فهم أفضل للـ system، وتواصل أوضح عن قيمة اللي عم بعمله.
+أساسيات أقوى، building أعمق، فهم أوضح للـ system، وتواصل أوضح عن قيمة الـ product.
 
-هيدي الخطة اللي رح بلّش فيها هالسنة، ولسّه قدّامي كتير اتعلّمه.
+هيدي الطريقة اللي عم جرّب اربط فيهن الدراسة بالـ building، ولسّه عم بلّش فيها.
 
 ## Instagram Caption
 
-بلّشت سنتي التانية بـ CS، وقررت استعملها كجزء من المسار اللي بدي ابني فيه software أحسن.
+مواد الـ CS، الـ building، وفهم الـ product مش مسارات منفصلة.
 
-هالسنة رح ركّز على foundations مثل databases وsoftware engineering وnetworking، وقوّي استخدامي لـ TypeScript. وبنفس الوقت، بدي افهم أكتر كيف الـ systems بتشتغل من خلال building وتجربة حقيقية، واتعلّم اشرح قيمة الـ product اللي عم بعمله.
+بلّشت سنتي التانية بـ CS، وعم جرّب أربط بين الأساسيات مثل databases وsoftware engineering وnetworking، وبين TypeScript، فهم الـ systems، والتفكير بقيمة الـ product.
 
-هيدي أربع ركائز بدي ابنِي عليهن: foundations أقوى، تركيز تقني أعمق، فهم للـ systems من خلال البناء، وتواصل أوضح عن قيمة الـ product. بعدني ببداية هالمسار، وهيدي خطة الشغل اللي رح التزم فيها.
+بالنسبة إلي، هالربط بيعطي الـ building اتجاه أوضح: ما بوقف عند code، وبفكّر كمان بالـ system وبقيمة اللي عم بنِيه. هيدي فكرة عم جرّبها ببداية هالسنة، مش نتيجة وصلتلا.
 
-إنتو كيف بتربطوا بين مواد الجامعة والتطبيق العملي؟
+أي جزء بتحسّوه منفصل عن الـ building، وهو مش منفصل؟

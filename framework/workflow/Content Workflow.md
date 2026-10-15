@@ -15,7 +15,7 @@ The complete lifecycle is defined in the [Content Pipeline](#content-pipeline) s
 
 ## Trigger-First Philosophy
 
-Every piece of content originates from a real experience — a bug, a lecture, a conversation, a struggle, or a small win.
+Every piece of content originates from a real experience, system, decision, observation, or implementation trigger.
 
 For the full definition of the trigger-first principle and its role in brand voice, refer to `Brand Strategy.md`.
 
@@ -28,7 +28,7 @@ Content should never be created from abstract ideas or generic topics. A trigger
 Not every daily experience becomes content. A good trigger has:
 
 - **Specificity:** A specific bug, error, or moment is better than a general observation.
-- **Learning outcome:** Something was learned or understood because of this trigger.
+- **Audience value:** The trigger reveals something the audience can understand or examine in similar work.
 - **Shareability:** The insight can be explained clearly to a peer.
 - **Relevance:** The trigger relates to the content pillars defined in `Brand Strategy.md`.
 
@@ -44,14 +44,14 @@ Once a trigger is validated, choose between an Instagram Carousel and a LinkedIn
 
 Use when:
 - The concept requires a structured, multi-slide explanation that guides the reader step by step.
-- The reader needs to follow a learning journey, not just see a conclusion.
+- The reader needs to follow the reasoning, not just see a conclusion.
 - The insight has enough depth to fill 5–10 slides grounded in real code or project work.
 
 Refer to [`Carousels.md`](../formats/Carousels.md) for full format rules — structure, slide schema, constraints, and best practices.
 
 ### LinkedIn Post
 
-Use when the idea is best expressed as a concise professional reflection grounded in a specific project or learning moment. Keep the practical developer perspective and focus on what changed in the writer’s thinking.
+Use when the idea is best expressed as a concise professional explanation or reflection grounded in a specific project, system, decision, or learning moment. Focus on the useful reasoning, not only what changed in the writer’s thinking.
 
 Refer to [`linkedin.md`](../formats/linkedin.md) for LinkedIn structure, voice, examples, and writing constraints.
 
@@ -59,9 +59,9 @@ Refer to [`linkedin.md`](../formats/linkedin.md) for LinkedIn structure, voice, 
 
 Every piece should aim to:
 
-- Document learning authentically.
-- Build trust by showing the real struggle.
-- Show progress over perfection.
+- Explain real development work authentically.
+- Build trust through concrete evidence and honest limits.
+- Give the audience a useful model, question, or tradeoff.
 - Start conversations at a peer level.
 
 ---

@@ -15,7 +15,7 @@ This guide helps transform a learning moment into a LinkedIn-ready post without 
 
 The goal is to sound like:
 
-> A Computer Science student building real projects, reflecting on what he is learning, and explaining how his thinking is changing through practice.
+> A developer in practice who explains real software work, systems, and decisions with clear, honest reasoning.
 
 ---
 
@@ -64,10 +64,10 @@ The second version sounds corporate and inflated.
 
 The writer is:
 
-- a Computer Science student
+- a developer studying Computer Science
 - building real software projects
-- learning frontend, backend, databases, and product workflows
-- documenting progress
+- working through frontend, backend, databases, and product workflows
+- using project context when it makes the point clearer
 - thinking seriously about software quality
 - not pretending to be an expert
 
@@ -97,7 +97,9 @@ The voice should not feel:
 
 ## Main Perspective
 
-Write from experience, not authority.
+Write from evidence, not authority. A post may center on a system, problem, decision, or concept; it does not need to center on the writer's progress.
+
+Use first person when it establishes a real trigger, observation, limitation, or change in reasoning. Otherwise, let the useful technical or product idea lead.
 
 Use:
 
@@ -128,18 +130,18 @@ Avoid:
 
 ## Preferred Post Structure
 
-Most LinkedIn reflection posts should follow this structure:
+Most LinkedIn posts should follow this structure:
 
 ```text id="iiyn7a"
-1. Opening insight
-2. Specific project trigger
-3. What I misunderstood
-4. What changed in my thinking
-5. Small practical takeaway
+1. Opening problem, observation, or insight
+2. Specific system, project, or decision context
+3. The reasoning, tradeoff, or behavior that matters
+4. Relevant personal observation, if it adds evidence
+5. A small practical model or question for the reader
 6. Optional discussion question
 ```
 
-This structure keeps the post grounded and reflective.
+This structure keeps the post grounded, useful, and professional.
 
 ---
 
@@ -711,7 +713,7 @@ When rewriting a LinkedIn post:
 1. Identify the real project moment.
 2. Remove generic opening lines.
 3. Remove corporate language.
-4. Replace expert claims with personal reflection.
+4. Replace expert claims with evidence-based, appropriately limited reasoning.
 5. Add one specific technical or product detail.
 6. Keep only one main idea.
 7. Make the takeaway smaller.
