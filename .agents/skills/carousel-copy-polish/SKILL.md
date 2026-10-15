@@ -1,6 +1,6 @@
 ---
 name: carousel-copy-polish
-description: Use this skill when reviewing, rewriting, or polishing Instagram carousel copy so each slide has one clear idea, a stronger hook, tighter wording, better flow, and a student-builder voice without becoming generic, motivational, or teacher-like.
+description: Use this skill when reviewing, rewriting, or polishing Instagram carousel copy so each slide has one clear idea, a stronger hook, tighter wording, better flow, and a practical developer voice without becoming generic, motivational, or teacher-like.
 ---
 
 # Carousel Copy Polish Skill
@@ -17,7 +17,7 @@ This skill improves:
 - text length
 - idea separation
 - audience takeaway
-- student-builder voice
+- practical developer voice
 - project connection
 - CTA quality
 
@@ -40,7 +40,7 @@ Use it for:
 - improving transitions between slides
 - checking whether each slide has one idea
 - making a carousel feel less AI-generated
-- making the carousel sound more like a real student-builder
+- making the carousel sound more like a real developer working through the problem
 
 Do not use this skill for:
 
@@ -492,7 +492,7 @@ Do not remove:
 - project context
 - uncertainty
 - simple wording
-- student perspective
+- practical developer perspective
 - technical clarity
 - specific bug or trigger
 - small honest takeaway
@@ -597,7 +597,7 @@ When polishing Arabic carousel copy:
 - Avoid translated phrasing.
 - Keep each slide short.
 - Do not over-explain.
-- Preserve the student voice.
+- Preserve the developer voice.
 
 Good:
 
@@ -742,7 +742,7 @@ Before accepting the carousel, check:
 - The project bridge is present.
 - The takeaway is small and believable.
 - The CTA is peer-level.
-- The voice sounds like a student-builder.
+- The voice sounds like a developer working through real problems.
 - The copy does not sound AI-generated.
 - No slide is overloaded.
 - No slide repeats another slide.
@@ -763,7 +763,7 @@ When polishing a carousel:
 7. Add or improve the project bridge.
 8. Replace broad advice with a small takeaway.
 9. Replace engagement bait with a peer-level CTA.
-10. Preserve the original meaning and student voice.
+10. Preserve the original meaning and developer voice.
 
 ---
 

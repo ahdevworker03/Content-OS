@@ -1,37 +1,37 @@
-# Instagram Carousel — أربع شغلات رح ركّز عليهن بسنتي التانية بـ CS
+# Instagram Carousel — أربع ركائز بدي قوّيهن وأنا عم إبني software
 
 ## Instagram Carousel (Lebanese Arabic)
 
 ### Slide 1 — Cover
 
-**Visual:** A real study-planning page on a desk. Four short handwritten labels branch from “سنتي التانية بـ CS”; keep the layout simple and personal.
+**Visual:** A real planning page on a desk. Four short handwritten labels branch from “أبني software أحسن”; keep the layout simple and personal.
 
 **Text:**
 
-بلّشت سنتي التانية بـ CS…
-وهول أربع شغلات رح ركّز عليهن
+بدي إبني software أحسن…
+وهاي أربع ركائز رح ركّز عليهن
 
 ### Slide 2 — Context
 
-**Visual:** Close-up of university notes beside a blank planning page. No fabricated grades, project screens, or results.
+**Visual:** University notes beside a blank system map. No fabricated grades, project screens, or results.
 
 **Text:**
 
-قررت خلّي هالسنة أكتر من مواد بدرسها لحالها.
+بلّشت سنتي التانية بـ CS، وقررت ما خلّي الجامعة مسار لحالها.
 
-هالسنة رح اربط اللي عم بتعلّمه بالجامعة بالـ building، وركّز على فهم كيف الـ systems بتشتغل.
+بدي اربط الأساسيات بالـ building، وركّز على فهم كيف الـ systems بتشتغل.
 
-هيدي خطة تركيزي لهالسنة — بعدني ما حقّقت هالأهداف.
+هيدي خطة تركيزي لهالسنة، ولسّه عم بلّش فيها.
 
-### Slide 3 — University foundations
+### Slide 3 — Engineering foundations
 
-**Visual:** A notebook with “Databases / Software Engineering / Networking” written as subjects to focus on.
+**Visual:** A notebook with “Databases / Software Engineering / Networking” connected to a small system diagram.
 
 **Text:**
 
-أول شي، رح ركّز على فهم مواد الـ CS الأساسية بعمق.
+الأساسيات مش بس مواد جامعة بالنسبة إلي.
 
-مثل databases، software engineering، وnetworking، لأن فهم هالمفاهيم أساسي لبناء software حقيقي.
+databases، software engineering، وnetworking بيعطوني فهم أقوى قبل ما قرّر كيف ابنِي software.
 
 ### Slide 4 — Focused technical depth
 
@@ -39,9 +39,11 @@
 
 **Text:**
 
-كمان رح اتعمّق بـ TypeScript للـ web development، لأنّي بقدر استعملها بالـ frontend والـ backend.
+بدي قوّي استخدامي لـ TypeScript بالـ web development.
 
-رح اشتغل فيها مع React للـ frontend، وExpress للـ backend، وPrisma للـ database layer — يعني غطّي أكتر من جزء بالـ system بنفس اللغة.
+بقدر استعملها بالـ frontend والـ backend.
+
+رح اشتغل فيها مع React للـ frontend، وExpress للـ backend، وPrisma للـ database layer — يعني افهم أكتر من جزء بالـ system بنفس اللغة.
 
 ### Slide 5 — Understanding real systems
 
@@ -49,9 +51,9 @@
 
 **Text:**
 
-كمان رح ركّز على فهم كيف أجزاء الـ system بتحكي مع بعضها.
+ما بكفّي كل جزء يشتغل لحاله.
 
-رح اشتغل على أسئلة مثل: كيف بيمشي الـ data بين frontend وbackend؟ وكيف بيتحمّل الـ system استعمال حقيقي؟
+بدي افهم كيف أجزاء الـ system بتحكي مع بعضها: كيف بيمشي الـ data بين frontend وbackend؟ وكيف بيتحمّل الـ system استعمال حقيقي؟
 
 رح اتعلّم هالشي من building وتجربة حقيقية، خطوة خطوة.
 
@@ -61,9 +63,9 @@
 
 **Text:**
 
-ورح خصّص وقت كمان لتعلّم كيف اشرح فكرتي والـ product اللي ببنيه.
+والـ product مش بس شو بعمل تقنياً.
 
-رح اتعلّم اشرح قيمة الـ product وكيف بيعه، واتواصل مع ناس عندن خبرة أكتر مني.
+بدي اتعلّم اشرح قيمة الـ product وكيف بيعه، واتواصل مع ناس عندن خبرة أكتر مني.
 
 بالنسبة إلي، بناء product قوي لحاله ما بكفّي إذا ما عرفت أوصل قيمته.
 
@@ -73,18 +75,18 @@
 
 **Text:**
 
-هول أربع أولويات رح اشتغل عليهن كمسار واحد.
+هول أربع ركائز بدي ابنِي عليهن.
 
-رح اربط الأساسيات بالـ building، افهم الـ system من التجربة، واتعلّم اوصل قيمة اللي عم بعمله.
+أساسيات أوضح، building أعمق، فهم أفضل للـ system، وتواصل أوضح عن قيمة اللي عم بعمله.
 
 هيدي الخطة اللي رح بلّش فيها هالسنة، ولسّه قدّامي كتير اتعلّمه.
 
 ## Instagram Caption
 
-بلّشت سنتي التانية بـ CS، وحدّدت كيف رح اربط الجامعة بالـ building.
+بلّشت سنتي التانية بـ CS، وقررت استعملها كجزء من المسار اللي بدي ابني فيه software أحسن.
 
-هالسنة رح ركّز على فهم مواد أساسية مثل databases وsoftware engineering وnetworking، واتعمّق بـ TypeScript. وبنفس الوقت، رح اشتغل على فهم كيف الـ systems بتشتغل من خلال building وتجربة حقيقية، واتعلّم اشرح قيمة اللي عم بعمله.
+هالسنة رح ركّز على foundations مثل databases وsoftware engineering وnetworking، وقوّي استخدامي لـ TypeScript. وبنفس الوقت، بدي افهم أكتر كيف الـ systems بتشتغل من خلال building وتجربة حقيقية، واتعلّم اشرح قيمة الـ product اللي عم بعمله.
 
-هيدي أربع أولويات عملية لهالسنة: أساسيات أقوى، تركيز تقني أعمق، فهم للـ systems من خلال البناء، وتواصل أوضح عن قيمة الـ product. بعدني ببداية هالمسار، وهيدي خطة الشغل اللي رح التزم فيها.
+هيدي أربع ركائز بدي ابنِي عليهن: foundations أقوى، تركيز تقني أعمق، فهم للـ systems من خلال البناء، وتواصل أوضح عن قيمة الـ product. بعدني ببداية هالمسار، وهيدي خطة الشغل اللي رح التزم فيها.
 
 إنتو كيف بتربطوا بين مواد الجامعة والتطبيق العملي؟

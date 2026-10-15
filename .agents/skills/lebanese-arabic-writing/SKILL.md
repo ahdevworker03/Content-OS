@@ -1,6 +1,6 @@
 ---
 name: lebanese-arabic-writing
-description: Use this skill when writing or rewriting Arabic content for Instagram Carousels in a natural Lebanese Arabic student voice. It improves Arabic copy so it sounds conversational, trigger-based, technically clear, and not translated, formal, robotic, motivational, or teacher-like.
+description: Use this skill when writing or rewriting Arabic content for Instagram Carousels in a natural Lebanese Arabic developer voice. It improves Arabic copy so it sounds conversational, trigger-based, technically clear, and not translated, formal, robotic, motivational, or teacher-like.
 ---
 
 # Lebanese Arabic Writing Skill
@@ -50,7 +50,7 @@ The writing should feel:
 
 - honest,
 - simple,
-- student-level,
+- grounded in real development work,
 - reflective,
 - conversational,
 - grounded in a real moment,
@@ -143,13 +143,13 @@ Avoid overly formal MSA:
 - بناءً على ما سبق
 - مما لا شك فيه
 
-These phrases make the content sound like an article, not a student learning in public.
+These phrases make the content sound like an article, not a developer documenting real work in public.
 
 ---
 
 ## Lebanese Dialect Guardrails
 
-Write the way a Lebanese student actually speaks. These are the default choices:
+Write the way a Lebanese developer actually speaks. These are the default choices:
 
 - `شو` for "what", not `إيش`
 - `شي` / `شغلة` for "thing", not `إشي`
@@ -569,7 +569,7 @@ Before accepting Arabic content, check:
 
 - Does it sound like Lebanese Arabic, not a mix of dialects?
 - Is there any dialect leakage from another Arabic dialect (Palestinian, Jordanian, Syrian, Egyptian, Gulf, or MSA)? Reject or rewrite it even if the sentence is understandable.
-- Does it sound like a student, not a teacher?
+- Does it sound like a developer sharing real work, not a teacher?
 - Is there a real trigger?
 - Are English technical terms used naturally?
 - Are normal words kept in Arabic when possible?
@@ -577,7 +577,7 @@ Before accepting Arabic content, check:
 - Is there any robotic MSA?
 - Is there any generic motivation?
 - Is the content grounded in an actual project, bug, confusion, or learning moment?
-- Would this sound normal if said in a voice note to another CS student?
+- Would this sound normal if said in a voice note to another developer or CS student?
 - Would the creator actually say this sentence naturally in a conversation? Reject technically-correct-but-unnatural phrasing, unnecessary explanatory language, artificial humility, social-media engagement formulas, and formal qualifiers inside casual speech.
 
 If the answer is no, rewrite.
@@ -591,14 +591,14 @@ When improving Arabic content, do not only correct grammar.
 Rewrite for:
 
 1. Natural Lebanese flow.
-2. Student perspective.
+2. Practical developer perspective.
 3. Trigger-first structure.
 4. Clear technical meaning.
 5. Less generic phrasing.
 6. Less formal Arabic.
 7. Better English technical term placement.
 
-The final text should feel written by a real Lebanese CS student, not translated by an AI system.
+The final text should feel written by a real Lebanese developer studying CS, not translated by an AI system.
 
 ---
 

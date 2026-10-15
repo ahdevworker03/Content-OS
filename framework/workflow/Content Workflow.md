@@ -51,7 +51,7 @@ Refer to [`Carousels.md`](../formats/Carousels.md) for full format rules — str
 
 ### LinkedIn Post
 
-Use when the idea is best expressed as a concise professional reflection grounded in a specific project or learning moment. Keep the student-builder perspective and focus on what changed in the writer’s thinking.
+Use when the idea is best expressed as a concise professional reflection grounded in a specific project or learning moment. Keep the practical developer perspective and focus on what changed in the writer’s thinking.
 
 Refer to [`linkedin.md`](../formats/linkedin.md) for LinkedIn structure, voice, examples, and writing constraints.
 

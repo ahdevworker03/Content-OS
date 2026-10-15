@@ -41,7 +41,7 @@ Use `evidence` only for supplied, approved code or a local image/screenshot. A d
 
 ### Purpose
 
-Explain a concept from a student's perspective.
+Explain a concept from the perspective of a developer working through it.
 
 ### Structure (Mandatory)
 
@@ -91,7 +91,7 @@ For writing style, tone, and voice guidelines — including plain language, jarg
 
 ### Purpose
 
-Share a topic while adding the student perspective.
+Share a topic while adding the developer's practical perspective.
 
 ### What these posts should do
 
@@ -114,7 +114,7 @@ This type adds the subjective layer: not just what I learned, but how I felt abo
 
 ### Purpose
 
-Document how I think about problems as a student builder.
+Document how I think about problems as a developer who builds and studies.
 
 ### What to include
 

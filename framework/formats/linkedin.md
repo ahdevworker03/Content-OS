@@ -44,7 +44,7 @@ This guide does not define:
 
 ## Core Rule
 
-LinkedIn content should be more polished than Instagram, but still honest and student-level.
+LinkedIn content should be more polished than Instagram, but still honest and grounded in the writer's real development work.
 
 Good:
 
@@ -492,7 +492,7 @@ Instead:
 1. Extract the core learning moment.
 2. Remove platform-specific wording.
 3. Make it more professional.
-4. Keep the student-builder perspective.
+4. Keep the practical developer perspective.
 5. Add project context.
 6. Write a fresh LinkedIn reflection.
 
@@ -690,7 +690,7 @@ Before accepting a LinkedIn post, check:
 
 - Is there one clear idea?
 - Is there a real project trigger?
-- Does it sound professional but still student-level?
+- Does it sound professional while staying within the writer's real experience?
 - Does it avoid fake seniority?
 - Does it avoid corporate wording?
 - Does it avoid motivational filler?
@@ -717,7 +717,7 @@ When rewriting a LinkedIn post:
 7. Make the takeaway smaller.
 8. Use short paragraphs.
 9. Add a thoughtful question only if it fits.
-10. Preserve the student-builder identity.
+10. Preserve the developer-in-practice identity.
 
 ---
 

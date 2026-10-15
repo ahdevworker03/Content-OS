@@ -1,13 +1,13 @@
 {
   "identity": {
     "id": "content-009",
-    "title": "Four areas I want to grow in during my second year of CS",
+    "title": "Four development focus areas for my second year in CS",
     "lifecycle_stage": "draft"
   },
   "trigger": {
-    "description": "Starting my second year of Computer Science and reflecting on the four areas I want to focus on this year: core CS subjects, deeper TypeScript practice, understanding real systems through building, and communicating the value of what I build.",
-    "insight": "I want to connect university foundations with focused technical practice, learning how systems behave through building, and communicating the value of what I make. These are goals I am beginning to work toward, not completed achievements.",
-    "hook": "بلّشت سنتي التانية بـ CS… وهول أربع شغلات بدي ركّز عليهن"
+    "description": "Starting my second year of Computer Science and defining the four areas I want to strengthen as I build software: foundations, TypeScript practice, systems thinking, and product communication.",
+    "insight": "I want to build stronger developer judgment through fundamentals, focused technical practice, learning how systems behave through building, and communicating the value of what I make. These are goals I am beginning to work toward, not completed achievements.",
+    "hook": "بدي إبني software أحسن… وهاي أربع ركائز رح ركّز عليهن"
   },
   "metadata": {
     "platform": "instagram",
@@ -16,14 +16,14 @@
     "content_pillar": "Personal reflections on the software development journey",
     "tags": [
       "computer-science",
-      "student-builder",
+      "developer-in-practice",
       "learning-in-public",
       "typescript",
       "systems-thinking",
       "communication"
     ],
     "created_date": "2026-10-14",
-    "notes": "Primary Instagram Project Thinking carousel with a distinct English LinkedIn reflection. Focus areas are plans, not achievements."
+    "notes": "Instagram Project Thinking carousel. The four development focus areas are plans, not completed outcomes."
   },
   "variants": [
     {
@@ -36,88 +36,129 @@
           {
             "layout": "cover",
             "number": "SLIDE 1 OF 7",
-            "title": "بلّشت سنتي التانية بـ CS…",
-            "subtext": "وهول أربع شغلات بدي ركّز عليهن",
+            "title": "بدي إبني software أحسن…",
+            "subtext": "وهاي أربع ركائز رح ركّز عليهن",
             "swipe": "اسحب →"
           },
           {
             "layout": "box-list",
             "number": "SLIDE 2 OF 7",
-            "section_tag": { "text": "السياق", "class": "" },
-            "title": "عم فكّر كيف بدي خلّي هالسنة أكتر من مواد بدرسها لحالها.",
+            "section_tag": {
+              "text": "السياق",
+              "class": ""
+            },
+            "title": "بلّشت سنتي التانية بـ CS، وقررت ما خلّي الجامعة مسار لحالها.",
             "items": [
-              { "text": "بدي اربط اللي عم بتعلّمه بالجامعة بالـ building، وبفهم كيف الـ systems بتشتغل.", "accent": false },
-              { "text": "هيدي خطة عم بلّش فيها — مش إنجازات خلصت.", "accent": true }
+              {
+                "text": "بدي اربط الأساسيات بالـ building، وركّز على فهم كيف الـ systems بتشتغل.",
+                "accent": false
+              },
+              {
+                "text": "هيدي خطة تركيزي لهالسنة، ولسّه عم بلّش فيها.",
+                "accent": true
+              }
             ],
             "swipe": "اسحب →"
           },
           {
             "layout": "box-list",
             "number": "SLIDE 3 OF 7",
-            "section_tag": { "text": "١ — الأساسيات", "class": "" },
-            "title": "أول شي، بدي افهم مواد الـ CS الأساسية بعمق.",
+            "section_tag": {
+              "text": "١ — الأساسيات",
+              "class": ""
+            },
+            "title": "الأساسيات مش بس مواد جامعة بالنسبة إلي.",
             "items": [
-              { "text": "مثل databases، software engineering، وnetworking، لأنّي بدي افهم المفاهيم الأساسية لبناء software حقيقي.", "accent": true }
+              {
+                "text": "databases، software engineering، وnetworking بيعطوني فهم أقوى قبل ما قرّر كيف ابنِي software.",
+                "accent": true
+              }
             ],
             "swipe": "اسحب →"
           },
           {
             "layout": "box-list",
             "number": "SLIDE 4 OF 7",
-            "section_tag": { "text": "٢ — تركيز تقني", "class": "" },
-            "title": "بدي اتعمّق أكتر بـ TypeScript للـ web development، لأنّي بقدر استعملها بالـ frontend والـ backend.",
+            "section_tag": {
+              "text": "٢ — تركيز تقني",
+              "class": ""
+            },
+            "title": "بدي قوّي استخدامي لـ TypeScript بالـ web development.",
             "items": [
-              { "text": "عم فكّر فيها مع React للـ frontend، وExpress للـ backend، وPrisma للـ database layer — يعني اتعامل مع أكتر من جزء بالـ system بنفس اللغة.", "accent": true }
+              {
+                "text": "بقدر استعملها بالـ frontend والـ backend.",
+                "accent": false
+              },
+              {
+                "text": "رح اشتغل فيها مع React للـ frontend، وExpress للـ backend، وPrisma للـ database layer — يعني افهم أكتر من جزء بالـ system بنفس اللغة.",
+                "accent": true
+              }
             ],
             "swipe": "اسحب →"
           },
           {
             "layout": "box-list",
             "number": "SLIDE 5 OF 7",
-            "section_tag": { "text": "٣ — فهم الـ systems", "class": "" },
-            "title": "كمان بدي إفهم كيف أجزاء الـ system بتحكي مع بعضها.",
+            "section_tag": {
+              "text": "٣ — فهم الـ systems",
+              "class": ""
+            },
+            "title": "ما بكفّي كل جزء يشتغل لحاله.",
             "items": [
-              { "text": "كيف بيمشي الـ data بين frontend وbackend؟ وكيف بيتحمّل الـ system استعمال حقيقي؟", "accent": false },
-              { "text": "هيدا بدي اتعلّمه من building وتجربة حقيقية، خطوة خطوة.", "accent": true }
+              {
+                "text": "بدي افهم كيف أجزاء الـ system بتحكي مع بعضها: كيف بيمشي الـ data بين frontend وbackend؟ وكيف بيتحمّل الـ system استعمال حقيقي؟",
+                "accent": false
+              },
+              {
+                "text": "رح اتعلّم هالشي من building وتجربة حقيقية، خطوة خطوة.",
+                "accent": true
+              }
             ],
             "swipe": "اسحب →"
           },
           {
             "layout": "box-list",
             "number": "SLIDE 6 OF 7",
-            "section_tag": { "text": "٤ — التواصل", "class": "" },
-            "title": "وفي شغلة ما بدي اعتبرها بتصير لحالها: كيف اشرح فكرتي والـ product اللي ببنيه.",
+            "section_tag": {
+              "text": "٤ — التواصل",
+              "class": ""
+            },
+            "title": "والـ product مش بس شو بعمل تقنياً.",
             "items": [
-              { "text": "بدي اتعلّم اشرح قيمة الـ product، وكيف بيعه، واتواصل مع ناس عندن خبرة أكتر مني.", "accent": true },
-              { "text": "عم فكّر إنو وجود product قوي لحاله ما بكفّي إذا ما عرفت أوصل قيمته.", "accent": false }
+              {
+                "text": "بدي اتعلّم اشرح قيمة الـ product وكيف بيعه، واتواصل مع ناس عندن خبرة أكتر مني.",
+                "accent": true
+              },
+              {
+                "text": "بالنسبة إلي، بناء product قوي لحاله ما بكفّي إذا ما عرفت أوصل قيمته.",
+                "accent": false
+              }
             ],
             "swipe": "اسحب →"
           },
           {
             "layout": "bullet-list",
             "number": "SLIDE 7 OF 7",
-            "section_tag": { "text": "وين بدي وصل", "class": "" },
-            "title": "هول مش أربع أهداف منفصلين بالنسبة إلي.",
+            "section_tag": {
+              "text": "وين بدي وصل",
+              "class": ""
+            },
+            "title": "هول أربع ركائز بدي ابنِي عليهن.",
             "items": [
-              { "text": "بدي جرّب اربط الأساسيات بالـ building، افهم الـ system من التجربة، واتعلّم اوصل قيمة اللي عم بعمله.", "accent": true },
-              { "text": "بعدني عم جرّب رتّب هالمسار — وهيدي نقطة البداية.", "accent": false }
+              {
+                "text": "أساسيات أوضح، building أعمق، فهم أفضل للـ system، وتواصل أوضح عن قيمة اللي عم بعمله.",
+                "accent": true
+              },
+              {
+                "text": "هيدي الخطة اللي رح بلّش فيها هالسنة، ولسّه قدّامي كتير اتعلّمه.",
+                "accent": false
+              }
             ]
           }
         ]
       },
-      "caption": "بلّشت سنتي التانية بـ CS، وصرت فكّر كيف اربط الجامعة بالـ building.\n\nهالسنة بدي ركّز على فهم مواد أساسية مثل databases وsoftware engineering وnetworking، واتعمّق أكتر بـ TypeScript. وبنفس الوقت، بدي إفهم كيف الـ systems بتشتغل لما أجرّب إبنيها، واتعلّم اشرح قيمة اللي عم بعمله.\n\nبعدني عم رتّب هالأولويات وعم جرّب شوف كيف بيكمّلوا بعض. مش عم شارك نتائج وصلتلا — هيدي الأشياء اللي بدي اشتغل عليها.\n\nإنتو كيف بتربطوا بين مواد الجامعة والتطبيق العملي؟",
+      "caption": "بلّشت سنتي التانية بـ CS، وقررت استعملها كجزء من المسار اللي بدي ابني فيه software أحسن.\n\nهالسنة رح ركّز على foundations مثل databases وsoftware engineering وnetworking، وقوّي استخدامي لـ TypeScript. وبنفس الوقت، بدي افهم أكتر كيف الـ systems بتشتغل من خلال building وتجربة حقيقية، واتعلّم اشرح قيمة الـ product اللي عم بعمله.\n\nهيدي أربع ركائز بدي ابنِي عليهن: foundations أقوى، تركيز تقني أعمق، فهم للـ systems من خلال البناء، وتواصل أوضح عن قيمة الـ product. بعدني ببداية هالمسار، وهيدي خطة الشغل اللي رح التزم فيها.\n\nإنتو كيف بتربطوا بين مواد الجامعة والتطبيق العملي؟",
       "cta": "إنتو كيف بتربطوا بين مواد الجامعة والتطبيق العملي؟"
-    },
-    {
-      "platform": "linkedin",
-      "format": "post",
-      "language": "en",
-      "body": {
-        "type": "post",
-        "content": "Starting my second year of Computer Science has made me think about how I want to use the year, beyond getting through courses one at a time.\n\nI want to understand foundations like databases, software engineering, and networking, while going deeper with TypeScript for web development. I’m also interested in learning how a real system behaves when its frontend, backend, and database have to work together and people actually use it. I’m still figuring out what that kind of learning looks like in practice.\n\nOne part I don’t want to leave until later is communication. I want to get better at explaining an idea, presenting what I build, and communicating its value. I also want to learn how to sell what I build. Building something and helping someone understand why it matters feel connected to me, even though I’m still learning both.\n\nThese are focus areas I’m setting for myself, not things I’ve already mastered. I’m hoping to connect university fundamentals with more deliberate building and clearer communication as the year unfolds.\n\nHow have you connected what you study with what you build?",
-        "structure": "reflection"
-      },
-      "cta": "How have you connected what you study with what you build?"
     }
   ]
 }

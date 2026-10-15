@@ -7,9 +7,9 @@
 
 This document defines a reusable content system for Instagram and LinkedIn.
 
-It is designed for a Lebanese Computer Science student who is learning software development by building real projects and documenting the journey in public for an Arabic-speaking audience.
+It is designed for a Lebanese developer studying Computer Science, building real projects, and documenting the work in public for an Arabic-speaking audience.
 
-The goal is to maintain consistency, authenticity, and a strong “student-in-public” narrative across platforms.
+The goal is to maintain consistency, authenticity, and a developer-in-practice narrative across platforms.
 
 **Brand Strategy.md** is the authority for all writing voice, tone, and stylistic decisions. This document owns creator identity, audience, messaging lens, content boundaries, and content pillars — not writing style.
 
@@ -17,7 +17,7 @@ The goal is to maintain consistency, authenticity, and a strong “student-in-pu
 
 ## Core Identity
 
-- Lebanese Computer Science student
+- Lebanese developer studying Computer Science
 - Focus on web development and software engineering through real projects
 - Learning by building, debugging, and iterating in real environments
 - Documenting progress, mistakes, and insights in public
@@ -48,7 +48,7 @@ Every content piece must pass through this lens:
 
 ## Main Message
 
-- I am learning software development by building real systems.
+- I develop my software engineering judgment by building real systems.
 - I share what I struggle with and what I discover through practice.
 - I document my journey honestly, not as an expert.
 - I grow through experience, iteration, and problem-solving.
@@ -105,14 +105,14 @@ It is about:
 - Learning in public through real development work
 - Building understanding through implementation and debugging
 - Documenting confusion → clarity transitions
-- Sharing honest student developer experiences
-- Evolving from student to builder through continuous practice
+- Sharing honest developer experiences, including the constraints of university when relevant
+- Growing through continuous practice, iteration, and real project work
 
 ---
 
 ## Core Statement
 
-I am a Lebanese Computer Science student learning software development by building real projects, debugging real problems, and documenting the process of turning confusion into understanding.
+I am a Lebanese developer studying Computer Science, building real projects, debugging real problems, and documenting the process of turning confusion into understanding.
 
 # Brand Voice
 
@@ -124,7 +124,7 @@ Content decisions about what to post are owned by `Brand Strategy.md` (creator i
 
 ## Communication Personality
 
-- A Lebanese Computer Science student learning in public
+- A Lebanese developer studying Computer Science and working in public
 - Honest, grounded, and reflective
 - Professional in structure, never authoritative in tone
 - Comfortable with uncertainty and learning-in-progress
@@ -136,10 +136,10 @@ Content decisions about what to post are owned by `Brand Strategy.md` (creator i
 ## Voice Attributes
 
 - **Clear and grounded** — Avoid jargon unless technically necessary. When used, explain naturally within context.
-- **Honest student perspective** — Speak from experience, not from expertise. Use "I discovered," "I struggled with," "I learned" rather than "you should," "the right way is."
+- **Honest developer perspective** — Speak from real work, not borrowed authority. Use "I discovered," "I struggled with," "I learned," or "I changed my approach" rather than "you should," "the right way is."
 - **Reflective, not instructional** — Document what happened and what it taught you. Do not lecture or prescribe.
 - **Comfortable with uncertainty** — Use phrases like "I'm still figuring this out," "this is what I understand so far," "I might be wrong but."
-- **Anchored in real student life** — Reference exams, deadlines, stress, university workload, and real constraints when naturally relevant.
+- **Grounded in real constraints** — Reference university, deadlines, project scope, or other constraints when they explain the development work; do not make student life the default subject.
 
 ---
 
@@ -180,7 +180,7 @@ In all contexts: never authoritative, never generic, never purely theoretical.
 - Acknowledge mistakes, confusion, and wrong turns.
 - Connect insights to the specific implementation or problem that taught them.
 - Keep language natural and conversational.
-- Include student-life context when it adds to the narrative.
+- Include university context when it explains the work or decision.
 
 ### Don't
 
@@ -200,7 +200,7 @@ These rules define how the core brand voice adapts to each platform. They descri
 ### Instagram
 
 **Purpose**
-Primary platform for daily learning documentation, visual storytelling, and community building. Instagram is where the student journey is documented in real time through Carousels.
+Primary platform for documenting development work, visual storytelling, and community building. Instagram is where practical developer thinking is documented through Carousels.
 
 **Target communication style**
 Conversational Lebanese Arabic with English technical terms embedded naturally. The writing should feel like talking to a peer who shares the same learning context.
@@ -212,7 +212,7 @@ Medium as a baseline, with range depending on the chosen format. Carousel depth 
 Close to the core reflective tone with a conversational feel. Carousel tone guidance is defined in Carousels.md. Never authoritative.
 
 **Audience expectations**
-Arabic-speaking CS students across the Arab world. They expect authentic, experience-based learning content, not tutorials. They value the shared struggle of learning.
+Arabic-speaking CS students and early developers across the Arab world. They expect authentic, experience-based development content, not tutorials. They value practical reasoning and honest learning.
 
 **Language usage**
 Lebanese Arabic as the primary language. English technical terms (API, bug, deploy, framework, function) are preserved in their original form and embedded naturally within Arabic sentences. Code snippets remain in English.
@@ -228,13 +228,13 @@ Low-friction community CTAs: "What part of this is still confusing?" "Have you r
 Professional platform for structured reflections and career-oriented documentation. LinkedIn is where the same learning experiences are framed as professional growth narratives.
 
 **Target communication style**
-English only. Professional but never corporate. Structured and polished while maintaining the student perspective.
+English only. Professional but never corporate. Structured and polished while maintaining an evidence-based developer perspective.
 
 **Expected level of depth**
 Medium-to-high. LinkedIn posts expand on the same ideas shared on Instagram but with more structured reasoning, professional framing, and emphasis on growth and process. Format-specific writing rules are defined in `framework/formats/linkedin.md`.
 
 **Tone adaptation**
-More polished and structured than Instagram. The reflective tone remains but is presented with professional framing. Still student-perspective, never expert-perspective. Less casual, more deliberate.
+More polished and structured than Instagram. The reflective tone remains but is presented with professional framing. Developer-led, never expert-posturing. Less casual, more deliberate.
 
 **Audience expectations**
 Professional network, fellow developers, potential employers, and recruiters. They expect thoughtful reflections on real engineering work, not self-promotion.
@@ -295,7 +295,7 @@ These rules define how a single content idea is transformed for different platfo
 ### What Remains Consistent Across Platforms
 
 - **Core insight**: The underlying learning, discovery, or experience is the same across all platforms.
-- **Brand voice attributes**: Honest, student perspective, reflective, experience-driven, clear and grounded.
+- **Brand voice attributes**: Honest developer perspective, reflective, experience-driven, clear and grounded.
 - **Trigger-first principle**: Every piece of content originates from a real trigger regardless of platform.
 - **First-person perspective**: Always "I" language, never "you should" or authoritative framing.
 - **No generic content**: No platform receives generic, triggerless content.

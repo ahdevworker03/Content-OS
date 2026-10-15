@@ -964,7 +964,7 @@ Before accepting Arabic technical content, check:
 - Are React/backend/database/testing terms used naturally?
 - Is the explanation clear for a CS student?
 - Does the text sound like a real Arab developer/student would write it?
-- Is the tone still student-builder, not teacher-like?
+- Is the tone still practical and developer-led, not teacher-like?
 
 If the content sounds translated, rewrite it.
 
@@ -981,7 +981,7 @@ When rewriting Arabic technical content:
 5. Add simple explanations when a term may be unclear.
 6. Keep terminology consistent.
 7. Avoid textbook Arabic.
-8. Preserve the student-builder voice.
+8. Preserve the practical developer voice.
 
 ---
 

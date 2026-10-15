@@ -231,7 +231,6 @@ Do not read format rules, renderer schemas, or platform-specific writing skills 
 
 ## Required Skill
 
-- `student-builder-voice` — keep the canonical perspective grounded, honest, and within the creator's experience.
 
 ## Input
 
@@ -312,7 +311,6 @@ Do not read or use rules for variants that the brief did not approve.
 
 Apply only the relevant writing skills for the required variants:
 
-- `student-builder-voice` — all variants.
 - `lebanese-arabic-writing` — Arabic Instagram variants.
 - `arabic-technical-language` — Arabic copy containing technical terms.
 - `carousel-copy-polish` — Instagram Carousel.

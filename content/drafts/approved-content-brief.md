@@ -1,12 +1,12 @@
-# Approved Content Brief — Four Focus Areas for My Second Year in CS
+# Approved Content Brief — Four Development Focus Areas for My Second Year in CS
 
 ## Working title
 
-Four areas I want to grow in during my second year of CS
+Four areas I want to strengthen as I build during my second year of CS
 
 ## Core idea
 
-As I start my second year in Computer Science, I want to connect foundational study, focused TypeScript practice, learning how real systems behave, and communicating the value of what I build.
+As I start my second year in Computer Science, I want to strengthen the foundations, technical practice, systems thinking, and product communication that shape how I build software.
 
 ## Trigger
 
@@ -14,15 +14,15 @@ Starting the second year of my CS degree and reflecting on what I want to focus 
 
 ## Audience problem
 
-CS students and early builders can feel pulled between coursework, learning tools, building projects, and making their work visible. They may struggle to connect these priorities into a realistic learning direction without treating one as a substitute for the others.
+Early developers can feel pulled between coursework, learning tools, building projects, and making their work visible. They may struggle to connect these priorities into a practical development direction without treating one as a substitute for the others.
 
 ## Key insight
 
-My current direction is to connect fundamentals with focused practice, learn system behavior by building, and also practice explaining the value of what I make. This is a plan I am beginning to explore, not a claim that I have mastered these areas.
+My current direction is to build stronger developer judgment through fundamentals, focused practice, system behavior, and product communication. This is a plan I am beginning to explore, not a claim that I have mastered these areas.
 
 ## Intended outcome
 
-The audience should see one student’s honest way of organizing a year of growth across study, building, systems understanding, and communication. They should feel encouraged to reflect on how their own learning priorities connect, without reading this as a universal roadmap.
+The audience should see one developer's honest way of organizing a year of growth across foundations, building, systems understanding, and communication. They should feel encouraged to reflect on how their own development priorities connect, without reading this as a universal roadmap.
 
 ## Content pillar
 
@@ -30,18 +30,15 @@ Personal reflections on the software development journey.
 
 ## Target platforms
 
-- **Instagram:** The primary, medium-depth visual narrative for Arabic-speaking CS students. Use conversational Lebanese Arabic and preserve English technical terms naturally.
-- **LinkedIn:** An English-only, platform-specific reflection for fellow developers, learners, and professional contacts. Reframe the same experience around how I am thinking about growth as a student-builder; do not translate or reuse a slide-by-slide structure.
+- **Instagram:** The primary, medium-depth visual narrative for Arabic-speaking CS students and early developers. Use conversational Lebanese Arabic and preserve English technical terms naturally.
 
 ## Primary format
 
-Instagram Carousel. LinkedIn post is a secondary platform adaptation of the same underlying idea.
+Instagram Carousel.
 
 ## Creative direction
 
-Treat this as a **Project Thinking** reflection about setting learning priorities at the start of a university year, not as a tutorial or a list of advice. Keep the real student trigger visible, show the reasoning that connects the four priorities, and close on the outcome of the reflection. For Instagram, use the Project Thinking structure in `Carousels.md` (context → thought process → outcome), with a clear visual representation of the four-part direction as the evidence of the thinking. Each eventual slide should carry one advancing idea; do not pad the sequence or force an educational Project Bridge/CTA structure that does not fit this project-thinking type.
-
-For LinkedIn, build a separate reflective narrative in English: start from the second-year transition, explain why I am trying to connect coursework with building and communication, and leave room for what I am still figuring out. Keep it practical and grounded in my own plan. It should read as a student’s reflection, not career advice or corporate thought leadership.
+Treat this as a **Project Thinking** reflection about developing stronger engineering judgment at the start of a university year, not as a tutorial or a list of advice. Keep the university trigger visible as context, show the reasoning that connects the four priorities to building software, and close on the intended development direction. Use the Project Thinking structure in `Carousels.md` (context → thought process → outcome), with a clear visual representation of the four-part direction. Each eventual slide should carry one advancing idea; do not pad the sequence or force an educational Project Bridge/CTA structure that does not fit this project-thinking type.
 
 ## Supporting context
 
@@ -58,14 +55,12 @@ These are stated areas of focus, not completed accomplishments. The source does 
 
 - `framework/strategy/Brand Strategy.md` — identity, audience, content pillars, voice, language, and platform-specific adaptation rules.
 - `framework/formats/Carousels.md` — Project Thinking carousel purpose and structure.
-- Workflow 04’s `linkedin-reflection-writing` skill for the LinkedIn adaptation step.
 
 ## Constraints
 
 - Preserve the second-year CS trigger and the same four focus areas.
-- Keep first-person student-builder perspective, honest uncertainty, and claims limited to the experience described in the source.
-- Instagram prose is conversational Lebanese Arabic with English technical terms; LinkedIn prose is English only.
-- Rewrite for each platform; do not translate the Instagram version or copy its eventual slide sequence into LinkedIn.
+- Keep first-person developer perspective, honest uncertainty, and claims limited to the experience described in the source.
+- Instagram prose is conversational Lebanese Arabic with English technical terms.
 - Do not imply TypeScript/Prisma/React/Express expertise, real-user scale, product-market success, or completed outcomes. These are interests and goals in the source.
 - Do not invent a specific project, implementation, bug, result, achievement, timeline, or networking experience.
 - No carousel slides, LinkedIn post copy, captions, hooks, or final content are part of this brief.
@@ -73,7 +68,6 @@ These are stated areas of focus, not completed accomplishments. The source does 
 ## Notes for Post Content Builder
 
 - Build the Instagram carousel as Project Thinking, using context → thought process → outcome. Make the four priorities legible as a connected direction while keeping each slide focused and useful.
-- Ground visuals in the actual plan: for example, a simple study/build/understand/communicate map or a privacy-safe student planning artifact. Do not fabricate project screenshots or implementation proof.
-- The LinkedIn version must be independently structured and more deliberate, with reflective reasoning about balancing university foundations and practical building. Keep it modest and personal; avoid prescriptive takeaways.
+- Ground visuals in the actual plan: for example, a simple foundations/build/understand/communicate map or a privacy-safe planning artifact. Do not fabricate project screenshots or implementation proof.
 - Preserve the distinction between what I plan to focus on and what I have already done.
 - Workflow 02 is complete here. Workflow 03 owns the canonical format-neutral draft; Workflow 04 owns the approved platform adaptations.
