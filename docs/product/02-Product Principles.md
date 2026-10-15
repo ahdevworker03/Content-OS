@@ -58,10 +58,11 @@ The system should understand and plan before producing final content.
 Expected order:
 
 ```
-Idea → brief → content structure → slide copy → layout/design decisions → rendered preview
+Idea → Brief → Canonical Content → Format / Platform Variants
+  → Design / Rendering where applicable → Review → Export / Publish
 ```
 
-Reason: this avoids random AI output and preserves content quality. The system should not jump directly from a vague prompt to final slides, unless the user explicitly asks for a fast draft.
+Reason: this avoids random AI output and preserves content quality. The system establishes canonical meaning before adapting it to approved formats and platforms. Carousel slide structure and renderer data belong to Carousel adaptation; not every post becomes a Carousel.
 
 ---
 

@@ -8,7 +8,7 @@ This file defines the **practical development plan** for the next milestone: pro
 
 ## 2. Target Outcome
 
-A single user can open the app, describe a carousel idea, receive an AI-generated brief, approve or adjust it, generate structured carousel content, receive safe layout/theme decisions, preview/edit the carousel, validate it, and export final assets.
+A single user can open the app, describe an idea for a Carousel, receive an AI-generated brief, approve or adjust it, create canonical content, adapt that content into a Carousel and its Content Model data, receive safe layout/theme decisions, preview/edit the Carousel, validate it, and export final assets.
 
 The user should not need to:
 
@@ -26,7 +26,7 @@ The user should not need to:
 Reuse before inventing new infrastructure:
 
 - current framework documents as the content-intelligence source
-- current Content Model as the authoring/content contract
+- current Content Model as the Carousel structured-content contract
 - current `content/` file lifecycle as temporary persistence
 - current `production/workspace/carousel.json` as the active-carousel bridge
 - current Adapter (Content Model → Renderer Models)
@@ -43,7 +43,8 @@ Reuse before inventing new infrastructure:
 
 ```
 Dashboard → New Carousel → Describe Idea → AI Brief → Approve / Adjust
-  → Generate Content → Generate / Select Design → Preview / Edit
+  → Canonical Content → Carousel Adaptation / Content Model
+    → Generate / Select Design → Preview / Edit
     → Validate → Export
 ```
 
@@ -54,8 +55,9 @@ Dashboard → New Carousel → Describe Idea → AI Brief → Approve / Adjust
 | Describe Idea | Write the idea | Understand intent | Natural-language input | Understood idea |
 | AI Brief | Review brief | Produce Content Brief | Use framework guidance | Content Brief |
 | Approve / Adjust | Accept or edit | Update brief | Brief edit/regenerate | Approved brief |
-| Generate Content | Trigger | Generate structured content | Produce Content Model data | Structured content |
-| Generate / Select Design | Accept design | Choose safe layout/theme | Renderer-safe decisions | Design data |
+| Canonical Content | Review/edit post substance | Write format-neutral canonical draft | Create canonical content before adaptation | Canonical Content Draft |
+| Carousel Adaptation / Content Model | Create Carousel variant | Adapt canonical content into slides and structured Carousel data | Generate Content Model data only for the Carousel variant | Carousel variant and Content Model data |
+| Generate / Select Design | Accept design | Choose safe layout/theme per slide | Renderer-safe decisions | Design data |
 | Preview / Edit | Review/edit | Render live | Reuse Studio | Preview |
 | Validate | Run validation | Check readiness | Human-language validation | Validation result |
 | Export | Confirm export | Produce assets | Studio modal / Playwright | Final assets |
@@ -88,7 +90,7 @@ Dashboard → New Carousel → Describe Idea → AI Brief → Approve / Adjust
 
 ## 7. Phase 3 — AI Brief Generation
 
-**Goal:** turn the raw idea into a structured Content Brief — working title, core idea, audience, angle, takeaway, tone, platform/format, suggested slide structure, design direction, and constraints/risks.
+**Goal:** turn the raw idea into a structured Content Brief — working title, core idea, audience, angle, takeaway, tone, primary format, target platforms, required variants, design direction, and constraints/risks.
 
 **Implementation direction:** use the existing framework guidance as the intelligence source; keep output structured; allow regeneration or editing before full content generation.
 
@@ -96,17 +98,27 @@ Dashboard → New Carousel → Describe Idea → AI Brief → Approve / Adjust
 
 ---
 
-## 8. Phase 4 — Content Generation
+## 8. Phase 4 — Canonical Content Generation
 
-**Goal:** generate carousel content from the approved brief — carousel title, slide sequence, slide purpose, slide copy, CTA/footer, and Content Model-compatible structured output.
+**Goal:** create the format-neutral Canonical Content Draft from the approved brief, preserving the post's meaning, supporting evidence, factual boundaries, takeaway, and CTA intent.
 
-**Implementation direction:** generated output must become Content Model data; do not generate raw renderer data directly; do not bypass the Adapter; preserve the Content Model → Adapter → Renderer Models boundary.
+**Implementation direction:** Workflow 03 writes canonical content only. It does not create slides or Content Model data. Keep canonical content independent of Carousel presentation.
 
-**Deliverable:** a generated carousel exists as structured Content Model-compatible data.
+**Deliverable:** the approved brief has a canonical content draft ready for Carousel adaptation.
 
 ---
 
-## 9. Phase 5 — Design Planning
+## 9. Phase 5 — Carousel Adaptation
+
+**Goal:** adapt the canonical content into the approved Carousel variant — title, slide sequence, slide purpose, slide copy, CTA/footer, and Content Model-compatible structured output.
+
+**Implementation direction:** generate Content Model data only for the approved Carousel variant; do not generate raw renderer data directly; do not bypass the Adapter; preserve the Content Model → Adapter → Renderer Models boundary.
+
+**Deliverable:** the Carousel variant exists as structured Content Model-compatible data.
+
+---
+
+## 10. Phase 6 — Design Planning
 
 **Goal:** generate or select renderer-safe design decisions — layout per slide, visual emphasis, theme/default style, design-direction interpretation, and content-density decisions.
 
@@ -116,7 +128,7 @@ Dashboard → New Carousel → Describe Idea → AI Brief → Approve / Adjust
 
 ---
 
-## 10. Phase 6 — Workspace Bridge
+## 11. Phase 7 — Workspace Bridge
 
 **Goal:** bridge generated structured content into the current renderer workflow.
 
@@ -128,7 +140,7 @@ Dashboard → New Carousel → Describe Idea → AI Brief → Approve / Adjust
 
 ---
 
-## 11. Phase 7 — Preview / Edit
+## 12. Phase 8 — Preview / Edit
 
 **Goal:** reuse the current Studio for review and editing.
 
@@ -140,7 +152,7 @@ Dashboard → New Carousel → Describe Idea → AI Brief → Approve / Adjust
 
 ---
 
-## 12. Phase 8 — Validation / Repair
+## 13. Phase 9 — Validation / Repair
 
 **Goal:** make validation useful in product language.
 
@@ -152,7 +164,7 @@ Dashboard → New Carousel → Describe Idea → AI Brief → Approve / Adjust
 
 ---
 
-## 13. Phase 9 — Export
+## 14. Phase 10 — Export
 
 **Goal:** preserve deterministic export.
 
@@ -164,7 +176,7 @@ Dashboard → New Carousel → Describe Idea → AI Brief → Approve / Adjust
 
 ---
 
-## 14. Phase 10 — Archive / Publication Recording
+## 15. Phase 11 — Archive / Publication Recording
 
 **Goal:** keep publication separate from export.
 
@@ -176,7 +188,7 @@ Dashboard → New Carousel → Describe Idea → AI Brief → Approve / Adjust
 
 ---
 
-## 15. What Must Stay Hidden from Normal Users
+## 16. What Must Stay Hidden from Normal Users
 
 Normal users should not see or need: internal workflow numbers, Markdown framework files, raw Content Model JSON, Renderer Models, Adapter details, layout IDs as required input, terminal commands, Playwright export details, or schema errors as primary UX.
 
@@ -184,7 +196,7 @@ Advanced/developer mode may expose some of these later, but not in the normal fl
 
 ---
 
-## 16. Explicit Non-Goals
+## 17. Explicit Non-Goals
 
 This milestone does not include:
 
@@ -208,7 +220,7 @@ This milestone does not include:
 
 ---
 
-## 17. Technical Guardrails
+## 18. Technical Guardrails
 
 1. Do not bypass the Content Model.
 2. Do not bypass the Adapter.
@@ -223,7 +235,7 @@ This milestone does not include:
 
 ---
 
-## 18. Testing / Verification
+## 19. Testing / Verification
 
 Must verify:
 
@@ -245,7 +257,7 @@ This is not a full test strategy — only what this milestone must prove.
 
 ---
 
-## 19. Completion Criteria
+## 20. Completion Criteria
 
 The milestone is complete when a user can:
 
@@ -263,7 +275,7 @@ The milestone is complete when a user can:
 
 ---
 
-## 20. Risks
+## 21. Risks
 
 | Risk | Mitigation |
 |---|---|
@@ -271,31 +283,32 @@ The milestone is complete when a user can:
 | Bypassing the Content Model/Adapter boundary | Enforce guardrails; route generation through the Content Model |
 | Making the Studio responsible for too much | Studio stays a review/edit/export surface; orchestration lives in the product flow |
 | Making AI output uncontrolled | Keep AI inside structured guardrails; require structured output |
-| Creating a generic chatbot instead of a structured workflow | Keep Structure-before-generation; the brief is a checkpoint |
+| Creating a generic chatbot instead of a structured workflow | Keep Structure-before-generation; the approved brief precedes canonical writing and Carousel adaptation |
 | Adding persistence too early | Reuse the file-based bridge; add persistence only when the loop needs it |
 | Weakening deterministic export | Do not change frozen renderer/export behavior; preview must equal export |
 | Exposing internal complexity to users | Keep advanced internals hidden; human-language validation |
 
 ---
 
-## 21. Implementation Order
+## 22. Implementation Order
 
 1. Dashboard shell
 2. New Carousel / idea form
 3. AI Brief generation path
 4. Brief approval/editing
-5. Content generation to Content Model
-6. Design planning/layout selection
-7. Workspace bridge
-8. Studio preview/edit integration
-9. Validation/repair polish
-10. Export verification
-11. Archive/publication handoff
+5. Canonical content generation from the approved brief
+6. Carousel adaptation and Content Model generation
+7. Design planning/layout selection
+8. Workspace bridge
+9. Studio preview/edit integration
+10. Validation/repair polish
+11. Export verification
+12. Archive/publication handoff
 
 This is an order of work, not a detailed task breakdown.
 
 ---
 
-## 22. Summary
+## 23. Summary
 
 The MVP should prove the simplest complete self-service loop while reusing the current Content OS, Content Model, Adapter, Studio, renderer, and export pipeline. The product should become easier for the user without making the architecture heavier than needed.

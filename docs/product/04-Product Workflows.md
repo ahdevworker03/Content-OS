@@ -36,7 +36,8 @@ The core next-stage workflow:
 
 ```
 Dashboard → New Carousel → Describe idea → AI brief → Approve / adjust
-  → Generate content → Generate/select design → Preview/edit
+  → Write canonical content → Adapt approved Carousel variant
+    → Generate/select design → Preview/edit
     → Validate → Export
 ```
 
@@ -47,8 +48,9 @@ Dashboard → New Carousel → Describe idea → AI brief → Approve / adjust
 | Describe idea | Write the idea naturally | Understand intent and context | Understood idea |
 | AI brief | Review the brief | Produce a structured Content Brief | Content Brief |
 | Approve / adjust | Accept or change direction | Update the brief | Approved brief |
-| Generate content | Trigger generation | Produce structured slide content | Structured content |
-| Generate/select design | Choose or accept design | Select layouts/theme per slide | Design data |
+| Write canonical content | Review/edit the post's substance | Create format-neutral content before adaptation | Canonical Content Draft |
+| Adapt Carousel | Create the approved Carousel variant | Adapt canonical content into slide sequence, copy, and Carousel Content Model data | Carousel variant and Content Model data |
+| Generate/select design | Choose or accept design | Select layouts/theme per Carousel slide | Design data |
 | Preview / edit | Review and edit | Render and reflect edits live | Preview |
 | Validate | Run validation | Check renderability and quality | Validation result |
 | Export | Confirm export | Produce deterministic assets | Final assets |
@@ -110,7 +112,7 @@ The system turns the raw idea into a concise **Content Brief**, including workin
 
 User action: approve, edit, regenerate, or change direction.
 
-**Important:** the brief is the checkpoint before generating the full carousel. This preserves "structure before generation."
+**Important:** the brief is the checkpoint before canonical writing and adaptation. This preserves "structure before generation" for a Post, whether or not it includes a Carousel.
 
 ---
 
@@ -122,9 +124,9 @@ The system should update the brief, keep changes understandable, and avoid gener
 
 ---
 
-## 9. Step 6 — Generate Content
+## 9. Step 6 — Write Canonical Content and Adapt Approved Variants
 
-The system first creates format-neutral canonical content: trigger, reasoning, key points, supported examples, factual boundaries, takeaway, and CTA intent. It then adapts only the variants approved in the brief. For a Carousel, this produces slide sequence, slide purpose, copy, and **structured Content Model data**; a LinkedIn post is a separate standalone variant.
+The system first creates format-neutral canonical content: trigger, reasoning, key points, supported examples, factual boundaries, takeaway, and CTA intent. It then adapts only the variants approved in the brief. Carousel slide sequence, slide purpose, copy, and **structured Content Model data** belong to Carousel adaptation. LinkedIn and other non-Carousel variants are separate standalone outputs.
 
 **Important:** canonical meaning must be established before platform/format adaptation. Structured Carousel data is generated only for the Carousel variant; other variants remain standalone platform artifacts.
 
@@ -242,8 +244,8 @@ A short continuity mapping between the current internal system and future produc
 |---|---|
 | Workflow 01 — Idea Discovery | Describe Idea / capture idea |
 | Workflow 02 — Content Planning | AI Brief |
-| Workflow 03 — Post Content Builder | Write canonical content |
-| Workflow 04 — Format Adaptation | Create approved variants |
+| Workflow 03 — Post Content Builder | Write only the Canonical Content Draft |
+| Workflow 04 — Format Adaptation | Create approved standalone variants; produce Carousel content/model data only for Carousel |
 | Workflow 05 — Render Validation | Preview / Validate Carousel where applicable |
 | Workflow 06 — Export Assets | Export Carousel where applicable |
 | Manual Publish | Publish the approved platform variant |

@@ -46,15 +46,11 @@ Brand
   owns Design Preferences
 
 Post
-  starts from Idea
-  has Content Brief
-  has Canonical Content Draft
+  owns or relates to Idea, Content Brief, and Canonical Content Draft
   has approved Platform / Format Variants
-  may have Carousel Content Model data
+  may have applicable Content Model data
+  may have Exports and Publication / Archive records
   may have Versions
-  may have Exports
-  may have Publication Record
-  may be Archived
 
 Carousel
   has Slides
@@ -166,7 +162,7 @@ A **Voice Profile** stores or represents writing preferences: tone, language, di
 
 ## 10. Post
 
-The **Post** is the main domain object — one publishable idea or content item. A Post may include an Idea, a Content Brief, Content Model data, one or more format variants, a Carousel, Validation Results, Exports, Publication/Archive metadata, and Versions later.
+The **Post** is the main domain object — one publishable idea or content item. A Post owns or relates to its Idea, Content Brief, Canonical Content Draft, approved Platform / Format Variants, applicable Content Model data, Exports, and Publication / Archive records. It may also have a Carousel, Validation Results, and Versions later.
 
 - **Current:** represented by files in ideas, drafts, and the published archive.
 - **Next:** the primary object the self-service product manages.
@@ -378,7 +374,7 @@ Idea → Approved Content Brief → Canonical Content Draft → Format / Platfor
 
 - Workspace owns Brands, Posts, Assets, and Preferences.
 - Brand guides Posts through Voice Profile and Design Preferences.
-- Post owns Idea, Content Brief, Content Model, Carousel, Exports, and Publication/Archive records.
+- Post owns or relates to Idea, Content Brief, Canonical Content Draft, approved Platform / Format Variants, applicable Content Model data, Exports, and Publication / Archive records.
 - Carousel owns Slides.
 - Slide uses Layout and Theme / Design Direction.
 - Content Model feeds the Adapter.
@@ -397,7 +393,10 @@ Idea → Approved Content Brief → Canonical Content Draft → Format / Platfor
 |---|---|
 | Brand | Brand View / Brand Voice / writing skills |
 | Idea | `content/ideas/<YYYY-MM-DD-project-slug>/` with required `idea.json` and optional curated supporting resources |
-| Draft/Post | `content/drafts/...` |
+| Post | Groups the related idea, brief, canonical draft, approved variants, applicable Carousel data, exports, and publication/archive records |
+| Content Brief | Current planning workflow output; approved before canonical writing |
+| Canonical Content Draft | `content/drafts/post.md` |
+| Platform / Format Variants | Approved standalone drafts: `content/drafts/carousel.md`, `content/drafts/reel.md`, `content/drafts/story.md`, `content/drafts/linkedin.md` |
 | Active Carousel | `production/workspace/carousel.json` |
 | Content Model | `framework/model/Content Model.md` |
 | Renderer Model | TypeScript types in the renderer |
@@ -412,7 +411,7 @@ Idea → Approved Content Brief → Canonical Content Draft → Format / Platfor
 
 ## 29. Next Self-Service Domain Scope
 
-**Needed:** simple User context; simple Workspace concept if necessary; Brand/Voice/Design preferences as defaults; Post; Idea input; Content Brief; Content Model output; Carousel; Slide; Layout selection; Theme/Design Direction; Validation Result; Export; Asset.
+**Needed:** simple User context; simple Workspace concept if necessary; Brand/Voice/Design preferences as defaults; Post; Idea input; Content Brief; Canonical Content Draft; approved Platform / Format Variants; applicable Carousel Content Model output; Carousel; Slide; Layout selection; Theme/Design Direction; Validation Result; Export; Asset.
 
 **Not needed yet:** multi-user accounts, team workspaces, billing, subscriptions, role/permission systems, production publishing integrations, full version-control systems, and enterprise asset management.
 

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-15-content-os-canonical-content-variants",
+  "captured_at": "2026-10-15T08:11:09+03:00",
+  "project": {
+    "name": "Content OS",
+    "repository": "content-os",
+    "area": "Workflow architecture documentation"
+  },
+  "idea": {
+    "title": "Keep canonical meaning separate from platform variants",
+    "type": "workflow-learning",
+    "summary": "Aligning product and MVP documentation exposed why the shared canonical post draft and platform-specific outputs need distinct stages: Carousel structure belongs to Carousel adaptation, while LinkedIn remains a standalone variant."
+  },
+  "context": {
+    "goal": "Make product documentation accurately describe the implemented Content OS lifecycle.",
+    "situation": "Several docs retained language from a Carousel-first flow even though the workflow now writes canonical content before adapting approved platform and format variants.",
+    "problem": "The old summaries could imply that the brief directly generates slides, every post becomes a Carousel, or structured Carousel content is the canonical source.",
+    "investigation": "Compared the four requested docs with framework/workflow/Content Pipeline.md, which specifies Workflow 03 output as content/drafts/post.md and Workflow 04 as standalone approved variants.",
+    "decision": "Document canonical writing separately from adaptation, and keep Carousel Content Model data specific to the approved Carousel variant.",
+    "implementation": "Updated the product principles, product workflows, self-service Carousel MVP plan, and domain model without changing workflow implementation.",
+    "result": "The four docs now describe canonical content before adaptation and distinguish Carousel-specific rendering data from other standalone variants."
+  },
+  "content_value": {
+    "learning_points": [
+      "A canonical draft can preserve meaning and evidence while format variants own platform-specific presentation.",
+      "A Carousel MVP can remain narrowly scoped while fitting a broader post lifecycle.",
+      "Documentation summaries should be checked against the implemented workflow source of truth."
+    ],
+    "story_points": [
+      "The detailed workflow had advanced, but summary tables and the MVP plan still reflected an earlier Carousel-first model.",
+      "The fix clarified stage ownership instead of changing the workflow implementation."
+    ],
+    "possible_angles": [
+      "Why canonical content and platform adaptation need separate stages.",
+      "How to keep a format-specific MVP inside a format-neutral content lifecycle."
+    ]
+  },
+  "resources": [],
+  "notes": []
+}
