@@ -352,6 +352,8 @@ Inspector field change
 
 Editing is a pure in-memory merge. There is no save step, no debounce against a backend, and no persistence.
 
+The Inspector branches by renderer `layout`: it edits story, focus, ordered sequence items, both comparison sides, evidence kind/source or supplied code, and closing text. Validation warns for missing layout-specific content, unsafe evidence paths, and diagrams not identified as conceptual. Legacy footer/handle fields are retained and editable as legacy data; exported personal slides use the shared fixed handle.
+
 ### Guides toggle
 
 ```
@@ -392,6 +394,8 @@ The architecture is additive: new capabilities slot into existing seams without 
 ### New layout support
 
 Adding a layout touches the renderer (new type variant, layout component, `SlideRenderer` case, adapter mapping) and the Studio gains one new branch in the Inspector so the copy can be edited. The Studio needs no other change — Preview, Sidebar thumbnails, and Export all pick up the new layout automatically because they render through `SlideRenderer`.
+
+The personal account uses seven stable layout IDs (`cover`, `story`, `focus`, `sequence`, `comparison`, `evidence`, `closing`) selected per slide by Workflow 04. The gallery is not a required sequence. The fixed warm light styling belongs to this account; it is not a default theme for future Content OS users. Workspace evidence assets are served from `production/workspace/evidence/` to both Studio and `/export`.
 
 ### New preview tools
 

@@ -1,11 +1,17 @@
 import type { SlideData } from "../types";
 import {
-  CoverSlide,
   BulletListSlide,
   ArrowListSlide,
   GridSlide,
   BoxListSlide,
   CtaSlide,
+  PersonalCover,
+  PersonalStory,
+  PersonalFocus,
+  PersonalSequence,
+  PersonalComparison,
+  PersonalEvidence,
+  PersonalClosing,
 } from "../layouts";
 import UnsupportedSlide from "./UnsupportedSlide";
 
@@ -16,13 +22,19 @@ type SlideRendererProps = {
 export default function SlideRenderer({ slide }: SlideRendererProps) {
   switch (slide.layout) {
     case "cover":
-      return (
-        <CoverSlide
-          title={slide.title}
-          subtitle={slide.subtitle}
-          username={slide.username}
-        />
-      );
+      return <PersonalCover slide={slide} />;
+    case "story":
+      return <PersonalStory slide={slide} />;
+    case "focus":
+      return <PersonalFocus slide={slide} />;
+    case "sequence":
+      return <PersonalSequence slide={slide} />;
+    case "comparison":
+      return <PersonalComparison slide={slide} />;
+    case "evidence":
+      return <PersonalEvidence slide={slide} />;
+    case "closing":
+      return <PersonalClosing slide={slide} />;
     case "bullet-list":
       return (
         <BulletListSlide
@@ -72,11 +84,13 @@ export default function SlideRenderer({ slide }: SlideRendererProps) {
           bulletRows={slide.bulletRows}
           quote={slide.quote}
           cta={slide.cta}
-          footerName={slide.footerName}
-          footerHandle={slide.footerHandle}
         />
       );
     case "__unsupported":
       return <UnsupportedSlide layout={slide.originalLayout} />;
+    default: {
+      const exhaustive: never = slide;
+      return <UnsupportedSlide layout={String(exhaustive)} />;
+    }
   }
 }

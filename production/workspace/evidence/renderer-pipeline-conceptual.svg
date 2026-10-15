@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 420" role="img" aria-labelledby="title description">
+  <title id="title">Conceptual diagram of the carousel rendering pipeline</title>
+  <desc id="description">A layout selected in structured content passes through the adapter, typed renderer model, SlideRenderer, and a presentational layout.</desc>
+  <rect width="1080" height="420" rx="24" fill="#f7f3ed" />
+  <text x="540" y="66" text-anchor="middle" fill="#2a2521" font-family="sans-serif" font-size="30" font-weight="700">Conceptual rendering flow</text>
+  <g fill="#eee6dd" stroke="#d3c8bc" stroke-width="2">
+    <rect x="48" y="150" width="174" height="128" rx="16" />
+    <rect x="256" y="150" width="174" height="128" rx="16" />
+    <rect x="464" y="150" width="174" height="128" rx="16" />
+    <rect x="672" y="150" width="174" height="128" rx="16" />
+    <rect x="880" y="150" width="152" height="128" rx="16" />
+  </g>
+  <g fill="#2a2521" font-family="sans-serif" font-size="24" text-anchor="middle">
+    <text x="135" y="205"><tspan x="135">Content</tspan><tspan x="135" dy="32">Model layout</tspan></text>
+    <text x="343" y="205"><tspan x="343">Workspace</tspan><tspan x="343" dy="32">adapter</tspan></text>
+    <text x="551" y="205"><tspan x="551">Typed slide</tspan><tspan x="551" dy="32">model</tspan></text>
+    <text x="759" y="205"><tspan x="759">Slide</tspan><tspan x="759" dy="32">Renderer</tspan></text>
+    <text x="956" y="205"><tspan x="956">Presentational</tspan><tspan x="956" dy="32">layout</tspan></text>
+  </g>
+  <g fill="none" stroke="#b85d3b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M228 214h18m-8-9 9 9-9 9" />
+    <path d="M436 214h18m-8-9 9 9-9 9" />
+    <path d="M644 214h18m-8-9 9 9-9 9" />
+    <path d="M852 214h18m-8-9 9 9-9 9" />
+  </g>
+  <text x="540" y="346" text-anchor="middle" fill="#746e67" font-family="sans-serif" font-size="22">Conceptual architecture view; arrows describe the implementation boundary.</text>
+</svg>

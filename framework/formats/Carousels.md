@@ -29,6 +29,12 @@ A good carousel respects the reader's time. Every slide must advance the narrati
 - The Project Bridge is not optional — it proves the concept was applied, not just studied.
 - The CTA invites peer discussion, not feedback for the creator.
 
+## Personal Account Renderer Layouts
+
+For the `abdallahhassoun.dev` carousel renderer, each slide selects one Content Model `layout`: `cover`, `story`, `focus`, `sequence`, `comparison`, `evidence`, or `closing`. Choose after deciding what the slide must do. Reuse or omit compositions as needed; this is not a fixed slide sequence or count. These styles apply to this personal account and are not a default theme for other Content OS users. Workflow 04 and the Content Model define the authoring fields.
+
+Use `evidence` only for supplied, approved code or a local image/screenshot. A diagram must be supplied and identified as conceptual. Renderer assets live under `production/workspace/evidence/` and are referenced with paths such as `evidence/screenshot.png`. Never invent proof.
+
 ---
 
 ## 1) Educational Documentation

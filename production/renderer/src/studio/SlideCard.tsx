@@ -15,6 +15,18 @@ export function slideLayoutLabel(slide: SlideData): string {
   switch (slide.layout) {
     case "cover":
       return "Cover";
+    case "story":
+      return "Story";
+    case "focus":
+      return "Focus";
+    case "sequence":
+      return "Sequence";
+    case "comparison":
+      return "Comparison";
+    case "evidence":
+      return "Evidence";
+    case "closing":
+      return "Closing";
     case "bullet-list":
       return "Bullet List";
     case "arrow-list":
@@ -27,14 +39,16 @@ export function slideLayoutLabel(slide: SlideData): string {
       return "CTA";
     case "__unsupported":
       return "Unsupported";
-    default:
-      return "Slide";
   }
 }
 
 export default function SlideCard({ slide, index, active, onClick }: SlideCardProps) {
   const layout = slideLayoutLabel(slide);
-  const title = slide.layout === "__unsupported" ? slide.originalLayout : slide.title;
+  const title = slide.layout === "__unsupported"
+    ? slide.originalLayout
+    : slide.layout === "closing"
+      ? slide.question
+      : slide.title;
 
   return (
     <button

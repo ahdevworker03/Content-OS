@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-15-content-os-carousel-visual-qa",
+  "captured_at": "2026-10-15T17:00:00+03:00",
+  "project": {
+    "name": "Content OS",
+    "repository": "content-os",
+    "area": "Personal carousel renderer"
+  },
+  "idea": {
+    "title": "A polished carousel needs export-time font verification",
+    "type": "engineering-learning",
+    "summary": "A visual review found that headings used the intended Arabic family while inherited body copy used a different fallback. The correction applied the slide type system at the shared canvas and waited for the selected font faces before Playwright capture."
+  },
+  "context": {
+    "goal": "Correct the seven personal carousel layouts without changing their content model or workflow.",
+    "situation": "The exported 1080 square slides had inconsistent Arabic typography, corner marks, oversized hierarchy, and an unrelated evidence image.",
+    "problem": "The slide-level font variable did not become an inherited font rule, and the exporter could capture before the intended font faces were ready.",
+    "investigation": "Rendered PNG inspection traced the serif text to body inheritance and the edge marks to shared slide pseudo-elements.",
+    "decision": "Set the approved Arabic family on the shared slide canvas, wait for that family and the technical mono face in export, and use a labelled conceptual diagram when no factual image supports the fixture.",
+    "implementation": "Adjusted shared slide typography and spacing, removed export-visible corner marks, rebalanced the sequence, comparison, and closing layouts, and added a local project-structure conceptual diagram fixture.",
+    "result": "Seven 1080 square exports passed layout, overflow, footer, evidence-loading, Studio/export equivalence, adapter/validation, build, and font-wait checks."
+  },
+  "content_value": {
+    "learning_points": [
+      "A CSS custom property does not change inherited typography until a component applies it as a font-family rule.",
+      "Visual export checks need to wait for the exact font faces used by the design.",
+      "A labelled conceptual diagram is more honest than unrelated imagery when no real evidence is available."
+    ],
+    "story_points": [
+      "The mismatch was visible only after looking at the exported slides, not the type declarations alone.",
+      "The footer problem was caused by layout growth, so the correction removed the unnecessary flex expansion rather than adding another footer implementation.",
+      "The same SlideRenderer markup was compared across Studio preview, Studio export, and the export route."
+    ],
+    "possible_angles": [
+      "Why a correct font declaration can still produce mismatched exported text.",
+      "What to check before trusting a generated carousel PNG.",
+      "How to show a conceptual technical diagram without presenting it as proof."
+    ]
+  },
+  "resources": [],
+  "notes": [
+    "No canonical post copy was changed."
+  ]
+}

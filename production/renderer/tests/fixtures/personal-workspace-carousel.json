@@ -1,0 +1,17 @@
+{
+  "variants": [{
+    "format": "carousel",
+    "body": {
+      "type": "carousel",
+      "slides": [
+        { "layout": "cover", "title": "قرار صغير غيّر طريقة شغلي", "context": "من تجربة حقيقية ببناء مشروع", "lead_in": "موقف من المشروع" },
+        { "layout": "story", "title": "رجعت لنفس السؤال", "body": "كل ما أضيف feature جديدة، لازم أقرر وين مكان ملفاتها.", "emphasis": "المشكلة كانت بالقرار قبل الكود." },
+        { "layout": "focus", "title": "الترتيب مش للتجميل", "statement": "لما مكان الملف واضح، قرار الإضافة بصير أسهل.", "note": "فكرة تعلّمتها خلال العمل." },
+        { "layout": "sequence", "title": "شو كان عم يصير؟", "items": [{ "text": "أدوّر على الملف القديم" }, { "text": "أفهم ليش انحط بهالمكان" }, { "text": "أرجع أكمل التعديل" }] },
+        { "layout": "comparison", "title": "الفرق بعد ترتيب الملفات", "before": { "label": "قبل", "text": "المكان غير واضح وبضيّع وقت بالبحث." }, "after": { "label": "بعد", "text": "كل جزء إله مكان مفهوم." } },
+        { "layout": "evidence", "title": "قرار مكان الملف", "context": "رسم يساعد على ترتيب السؤال قبل كتابة الكود.", "evidence": { "kind": "diagram", "asset": "evidence/project-structure-decision-conceptual.svg", "alt": "رسم مفاهيمي لأسئلة تحديد مكان ملف جديد", "caption": "رسم مفاهيمي، وليس دليلاً من المشروع. Conceptual diagram.", "conceptual": true } },
+        { "layout": "closing", "question": "شو أول إشارة بتدلّك إن ترتيب مشروعك بحاجة يتغيّر؟", "signoff": "شارك تجربتك." }
+      ]
+    }
+  }]
+}

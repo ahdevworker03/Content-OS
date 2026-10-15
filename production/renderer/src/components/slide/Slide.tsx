@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { useSafetyContext, SafetyOverlay } from "../../renderer/safety";
+import Footer from "../ui/Footer";
 
 type SlideProps = {
   children: ReactNode;
@@ -13,7 +14,7 @@ export default function Slide({ children, className = "" }: SlideProps) {
     <div className={`slide ${className}`}>
       <div className="slide__canvas">
         {children}
-        <div className="swipe">→</div>
+        <Footer className="slide__footer">abdallahhassoun.dev</Footer>
       </div>
       {show && <SafetyOverlay />}
     </div>

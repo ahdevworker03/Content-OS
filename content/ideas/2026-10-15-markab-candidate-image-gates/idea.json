@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-15-markab-candidate-image-gates",
+  "captured_at": "2026-10-15T08:15:00+03:00",
+  "project": {
+    "name": "Markab",
+    "repository": "markab",
+    "area": "API candidate image verification"
+  },
+  "idea": {
+    "title": "A passing build is not the same as a releasable image",
+    "type": "engineering-learning",
+    "summary": "A production dependency vulnerability was removed with a scoped override, then the exact candidate SHA was verified through CI, image scanning, immutable revision checks, and runtime health checks before any promotion."
+  },
+  "context": {
+    "goal": "Verify a dependency remediation without promoting or deploying it.",
+    "situation": "The previous candidate image had one actionable HIGH finding in a transitive Prisma operational dependency.",
+    "problem": "An application test pass alone could not establish that the release image was secure or bootable.",
+    "investigation": "The dependency chain and image build were traced, then the exact candidate SHA was run through CI and candidate-only image verification.",
+    "decision": "Keep the candidate isolated from production and require immutable image, Trivy, revision, and health evidence.",
+    "implementation": "Used the existing manual candidate CI and image workflows with an exact SHA.",
+    "result": "CI, Trivy, image revision, startup, health, and readiness checks passed without a production status or deployment."
+  },
+  "content_value": {
+    "learning_points": [
+      "A dependency fix needs verification in the production image, not only in the package manager lockfile.",
+      "Candidate registries and immutable revisions let teams verify a release without promoting it.",
+      "Operational tooling such as Prisma can be a production image dependency even when request handlers do not import it."
+    ],
+    "story_points": [
+      "One transitive HIGH finding blocked an otherwise passing candidate.",
+      "The remediation stayed scoped to the dependency resolution.",
+      "The release remained isolated while verification gates ran."
+    ],
+    "possible_angles": [
+      "Why CI green is not enough for a container release.",
+      "The overlooked runtime dependency: operational tooling inside the image.",
+      "How immutable candidate images reduce promotion risk."
+    ]
+  },
+  "resources": [],
+  "notes": [
+    "No customer data, credentials, or private logs were captured."
+  ]
+}

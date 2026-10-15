@@ -67,7 +67,7 @@ The loader exists to isolate data-fetching logic. No other part of the system ne
 
 ### 2.3 Adapter / Mapper
 
-The adapter (`mapWorkspaceCarousel.ts`) is a pure transformation function that converts the Content Model workspace JSON into the canonical internal format (camelCase fields, `layout` string discriminator). It selects the carousel variant from the Content Item's `variants` array, reads `variant.body.slides`, and maps authoring fields (`subtext`, `handle`, `questions`, `highlight`, `footer`, `items`) into renderer fields (`subtitle`, `username`, `bulletRows`, `quote`, footer fields, typed item arrays).
+The adapter (`mapWorkspaceCarousel.ts`) is a pure transformation function that converts the Content Model workspace JSON into the canonical internal format (camelCase fields, `layout` string discriminator). For the personal account it maps the selected `cover`, `story`, `focus`, `sequence`, `comparison`, `evidence`, or `closing` layout into renderer data. Legacy layout IDs remain mapped; `final-cta` becomes `closing`, and old footer/handle metadata is retained on the typed slide model. Evidence asset paths resolve under `/evidence/`, served from `production/workspace/evidence/` by Vite's existing workspace public directory.
 
 This layer is the **only file in the system that understands both schemas**. The renderer models remain entirely unaware of the workspace schema. This is the most important architectural boundary in the system — see [Section 6](#6-the-adapter-layer).
 
@@ -77,6 +77,12 @@ The models are defined in `types/index.ts` as a set of TypeScript types and inte
 
 ```
 SlideData = CoverSlideData
+          | StorySlideData
+          | FocusSlideData
+          | SequenceSlideData
+          | ComparisonSlideData
+          | EvidenceSlideData
+          | ClosingSlideData
           | BulletListSlideData
           | ArrowListSlideData
           | GridSlideData
@@ -105,6 +111,8 @@ Each layout type has a dedicated component file in `src/layouts/`. Layouts compo
 
 Layouts exist as separate components because each visual arrangement is distinct. Keeping them isolated makes it trivial to add, remove, or modify a layout without touching unrelated code.
 
+The personal account layouts are presentational components in `src/layouts/PersonalSlides.tsx`. The content agent selects the `layout` per slide in `production/workspace/carousel.json`; no per-post TSX/CSS or second template pipeline is used. They share the `Slide` canvas, a fixed `abdallahhassoun.dev` footer, and scoped personal layout CSS. Image and diagram evidence must be a local workspace asset; diagrams carry a conceptual label. This visual identity belongs to this account only, not to the broader Content OS product vision.
+
 ### 2.7 UI Components
 
 Shared primitives live in `src/components/ui/`. These are small, presentational components that accept simple string props and optional class names:
@@ -115,7 +123,7 @@ Shared primitives live in `src/components/ui/`. These are small, presentational 
 - `Footer` — small dimmed text
 - `BulletList` — unordered list with highlight support
 
-A base `Slide` wrapper in `src/components/slide/` provides the 1080×1080 canvas container, gradient background, and border radius. All layouts render inside this wrapper.
+A base `Slide` wrapper in `src/components/slide/` provides the 1080×1080 canvas, safe padding, personal handle footer, and preview-only safety overlay. All layouts render inside this wrapper. Slide-scoped palette variables provide this personal account's warm light canvas (`#EEE6DD`), ink (`#2A2521`), and restrained terracotta accent without setting a product-wide brand; Studio guides remain outside export artwork.
 
 These primitives exist to prevent duplication. Layouts share common visual elements; centralising them ensures consistent styling and reduces maintenance.
 

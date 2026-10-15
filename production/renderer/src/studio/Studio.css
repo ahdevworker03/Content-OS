@@ -583,6 +583,27 @@
   gap: var(--space-xs);
 }
 
+.studio-inspector__item-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.studio-inspector__item-row > :first-child {
+  flex: 1;
+}
+
+.studio-inspector__item-row button,
+.studio-inspector__field + button,
+.studio-inspector__body > button {
+  border: 1px solid var(--studio-border);
+  border-radius: var(--radius-sm);
+  padding: 5px 8px;
+  background: var(--studio-bg-surface);
+  color: var(--studio-text);
+  cursor: pointer;
+}
+
 .studio-inspector__unsupported {
   font-size: var(--font-size-sm);
   color: var(--studio-text-muted);

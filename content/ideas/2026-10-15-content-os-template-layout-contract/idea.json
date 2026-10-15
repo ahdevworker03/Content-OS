@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-15-content-os-template-layout-contract",
+  "captured_at": "2026-10-15T13:52:58+03:00",
+  "project": {
+    "name": "Content OS",
+    "repository": "content-os",
+    "area": "Personal carousel renderer"
+  },
+  "idea": {
+    "title": "One layout field can carry slide design through a renderer",
+    "type": "architecture-decision",
+    "summary": "Seven personal carousel compositions were integrated through the existing Content Model layout field, adapter, typed renderer model, SlideRenderer, and shared canvas. The supplied catalog's separate template property stayed reference-only, avoiding a second renderer pipeline."
+  },
+  "context": {
+    "goal": "Install reusable personal carousel layouts without generating React or CSS per post.",
+    "situation": "The repository received a standalone seven-layout TSX/CSS reference while its renderer already had a workspace adapter, typed SlideData union, Studio, and two export paths.",
+    "problem": "Copying the standalone renderer would duplicate the template selection field and rendering path, while the old Content Model layout IDs did not express the new compositions.",
+    "initial_thoughts": "Reuse the current slide-level layout contract and treat the supplied components as design references.",
+    "investigation": "Inspected the supplied types, catalog, example, TSX, CSS, active Content Model, Workflow 04, adapter, renderer, Studio, validation, and export routes. The supplied README also described the catalog as a reference rather than an app pipeline.",
+    "decision": "Keep Content Model → adapter → typed renderer models → SlideRenderer → presentational layouts. Preserve legacy IDs, map final-cta to closing, and scope supplied warm-light styling to this personal account.",
+    "implementation": "Added seven typed layouts, local workspace evidence mapping, layout-specific validation and Inspector editing, schema/workflow documentation, adapter tests, and a seven-slide fixture.",
+    "result": "TypeScript and Vite production builds passed; five focused adapter/schema/validation tests passed. Browser checks confirmed all slides render at 1080×1080, the local screenshot loads, guides stay out of exports, and preview/client export/Playwright route markup matches."
+  },
+  "content_value": {
+    "learning_points": [
+      "A structured layout field can carry a visual decision from authoring to rendering without inspecting post copy.",
+      "A supplied UI reference can be adapted through an existing architecture instead of installed as a parallel renderer.",
+      "Legacy layout mapping and legacy metadata preservation need explicit tests when changing the renderer model."
+    ],
+    "story_points": [
+      "The supplied catalog had a separate template property, while the app already had a slide-level layout contract.",
+      "The seven compositions were adapted into the existing typed pipeline and shared slide canvas.",
+      "Studio preview, its export capture, and the Playwright route were checked against the same rendered markup."
+    ],
+    "possible_angles": [
+      "A design reference does not need to become a second application architecture.",
+      "One explicit layout choice can drive both preview and export when every path shares the same renderer."
+    ]
+  },
+  "resources": [
+    {
+      "file": "story-preview.png",
+      "description": "1080 by 1080 rendered Story layout using Arabic copy and the shared fixed footer.",
+      "source": "production/renderer/preview/personal-carousel/slide-02.png"
+    },
+    {
+      "file": "layout-boundary.ts",
+      "description": "Short adapter-to-SlideRenderer excerpt showing the same layout ID crossing the existing boundary.",
+      "source": "production/renderer/src/renderer/mapWorkspaceCarousel.ts; production/renderer/src/renderer/SlideRenderer.tsx"
+    }
+  ],
+  "notes": [
+    "Raw source material only; Content OS owns later review, deduplication, platform and format choice, voice, and publication decisions."
+  ]
+}

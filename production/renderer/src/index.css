@@ -1,20 +1,20 @@
 :root {
-  --color-bg: #1a0f08;
-  --color-bg-card: #2c1a0e;
-  --color-bg-elevated: #2c1a0e;
-  --color-bg-accent: rgba(229, 62, 40, 0.10);
-  --color-text: #faf0e4;
-  --color-text-muted: #cd9146;
-  --color-text-dim: #854f0b;
-  --color-accent: #f5a84a;
-  --color-accent-soft: #e07b20;
-  --color-accent-secondary: #e07b20;
-  --color-border: transparent;
-  --color-border-strong: transparent;
-  --color-highlight: #ff9b40;
+  --color-bg: #f5f5f7;
+  --color-bg-card: #ffffff;
+  --color-bg-elevated: #ececef;
+  --color-bg-accent: rgba(80, 80, 90, 0.08);
+  --color-text: #24242a;
+  --color-text-muted: #666672;
+  --color-text-dim: #8a8a96;
+  --color-accent: #666672;
+  --color-accent-soft: #888894;
+  --color-accent-secondary: #666672;
+  --color-border: #e2e2e8;
+  --color-border-strong: #cfcfd8;
+  --color-highlight: #666672;
 
-  --font-family: "Tajawal", sans-serif;
-  --font-mono: "Courier New", monospace;
+  --font-family: system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
 
   --font-size-xs: 1.25rem;
   --font-size-sm: 1.5rem;
@@ -78,35 +78,30 @@ body {
 /* ── Slide ─────────────────────────────────────── */
 
 .slide {
+  --color-bg: #eee6dd;
+  --color-bg-card: #f7f3ed;
+  --color-bg-elevated: #f7f3ed;
+  --color-bg-accent: rgba(184, 93, 59, 0.10);
+  --color-text: #2a2521;
+  --color-text-muted: #746e67;
+  --color-text-dim: #9a8d80;
+  --color-accent: #b85d3b;
+  --color-accent-soft: #c87958;
+  --color-accent-secondary: #b85d3b;
+  --color-border: #d3c8bc;
+  --color-border-strong: #d3c8bc;
+  --color-highlight: #b85d3b;
+  --font-family: "Noto Sans Arabic", "Noto Sans", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
   position: relative;
   width: calc(var(--slide-width) * var(--slide-scale));
   height: calc(var(--slide-height) * var(--slide-scale));
   overflow: hidden;
   background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-synthesis: none;
   direction: rtl;
-}
-
-.slide::before,
-.slide::after {
-  content: "";
-  position: absolute;
-  width: calc(60px * var(--slide-scale));
-  height: calc(60px * var(--slide-scale));
-  border: calc(2px * var(--slide-scale)) solid var(--color-text-dim);
-}
-
-.slide::before {
-  top: 0;
-  left: 0;
-  border-right: none;
-  border-bottom: none;
-}
-
-.slide::after {
-  bottom: 0;
-  right: 0;
-  border-left: none;
-  border-top: none;
 }
 
 .slide__canvas {

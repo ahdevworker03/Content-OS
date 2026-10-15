@@ -1,5 +1,5 @@
 import type { ChangeEvent } from "react";
-import type { SlideData } from "../types";
+import type { EvidenceSlideData, SlideData } from "../types";
 import type { ValidationWarning } from "./types";
 
 type InspectorPanelProps = {
@@ -50,20 +50,24 @@ function ItemsField({
   values,
   onEdit,
   rows,
+  onAdd,
+  onRemove,
 }: {
   label: string;
   values: string[];
   onEdit: (values: string[]) => void;
   rows?: number;
+  onAdd?: () => void;
+  onRemove?: (index: number) => void;
 }) {
   return (
     <div className="studio-inspector__field">
       <span className="studio-inspector__field-label">{label}</span>
       <div className="studio-inspector__items">
-        {values.map((value, i) =>
-          rows ? (
+        {values.map((value, i) => (
+          <div key={i} className="studio-inspector__item-row">
+          {rows ? (
             <textarea
-              key={i}
               className="studio-inspector__input studio-inspector__input--area"
               value={value}
               rows={rows}
@@ -75,7 +79,6 @@ function ItemsField({
             />
           ) : (
             <input
-              key={i}
               className="studio-inspector__input"
               type="text"
               value={value}
@@ -85,10 +88,34 @@ function ItemsField({
                 onEdit(next);
               }}
             />
-          ),
-        )}
+          )}
+          {onRemove && <button type="button" onClick={() => onRemove(i)} aria-label={`Remove ${label} ${i + 1}`}>Remove</button>}
+          </div>
+        ))}
       </div>
+      {onAdd && <button type="button" onClick={onAdd}>Add item</button>}
     </div>
+  );
+}
+
+function SelectField({
+  label,
+  value,
+  options,
+  onChange,
+}: {
+  label: string;
+  value: string;
+  options: string[];
+  onChange: (value: string) => void;
+}) {
+  return (
+    <label className="studio-inspector__field">
+      <span className="studio-inspector__field-label">{label}</span>
+      <select className="studio-inspector__input" value={value} onChange={(event) => onChange(event.target.value)}>
+        {options.map((option) => <option key={option} value={option}>{option}</option>)}
+      </select>
+    </label>
   );
 }
 
@@ -101,6 +128,12 @@ export default function InspectorPanel({
   if (!slide) return null;
 
   const update = (patch: Partial<SlideData>) => onUpdate(slideIndex, patch);
+  const updateCodeEvidence = (patch: Partial<Extract<EvidenceSlideData["evidence"], { kind: "code" }>>) => {
+    if (slide.layout === "evidence" && slide.evidence.kind === "code") update({ evidence: { ...slide.evidence, ...patch } });
+  };
+  const updateFileEvidence = (patch: Partial<Extract<EvidenceSlideData["evidence"], { kind: "image" | "diagram" }>>) => {
+    if (slide.layout === "evidence" && slide.evidence.kind !== "code") update({ evidence: { ...slide.evidence, ...patch } });
+  };
 
   return (
     <aside className="studio-inspector">
@@ -129,7 +162,90 @@ export default function InspectorPanel({
           <>
             <Field label="Title" value={slide.title} onChange={(title) => update({ title })} rows={2} />
             <Field label="Subtitle" value={slide.subtitle} onChange={(subtitle) => update({ subtitle })} rows={2} />
-            <Field label="Username" value={slide.username ?? ""} onChange={(username) => update({ username })} />
+            <Field label="Context" value={slide.context ?? ""} onChange={(context) => update({ context })} rows={2} />
+            <Field label="Lead-in" value={slide.leadIn ?? ""} onChange={(leadIn) => update({ leadIn })} />
+          </>
+        )}
+
+        {slide.layout === "story" && (
+          <>
+            <Field label="Title" value={slide.title} onChange={(title) => update({ title })} rows={2} />
+            <Field label="Body" value={slide.body} onChange={(body) => update({ body })} rows={5} />
+            <Field label="Emphasis" value={slide.emphasis ?? ""} onChange={(emphasis) => update({ emphasis })} rows={2} />
+            <Field label="Lead-in" value={slide.leadIn ?? ""} onChange={(leadIn) => update({ leadIn })} />
+          </>
+        )}
+
+        {slide.layout === "focus" && (
+          <>
+            <Field label="Title" value={slide.title} onChange={(title) => update({ title })} rows={2} />
+            <Field label="Statement" value={slide.statement} onChange={(statement) => update({ statement })} rows={3} />
+            <Field label="Note" value={slide.note ?? ""} onChange={(note) => update({ note })} rows={2} />
+            <Field label="Lead-in" value={slide.leadIn ?? ""} onChange={(leadIn) => update({ leadIn })} />
+          </>
+        )}
+
+        {slide.layout === "sequence" && (
+          <>
+            <Field label="Title" value={slide.title} onChange={(title) => update({ title })} rows={2} />
+            <Field label="Lead-in" value={slide.leadIn ?? ""} onChange={(leadIn) => update({ leadIn })} />
+            <ItemsField
+              label="Sequence"
+              values={slide.items}
+              onEdit={(items) => update({ items })}
+              onAdd={() => update({ items: [...slide.items, ""] })}
+              onRemove={(index) => update({ items: slide.items.filter((_, i) => i !== index) })}
+              rows={2}
+            />
+          </>
+        )}
+
+        {slide.layout === "comparison" && (
+          <>
+            <Field label="Title" value={slide.title} onChange={(title) => update({ title })} rows={2} />
+            <Field label="Lead-in" value={slide.leadIn ?? ""} onChange={(leadIn) => update({ leadIn })} />
+            <Field label="Before label" value={slide.before.label} onChange={(label) => update({ before: { ...slide.before, label } })} />
+            <Field label="Before" value={slide.before.text} onChange={(text) => update({ before: { ...slide.before, text } })} rows={3} />
+            <Field label="After label" value={slide.after.label} onChange={(label) => update({ after: { ...slide.after, label } })} />
+            <Field label="After" value={slide.after.text} onChange={(text) => update({ after: { ...slide.after, text } })} rows={3} />
+          </>
+        )}
+
+        {slide.layout === "evidence" && (
+          <>
+            <Field label="Title" value={slide.title} onChange={(title) => update({ title })} rows={2} />
+            <Field label="Context" value={slide.context ?? ""} onChange={(context) => update({ context })} rows={2} />
+            <Field label="Lead-in" value={slide.leadIn ?? ""} onChange={(leadIn) => update({ leadIn })} />
+            <SelectField
+              label="Evidence kind"
+              value={slide.evidence.kind}
+              options={["code", "image", "diagram"]}
+              onChange={(kind) => update({ evidence: kind === "code"
+                ? { kind: "code", code: "" }
+                : { kind: kind as "image" | "diagram", src: "", alt: "", caption: kind === "diagram" ? "Conceptual diagram" : "" } })}
+            />
+            {slide.evidence.kind === "code" ? (
+              <>
+                <Field label="Supplied code" value={slide.evidence.code} onChange={(code) => updateCodeEvidence({ code })} rows={8} />
+                <Field label="Language" value={slide.evidence.language ?? ""} onChange={(language) => updateCodeEvidence({ language })} />
+              </>
+            ) : (
+              <>
+                <Field label="Workspace asset path" value={slide.evidence.src.replace(/^\//, "")} onChange={(asset) => updateFileEvidence({ src: asset.startsWith("/") ? asset : `/${asset}` })} />
+                <Field label="Alt text" value={slide.evidence.alt} onChange={(alt) => updateFileEvidence({ alt })} rows={2} />
+              </>
+            )}
+            <Field label="Caption" value={slide.evidence.caption ?? ""} onChange={(caption) => slide.evidence.kind === "code" ? updateCodeEvidence({ caption }) : updateFileEvidence({ caption })} rows={2} />
+          </>
+        )}
+
+        {slide.layout === "closing" && (
+          <>
+            <Field label="Question or closing thought" value={slide.question} onChange={(question) => update({ question })} rows={3} />
+            <Field label="Sign-off" value={slide.signoff ?? ""} onChange={(signoff) => update({ signoff })} rows={2} />
+            {slide.legacyQuestions && <ItemsField label="Legacy questions" values={slide.legacyQuestions} onEdit={(legacyQuestions) => update({ legacyQuestions })} onAdd={() => update({ legacyQuestions: [...(slide.legacyQuestions ?? []), ""] })} onRemove={(index) => update({ legacyQuestions: slide.legacyQuestions?.filter((_, i) => i !== index) })} rows={2} />}
+            <Field label="Highlight" value={slide.highlight ?? ""} onChange={(highlight) => update({ highlight })} rows={2} />
+            <Field label="CTA" value={slide.cta ?? ""} onChange={(cta) => update({ cta })} rows={2} />
           </>
         )}
 
@@ -207,6 +323,15 @@ export default function InspectorPanel({
         {slide.layout === "__unsupported" && (
           <div className="studio-inspector__unsupported">
             Unsupported layout: {slide.originalLayout}
+          </div>
+        )}
+
+        {slide.legacyFooter && (
+          <div className="studio-inspector__legacy-footer">
+            <span className="studio-inspector__field-label">Legacy footer data (retained)</span>
+            {slide.legacyFooter.name && <Field label="Legacy name" value={slide.legacyFooter.name} onChange={(name) => update({ legacyFooter: { ...slide.legacyFooter, name } })} />}
+            {slide.legacyFooter.role && <Field label="Legacy role" value={slide.legacyFooter.role} onChange={(role) => update({ legacyFooter: { ...slide.legacyFooter, role } })} />}
+            {slide.legacyFooter.handle && <Field label="Legacy handle" value={slide.legacyFooter.handle} onChange={(handle) => update({ legacyFooter: { ...slide.legacyFooter, handle } })} />}
           </div>
         )}
       </div>

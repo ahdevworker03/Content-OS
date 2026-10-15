@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-15-markab-staging-release-safety",
+  "captured_at": "2026-10-15T11:15:00+03:00",
+  "project": {
+    "name": "Markab",
+    "repository": "markab",
+    "area": "Staging deployment operations"
+  },
+  "idea": {
+    "title": "A staging Compose file is not a release procedure",
+    "type": "engineering-learning",
+    "summary": "A staging stack already had Compose services, backups, and monitoring, but still lacked a safe executable release path that tied an immutable image to backup, migration, readiness, smoke checks, and failure behavior."
+  },
+  "context": {
+    "goal": "Create a small reusable staging deployment and rehearsal path without changing production behavior.",
+    "situation": "The release candidate image had passed CI, security scanning, and runtime checks, while staging had no approved deployment command sequence.",
+    "problem": "Existing Compose configuration alone did not establish image identity checks, migration ordering, failure handling, or an operator evidence trail.",
+    "investigation": "Compared staging Compose, backup/restore operations, observability, and the production-only release script.",
+    "decision": "Add a staging-only script and concise runbook that reuse existing services and block production identifiers.",
+    "implementation": "The path verifies an immutable candidate image, takes a backup, stops the prior API before migrations, validates readiness, and does not automatically restore or restart an old API after migration begins.",
+    "result": "A reviewable staging release path now exists without deploying staging or adding deployment infrastructure."
+  },
+  "content_value": {
+    "learning_points": [
+      "Infrastructure configuration and an executable release procedure solve different problems.",
+      "Migration safety depends on making the old and new API ordering explicit.",
+      "A staging deployment tool can be small when it reuses existing backup, Compose, and health mechanisms."
+    ],
+    "story_points": [
+      "The missing piece was not another platform, but a trustworthy sequence.",
+      "A pre-migration failure can safely restart the old API; a post-migration failure needs a different policy.",
+      "Immutable image identity belongs in operator tooling, not only in CI logs."
+    ],
+    "possible_angles": [
+      "Why Docker Compose is not enough to make a release safe.",
+      "The release boundary that changes after a database migration starts.",
+      "How to turn a verified container image into a repeatable staging rehearsal."
+    ]
+  },
+  "resources": [],
+  "notes": [
+    "No secrets, infrastructure credentials, customer data, or private logs were captured."
+  ]
+}

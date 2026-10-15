@@ -93,38 +93,46 @@ The Body is a discriminated union. Its structure depends on the format field.
   "type": "carousel",
   "slides": [
     {
-      "layout": "cover | box-list | arrow-list | grid-2x2 | bullet-list | final-cta",
+      "layout": "cover | story | focus | sequence | comparison | evidence | closing",
       "number": "SLIDE 1 OF 8",
-      "section_tag": { "text": "SECTION TAG", "class": "" },
-      "subtag": "Optional secondary label",
       "title": "Slide heading",
-      "subtext": "Cover subtitle (cover only)",
-      "handle": "@handle (cover only)",
+      "lead_in": "Optional conversational context",
+      "context": "Optional supporting context",
+      "subtext": "Legacy cover subtitle",
+      "body": "Story context",
+      "emphasis": "Optional emphasized story line",
+      "statement": "Central belief or realization",
+      "note": "Optional focus note",
       "items": [
-        { "text": "Item text", "accent": false },
-        { "text": "Accented item", "accent": true }
+        { "text": "Ordered progression item", "accent": false }
       ],
-      "grid_items": [
-        { "label": "Card label", "text": "Card body" }
-      ],
-      "summary": "Bullet-list summary (bullet-list only)",
-      "questions": ["CTA question rows (final-cta only)"],
-      "highlight": "Highlighted CTA quote (final-cta only)",
-      "cta": "Call to action (final-cta only)",
-      "footer": { "name": "Name", "role": "Role", "handle": "@handle" },
-      "swipe": "swipe →"
+      "before": { "label": "Before", "text": "Real earlier state" },
+      "after": { "label": "After", "text": "Real later state" },
+      "evidence": {
+        "kind": "image",
+        "asset": "evidence/portfolio-cover.png",
+        "alt": "Description of supplied screenshot",
+        "caption": "Source or explanation"
+      },
+      "question": "One answerable closing question",
+      "signoff": "Optional closing thought"
     }
   ]
 }
 ```
 
+The seven personal-account compositions are selected independently per slide. They may repeat or be omitted; neither a fixed slide count nor a fixed layout order is required. Layout IDs describe visual composition, not content pillars. The renderer applies the personal account style only in this carousel app; it is not a default brand for future Content OS users.
+
 Field usage by layout:
-- `cover` — `title`, `subtext`, `handle`.
-- `box-list` / `arrow-list` — `title`, `section_tag`, `subtag`, `items` (`text`, `accent`).
-- `bullet-list` — `title`, `section_tag`/`subtag`, `items`, `summary`.
-- `grid-2x2` — `title`, `section_tag`, `grid_items` (`label`, `text`).
-- `final-cta` — `title`, `section_tag`, `questions`, `highlight`, `cta`, `footer` (`name`, `role`, `handle`).
-- `number` and `swipe` are optional chrome on any slide and are ignored by the renderer.
+- `cover` — `title`, optional `context` or legacy `subtext`.
+- `story` — `title`, `body`, optional `emphasis`.
+- `focus` — `title`, `statement`, optional `note`.
+- `sequence` — `title`, two to four ordered `items` (`text`).
+- `comparison` — `title`, `before` and `after` (`label`, `text`) describing a genuine contrast.
+- `evidence` — `title`, optional `context`, and supplied `evidence`: `code` with `code`, or `image` / `diagram` with a workspace asset path and accessible `alt`. Diagrams require `conceptual: true` and a caption identifying them as conceptual. Local assets live under `production/workspace/evidence/` and JSON references them as `evidence/<filename>`.
+- `closing` — `question`, optional `signoff`.
+- Legacy `box-list`, `arrow-list`, `bullet-list`, `grid` / `grid-2x2`, `cta`, and `final-cta` values remain accepted during migration. `final-cta` maps to `closing`, retaining its footer and question data in the renderer model.
+- `number`, `swipe`, and generic section labels are not rendered in the personal slide artwork. The footer is the fixed `abdallahhassoun.dev` handle.
 
 #### Reel Body
 
@@ -264,25 +272,51 @@ The following JSON Schema formalizes the content model. Every Content Item in th
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["layout", "number", "title"],
+            "required": ["layout"],
             "additionalProperties": false,
             "properties": {
-              "layout": { "type": "string", "enum": ["cover", "box-list", "arrow-list", "grid-2x2", "bullet-list", "final-cta"] },
+              "layout": { "type": "string", "enum": ["cover", "story", "focus", "sequence", "comparison", "evidence", "closing", "box-list", "arrow-list", "grid", "grid-2x2", "bullet-list", "cta", "final-cta"] },
               "number": { "type": "string" },
               "section_tag": { "type": "object", "properties": { "text": { "type": "string" }, "class": { "type": "string" } } },
               "subtag": { "type": "string" },
               "title": { "type": "string" },
               "subtext": { "type": "string" },
               "handle": { "type": "string" },
+              "lead_in": { "type": "string" },
+              "context": { "type": "string" },
+              "body": { "type": "string" },
+              "emphasis": { "type": "string" },
+              "statement": { "type": "string" },
+              "note": { "type": "string" },
               "items": { "type": "array", "items": { "type": "object", "properties": { "text": { "type": "string" }, "accent": { "type": "boolean" } } } },
               "grid_items": { "type": "array", "items": { "type": "object", "properties": { "label": { "type": "string" }, "text": { "type": "string" } } } },
+              "before": { "type": "object", "required": ["label", "text"], "properties": { "label": { "type": "string" }, "text": { "type": "string" } } },
+              "after": { "type": "object", "required": ["label", "text"], "properties": { "label": { "type": "string" }, "text": { "type": "string" } } },
+              "evidence": {
+                "oneOf": [
+                  { "type": "object", "required": ["kind", "code"], "properties": { "kind": { "const": "code" }, "code": { "type": "string", "minLength": 1 }, "language": { "type": "string" }, "caption": { "type": "string" } } },
+                  { "type": "object", "required": ["kind", "asset", "alt"], "properties": { "kind": { "const": "image" }, "asset": { "type": "string", "pattern": "^evidence/(?!.*\\.\\.)[^\\s]+$" }, "alt": { "type": "string", "minLength": 1 }, "caption": { "type": "string" } } },
+                  { "type": "object", "required": ["kind", "asset", "alt", "conceptual", "caption"], "properties": { "kind": { "const": "diagram" }, "asset": { "type": "string", "pattern": "^evidence/(?!.*\\.\\.)[^\\s]+$" }, "alt": { "type": "string", "minLength": 1 }, "conceptual": { "const": true }, "caption": { "type": "string", "pattern": "[Cc]onceptual" } } }
+                ]
+              },
+              "question": { "type": "string" },
+              "signoff": { "type": "string" },
               "summary": { "type": "string" },
               "questions": { "type": "array", "items": { "type": "string" } },
               "highlight": { "type": "string" },
               "cta": { "type": "string" },
               "footer": { "type": "object", "properties": { "name": { "type": "string" }, "role": { "type": "string" }, "handle": { "type": "string" } } },
               "swipe": { "type": "string" }
-            }
+            },
+            "allOf": [
+              { "if": { "required": ["layout"], "properties": { "layout": { "const": "cover" } } }, "then": { "required": ["title"] } },
+              { "if": { "required": ["layout"], "properties": { "layout": { "const": "story" } } }, "then": { "required": ["title", "body"] } },
+              { "if": { "required": ["layout"], "properties": { "layout": { "const": "focus" } } }, "then": { "required": ["title", "statement"] } },
+              { "if": { "required": ["layout"], "properties": { "layout": { "const": "sequence" } } }, "then": { "required": ["title", "items"], "properties": { "items": { "minItems": 2, "maxItems": 4 } } } },
+              { "if": { "required": ["layout"], "properties": { "layout": { "const": "comparison" } } }, "then": { "required": ["title", "before", "after"] } },
+              { "if": { "required": ["layout"], "properties": { "layout": { "const": "evidence" } } }, "then": { "required": ["title", "evidence"] } },
+              { "if": { "required": ["layout"], "properties": { "layout": { "const": "closing" } } }, "then": { "required": ["question"] } }
+            ]
           }
         }
       },

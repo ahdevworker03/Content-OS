@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-15-content-os-export-pixel-regression",
+  "captured_at": "2026-10-15T18:45:00+03:00",
+  "project": {
+    "name": "Content OS",
+    "repository": "content-os",
+    "area": "Personal carousel export verification"
+  },
+  "idea": {
+    "title": "The screenshot, not the DOM, settled the footer bug",
+    "type": "testing-learning",
+    "summary": "A reported missing footer could not be confirmed from fresh exports. Pixel checks on the resulting PNGs showed the separator and handle in both the Playwright route and Studio ZIP export, while an old or absent preview set had caused the visual mismatch."
+  },
+  "context": {
+    "goal": "Verify that a shared footer remains visible in every personal carousel export.",
+    "situation": "Individual preview PNGs were reported as missing the footer on four layouts, although some phone captures appeared to show it.",
+    "problem": "A visible DOM node or bounding box cannot prove that exported pixels contain a readable footer.",
+    "investigation": "The current preview folder did not contain the reported individual PNGs. Fresh direct exports and the actual Studio ZIP export were generated from the same fixture and inspected at the footer region.",
+    "decision": "Keep the shared footer implementation and make the Playwright exporter reject personal-slide PNGs that lack both the separator and footer glyph pixels.",
+    "implementation": "Added a captured-PNG footer check in the exporter and compared all seven direct 1080px images with their Studio ZIP counterparts.",
+    "result": "All seven fresh direct, Studio, and phone-size captures showed the footer in the reserved safe area."
+  },
+  "content_value": {
+    "learning_points": [
+      "Visual regression checks should inspect the pixels that users receive, not only the DOM that produced them.",
+      "Regenerate an artifact before diagnosing a rendering bug from a preview directory.",
+      "A shared export path can make one visual assertion cover several layout variants."
+    ],
+    "story_points": [
+      "Phone captures and individual PNGs appeared to disagree.",
+      "The expected PNGs were absent from the current preview directory.",
+      "Fresh captures made the actual rendering state measurable."
+    ],
+    "possible_angles": [
+      "Why screenshot testing can catch a bug that DOM assertions miss.",
+      "The stale artifact check I make before changing a visual component."
+    ]
+  },
+  "resources": [],
+  "notes": [
+    "The capture records the verified rendering result; it does not change carousel copy or layout-selection contracts."
+  ]
+}

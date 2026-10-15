@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-15-content-os-footer-safe-area",
+  "captured_at": "2026-10-15T18:00:00+03:00",
+  "project": {
+    "name": "Content OS",
+    "repository": "content-os",
+    "area": "Personal carousel renderer"
+  },
+  "idea": {
+    "title": "A shared footer needs a reserved visual band",
+    "type": "engineering-learning",
+    "summary": "The footer existed in the DOM, but flexible slide content could consume its visual space. Reserving and layering a shared footer band made the handle reliable in every exported composition."
+  },
+  "context": {
+    "goal": "Make the shared personal-carousel footer visible in all seven layouts.",
+    "situation": "Some exported slides appeared to lose the handle despite rendering the shared Footer component.",
+    "problem": "The footer relied on remaining flex space after variable content regions.",
+    "investigation": "Computed layout showed the footer node existed; the composition needed a reserved area instead of a flow-dependent one.",
+    "decision": "Position the shared personal footer in its own safe band and reserve that band from layout content.",
+    "implementation": "Adjusted the personal-frame CSS and added export checks for footer text bounds on all seven slides.",
+    "result": "The seven PNG exports retained the handle within the safe area while short and longer content still avoided overflow."
+  },
+  "content_value": {
+    "learning_points": [
+      "DOM presence does not prove a repeated visual element is readable in a rendered export.",
+      "Shared fixed information needs reserved spatial ownership when sibling content can grow.",
+      "Visual tests should assert bounds and inspect the resulting PNGs."
+    ],
+    "story_points": [
+      "The first instinct could have been to add another footer per layout.",
+      "The shared layout layer already owned the correct component, so the fix stayed in one CSS rule.",
+      "The result held across Studio preview, Studio export, and the Playwright route."
+    ],
+    "possible_angles": [
+      "Why a footer can exist in the DOM and still disappear in an exported image.",
+      "How to give repeated content a real safe area in variable layouts."
+    ]
+  },
+  "resources": [],
+  "notes": [
+    "No post substance or renderer data contracts were changed."
+  ]
+}

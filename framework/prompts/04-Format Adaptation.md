@@ -81,8 +81,11 @@ If a variant appears to need a substantive change, stop and return the proposed 
 2. Read the platform voice rules and only the relevant format rules and skills.
 3. Create each approved variant as an independent adaptation. Keep the primary format as the depth anchor; rewrite structure and wording for each secondary platform.
 4. For every variant, check its claims, examples, uncertainty, CTA intent, and takeaway against `post.md`.
-5. If an Instagram Carousel is required, write `carousel.md` and the matching renderer JSON. Confirm slide copy in Markdown matches the JSON. Keep all other variants out of both carousel artifacts.
-6. Check that no unapproved variant was generated, all expected outputs exist, and each standalone draft contains only its own variant.
+5. If an Instagram Carousel is required, plan its narrative and slide count from the approved canonical content. For each slide, first state its purpose, then choose the one supported visual layout that fits that purpose, and then write the slide copy. Available personal-account layout IDs are `cover`, `story`, `focus`, `sequence`, `comparison`, `evidence`, and `closing`; use the field definitions in `framework/model/Content Model.md`.
+6. Write `carousel.md` and the matching `production/workspace/carousel.json`. Include the selected layout on each JSON slide and keep the slide copy and layout-specific fields aligned between Markdown and JSON. Layouts may repeat or be omitted. There is no required seven- or eight-slide count or fixed layout order; choose only compositions the content earns.
+7. Use `evidence` only for supplied, approved code or a local screenshot/image, or for a supplied diagram explicitly identified as conceptual. Image and diagram assets must be placed under `production/workspace/evidence/` and referenced as `evidence/<filename>`. Do not create fake proof or infer evidence from copy.
+8. Do not write React, TSX, CSS, or per-post renderer code. Layout components are installed once in the renderer; ordinary carousel work changes only the Markdown and workspace JSON.
+9. Check that no unapproved variant was generated, all expected outputs exist, and each standalone draft contains only its own variant.
 
 ## Success Criteria
 
@@ -93,12 +96,15 @@ If a variant appears to need a substantive change, stop and return the proposed 
 - LinkedIn is a standalone `linkedin.md` artifact.
 - `carousel.json` exists only when a Carousel variant is required and represents Carousel content only.
 - Carousel Markdown and JSON agree on all slide text.
+- Every carousel slide has a purpose and a supported, content-fitting `layout` selection.
+- No fixed layout order or slide count was imposed, and no React/CSS was generated for the post.
 
 ## Constraints
 
 - Do not change Workflow 02's primary format, target platforms, or required variants.
 - Do not change the substance of `post.md` or silently introduce new source material.
 - Do not generate a variant that is not approved in the brief.
+- Do not force a cover/body/closing sequence when the approved content does not call for it; the template catalog is a set of reusable compositions, not a mandatory sequence.
 - Do not render, validate in the renderer, export, publish, or archive.
 - Do not modify the renderer, Studio, or export implementation.
 

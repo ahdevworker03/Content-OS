@@ -9,8 +9,6 @@ type CtaSlideProps = {
   bulletRows?: string[];
   quote?: string;
   cta?: string;
-  footerName?: string;
-  footerHandle?: string;
   className?: string;
 };
 
@@ -22,8 +20,6 @@ export default function CtaSlide({
   bulletRows,
   quote,
   cta,
-  footerName,
-  footerHandle,
   className = "",
 }: CtaSlideProps) {
   return (
@@ -48,12 +44,6 @@ export default function CtaSlide({
         {cta && (
           <div className="box-l2">
             <p className="s-body--final">{cta}</p>
-          </div>
-        )}
-        {(footerName || footerHandle) && (
-          <div className="footer-line">
-            {footerName && <div className="footer-name">{footerName}</div>}
-            {footerHandle && <div className="footer-handle">{footerHandle}</div>}
           </div>
         )}
       </div>

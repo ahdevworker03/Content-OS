@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="600" viewBox="0 0 1080 600" role="img" aria-labelledby="title desc">
+  <title id="title">رسم مفاهيمي لقرار مكان الملف</title>
+  <desc id="desc">ثلاثة أسئلة متتابعة تساعد على تحديد مكان ملف جديد قبل كتابة الكود.</desc>
+  <rect width="1080" height="600" fill="#f7f3ed"/>
+  <g fill="none" stroke="#b85d3b" stroke-width="5" stroke-linecap="round">
+    <path d="M305 300H378"/>
+    <path d="M702 300H775"/>
+  </g>
+  <g fill="#2a2521" font-family="Noto Sans Arabic, Noto Sans, Arial, sans-serif" text-anchor="middle">
+    <g transform="translate(40 155)">
+      <rect width="265" height="290" rx="18" fill="#eee6dd"/>
+      <text x="132" y="100" font-size="33" font-weight="700">أين سيبحث</text>
+      <text x="132" y="150" font-size="33" font-weight="700">عنه الفريق؟</text>
+      <text x="132" y="218" font-size="25" fill="#746e67">اجعل مكانه واضحاً</text>
+    </g>
+    <g transform="translate(408 155)">
+      <rect width="265" height="290" rx="18" fill="#2a2521"/>
+      <text x="132" y="100" font-size="33" font-weight="700" fill="#eee6dd">أي جزء</text>
+      <text x="132" y="150" font-size="33" font-weight="700" fill="#eee6dd">يملكه؟</text>
+      <text x="132" y="218" font-size="25" fill="#d3c8bc">حدّد حدوده</text>
+    </g>
+    <g transform="translate(775 155)">
+      <rect width="265" height="290" rx="18" fill="#eee6dd"/>
+      <text x="132" y="100" font-size="33" font-weight="700">ما مسؤولية</text>
+      <text x="132" y="150" font-size="33" font-weight="700">هذا الملف؟</text>
+      <text x="132" y="218" font-size="25" fill="#746e67">ابدأ من دوره</text>
+    </g>
+  </g>
+</svg>
