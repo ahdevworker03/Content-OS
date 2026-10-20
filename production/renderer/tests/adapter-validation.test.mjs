@@ -18,23 +18,23 @@ const { validateCarousel } = await loadTsModule(path.join(here, "../src/studio/v
 const fixture = JSON.parse(await readFile(path.join(here, "fixtures/personal-workspace-carousel.json"), "utf8"));
 const contentModel = await readFile(path.join(here, "../../../framework/model/Content Model.md"), "utf8");
 
-test("maps all seven approved workspace layout IDs and local conceptual evidence assets", () => {
+test("maps all eight Figma-aligned personal roles and local conceptual evidence assets", () => {
   const carousel = mapWorkspaceCarousel(fixture);
-  assert.deepEqual(carousel.slides.map((slide) => slide.layout), ["cover", "story", "focus", "sequence", "comparison", "evidence", "closing"]);
+  assert.deepEqual(carousel.slides.map((slide) => slide.layout), ["personal-cover", "personal-trigger", "personal-belief", "personal-friction", "personal-realization", "personal-decision", "personal-takeaway", "personal-closing"]);
   assert.equal(carousel.slides[5].evidence.kind, "diagram");
   assert.equal(carousel.slides[5].evidence.src, "/evidence/project-structure-decision-conceptual.svg");
   assert.match(carousel.slides[5].evidence.caption, /Conceptual diagram/);
   assert.deepEqual(validateCarousel(carousel), []);
 });
 
-test("Content Model schema declares the seven layouts and evidence variants", () => {
+test("Content Model schema declares the eight personal roles and evidence variants", () => {
   const schemaMarkdown = contentModel.split("## JSON Schema Expression")[1];
   const schemaText = schemaMarkdown.match(/```json\s*([\s\S]*?)```/)?.[1];
   assert.ok(schemaText, "embedded Content Model JSON Schema exists");
   const schema = JSON.parse(schemaText);
   const carousel = schema.$defs["carousel-body"].properties.slides.items;
   const layouts = carousel.properties.layout.enum;
-  for (const layout of ["cover", "story", "focus", "sequence", "comparison", "evidence", "closing"]) assert.ok(layouts.includes(layout));
+  for (const layout of ["personal-cover", "personal-trigger", "personal-belief", "personal-friction", "personal-realization", "personal-decision", "personal-takeaway", "personal-closing"]) assert.ok(layouts.includes(layout));
   assert.ok(carousel.properties.evidence.oneOf.some((variant) => variant.properties.kind.const === "diagram"));
 });
 
@@ -59,7 +59,7 @@ test("preserves legacy layouts, maps final-cta to closing, and retains footer da
     { layout: "final-cta", title: "Question?", questions: ["One?", "Two?"], footer: { name: "Old name", handle: "@old.handle" } },
     { layout: "future-layout", title: "Unsupported", footer: { role: "Author" } },
   ] } }] });
-  assert.equal(carousel.slides[0].layout, "cover");
+  assert.equal(carousel.slides[0].layout, "personal-cover");
   assert.equal(carousel.slides[0].legacyFooter.handle, "@old.handle");
   assert.equal(carousel.slides[1].layout, "box-list");
   assert.equal(carousel.slides[1].legacyFooter.handle, "@old.handle");
@@ -88,8 +88,8 @@ test("warns when required fields or safe local evidence are missing", () => {
     { layout: "closing", question: "" },
   ] } }] });
   const messages = validateCarousel(carousel).map((warning) => warning.message);
-  assert.ok(messages.includes("Missing story body"));
-  assert.ok(messages.includes("Sequence needs two to four items"));
+  assert.ok(messages.includes("Missing trigger body"));
+  assert.ok(messages.includes("Friction needs two to four steps"));
   assert.ok(messages.includes("Missing before comparison content"));
   assert.ok(messages.includes("Evidence asset must use a local /evidence/ path"));
   assert.ok(messages.includes("Diagram must be identified as conceptual"));

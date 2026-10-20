@@ -81,10 +81,12 @@ export type EvidenceSlideData = PersonalSlideBase & {
   layout: "evidence";
   title: string;
   context?: string;
-  evidence:
-    | { kind: "code"; code: string; language?: string; caption?: string }
-    | { kind: "image" | "diagram"; src: string; alt: string; caption?: string };
+  evidence: EvidenceContent;
 };
+
+export type EvidenceContent =
+  | { kind: "code"; code: string; language?: string; caption?: string }
+  | { kind: "image" | "diagram"; src: string; alt: string; caption?: string };
 
 export type ClosingSlideData = PersonalSlideBase & {
   layout: "closing";
@@ -94,6 +96,59 @@ export type ClosingSlideData = PersonalSlideBase & {
   legacyQuestions?: string[];
   highlight?: string;
   cta?: string;
+};
+
+/** Figma-aligned editorial roles. Each role owns one stable composition. */
+export type PersonalCoverSlideData = PersonalSlideBase & {
+  layout: "personal-cover";
+  title: string;
+  emphasis?: string;
+  context?: string;
+};
+
+export type PersonalTriggerSlideData = PersonalSlideBase & {
+  layout: "personal-trigger";
+  title: string;
+  body: string;
+  question?: string;
+};
+
+export type PersonalBeliefSlideData = PersonalSlideBase & {
+  layout: "personal-belief";
+  title: string;
+  quote: string;
+};
+
+export type PersonalFrictionSlideData = PersonalSlideBase & {
+  layout: "personal-friction";
+  title: string;
+  items: string[];
+};
+
+export type PersonalRealizationSlideData = PersonalSlideBase & {
+  layout: "personal-realization";
+  title: string;
+  statement: string;
+  note?: string;
+};
+
+export type PersonalDecisionSlideData = PersonalSlideBase & {
+  layout: "personal-decision";
+  title: string;
+  context?: string;
+  evidence: EvidenceContent;
+};
+
+export type PersonalTakeawaySlideData = PersonalSlideBase & {
+  layout: "personal-takeaway";
+  title: string;
+  detail?: string;
+};
+
+export type PersonalClosingSlideData = PersonalSlideBase & {
+  layout: "personal-closing";
+  question: string;
+  signoff?: string;
 };
 
 export type BulletListSlideData = PersonalSlideBase & {
@@ -157,6 +212,14 @@ export type SlideData =
   | ComparisonSlideData
   | EvidenceSlideData
   | ClosingSlideData
+  | PersonalCoverSlideData
+  | PersonalTriggerSlideData
+  | PersonalBeliefSlideData
+  | PersonalFrictionSlideData
+  | PersonalRealizationSlideData
+  | PersonalDecisionSlideData
+  | PersonalTakeawaySlideData
+  | PersonalClosingSlideData
   | BulletListSlideData
   | ArrowListSlideData
   | GridSlideData

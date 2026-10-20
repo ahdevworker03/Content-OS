@@ -81,16 +81,16 @@ body {
   --color-bg: #eee6dd;
   --color-bg-card: #f7f3ed;
   --color-bg-elevated: #f7f3ed;
-  --color-bg-accent: rgba(184, 93, 59, 0.10);
+  --color-bg-accent: rgba(196, 102, 60, 0.10);
   --color-text: #2a2521;
   --color-text-muted: #746e67;
   --color-text-dim: #9a8d80;
-  --color-accent: #b85d3b;
-  --color-accent-soft: #c87958;
-  --color-accent-secondary: #b85d3b;
-  --color-border: #d3c8bc;
-  --color-border-strong: #d3c8bc;
-  --color-highlight: #b85d3b;
+  --color-accent: #c4663c;
+  --color-accent-soft: #c4663c;
+  --color-accent-secondary: #c4663c;
+  --color-border: #ded5cb;
+  --color-border-strong: #ded5cb;
+  --color-highlight: #c4663c;
   --font-family: "Noto Sans Arabic", "Noto Sans", Arial, sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
   position: relative;
@@ -124,6 +124,7 @@ body {
   line-height: 1.3;
   text-align: right;
   overflow-wrap: break-word;
+  unicode-bidi: plaintext;
 }
 
 .ui-title--xl { font-size: calc(var(--font-size-3xl) * var(--slide-scale)); }

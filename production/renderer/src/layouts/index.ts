@@ -12,4 +12,12 @@ export {
   PersonalComparison,
   PersonalEvidence,
   PersonalClosing,
+  PersonalRoleCover,
+  PersonalTrigger,
+  PersonalBelief,
+  PersonalFriction,
+  PersonalRealization,
+  PersonalDecision,
+  PersonalTakeaway,
+  PersonalRoleClosing,
 } from "./PersonalSlides";

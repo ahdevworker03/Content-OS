@@ -38,6 +38,8 @@ type WorkspaceSlide = {
   emphasis?: string;
   statement?: string;
   note?: string;
+  quote?: string;
+  detail?: string;
   before?: { label?: string; text?: string };
   after?: { label?: string; text?: string };
   question?: string;
@@ -86,6 +88,14 @@ function evidenceUrl(asset?: string): string {
     : "";
 }
 
+function mapEvidence(content: WorkspaceSlide["evidence"]) {
+  return content?.kind === "code"
+    ? { kind: "code" as const, code: content.code ?? "", language: content.language, caption: content.caption }
+    : content?.kind === "diagram"
+      ? { kind: "diagram" as const, src: evidenceUrl(content.asset), alt: content.alt ?? "", caption: content.conceptual ? content.caption || "Conceptual diagram" : content.caption }
+      : { kind: "image" as const, src: evidenceUrl(content?.asset), alt: content?.alt ?? "", caption: content?.caption };
+}
+
 function mapSlide(slide: WorkspaceSlide): SlideData {
   const layout = slide.layout ?? "__unsupported";
   const legacyFooter = legacyFooterOf(slide);
@@ -93,10 +103,9 @@ function mapSlide(slide: WorkspaceSlide): SlideData {
   switch (layout) {
     case "cover":
       return {
-        layout: "cover",
+        layout: "personal-cover",
         title: slide.title ?? "",
-        subtitle: slide.subtext ?? "",
-        username: slide.handle || undefined,
+        emphasis: slide.emphasis || slide.subtext || undefined,
         context: slide.context || undefined,
         leadIn: slide.lead_in || undefined,
         legacyFooter,
@@ -104,17 +113,17 @@ function mapSlide(slide: WorkspaceSlide): SlideData {
 
     case "story":
       return {
-        layout: "story",
+        layout: "personal-trigger",
         title: slide.title ?? "",
         body: slide.body ?? "",
-        emphasis: slide.emphasis || undefined,
+        question: slide.emphasis || undefined,
         leadIn: slide.lead_in || undefined,
         legacyFooter,
       };
 
     case "focus":
       return {
-        layout: "focus",
+        layout: "personal-realization",
         title: slide.title ?? "",
         statement: slide.statement ?? "",
         note: slide.note || undefined,
@@ -124,7 +133,7 @@ function mapSlide(slide: WorkspaceSlide): SlideData {
 
     case "sequence":
       return {
-        layout: "sequence",
+        layout: "personal-friction",
         title: slide.title ?? "",
         items: (slide.items ?? []).map((item) => item.text ?? ""),
         leadIn: slide.lead_in || undefined,
@@ -142,17 +151,11 @@ function mapSlide(slide: WorkspaceSlide): SlideData {
       };
 
     case "evidence": {
-      const content = slide.evidence;
-      const evidence = content?.kind === "code"
-        ? { kind: "code" as const, code: content.code ?? "", language: content.language, caption: content.caption }
-        : content?.kind === "diagram"
-          ? { kind: "diagram" as const, src: evidenceUrl(content.asset), alt: content.alt ?? "", caption: content.conceptual ? content.caption || "Conceptual diagram" : content.caption }
-          : { kind: "image" as const, src: evidenceUrl(content?.asset), alt: content?.alt ?? "", caption: content?.caption };
       return {
-        layout: "evidence",
+        layout: "personal-decision",
         title: slide.title ?? "",
         context: slide.context || undefined,
-        evidence,
+        evidence: mapEvidence(slide.evidence),
         leadIn: slide.lead_in || undefined,
         legacyFooter,
       };
@@ -160,12 +163,36 @@ function mapSlide(slide: WorkspaceSlide): SlideData {
 
     case "closing":
       return {
-        layout: "closing",
+        layout: "personal-closing",
         question: slide.question ?? slide.title ?? "",
         signoff: slide.signoff || undefined,
         leadIn: slide.lead_in || undefined,
         legacyFooter,
       };
+
+    case "personal-cover":
+      return { layout: "personal-cover", title: slide.title ?? "", emphasis: slide.emphasis || undefined, context: slide.context || undefined, leadIn: slide.lead_in || undefined, legacyFooter };
+
+    case "personal-trigger":
+      return { layout: "personal-trigger", title: slide.title ?? "", body: slide.body ?? "", question: slide.question || undefined, leadIn: slide.lead_in || undefined, legacyFooter };
+
+    case "personal-belief":
+      return { layout: "personal-belief", title: slide.title ?? "", quote: slide.quote ?? slide.body ?? "", leadIn: slide.lead_in || undefined, legacyFooter };
+
+    case "personal-friction":
+      return { layout: "personal-friction", title: slide.title ?? "", items: (slide.items ?? []).map((item) => item.text ?? ""), leadIn: slide.lead_in || undefined, legacyFooter };
+
+    case "personal-realization":
+      return { layout: "personal-realization", title: slide.title ?? "", statement: slide.statement ?? "", note: slide.note || undefined, leadIn: slide.lead_in || undefined, legacyFooter };
+
+    case "personal-decision":
+      return { layout: "personal-decision", title: slide.title ?? "", context: slide.context || undefined, evidence: mapEvidence(slide.evidence), leadIn: slide.lead_in || undefined, legacyFooter };
+
+    case "personal-takeaway":
+      return { layout: "personal-takeaway", title: slide.title ?? "", detail: slide.detail || slide.note || undefined, leadIn: slide.lead_in || undefined, legacyFooter };
+
+    case "personal-closing":
+      return { layout: "personal-closing", question: slide.question ?? slide.title ?? "", signoff: slide.signoff || undefined, leadIn: slide.lead_in || undefined, legacyFooter };
 
     case "cta":
     case "final-cta":

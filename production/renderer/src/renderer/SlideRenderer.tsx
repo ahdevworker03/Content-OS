@@ -12,6 +12,14 @@ import {
   PersonalComparison,
   PersonalEvidence,
   PersonalClosing,
+  PersonalRoleCover,
+  PersonalTrigger,
+  PersonalBelief,
+  PersonalFriction,
+  PersonalRealization,
+  PersonalDecision,
+  PersonalTakeaway,
+  PersonalRoleClosing,
 } from "../layouts";
 import UnsupportedSlide from "./UnsupportedSlide";
 
@@ -35,6 +43,22 @@ export default function SlideRenderer({ slide }: SlideRendererProps) {
       return <PersonalEvidence slide={slide} />;
     case "closing":
       return <PersonalClosing slide={slide} />;
+    case "personal-cover":
+      return <PersonalRoleCover slide={slide} />;
+    case "personal-trigger":
+      return <PersonalTrigger slide={slide} />;
+    case "personal-belief":
+      return <PersonalBelief slide={slide} />;
+    case "personal-friction":
+      return <PersonalFriction slide={slide} />;
+    case "personal-realization":
+      return <PersonalRealization slide={slide} />;
+    case "personal-decision":
+      return <PersonalDecision slide={slide} />;
+    case "personal-takeaway":
+      return <PersonalTakeaway slide={slide} />;
+    case "personal-closing":
+      return <PersonalRoleClosing slide={slide} />;
     case "bullet-list":
       return (
         <BulletListSlide

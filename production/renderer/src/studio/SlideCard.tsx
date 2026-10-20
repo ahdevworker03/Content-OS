@@ -27,6 +27,22 @@ export function slideLayoutLabel(slide: SlideData): string {
       return "Evidence";
     case "closing":
       return "Closing";
+    case "personal-cover":
+      return "Personal Cover";
+    case "personal-trigger":
+      return "Trigger";
+    case "personal-belief":
+      return "Belief";
+    case "personal-friction":
+      return "Friction";
+    case "personal-realization":
+      return "Realization";
+    case "personal-decision":
+      return "Decision";
+    case "personal-takeaway":
+      return "Takeaway";
+    case "personal-closing":
+      return "Conversation";
     case "bullet-list":
       return "Bullet List";
     case "arrow-list":
@@ -46,7 +62,7 @@ export default function SlideCard({ slide, index, active, onClick }: SlideCardPr
   const layout = slideLayoutLabel(slide);
   const title = slide.layout === "__unsupported"
     ? slide.originalLayout
-    : slide.layout === "closing"
+    : slide.layout === "closing" || slide.layout === "personal-closing"
       ? slide.question
       : slide.title;
 

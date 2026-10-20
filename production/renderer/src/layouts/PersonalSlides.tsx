@@ -7,6 +7,14 @@ import type {
   CoverSlideData,
   EvidenceSlideData,
   FocusSlideData,
+  PersonalBeliefSlideData,
+  PersonalClosingSlideData,
+  PersonalCoverSlideData,
+  PersonalDecisionSlideData,
+  PersonalFrictionSlideData,
+  PersonalRealizationSlideData,
+  PersonalTakeawaySlideData,
+  PersonalTriggerSlideData,
   SequenceSlideData,
   StorySlideData,
 } from "../types";
@@ -19,7 +27,15 @@ type PersonalLayout =
   | SequenceSlideData["layout"]
   | ComparisonSlideData["layout"]
   | EvidenceSlideData["layout"]
-  | ClosingSlideData["layout"];
+  | ClosingSlideData["layout"]
+  | "role-cover"
+  | "trigger"
+  | "belief"
+  | "friction"
+  | "realization"
+  | "decision"
+  | "takeaway"
+  | "role-closing";
 
 function PersonalFrame({
   layout,
@@ -128,6 +144,91 @@ export function PersonalClosing({ slide }: { slide: ClosingSlideData }) {
       {slide.highlight && <p className="personal-layout__inset">{slide.highlight}</p>}
       {slide.cta && <p className="personal-layout__support">{slide.cta}</p>}
       {slide.signoff && <p className="personal-layout__support">{slide.signoff}</p>}
+    </PersonalFrame>
+  );
+}
+
+export function PersonalRoleCover({ slide }: { slide: PersonalCoverSlideData }) {
+  return (
+    <PersonalFrame layout="role-cover" leadIn={slide.leadIn}>
+      <Title>{slide.title}</Title>
+      {slide.emphasis && <p className="personal-role__emphasis">{slide.emphasis}</p>}
+      {slide.context && <p className="personal-role__context">{slide.context}</p>}
+    </PersonalFrame>
+  );
+}
+
+export function PersonalTrigger({ slide }: { slide: PersonalTriggerSlideData }) {
+  return (
+    <PersonalFrame layout="trigger" leadIn={slide.leadIn}>
+      <Title as="h2" size="lg">{slide.title}</Title>
+      <p className="personal-role__body">{slide.body}</p>
+      {slide.question && <p className="personal-role__question">{slide.question}</p>}
+    </PersonalFrame>
+  );
+}
+
+export function PersonalBelief({ slide }: { slide: PersonalBeliefSlideData }) {
+  return (
+    <PersonalFrame layout="belief" leadIn={slide.leadIn}>
+      <Title as="h2" size="lg">{slide.title}</Title>
+      <p className="personal-role__quote">{slide.quote}</p>
+    </PersonalFrame>
+  );
+}
+
+export function PersonalFriction({ slide }: { slide: PersonalFrictionSlideData }) {
+  return (
+    <PersonalFrame layout="friction" leadIn={slide.leadIn}>
+      <Title as="h2" size="lg">{slide.title}</Title>
+      <ol className="personal-role__steps">
+        {slide.items.map((item, index) => <li key={index}>{item}</li>)}
+      </ol>
+    </PersonalFrame>
+  );
+}
+
+export function PersonalRealization({ slide }: { slide: PersonalRealizationSlideData }) {
+  return (
+    <PersonalFrame layout="realization" leadIn={slide.leadIn}>
+      <Title as="h2" size="lg">{slide.title}</Title>
+      <p className="personal-role__statement">{slide.statement}</p>
+      {slide.note && <p className="personal-role__context">{slide.note}</p>}
+    </PersonalFrame>
+  );
+}
+
+export function PersonalDecision({ slide }: { slide: PersonalDecisionSlideData }) {
+  return (
+    <PersonalFrame layout="decision" leadIn={slide.leadIn}>
+      <Title as="h2" size="lg">{slide.title}</Title>
+      {slide.context && <p className="personal-role__body">{slide.context}</p>}
+      <figure className="personal-role__evidence">
+        {slide.evidence.kind === "code" ? (
+          <pre dir="ltr"><code>{slide.evidence.code}</code></pre>
+        ) : (
+          <img src={slide.evidence.src} alt={slide.evidence.alt} />
+        )}
+        {slide.evidence.caption && <figcaption>{slide.evidence.caption}</figcaption>}
+      </figure>
+    </PersonalFrame>
+  );
+}
+
+export function PersonalTakeaway({ slide }: { slide: PersonalTakeawaySlideData }) {
+  return (
+    <PersonalFrame layout="takeaway" leadIn={slide.leadIn}>
+      <Title as="h2" size="lg">{slide.title}</Title>
+      {slide.detail && <p className="personal-role__context">{slide.detail}</p>}
+    </PersonalFrame>
+  );
+}
+
+export function PersonalRoleClosing({ slide }: { slide: PersonalClosingSlideData }) {
+  return (
+    <PersonalFrame layout="role-closing" leadIn={slide.leadIn}>
+      <Title as="h2" size="lg">{slide.question}</Title>
+      {slide.signoff && <p className="personal-role__context">{slide.signoff}</p>}
     </PersonalFrame>
   );
 }
