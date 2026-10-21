@@ -37,19 +37,39 @@ type PersonalLayout =
   | "takeaway"
   | "role-closing";
 
+type FrameChrome = {
+  headerLabel?: string;
+  slideIndex?: number;
+  slideCount?: number;
+};
+
+function frameChrome(slide: FrameChrome): FrameChrome {
+  return {
+    headerLabel: slide.headerLabel,
+    slideIndex: slide.slideIndex,
+    slideCount: slide.slideCount,
+  };
+}
+
 function PersonalFrame({
   layout,
   leadIn,
+  headerLabel,
+  slideIndex,
+  slideCount,
   children,
   className = "",
 }: {
   layout: PersonalLayout;
   leadIn?: string;
+  headerLabel?: string;
+  slideIndex?: number;
+  slideCount?: number;
   children: ReactNode;
   className?: string;
 }) {
   return (
-    <Slide className={`personal-layout personal-layout--${layout} ${className}`}>
+    <Slide className={`personal-layout personal-layout--${layout} ${className}`} headerLabel={headerLabel} slideIndex={slideIndex} slideCount={slideCount}>
       {leadIn && <p className="personal-layout__lead-in">{leadIn}</p>}
       <div className="personal-layout__content">{children}</div>
     </Slide>
@@ -62,7 +82,7 @@ function isolatePercentages(text: string) {
 
 export function PersonalCover({ slide }: { slide: CoverSlideData }) {
   return (
-    <PersonalFrame layout="cover" leadIn={slide.leadIn}>
+    <PersonalFrame layout="cover" leadIn={slide.leadIn} {...frameChrome(slide)}>
       <Title>{slide.title}</Title>
       {(slide.context || slide.subtitle) && (
         <p className="personal-layout__support">{slide.context || slide.subtitle}</p>
@@ -73,7 +93,7 @@ export function PersonalCover({ slide }: { slide: CoverSlideData }) {
 
 export function PersonalStory({ slide }: { slide: StorySlideData }) {
   return (
-    <PersonalFrame layout="story" leadIn={slide.leadIn}>
+    <PersonalFrame layout="story" leadIn={slide.leadIn} {...frameChrome(slide)}>
       <Title as="h2" size="lg">{slide.title}</Title>
       <p className="personal-layout__body">{slide.body}</p>
       {slide.emphasis && <p className="personal-layout__inset">{slide.emphasis}</p>}
@@ -83,7 +103,7 @@ export function PersonalStory({ slide }: { slide: StorySlideData }) {
 
 export function PersonalFocus({ slide }: { slide: FocusSlideData }) {
   return (
-    <PersonalFrame layout="focus" leadIn={slide.leadIn}>
+    <PersonalFrame layout="focus" leadIn={slide.leadIn} {...frameChrome(slide)}>
       <Title as="h2" size="lg">{slide.title}</Title>
       <p className="personal-layout__statement">{slide.statement}</p>
       {slide.note && <p className="personal-layout__support">{slide.note}</p>}
@@ -93,7 +113,7 @@ export function PersonalFocus({ slide }: { slide: FocusSlideData }) {
 
 export function PersonalSequence({ slide }: { slide: SequenceSlideData }) {
   return (
-    <PersonalFrame layout="sequence" leadIn={slide.leadIn}>
+    <PersonalFrame layout="sequence" leadIn={slide.leadIn} {...frameChrome(slide)}>
       <Title as="h2" size="lg">{slide.title}</Title>
       <ol className="personal-layout__sequence">
         {slide.items.map((item, index) => <li key={index}>{item}</li>)}
@@ -104,7 +124,7 @@ export function PersonalSequence({ slide }: { slide: SequenceSlideData }) {
 
 export function PersonalComparison({ slide }: { slide: ComparisonSlideData }) {
   return (
-    <PersonalFrame layout="comparison" leadIn={slide.leadIn}>
+    <PersonalFrame layout="comparison" leadIn={slide.leadIn} {...frameChrome(slide)}>
       <Title as="h2" size="lg">{slide.title}</Title>
       <div className="personal-layout__comparison">
         {[slide.before, slide.after].map((side, index) => (
@@ -125,7 +145,7 @@ export function PersonalEvidence({ slide }: { slide: EvidenceSlideData }) {
     : rawCaption;
 
   return (
-    <PersonalFrame layout="evidence" leadIn={slide.leadIn}>
+    <PersonalFrame layout="evidence" leadIn={slide.leadIn} {...frameChrome(slide)}>
       <Title as="h2" size="lg">{slide.title}</Title>
       {slide.context && <p className="personal-layout__context">{slide.context}</p>}
       <figure className="personal-layout__evidence">
@@ -142,7 +162,7 @@ export function PersonalEvidence({ slide }: { slide: EvidenceSlideData }) {
 
 export function PersonalClosing({ slide }: { slide: ClosingSlideData }) {
   return (
-    <PersonalFrame layout="closing" leadIn={slide.leadIn}>
+    <PersonalFrame layout="closing" leadIn={slide.leadIn} {...frameChrome(slide)}>
       <Title as="h2" size="lg">{slide.question}</Title>
       {slide.legacyQuestions?.map((question, index) => (
         <p className="personal-layout__closing-question" key={index}>{question}</p>
@@ -156,7 +176,7 @@ export function PersonalClosing({ slide }: { slide: ClosingSlideData }) {
 
 export function PersonalRoleCover({ slide }: { slide: PersonalCoverSlideData }) {
   return (
-    <PersonalFrame layout="role-cover">
+    <PersonalFrame layout="role-cover" {...frameChrome(slide)}>
       {slide.leadIn && <p className="personal-role__cover-context">{slide.leadIn}</p>}
       <Title>{slide.title}</Title>
       {slide.emphasis && <p className="personal-role__emphasis">{slide.emphasis}</p>}
@@ -167,7 +187,7 @@ export function PersonalRoleCover({ slide }: { slide: PersonalCoverSlideData }) 
 
 export function PersonalTrigger({ slide }: { slide: PersonalTriggerSlideData }) {
   return (
-    <PersonalFrame layout="trigger" leadIn={slide.leadIn}>
+    <PersonalFrame layout="trigger" leadIn={slide.leadIn} {...frameChrome(slide)}>
       <Title as="h2" size="lg">{slide.title}</Title>
       <p className="personal-role__body">{slide.body}</p>
       {slide.question && <p className="personal-role__question">{slide.question}</p>}
@@ -177,7 +197,7 @@ export function PersonalTrigger({ slide }: { slide: PersonalTriggerSlideData }) 
 
 export function PersonalBelief({ slide }: { slide: PersonalBeliefSlideData }) {
   return (
-    <PersonalFrame layout="belief" leadIn={slide.leadIn}>
+    <PersonalFrame layout="belief" leadIn={slide.leadIn} {...frameChrome(slide)}>
       <Title as="h2" size="lg">{slide.title}</Title>
       <p className="personal-role__quote">{slide.quote}</p>
     </PersonalFrame>
@@ -186,7 +206,7 @@ export function PersonalBelief({ slide }: { slide: PersonalBeliefSlideData }) {
 
 export function PersonalFriction({ slide }: { slide: PersonalFrictionSlideData }) {
   return (
-    <PersonalFrame layout="friction" leadIn={slide.leadIn}>
+    <PersonalFrame layout="friction" leadIn={slide.leadIn} {...frameChrome(slide)}>
       <Title as="h2" size="lg">{slide.title}</Title>
       <ol className="personal-role__steps">
         {slide.items.map((item, index) => <li key={index}>{item}</li>)}
@@ -197,7 +217,7 @@ export function PersonalFriction({ slide }: { slide: PersonalFrictionSlideData }
 
 export function PersonalRealization({ slide }: { slide: PersonalRealizationSlideData }) {
   return (
-    <PersonalFrame layout="realization" leadIn={slide.leadIn}>
+    <PersonalFrame layout="realization" leadIn={slide.leadIn} {...frameChrome(slide)}>
       <Title as="h2" size="lg">{slide.title}</Title>
       <p className="personal-role__statement">{slide.statement}</p>
       {slide.note && <p className="personal-role__context">{slide.note}</p>}
@@ -207,7 +227,7 @@ export function PersonalRealization({ slide }: { slide: PersonalRealizationSlide
 
 export function PersonalDecision({ slide }: { slide: PersonalDecisionSlideData }) {
   return (
-    <PersonalFrame layout="decision" leadIn={slide.leadIn}>
+    <PersonalFrame layout="decision" leadIn={slide.leadIn} {...frameChrome(slide)}>
       <Title as="h2" size="lg">{slide.title}</Title>
       {slide.context && <p className="personal-role__body">{slide.context.split(/(`[^`]+`)/).map((part, index) => part.startsWith("`") && part.endsWith("`") ? <code dir="ltr" key={index}>{part.slice(1, -1)}</code> : part)}</p>}
       <figure className="personal-role__evidence">
@@ -227,7 +247,7 @@ export function PersonalTakeaway({ slide }: { slide: PersonalTakeawaySlideData }
   const composition = /[؟?]\s*$/.test(slide.title) ? "reflection" : details.length > 1 ? "segmented" : "explanation";
 
   return (
-    <PersonalFrame layout="takeaway" leadIn={slide.leadIn} className={`personal-layout--takeaway-${composition}`}>
+    <PersonalFrame layout="takeaway" leadIn={slide.leadIn} className={`personal-layout--takeaway-${composition}`} {...frameChrome(slide)}>
       <Title as="h2" size="lg">{slide.title}</Title>
       {details.length > 0 && (
         <div className="personal-role__details">
@@ -252,7 +272,7 @@ export function PersonalTakeaway({ slide }: { slide: PersonalTakeawaySlideData }
 
 export function PersonalRoleClosing({ slide }: { slide: PersonalClosingSlideData }) {
   return (
-    <PersonalFrame layout="role-closing" leadIn={slide.leadIn}>
+    <PersonalFrame layout="role-closing" leadIn={slide.leadIn} {...frameChrome(slide)}>
       <Title as="h2" size="lg">{slide.question}</Title>
       {slide.signoff && <p className="personal-role__context">{slide.signoff}</p>}
     </PersonalFrame>

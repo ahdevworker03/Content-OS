@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-21-content-os-avatar-footer-asset",
+  "captured_at": "2026-10-21T19:18:52+03:00",
+  "project": {
+    "name": "Content OS",
+    "repository": "content-os",
+    "area": "Carousel renderer branding"
+  },
+  "idea": {
+    "title": "A small avatar can make a carousel footer feel personal without changing the content",
+    "type": "design-implementation-learning",
+    "summary": "A carousel branding pass kept the existing username and slide copy intact, replacing only an initials mark with the portfolio profile image in the footer."
+  },
+  "context": {
+    "goal": "Match the reference carousel's header and footer treatment without changing its text.",
+    "situation": "The renderer's personal carousel frame had a header label, slide counter, and a branded footer using initials beside the existing username.",
+    "decision": "Reuse the existing profile image from the portfolio build and serve a copy through the renderer's workspace static-asset directory.",
+    "implementation": "Replaced the initials mark with a compact circular image using cover cropping; retained the existing footer username and all carousel content.",
+    "result": "The profile image and active carousel were both served locally, and the renderer type-check, build, adapter tests, and whitespace check passed."
+  },
+  "content_value": {
+    "learning_points": [
+      "A visual branding update can stay narrowly scoped when text and content contracts are left untouched.",
+      "A renderer's existing static-asset path is sufficient for a reusable local profile image; no new asset pipeline is required."
+    ],
+    "story_points": [
+      "The placeholder initials already fit the footer geometry, so only the visual asset needed replacement.",
+      "The provided image was verified before it was added to the carousel workspace."
+    ],
+    "possible_angles": [
+      "How to make reusable carousel branding feel personal without rewriting the post.",
+      "Why a small, scoped visual change is often better than a redesign."
+    ]
+  },
+  "resources": [],
+  "notes": [
+    "No render screenshot was captured because this session had no available browser surface."
+  ]
+}

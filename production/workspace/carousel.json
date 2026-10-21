@@ -4,6 +4,9 @@
     "title": "When a latency alert is really a query-cardinality problem",
     "lifecycle_stage": "draft"
   },
+  "presentation": {
+    "header_label": "DEBUGGING ALERTS"
+  },
   "trigger": {
     "description": "Staging latency alerts repeatedly changed between FIRING and RESOLVED and created many alert instances; investigation traced this behavior to request-specific labels retained by the LogQL queries after JSON parsing.",
     "insight": "In this incident, retained request-specific labels multiplied alert series and instances. The correction addressed query cardinality, not an application latency defect, and the approved thresholds and firing semantics stayed unchanged.",
@@ -34,30 +37,32 @@
         "slides": [
           {
             "layout": "personal-cover",
-            "lead_in": "على staging",
-            "title": "الـ alert كان عم يروح ويرجع…",
-            "emphasis": "بس المشكلة كانت بالـ query"
+            "lead_in": "على بيئة التجربة (staging)",
+            "title": "التنبيه كان يطلع ويختفي…",
+            "emphasis": "بس السبب كان بطريقة الـ query"
           },
           {
             "layout": "personal-trigger",
             "title": "شو كان عم يصير؟",
-            "body": "على staging، الـ latency alert كان عم ينتقل بين FIRING وRESOLVED كل شوي.\n\nوبنفس الوقت كان عم يطلع أكتر من alert instance (تنبيه مستقل).",
-            "question": "وين كانت المشكلة؟"
+            "body": "على staging، تنبيه وقت استجابة التطبيق كان يطلع كـ FIRING (شغّال)، وبعدين يرجع RESOLVED (انحلّ).\n\nوبنفس الوقت، كل نتيجة من الـ query كانت تطلع كتنبيه لحالها (alert instance).",
+            "question": "ليش صار في تنبيهات كتيرة؟"
           },
           {
             "layout": "personal-friction",
-            "title": "ليه صار في أكتر من alert instance؟",
+            "title": "كيف طلعت كل هالتنبيهات؟",
             "items": [
-              { "text": "بعد الـ JSON parsing، ضلّت labels مرتبطة بكل request جوّا الـ query." },
-              { "text": "هالـ labels خلّت الـ query ترجع أكتر من series (سلسلة زمنية)." },
-              { "text": "كل series صارت alert instance مستقلة." },
-              { "text": "فبدل نتيجة وحدة، صار عنا عدة نتائج عم تتقيّم لحالها." }
+              {
+                "text": "بعد ما قرينا تفاصيل الـ logs من JSON، ضلّت مع كل طلب (request) تفاصيل خاصة فيه (labels)."
+              },
+              {
+                "text": "الـ query اعتبرت كل مجموعة تفاصيل نتيجة لحالها، فطلع أكتر من تنبيه مستقل."
+              }
             ]
           },
           {
             "layout": "personal-decision",
-            "title": "الحل كان نقلّل الـ labels قبل التجميع",
-            "context": "خلّينا `responseTime` بس قبل الـ `unwrap` والـ aggregation (تجميع القيم):",
+            "title": "خفّفنا التفاصيل اللي كانت تقسّم النتائج",
+            "context": "خلّينا بس `responseTime`، وحوّلناه لقيمة فينا نحسبها باستخدام `unwrap`:",
             "evidence": {
               "kind": "code",
               "code": "| keep responseTime\n| unwrap responseTime",
@@ -68,32 +73,32 @@
           {
             "layout": "personal-realization",
             "title": "شو تأكدنا منه؟",
-            "statement": "بالـ staging read rule، النتيجة صارت aggregate series وحدة.",
-            "note": "هيدا هو التحقق الموثّق تحديداً، وما عم نعمّمه على باقي الـ rules."
+            "statement": "بقاعدة تنبيه قراءة الـ data على staging، تأكدنا إن النتيجة صارت وحدة مجمّعة.",
+            "note": "هيدا هو الشي اللي تأكدنا منه؛ ما عم نعمّمه على باقي قواعد التنبيه."
           },
           {
             "layout": "personal-belief",
-            "title": "وهالشي ما يعني إن الـ app صار أسرع",
-            "quote": "ما غيّرنا الـ thresholds ولا الـ pending / keep-firing settings."
+            "title": "ترتيب التنبيه ما يعني إن التطبيق صار أسرع",
+            "quote": "ما غيّرنا اديش لازم الحالة تضل قبل ما يطلع التنبيه، ولا اديش بيضل ظاهر بعد ما تروح المشكلة."
           },
           {
             "layout": "personal-takeaway",
-            "title": "الـ thresholds بقوا نفسها.",
-            "detail": "Read P95 فوق 500 ms\n\nMutation P95 فوق 800 ms"
+            "title": "شو يعني P95؟",
+            "detail": "P95 هو وقت الاستجابة اللي حوالي 95% من الطلبات بتكون أسرع منه. استخدمناه كحدّ لتفعيل التنبيه، مش كقياس بيقول إن التطبيق صار أسرع."
           },
           {
             "layout": "personal-takeaway",
-            "title": "الـ P95 هون مقياس للـ latency.",
-            "detail": "تقريباً 95% من الطلبات بتكون بزمن استجابة أقل منه. هيدي thresholds للـ alert، مش قياسات بتثبت إن الـ response time تحسّن."
+            "title": "حدود التنبيه ضلّت نفسها",
+            "detail": "تنبيه قراءة الـ data: إذا تجاوز P95 الـ 500 ms\n\nتنبيه تعديل الـ data: إذا تجاوز P95 الـ 800 ms"
           },
           {
             "layout": "personal-takeaway",
-            "title": "شو أخدت من هالمشكلة؟",
-            "detail": "بهالحالة، كثرة الـ alert instances كانت من query cardinality (عدد الـ series المختلفة)، مش من bug بالمشروع.\n\nصار عندي check إضافي: شو الـ labels والـ series اللي الـ query عم ترجعها؟"
+            "title": "شو منفتّش عليه إذا كثرت التنبيهات؟",
+            "detail": "بهالحالة، الـ query كانت عم تقسّم النتيجة حسب تفاصيل كل request، مش بسبب bug بالتطبيق.\n\nسؤال بيساعد: ليش الـ query عم تطلع نتيجة لحالها لكل طلب؟"
           },
           {
             "layout": "personal-closing",
-            "question": "صار معك alert كانت المشكلة فيه من الـ query نفسها، مش من التطبيق؟"
+            "question": "صار معك تنبيه عم يتكرر، وبالأخير طلع السبب بطريقة حسابه مش من التطبيق؟"
           }
         ]
       }

@@ -4,6 +4,39 @@
     calc(84px * var(--slide-scale)) calc(76px * var(--slide-scale));
 }
 
+.personal-layout .slide__header {
+  position: absolute;
+  top: calc(54px * var(--slide-scale));
+  right: calc(84px * var(--slide-scale));
+  left: calc(84px * var(--slide-scale));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-text-muted);
+  font-family: "Noto Sans", sans-serif;
+  font-size: calc(21px * var(--slide-scale));
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.08em;
+  line-height: 1;
+  direction: ltr;
+}
+
+.personal-layout .slide__header::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: calc(-15px * var(--slide-scale));
+  width: calc(34px * var(--slide-scale));
+  height: calc(3px * var(--slide-scale));
+  border-radius: calc(2px * var(--slide-scale));
+  background: var(--color-accent);
+}
+
+.personal-layout .slide__count {
+  color: var(--color-text-dim);
+  font-variant-numeric: tabular-nums;
+}
+
 .personal-layout__lead-in {
   margin: 0 0 calc(48px * var(--slide-scale));
   color: var(--color-text-muted);
@@ -249,6 +282,35 @@
   font-weight: var(--font-weight-medium);
   text-align: left;
   direction: ltr;
+}
+
+.personal-layout .ui-footer--branded.slide__footer {
+  min-height: calc(50px * var(--slide-scale));
+  display: flex;
+  align-items: center;
+  gap: calc(14px * var(--slide-scale));
+  border-top: 1px solid var(--color-border);
+  padding-top: calc(18px * var(--slide-scale));
+  text-align: left;
+  direction: ltr;
+}
+
+.personal-layout .ui-footer__avatar {
+  display: block;
+  width: calc(34px * var(--slide-scale));
+  height: calc(34px * var(--slide-scale));
+  flex: none;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.personal-layout .ui-footer__handle {
+  color: var(--color-text);
+  font-family: "Noto Sans", sans-serif;
+  font-size: calc(25px * var(--slide-scale));
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.02em;
 }
 
 /* Figma-aligned editorial roles. The frame remains shared; only composition varies. */

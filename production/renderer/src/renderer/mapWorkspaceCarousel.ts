@@ -56,6 +56,9 @@ type WorkspaceSlide = {
 };
 
 type WorkspaceCarousel = {
+  presentation?: {
+    header_label?: string;
+  };
   variants?: Array<{
     format?: string;
     body?: {
@@ -273,5 +276,13 @@ export function mapWorkspaceCarousel(raw: WorkspaceCarousel): Carousel {
     (v) => v.format === "carousel" || v.body?.type === "carousel",
   );
   const slides = carouselVariant?.body?.slides ?? [];
-  return { slides: slides.map(mapSlide) };
+  const headerLabel = raw.presentation?.header_label?.trim() || undefined;
+  return {
+    slides: slides.map((slide, index) => ({
+      ...mapSlide(slide),
+      headerLabel,
+      slideIndex: headerLabel ? index + 1 : undefined,
+      slideCount: headerLabel ? slides.length : undefined,
+    })),
+  };
 }

@@ -38,6 +38,9 @@ export type LegacyFooterData = {
 
 type PersonalSlideBase = {
   leadIn?: string;
+  headerLabel?: string;
+  slideIndex?: number;
+  slideCount?: number;
   /** Retained for legacy Content Model compatibility; the personal footer is fixed. */
   legacyFooter?: LegacyFooterData;
 };
