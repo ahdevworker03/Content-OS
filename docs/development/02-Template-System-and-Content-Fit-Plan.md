@@ -261,8 +261,8 @@ Do not expose implementation terms such as renderer unions, adapter mappings, or
 - `framework/model/Content Model.md`
 - Content Model JSON schema
 - `production/workspace/carousel.json`
-- `production/renderer/src/adapter/mapWorkspaceCarousel.ts`
-- `production/renderer/src/types/index.ts`
+- `production/renderer/src/renderer/adapter/mapWorkspaceCarousel.ts`
+- `production/renderer/src/renderer/models/index.ts`
 - renderer validation files
 - Studio data loading and edit state
 

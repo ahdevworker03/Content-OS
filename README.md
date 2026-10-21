@@ -4,7 +4,7 @@
 
 This repository contains a **personal brand content framework** for a Lebanese Computer Science student who documents his learning journey in public. The framework produces authentic, student-perspective content across Instagram Carousels and LinkedIn posts.
 
-The system is organized into three top-level directories: **`framework/`** (brand strategy, formats, workflow guides, content model, memory), **`content/`** (drafts and published archive), and **`production/`** (renderer, workspace, export pipeline, templates). It is AI-assisted — the framework documents serve as instruction sources for an LLM content generation agent.
+The system is organized into four main top-level directories: **`framework/`** (brand strategy, formats, workflows, content model, memory), **`content/`** (ideas, drafts, and published archive), **`production/`** (renderer, workspace, export pipeline), and **`docs/`** (product, architecture, design, and development documentation). It is AI-assisted — the framework documents serve as instruction sources for an LLM content generation agent.
 
 Design philosophy: every piece of content originates from a real trigger (a bug, a lecture, a project issue), passes through a consistent brand lens, and is adapted per-format and per-platform rather than copied.
 
@@ -23,16 +23,16 @@ Social Media Content/
 │       ├── linkedin-reflection-writing/SKILL.md
 │       ├── content-strategist/SKILL.md
 │       └── content-reviewer/SKILL.md
-├── framework/                              # Brand strategy, formats, workflow guides, model, memory
+├── framework/                              # Brand strategy, formats, workflows, model, memory
 │   ├── strategy/                           # Creator identity and voice
 │   │   └── Brand Strategy.md               # Creator identity, voice, tone, and platform rules
 │   ├── formats/                            # Content format definitions
 │   │   ├── Carousels.md                    # Carousel types and structure
 │   │   └── linkedin.md                     # LinkedIn post writing and format rules
-│   ├── workflow/                           # Planning and production lifecycle
-│   │   └── Content Workflow.md             # Format selection, lifecycle, and stage ownership
-│   ├── content-playbook/                           # Numbered content creation workflows
-│   │   └── Content Creation Playbook.md             # Plan, create, validate, export, and archive
+│   ├── workflows/                          # Lifecycle, numbered workflows, and idea capture rules
+│   │   ├── Content Lifecycle.md            # Format selection, lifecycle, and stage ownership
+│   │   ├── Content Creation Playbook.md    # Plan, create, validate, export, and archive
+│   │   └── Content Idea Capture Rules.md   # Manual and automatic idea persistence rules
 │   ├── model/                              # Canonical content data model
 │   │   └── Content Model.md                # Content Item JSON Schema, renderer interface
 │   └── memory/                             # Published content index
@@ -50,8 +50,11 @@ Social Media Content/
 │       ├── linkedin/                       # Standalone LinkedIn post content and metadata
 │
 ├── production/                             # Render and export tooling
-│   ├── renderer/                           # React carousel renderer (Vite + React + TypeScript)
-│   │   ├── src/                            # Source: renderer pipeline, Studio, layouts, types, sample data
+│   ├── renderer/                           # React carousel renderer + Studio (Vite + React + TypeScript)
+│   │   ├── src/
+│   │   │   ├── renderer/                   # Renderer engine and its owned models/layouts/components/data
+│   │   │   ├── studio/                     # Studio review/edit/export tooling
+│   │   │   └── export-view/                # Frozen /export route
 │   │   ├── package.json                    # Renderer dependencies and scripts
 │   │   └── vite.config.ts                  # Vite config (serves ../workspace as /carousel.json)
 │   ├── workspace/                          # Active carousel data
@@ -62,9 +65,9 @@ Social Media Content/
 │
 ├── docs/                                   # Project documentation by concern
 │   ├── product/                            # Product-level docs (roadmap, requirements)
-│   ├── architecture/                       # Engine + Studio architecture docs (01, 03)
-│   ├── design/                             # Studio design system, UX, polish plans (04–06)
-│   └── development/                        # Layout development guide (02)
+│   ├── architecture/                       # System, renderer, and Studio architecture
+│   ├── design/                             # Studio design system and UX guidance
+│   └── development/                        # Development guides and implementation plans
 │
 └── README.md                               # This file
 ```
@@ -75,22 +78,22 @@ Social Media Content/
 
 ### `framework/` — Strategic Core
 
-Six subdirectories organize the framework markdown files by concern:
+Five subdirectories organize the framework files by concern:
 
 | Subdirectory | File                            | Description                                                                                                                                                                                   |
 | ------------ | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `strategy/`  | `Brand Strategy.md`                 | Creator identity, audience, content boundaries, pillars, voice, tone, style, and platform rules. Owns who the creator is and how they write.                                                   |
+| `strategy/`  | `Brand Strategy.md`             | Creator identity, audience, content boundaries, pillars, voice, tone, style, and platform rules. Owns who the creator is and how they write.                                                   |
 | `formats/`   | `Carousels.md`                  | Carousel types, structure, renderer layouts, and format constraints. |
 |              | `linkedin.md`                   | LinkedIn post structure, voice, reflection, and writing constraints. |
-| `workflow/`  | `Content Workflow.md`             | Trigger-first format selection and the canonical lifecycle from Idea through exact-variant archive, including stage ownership and quality checks.                                               |
-| `content-playbook/` | `Content Creation Playbook.md` | Seven stage instructions grouped by planning, creation, conditional Carousel production, and archiving. |
-| `model/`     | `Content Model.md`              | Structured Carousel contract and renderer interface. The workspace carousel (`production/workspace/carousel.json`) conforms to this model.                                                      |
+| `workflows/` | `Content Lifecycle.md`          | Trigger-first format selection and the canonical lifecycle from Idea through exact-variant archive, including stage ownership and quality checks. |
+|              | `Content Creation Playbook.md`  | Seven stage instructions grouped by planning, creation, conditional Carousel production, and archiving. |
+|              | `Content Idea Capture Rules.md` | Rules for persisting selected ideas and project-agent idea capture. |
+| `model/`     | `Content Model.md`              | Structured Carousel contract and renderer interface. The workspace carousel (`production/workspace/carousel.json`) conforms to this model. |
 | `memory/`    | `Posted Titles.md`              | Lightweight lookup table of published content. Per-post metadata lives in each post's `metadata.json`. |
-
 
 ### `content/` — Lifecycle Artifacts
 
-**`ideas/`** — Captured ideas, one folder per idea, with a required `idea.json` and optional curated supporting resources. Manual saves follow `framework/model/idea.schema.json`; automatic project-agent capture follows `framework/Content idea capture rules.md`.
+**`ideas/`** — Captured ideas, one folder per idea, with a required `idea.json` and optional curated supporting resources. Manual saves follow `framework/model/idea.schema.json`; automatic project-agent capture follows `framework/workflows/Content Idea Capture Rules.md`.
 
 **`drafts/`** — `post.md` is the format-neutral canonical source written by Workflow 03. Workflow 04 updates only approved standalone adaptations in `drafts/format/carousel.md` or `drafts/format/linkedin.md`; it does not create parallel variant files at the `drafts/` root. LinkedIn never lives inside `carousel.md`. Carousel alone also produces `production/workspace/carousel.json`. Draft files may be empty until their workflow is run.
 
@@ -103,21 +106,21 @@ Each archive folder preserves one exact published platform variant in `content.m
 
 ### `production/` — Render and Export Tooling
 
-**`renderer/`** is the React carousel rendering engine (Vite + React + TypeScript):
+**`renderer/`** is the React carousel rendering engine and Studio application (Vite + React + TypeScript):
 
-- **`src/renderer/`** — Rendering pipeline: `loadCarousel.ts` loads JSON, `mapWorkspaceCarousel.ts` converts the Content Model to renderer models, `SlideRenderer.tsx` dispatches to the correct layout by type, `config.ts` selects the data source.
+- **`src/renderer/`** — Renderer-owned code. `loadCarousel.ts` loads data; `adapter/mapWorkspaceCarousel.ts` converts the Content Model to renderer models; `SlideRenderer.tsx` dispatches by layout; `config.ts` selects the data source.
+- **`src/renderer/models/`** — Renderer-specific typed presentation models, including the discriminated `SlideData` union. `src/types.ts` is a small compatibility re-export while older Studio imports are migrated.
+- **`src/renderer/layouts/`** — Reusable slide layout components, including the personal-account layouts.
+- **`src/renderer/components/`** — Reusable rendering primitives (`Title`, `Subtitle`, `BulletList`, `Badge`, `Footer`) and the `Slide` canvas.
+- **`src/renderer/data/fixtures/sample-carousel.json`** — Stable bundled sample carousel used in sample mode and as a fallback if workspace loading fails.
 - **`src/renderer/safety/`** — CSS-driven safety guides: `SafetyProvider` context + `SafetyOverlay` (canvas border, safe area, profile grid, crosshairs). Overlay state is controlled by the Studio; thumbnails and the `/export` route render with guides hidden.
-- **`src/studio/`** — The Studio development environment: toolbar, sidebar slide cards, live preview, inspector, export modal, about modal, dev-only debug panel. See `01-Renderer Architecture.md` §7.
-- **`src/export/`** — `ExportView.tsx`, the frozen `/export` route used by the Playwright capture pipeline. Renders every slide at full scale with safety guides disabled so screenshots stay byte-identical.
-- **`src/components/`** — Reusable UI primitives (`Title`, `Subtitle`, `BulletList`, `Badge`, `Footer`) and `Slide` canvas (1080×1080 with responsive scaling). `Slide` reads the safety context to overlay guides.
-- **`src/layouts/`** — 6 layout components (`CoverSlide`, `BulletListSlide`, `ArrowListSlide`, `GridSlide`, `BoxListSlide`, `CtaSlide`).
-- **`src/types/`** — Renderer-specific typed models (discriminated union `SlideData`).
-- **`src/data/carousel.json`** — Bundled sample carousel (canonical format). Used as a fallback when workspace loading fails or yields no slides, and as the data source in sample mode (`USE_WORKSPACE_DATA = false`).
+- **`src/studio/`** — The Studio development environment: toolbar, sidebar slide cards, live preview, inspector, export modal, about modal, dev-only debug panel. See `docs/architecture/02-Studio Architecture.md`.
+- **`src/export-view/`** — `ExportView.tsx`, the frozen `/export` route used by the Playwright capture pipeline. It renders every slide at full scale with safety guides disabled so screenshots stay byte-identical.
 - `package.json` — Dependencies: react, react-dom, react-router-dom, vite, typescript, html-to-image, jspdf, jszip.
 
 **`workspace/`** holds the active carousel's working data:
 
-- `carousel.json` — the approved Content Model carousel (identity, trigger, metadata, `variants` → carousel slides). Vite serves the workspace directory as static assets (`publicDir: "../workspace"`), so the file is available as `/carousel.json`. The renderer uses workspace data by default (`USE_WORKSPACE_DATA = true`): `loadCarousel.ts` fetches `/carousel.json` and `mapWorkspaceCarousel.ts` maps the Content Model authoring fields into renderer slide types. If loading fails or produces no slides, the bundled sample data is used as a fallback.
+- `carousel.json` — the approved Content Model carousel (identity, trigger, metadata, `variants` → carousel slides). Vite serves the workspace directory as static assets (`publicDir: "../workspace"`), so the file is available as `/carousel.json`. The renderer uses workspace data by default (`USE_WORKSPACE_DATA = true`): `loadCarousel.ts` fetches `/carousel.json` and `adapter/mapWorkspaceCarousel.ts` maps the Content Model authoring fields into renderer slide types. If loading fails or produces no slides, the bundled sample fixture is used as a fallback.
 
 **`export/`** is the Playwright slide export pipeline:
 
@@ -134,12 +137,10 @@ Both export paths render whatever `loadCarousel()` loads. Because workspace data
 
 Top-level documentation, split by purpose:
 
-- **`product/`** — Product-level documentation (requirements, roadmap).
-- **`architecture/`** — `01-Renderer Architecture.md`, `03-Studio Architecture.md`.
-- **`design/`** — `04-Studio Design System.md`, `05-Studio UX Guidelines.md`, `06-Studio Polish Plan.md`.
-- **`development/`** — `02-Layout Development Guide.md`.
-
-(These were previously under `production/renderer/docs/`.)
+- **`product/`** — Product-level documentation and direction.
+- **`architecture/`** — System, renderer, and Studio architecture.
+- **`design/`** — Studio design system and UX guidance.
+- **`development/`** — Layout development guide and implementation plans.
 
 ---
 
@@ -181,7 +182,7 @@ Idea
 ## System Workflow
 
 1. **Strategy** — `Brand Strategy.md` defines creator identity, audience, pillars, voice, and platform rules as the strategy source influencing all downstream decisions.
-2. **Content Planning** — `Content Workflow.md` provides format-selection guidance and defines the lifecycle. Workflow 02 records the approved primary format, target platforms, and required variants in the brief.
+2. **Content Lifecycle** — `Content Lifecycle.md` provides format-selection guidance and defines the lifecycle. Workflow 02 records the approved primary format, target platforms, and required variants in the brief.
 3. **Idea Discovery** — `Content Creation Playbook.md` surfaces content opportunities from real triggers.
 4. **Content Planning** — `Content Creation Playbook.md` evaluates the idea and produces an approved brief.
 5. **Canonical Content** — Workflow 03 writes only format-neutral substance to `content/drafts/post.md`.
