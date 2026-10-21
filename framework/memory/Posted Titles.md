@@ -23,6 +23,7 @@ Archive folders with an `unknown-date-` prefix are legacy migrated posts where n
 | 6   | `content/published/linkedin/unknown-date-summer-building-foundations/` | After my first year of Computer Science, I realized there's a difference between preparing to build and actually building. |
 | 7   | `content/published/linkedin/2026-08-13-portfolio-first-year-cs/` | During my first year of Computer Science, I learned that starting a portfolio matters more than perfecting it. |
 | 8   | `content/published/linkedin/2026-10-14-four-focus-areas-second-year-cs/` | As I start my second year of Computer Science, I’ve set four connected focus areas for the year. |
+| 9   | `content/published/linkedin/2026-10-21-latency-alert-query-cardinality/` | On staging, a latency alert kept switching between FIRING and RESOLVED. |
 
 ---
 
@@ -39,3 +40,4 @@ Archive folders with an `unknown-date-` prefix are legacy migrated posts where n
 | 7   | `content/published/instagram/2026-08-13-portfolio-first-year-cs/` | ليش بلشت ببناء موقع Portfolio من أول سنة جامعة | Carousel |
 | 8   | `content/published/instagram/2026-09-01-where-the-code-goes/` | وين رح ضع هيدا الكود؟ — Where the Code Goes | Carousel |
 | 9   | `content/published/instagram/2026-10-16-four-focus-areas-second-year-cs/` | مواد الـ CS مش منفصلة عن الـ building | Carousel |
+| 10  | `content/published/instagram/2026-10-21-latency-alert-query-cardinality/` | التنبيه كان يطلع ويختفي… | Carousel |

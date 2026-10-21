@@ -1,0 +1,50 @@
+{
+  "id": "content-010",
+  "slug": "latency-alert-query-cardinality",
+  "title": "التنبيه كان يطلع ويختفي…",
+  "type": "carousel",
+  "platforms": [
+    "instagram"
+  ],
+  "publishedAt": "2026-10-21",
+  "publishedUrl": "https://www.instagram.com/p/Dew8Op8CL2j/",
+  "archivePath": "content/published/instagram/2026-10-21-latency-alert-query-cardinality/",
+  "sourceDraftPath": "content/drafts/format/carousel.md",
+  "structuredSourcePath": "production/workspace/carousel.json",
+  "createdAt": "2026-10-16",
+  "updatedAt": "2026-10-21",
+  "language": "ar",
+  "status": "published",
+  "primaryFormat": "carousel",
+  "pillar": "Debugging experiences and problem-solving processes",
+  "tags": [
+    "markab",
+    "observability",
+    "alerting",
+    "query-cardinality",
+    "debugging"
+  ],
+  "assets": {
+    "count": 10,
+    "files": [
+      "assets/slide-01.png",
+      "assets/slide-02.png",
+      "assets/slide-03.png",
+      "assets/slide-04.png",
+      "assets/slide-05.png",
+      "assets/slide-06.png",
+      "assets/slide-07.png",
+      "assets/slide-08.png",
+      "assets/slide-09.png",
+      "assets/slide-10.png"
+    ],
+    "directory": "assets/"
+  },
+  "rendererVersion": null,
+  "schemaVersion": "1.0.0",
+  "notes": "Published date and caption verified on Instagram; slide assets were supplied from Downloads/slides.",
+  "contentFiles": {
+    "contentMarkdown": "content.md",
+    "contentJson": "content.json"
+  }
+}

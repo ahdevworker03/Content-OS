@@ -337,7 +337,7 @@ Generate only the variants explicitly listed under Required variants. Write each
 
 | Approved variant | Output |
 |---|---|
-| Instagram Carousel | `content/drafts/format/carousel.md` |
+| Instagram Carousel | `content/drafts/format/carousel.md` — including an Instagram post caption |
 | LinkedIn Post | `content/drafts/format/linkedin.md` |
 
 For Instagram Carousel only, also write `production/workspace/carousel.json` in the Content Model format. It must contain the approved carousel variant for the renderer and must not embed LinkedIn post copy. No other variant generates renderer JSON.
@@ -368,7 +368,7 @@ If a variant appears to need a substantive change, stop and return the proposed 
 3. Create each approved variant as an independent adaptation. Keep the primary format as the depth anchor; rewrite structure and wording for each secondary platform.
 4. For every variant, check its claims, examples, uncertainty, CTA intent, and takeaway against `post.md`.
 5. If an Instagram Carousel is required, plan its narrative and slide count from the approved canonical content. For each slide, first state its purpose, then choose the one supported visual layout that fits that purpose, and then write the slide copy. Available personal-account layout IDs are `cover`, `story`, `focus`, `sequence`, `comparison`, `evidence`, and `closing`; use the field definitions in `framework/model/Content Model.md`.
-6. Update `content/drafts/format/carousel.md` and the matching `production/workspace/carousel.json`. Include the selected layout on each JSON slide and keep the slide copy and layout-specific fields aligned between Markdown and JSON. Layouts may repeat or be omitted. There is no required seven- or eight-slide count or fixed layout order; choose only compositions the content earns.
+6. Update `content/drafts/format/carousel.md` and the matching `production/workspace/carousel.json`. Write an Instagram caption in natural Lebanese Arabic as part of the standalone Markdown draft, and store the same text in the Instagram variant's `caption` field in JSON. The caption should complement the slides, preserve their factual boundaries, and end with the approved discussion CTA when one exists. Include the selected layout on each JSON slide and keep the slide copy and layout-specific fields aligned between Markdown and JSON. Layouts may repeat or be omitted. There is no required seven- or eight-slide count or fixed layout order; choose only compositions the content earns.
 7. Use `evidence` only for supplied, approved code or a local screenshot/image, or for a supplied diagram explicitly identified as conceptual. Image and diagram assets must be placed under `production/workspace/evidence/` and referenced as `evidence/<filename>`. Do not create fake proof or infer evidence from copy.
 8. Do not write React, TSX, CSS, or per-post renderer code. Layout components are installed once in the renderer; ordinary carousel work changes only the Markdown and workspace JSON.
 9. Check that no unapproved variant was generated, all expected outputs exist, and each standalone draft contains only its own variant.
@@ -382,6 +382,7 @@ If a variant appears to need a substantive change, stop and return the proposed 
 - LinkedIn is a standalone `content/drafts/format/linkedin.md` artifact.
 - `carousel.json` exists only when a Carousel variant is required and represents Carousel content only.
 - Carousel Markdown and JSON agree on all slide text.
+- The Instagram caption is present in Markdown and matches the Instagram variant's JSON `caption` field.
 - Every carousel slide has a purpose and a supported, content-fitting `layout` selection.
 - No fixed layout order or slide count was imposed, and no React/CSS was generated for the post.
 
@@ -575,7 +576,7 @@ Archive the exact platform variant that was actually published and update the pu
 
 ## Scope
 
-This workflow begins after publication. It ends when the exact published variant and its applicable assets/metadata are archived and indexed. It does not create, polish, adapt, or republish content.
+This workflow begins after publication. It ends when every intended published variant for the content item and its applicable assets/metadata are archived and indexed, then that item's source drafts are cleared. It does not create, polish, adapt, or republish content.
 
 ## Required Reading
 
@@ -627,6 +628,7 @@ Update `framework/memory/Posted Titles.md` with the published variant's archive 
 6. Write complete, accurate `metadata.json`. Do not invent dates, URLs, titles, IDs, or missing asset information.
 7. Add one row to the correct platform section in `Posted Titles.md`.
 8. Verify that `content.md` matches the exact published copy, files match the variant contract, metadata is accurate, and the index entry is correct. Run `git diff --check`.
+9. After all intended platform variants for this content item have been archived and verified, clear that item's source drafts from `content/drafts/` (the canonical draft and its format variants). Preserve drafts for any other content item that is not fully archived; do not clear the workspace after archiving only one of several intended variants.
 
 ## Success Criteria
 
@@ -643,8 +645,8 @@ Update `framework/memory/Posted Titles.md` with the published variant's archive 
 - Never archive the primary format automatically when a different variant was published.
 - Never include Carousel content or files in a LinkedIn archive.
 - Never modify renderer, Studio, export implementation, or published content.
-- Only modify the new archive entry and `framework/memory/Posted Titles.md`.
+- During archiving, modify only the new archive entry, `framework/memory/Posted Titles.md`, and—after every intended variant is safely archived—the source drafts for that content item.
 
 ## Completion
 
-Stop after the archive has been verified and the published-title index updated.
+Stop after all intended variants have been verified and indexed, and their source drafts have been cleared.

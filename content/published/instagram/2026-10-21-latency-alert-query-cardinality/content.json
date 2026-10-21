@@ -1,0 +1,108 @@
+{
+  "identity": {
+    "id": "content-010",
+    "title": "When a latency alert is really a query-cardinality problem",
+    "lifecycle_stage": "draft"
+  },
+  "presentation": {
+    "header_label": "DEBUGGING ALERTS"
+  },
+  "trigger": {
+    "description": "Staging latency alerts repeatedly changed between FIRING and RESOLVED and created many alert instances; investigation traced this behavior to request-specific labels retained by the LogQL queries after JSON parsing.",
+    "insight": "In this incident, retained request-specific labels multiplied alert series and instances. The correction addressed query cardinality, not an application latency defect, and the approved thresholds and firing semantics stayed unchanged.",
+    "hook": "الـ alert كان عم يروح ويرجع… بس المشكلة كانت بالـ query"
+  },
+  "metadata": {
+    "platform": "instagram",
+    "primary_format": "carousel",
+    "language": "ar",
+    "content_pillar": "Debugging experiences and problem-solving processes",
+    "tags": [
+      "markab",
+      "observability",
+      "alerting",
+      "query-cardinality",
+      "debugging"
+    ],
+    "created_date": "2026-10-16",
+    "notes": "Instagram Carousel adaptation of content/drafts/post.md. The available runbook confirms one aggregate series for the corrected staging read rule; the result is not generalized to the other rules."
+  },
+  "variants": [
+    {
+      "platform": "instagram",
+      "format": "carousel",
+      "language": "ar",
+      "caption": "كثرة التنبيهات خلتني فكّر إن المشكلة من التطبيق، بس بهالحالة السبب طلع من الـ query وكيف كانت عم تقسّم النتائج حسب تفاصيل كل request.\n\nبعد ما خلّينا responseTime بس قبل unwrap، قاعدة قراءة الـ data على staging رجعت نتيجة مجمّعة وحدة. هيدا ما بيعني إن التطبيق صار أسرع، وما عم نعمّم النتيجة على باقي قواعد التنبيه.\n\nصار معك تنبيه تكرر، وبالأخير طلع السبب بطريقة حسابه مش من التطبيق؟",
+      "body": {
+        "type": "carousel",
+        "slides": [
+          {
+            "layout": "personal-cover",
+            "lead_in": "على بيئة التجربة (staging)",
+            "title": "التنبيه كان يطلع ويختفي…",
+            "emphasis": "بس السبب كان بطريقة الـ query"
+          },
+          {
+            "layout": "personal-trigger",
+            "title": "شو كان عم يصير؟",
+            "body": "على staging، تنبيه وقت استجابة التطبيق كان يطلع كـ FIRING (شغّال)، وبعدين يرجع RESOLVED (انحلّ).\n\nوبنفس الوقت، كل نتيجة من الـ query كانت تطلع كتنبيه لحالها (alert instance).",
+            "question": "ليش صار في تنبيهات كتيرة؟"
+          },
+          {
+            "layout": "personal-friction",
+            "title": "كيف طلعت كل هالتنبيهات؟",
+            "items": [
+              {
+                "text": "بعد ما قرينا تفاصيل الـ logs من JSON، ضلّت مع كل طلب (request) تفاصيل خاصة فيه (labels)."
+              },
+              {
+                "text": "الـ query اعتبرت كل مجموعة تفاصيل نتيجة لحالها، فطلع أكتر من تنبيه مستقل."
+              }
+            ]
+          },
+          {
+            "layout": "personal-decision",
+            "title": "خفّفنا التفاصيل اللي كانت تقسّم النتائج",
+            "context": "خلّينا بس `responseTime`، وحوّلناه لقيمة فينا نحسبها باستخدام `unwrap`:",
+            "evidence": {
+              "kind": "code",
+              "code": "| keep responseTime\n| unwrap responseTime",
+              "language": "logql",
+              "caption": "من runbook تبع المشروع"
+            }
+          },
+          {
+            "layout": "personal-realization",
+            "title": "شو تأكدنا منه؟",
+            "statement": "بقاعدة تنبيه قراءة الـ data على staging، تأكدنا إن النتيجة صارت وحدة مجمّعة.",
+            "note": "هيدا هو الشي اللي تأكدنا منه؛ ما عم نعمّمه على باقي قواعد التنبيه."
+          },
+          {
+            "layout": "personal-belief",
+            "title": "ترتيب التنبيه ما يعني إن التطبيق صار أسرع",
+            "quote": "ما غيّرنا اديش لازم الحالة تضل قبل ما يطلع التنبيه، ولا اديش بيضل ظاهر بعد ما تروح المشكلة."
+          },
+          {
+            "layout": "personal-takeaway",
+            "title": "شو يعني P95؟",
+            "detail": "P95 هو وقت الاستجابة اللي حوالي 95% من الطلبات بتكون أسرع منه. استخدمناه كحدّ لتفعيل التنبيه، مش كقياس بيقول إن التطبيق صار أسرع."
+          },
+          {
+            "layout": "personal-takeaway",
+            "title": "حدود التنبيه ضلّت نفسها",
+            "detail": "تنبيه قراءة الـ data: إذا تجاوز P95 الـ 500 ms\n\nتنبيه تعديل الـ data: إذا تجاوز P95 الـ 800 ms"
+          },
+          {
+            "layout": "personal-takeaway",
+            "title": "شو منفتّش عليه إذا كثرت التنبيهات؟",
+            "detail": "بهالحالة، الـ query كانت عم تقسّم النتيجة حسب تفاصيل كل request، مش بسبب bug بالتطبيق.\n\nسؤال بيساعد: ليش الـ query عم تطلع نتيجة لحالها لكل طلب؟"
+          },
+          {
+            "layout": "personal-closing",
+            "question": "صار معك تنبيه عم يتكرر، وبالأخير طلع السبب بطريقة حسابه مش من التطبيق؟"
+          }
+        ]
+      }
+    }
+  ]
+}

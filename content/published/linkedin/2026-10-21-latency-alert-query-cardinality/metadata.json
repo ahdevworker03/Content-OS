@@ -1,0 +1,33 @@
+{
+  "id": "content-010",
+  "slug": "latency-alert-query-cardinality",
+  "title": "On staging, a latency alert kept switching between FIRING and RESOLVED.",
+  "type": "post",
+  "platforms": [
+    "linkedin"
+  ],
+  "publishedAt": "2026-10-21",
+  "publishedUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7518725570222977024/",
+  "archivePath": "content/published/linkedin/2026-10-21-latency-alert-query-cardinality/",
+  "sourceDraftPath": "content/drafts/format/linkedin.md",
+  "createdAt": "2026-10-16",
+  "updatedAt": "2026-10-21",
+  "language": "en",
+  "status": "published",
+  "primaryFormat": "post",
+  "pillar": "Debugging experiences and problem-solving processes",
+  "tags": [
+    "markab",
+    "observability",
+    "alerting",
+    "query-cardinality",
+    "debugging"
+  ],
+  "assets": [],
+  "rendererVersion": null,
+  "schemaVersion": "1.0.0",
+  "notes": "Published post text verified against the public LinkedIn activity page. No LinkedIn-specific assets were supplied.",
+  "contentFiles": {
+    "contentMarkdown": "content.md"
+  }
+}
