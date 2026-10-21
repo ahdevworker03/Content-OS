@@ -1,4 +1,4 @@
-import type { SlideData } from "../types";
+import type { SlideData } from "../renderer/models";
 
 type DebugPanelProps = {
   slide: SlideData | null;

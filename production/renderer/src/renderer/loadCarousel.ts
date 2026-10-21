@@ -1,7 +1,7 @@
-import devRaw from "../data/carousel.json";
+import devRaw from "./data/fixtures/sample-carousel.json";
 import { USE_WORKSPACE_DATA } from "./config";
-import { mapWorkspaceCarousel } from "./mapWorkspaceCarousel";
-import type { Carousel } from "../types";
+import { mapWorkspaceCarousel } from "./adapter/mapWorkspaceCarousel";
+import type { Carousel } from "./models";
 
 /**
  * Loads the carousel the renderer should display.
@@ -12,7 +12,7 @@ import type { Carousel } from "../types";
  * available in dev, on the `/export` route, and in production builds.
  *
  * If the workspace carousel cannot be fetched or mapped, the loader falls back
- * to the bundled sample data in `src/data/carousel.json` so the Studio and
+ * to the bundled sample data in `src/renderer/data/fixtures/sample-carousel.json` so the Studio and
  * export route never render nothing.
  */
 export async function loadCarousel(): Promise<Carousel> {

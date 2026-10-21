@@ -1,7 +1,7 @@
 import { Slide } from "../components/slide";
 import Title from "../components/ui/Title";
 import Badge from "../components/ui/Badge";
-import type { ArrowItem } from "../types";
+import type { ArrowItem } from "../models";
 
 type ArrowListSlideProps = {
   title: string;

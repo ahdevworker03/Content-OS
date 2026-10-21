@@ -97,21 +97,21 @@ Publishing is a manual platform action between Workflow 06 and Workflow 07; it i
 
 An authentic experience, question, or observation is selected for development.
 
-- **Owner:** Workflow 01 — `framework/content-playbook/Content Creation Playbook.md#01--idea-discovery`
+- **Owner:** Workflow 01 — `framework/workflows/Content Creation Playbook.md#01--idea-discovery`
 - **Output:** selected idea with its trigger and supporting context.
 
 ### 2. Approved Content Brief
 
 Planning fixes what the post means, who it serves, how it is framed, and where it will appear.
 
-- **Owner:** Workflow 02 — `framework/content-playbook/Content Creation Playbook.md#02--content-planning`
+- **Owner:** Workflow 02 — `framework/workflows/Content Creation Playbook.md#02--content-planning`
 - **Output:** approved brief with primary format, target platforms, and explicit required variants.
 
 ### 3. Canonical Content Draft
 
 The canonical draft records meaning and evidence without format or platform presentation.
 
-- **Owner:** Workflow 03 — `framework/content-playbook/Content Creation Playbook.md#03--post-content-builder`
+- **Owner:** Workflow 03 — `framework/workflows/Content Creation Playbook.md#03--post-content-builder`
 - **Output:** only `content/drafts/post.md`.
 - **Owns:** core idea, trigger, reasoning, key points, supported examples, factual claims/boundaries, intended takeaway, CTA intent, and wording to preserve.
 
@@ -119,7 +119,7 @@ The canonical draft records meaning and evidence without format or platform pres
 
 Each approved variant is written as a standalone artifact. Adaptation changes presentation only; it preserves the canonical meaning and factual boundaries.
 
-- **Owner:** Workflow 04 — `framework/content-playbook/Content Creation Playbook.md#04--format-adaptation`
+- **Owner:** Workflow 04 — `framework/workflows/Content Creation Playbook.md#04--format-adaptation`
 - **Outputs, only when approved:**
   - Instagram Carousel: `content/drafts/format/carousel.md` and `production/workspace/carousel.json`.
   - LinkedIn Post: `content/drafts/format/linkedin.md`.
@@ -130,7 +130,7 @@ Each approved variant is written as a standalone artifact. Adaptation changes pr
 
 Validate the adapted Carousel in the React renderer. This stage applies only when an Instagram Carousel variant is approved.
 
-- **Owner:** Workflow 05 — `framework/content-playbook/Content Creation Playbook.md#05--render-validation`
+- **Owner:** Workflow 05 — `framework/workflows/Content Creation Playbook.md#05--render-validation`
 - **Input:** `production/workspace/carousel.json`.
 - **Output:** render-ready confirmation or a failure report.
 
@@ -138,7 +138,7 @@ Validate the adapted Carousel in the React renderer. This stage applies only whe
 
 Export slide assets from a validated Carousel. This stage applies only when Carousel assets are required.
 
-- **Owner:** Workflow 06 — `framework/content-playbook/Content Creation Playbook.md#06--export-assets`
+- **Owner:** Workflow 06 — `framework/workflows/Content Creation Playbook.md#06--export-assets`
 - **Input:** validated carousel workspace data.
 - **Output:** exported slide images/package ready for manual publication.
 
@@ -150,7 +150,7 @@ The creator publishes the chosen approved variant on its target platform. Publis
 
 Archive what appeared on the platform, not automatically the primary format or latest shared package.
 
-- **Owner:** Workflow 07 — `framework/content-playbook/Content Creation Playbook.md#07--archive-published-post`
+- **Owner:** Workflow 07 — `framework/workflows/Content Creation Playbook.md#07--archive-published-post`
 - **Inputs:** exact published copy, platform, variant format, verified date, URL/identifier, and applicable assets.
 - **Output:** a platform-specific archive containing only that variant, accurate metadata, and applicable variant-specific data/assets; update `framework/memory/Posted Titles.md`.
 - Carousel JSON and exported slide assets are Carousel-only. A LinkedIn archive uses the standalone LinkedIn post and any LinkedIn assets actually published.

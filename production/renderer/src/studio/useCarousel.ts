@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { loadCarousel } from "../renderer/loadCarousel";
-import type { Carousel, SlideData } from "../types";
+import type { Carousel, SlideData } from "../renderer/models";
 import { validateCarousel } from "./validation";
 import type { ValidationWarning } from "./types";
 

@@ -17,7 +17,7 @@ import type {
   PersonalTriggerSlideData,
   SequenceSlideData,
   StorySlideData,
-} from "../types";
+} from "../models";
 import "./personal-slides.css";
 
 type PersonalLayout =

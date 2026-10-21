@@ -1,6 +1,6 @@
 import SlideRenderer from "../renderer/SlideRenderer";
 import { SafetyProvider } from "../renderer/safety";
-import type { SlideData } from "../types";
+import type { SlideData } from "../renderer/models";
 
 const THUMB_SCALE = 0.2;
 

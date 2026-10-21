@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { useSafetyContext, SafetyOverlay } from "../../renderer/safety";
+import { useSafetyContext, SafetyOverlay } from "../../safety";
 import Footer from "../ui/Footer";
 
 type SlideProps = {

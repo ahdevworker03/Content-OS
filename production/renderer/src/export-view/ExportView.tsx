@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { loadCarousel } from "../renderer/loadCarousel";
 import SlideRenderer from "../renderer/SlideRenderer";
 import { SafetyProvider } from "../renderer/safety";
-import type { Carousel } from "../types";
+import type { Carousel } from "../renderer/models";
 
 export default function ExportView() {
   const [carousel, setCarousel] = useState<Carousel | null>(null);

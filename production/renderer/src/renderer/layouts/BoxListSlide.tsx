@@ -1,7 +1,7 @@
 import { Slide } from "../components/slide";
 import Title from "../components/ui/Title";
 import Badge from "../components/ui/Badge";
-import type { BoxItem } from "../types";
+import type { BoxItem } from "../models";
 
 type BoxListSlideProps = {
   title: string;

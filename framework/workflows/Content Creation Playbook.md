@@ -76,7 +76,7 @@ The workflow produces one or more recommended content ideas. Each recommendation
 
 The selected recommendation becomes the official input for Content Planning.
 
-**Optional persistence.** By default, recommendations are delivered in the conversation. If the user asks to save a selected idea, create `content/ideas/<YYYY-MM-DD-project-slug>/idea.json`, with optional curated supporting resources beside it. Follow `framework/model/idea.schema.json`; see `framework/Content idea capture rules.md` for capture guidance. This manual, user-driven discovery and saving flow is separate from automatic project-agent capture after completed and verified work.
+**Optional persistence.** By default, recommendations are delivered in the conversation. If the user asks to save a selected idea, create `content/ideas/<YYYY-MM-DD-project-slug>/idea.json`, with optional curated supporting resources beside it. Follow `framework/model/idea.schema.json`; see `framework/workflows/Content Idea Capture Rules.md` for capture guidance. This manual, user-driven discovery and saving flow is separate from automatic project-agent capture after completed and verified work.
 
 ---
 
@@ -116,7 +116,7 @@ Idea Discovery is successful when all of the following are true:
 
 9. **Select the idea or ideas to move into Content Planning.** Confirm which recommendations are ready for workflow 02. If multiple ideas are strong, identify the highest-priority one.
 
-10. **Save ideas if requested (optional).** If the user wants a selected idea saved, create its own folder at `content/ideas/<YYYY-MM-DD-project-slug>/` with a required `idea.json` and optional curated supporting resources. Use the date and a short, lowercase, hyphen-separated project/topic slug. Follow `framework/model/idea.schema.json` and `framework/Content idea capture rules.md`; keep format, platform, and brand recommendations in the conversation for Content Planning rather than adding fields outside the schema. If the user did not ask to save, deliver the recommendations in conversation only and skip this step.
+10. **Save ideas if requested (optional).** If the user wants a selected idea saved, create its own folder at `content/ideas/<YYYY-MM-DD-project-slug>/` with a required `idea.json` and optional curated supporting resources. Use the date and a short, lowercase, hyphen-separated project/topic slug. Follow `framework/model/idea.schema.json` and `framework/workflows/Content Idea Capture Rules.md`; keep format, platform, and brand recommendations in the conversation for Content Planning rather than adding fields outside the schema. If the user did not ask to save, deliver the recommendations in conversation only and skip this step.
 
 ---
 
@@ -129,7 +129,7 @@ Idea Discovery is successful when all of the following are true:
 - Never begin planning or outlining the content. Planning belongs to workflow 02, and content creation belongs to workflow 03.
 - Never write scripts, slides, captions, posts, or any content output.
 - Never make production decisions about rendering, export, or archiving.
-- Persistence in this manual workflow is optional and user-directed. When saving, use the idea folder and `idea.json` representation defined by `framework/model/idea.schema.json`; automatic project-agent capture remains a separate behavior governed by `framework/Content idea capture rules.md`.
+- Persistence in this manual workflow is optional and user-directed. When saving, use the idea folder and `idea.json` representation defined by `framework/model/idea.schema.json`; automatic project-agent capture remains a separate behavior governed by `framework/workflows/Content Idea Capture Rules.md`.
 
 ---
 
@@ -411,7 +411,7 @@ This workflow starts after Carousel adaptation and ends with a render-ready conf
 
 ## Required Reading
 
-- `framework/content-playbook/Content Creation Playbook.md` — workflow boundaries and global rules.
+- `framework/workflows/Content Creation Playbook.md` — workflow boundaries and global rules.
 - `framework/model/Content Model.md` — structure required by `carousel.json`.
 
 ## Inputs
@@ -475,7 +475,7 @@ It ends when all slide images have been successfully exported and verified, or w
 
 ## Required Reading
 
-- `framework/content-playbook/Content Creation Playbook.md` — This playbook defines workflow boundaries and execution rules.
+- `framework/workflows/Content Creation Playbook.md` — This playbook defines workflow boundaries and execution rules.
 
 No other Framework documents are required for this workflow. Strategy, format, brand, and content model documents are not consulted during export.
 
@@ -580,7 +580,7 @@ This workflow begins after publication. It ends when every intended published va
 
 ## Required Reading
 
-- `framework/content-playbook/Content Creation Playbook.md` — workflow boundaries and global rules.
+- `framework/workflows/Content Creation Playbook.md` — workflow boundaries and global rules.
 - `framework/memory/Posted Titles.md` — index to update.
 
 ## Inputs

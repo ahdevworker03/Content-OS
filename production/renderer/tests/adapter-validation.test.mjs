@@ -13,7 +13,7 @@ async function loadTsModule(entryPoint) {
   return import(`data:text/javascript;base64,${Buffer.from(result.outputText).toString("base64")}`);
 }
 
-const { mapWorkspaceCarousel } = await loadTsModule(path.join(here, "../src/renderer/mapWorkspaceCarousel.ts"));
+const { mapWorkspaceCarousel } = await loadTsModule(path.join(here, "../src/renderer/adapter/mapWorkspaceCarousel.ts"));
 const { validateCarousel } = await loadTsModule(path.join(here, "../src/studio/validation.ts"));
 const fixture = JSON.parse(await readFile(path.join(here, "fixtures/personal-workspace-carousel.json"), "utf8"));
 const contentModel = await readFile(path.join(here, "../../../framework/model/Content Model.md"), "utf8");

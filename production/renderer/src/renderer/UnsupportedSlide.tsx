@@ -1,6 +1,6 @@
-import { Slide } from "../components/slide";
-import Title from "../components/ui/Title";
-import Subtitle from "../components/ui/Subtitle";
+import { Slide } from "./components/slide";
+import Title from "./components/ui/Title";
+import Subtitle from "./components/ui/Subtitle";
 
 type UnsupportedSlideProps = {
   layout: string;

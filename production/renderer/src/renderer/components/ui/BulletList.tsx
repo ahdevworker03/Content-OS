@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import type { BulletItem } from "../../types";
+import type { BulletItem } from "../../models";
 
 type BulletListProps = {
   items: BulletItem[];

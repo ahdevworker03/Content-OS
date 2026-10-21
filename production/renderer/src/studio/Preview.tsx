@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import SlideRenderer from "../renderer/SlideRenderer";
-import type { SlideData } from "../types";
+import type { SlideData } from "../renderer/models";
 
 const SLIDE_SIZE = 1080;
 const MIN_SCALE = 0.1;

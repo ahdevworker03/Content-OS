@@ -1,7 +1,7 @@
 import { Slide } from "../components/slide";
 import Title from "../components/ui/Title";
 import BulletList from "../components/ui/BulletList";
-import type { BulletItem } from "../types";
+import type { BulletItem } from "../models";
 
 type BulletListSlideProps = {
   title: string;

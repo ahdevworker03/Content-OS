@@ -1,7 +1,7 @@
 import type {
   Carousel,
   SlideData,
-} from "../types";
+} from "../models";
 
 /**
  * Workspace carousel in the Content Model shape produced by Workflow 04.

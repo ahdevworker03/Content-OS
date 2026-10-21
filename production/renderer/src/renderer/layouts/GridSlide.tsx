@@ -1,7 +1,7 @@
 import { Slide } from "../components/slide";
 import Title from "../components/ui/Title";
 import Badge from "../components/ui/Badge";
-import type { GridItem } from "../types";
+import type { GridItem } from "../models";
 
 type GridSlideProps = {
   title: string;

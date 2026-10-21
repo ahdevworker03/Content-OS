@@ -1,4 +1,4 @@
-import type { SlideData } from "../types";
+import type { SlideData } from "../renderer/models";
 import SlideCard from "./SlideCard";
 
 type SidebarProps = {

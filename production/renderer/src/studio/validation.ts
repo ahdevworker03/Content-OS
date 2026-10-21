@@ -1,4 +1,4 @@
-import type { Carousel, SlideData } from "../types";
+import type { Carousel, SlideData } from "../renderer/models";
 import type { ValidationWarning } from "./types";
 
 function validateSlide(slide: SlideData, index: number): ValidationWarning[] {

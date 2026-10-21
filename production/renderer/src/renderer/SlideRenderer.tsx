@@ -1,4 +1,4 @@
-import type { SlideData } from "../types";
+import type { SlideData } from "./models";
 import {
   BulletListSlide,
   ArrowListSlide,
@@ -20,7 +20,7 @@ import {
   PersonalDecision,
   PersonalTakeaway,
   PersonalRoleClosing,
-} from "../layouts";
+} from "./layouts";
 import UnsupportedSlide from "./UnsupportedSlide";
 
 type SlideRendererProps = {
