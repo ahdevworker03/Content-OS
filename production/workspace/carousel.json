@@ -1,29 +1,28 @@
 {
   "identity": {
-    "id": "content-009",
-    "title": "Four areas that connect CS study to building software",
+    "id": "content-010",
+    "title": "When a latency alert is really a query-cardinality problem",
     "lifecycle_stage": "draft"
   },
   "trigger": {
-    "description": "Starting my second year of Computer Science and examining how foundations, TypeScript practice, systems thinking, and product communication connect to building software.",
-    "insight": "Developer judgment grows through connected foundations, focused technical practice, understanding how systems behave through building, and communicating product value. The creator is beginning to explore this connection, not claiming mastery.",
-    "hook": "مواد الـ CS مش منفصلة عن الـ building"
+    "description": "Staging latency alerts repeatedly changed between FIRING and RESOLVED and created many alert instances; investigation traced this behavior to request-specific labels retained by the LogQL queries after JSON parsing.",
+    "insight": "In this incident, retained request-specific labels multiplied alert series and instances. The correction addressed query cardinality, not an application latency defect, and the approved thresholds and firing semantics stayed unchanged.",
+    "hook": "الـ alert كان عم يروح ويرجع… بس المشكلة كانت بالـ query"
   },
   "metadata": {
     "platform": "instagram",
     "primary_format": "carousel",
     "language": "ar",
-    "content_pillar": "Clear explanations of systems, decisions, and tradeoffs from real software work",
+    "content_pillar": "Debugging experiences and problem-solving processes",
     "tags": [
-      "computer-science",
-      "developer-in-practice",
-      "learning-in-public",
-      "typescript",
-      "systems-thinking",
-      "communication"
+      "markab",
+      "observability",
+      "alerting",
+      "query-cardinality",
+      "debugging"
     ],
-    "created_date": "2026-10-14",
-    "notes": "Explanation-led Project Thinking carousel. The four areas are a model the creator is beginning to explore, not completed outcomes."
+    "created_date": "2026-10-16",
+    "notes": "Instagram Carousel adaptation of content/drafts/post.md. The available runbook confirms one aggregate series for the corrected staging read rule; the result is not generalized to the other rules."
   },
   "variants": [
     {
@@ -34,131 +33,70 @@
         "type": "carousel",
         "slides": [
           {
-            "layout": "cover",
-            "number": "SLIDE 1 OF 7",
-            "title": "مواد الـ CS مش منفصلة",
-            "subtext": "عن الـ building",
-            "swipe": "اسحب →"
+            "layout": "personal-cover",
+            "lead_in": "على staging",
+            "title": "الـ alert كان عم يروح ويرجع…",
+            "emphasis": "بس المشكلة كانت بالـ query"
           },
           {
-            "layout": "box-list",
-            "number": "SLIDE 2 OF 7",
-            "section_tag": {
-              "text": "السياق",
-              "class": ""
-            },
-            "title": "بلّشت سنتي التانية بـ CS، وصرت اسأل: كيف هالمواد بتأثر على software ببنيه؟",
-            "items": [
-              {
-                "text": "مش كمواد لحالن، بس كأجزاء بتأثر على كيف بفكّر بالـ building.",
-                "accent": false
-              },
-              {
-                "text": "هيدا الربط عم جرّب افهمه ببداية هالسنة.",
-                "accent": true
-              }
-            ],
-            "swipe": "اسحب →"
+            "layout": "personal-trigger",
+            "title": "شو كان عم يصير؟",
+            "body": "على staging، الـ latency alert كان عم ينتقل بين FIRING وRESOLVED كل شوي.\n\nوبنفس الوقت كان عم يطلع أكتر من alert instance (تنبيه مستقل).",
+            "question": "وين كانت المشكلة؟"
           },
           {
-            "layout": "box-list",
-            "number": "SLIDE 3 OF 7",
-            "section_tag": {
-              "text": "١ — الأساسيات",
-              "class": ""
-            },
-            "title": "الأساسيات بتغيّر القرار قبل ما اكتب code.",
+            "layout": "personal-friction",
+            "title": "ليه صار في أكتر من alert instance؟",
             "items": [
-              {
-                "text": "databases، software engineering، وnetworking بيعطوني طريقة أفهم فيها الـ system قبل ما قرّر كيف ابنِيه.",
-                "accent": true
-              }
-            ],
-            "swipe": "اسحب →"
-          },
-          {
-            "layout": "box-list",
-            "number": "SLIDE 4 OF 7",
-            "section_tag": {
-              "text": "٢ — تركيز تقني",
-              "class": ""
-            },
-            "title": "TypeScript مش بس للـ frontend.",
-            "items": [
-              {
-                "text": "بتخلّيني اشتغل بنفس اللغة بالـ frontend والـ backend.",
-                "accent": false
-              },
-              {
-                "text": "ومع React، Express، وPrisma، بصير أسهل أفهم كيف الأجزاء بتكمل بعضها.",
-                "accent": true
-              }
-            ],
-            "swipe": "اسحب →"
-          },
-          {
-            "layout": "box-list",
-            "number": "SLIDE 5 OF 7",
-            "section_tag": {
-              "text": "٣ — فهم الـ systems",
-              "class": ""
-            },
-            "title": "الـ system مش مجموعة أجزاء بتشتغل لحالا.",
-            "items": [
-              {
-                "text": "المهم كيف الـ data بتمشي بين الـ frontend والـ backend، وكيف كل جزء بيتأثر بالتاني.",
-                "accent": false
-              },
-              {
-                "text": "هالشي بيوضح أكتر من building وتجربة حقيقية، خطوة خطوة.",
-                "accent": true
-              }
-            ],
-            "swipe": "اسحب →"
-          },
-          {
-            "layout": "box-list",
-            "number": "SLIDE 6 OF 7",
-            "section_tag": {
-              "text": "٤ — التواصل",
-              "class": ""
-            },
-            "title": "والـ product مش بس implementation.",
-            "items": [
-              {
-                "text": "قيمة الـ product بتبين أكتر لما نعرف: لمين هو، شو بحل، وليش حدا يهتم فيه.",
-                "accent": true
-              },
-              {
-                "text": "هيدا جزء من التفكير بالـ product، مش شغلة بتصير بعد الـ code.",
-                "accent": false
-              }
-            ],
-            "swipe": "اسحب →"
-          },
-          {
-            "layout": "bullet-list",
-            "number": "SLIDE 7 OF 7",
-            "section_tag": {
-              "text": "وين بدي وصل",
-              "class": ""
-            },
-            "title": "هول مش أربع مسارات منفصلين.",
-            "items": [
-              {
-                "text": "أساسيات أقوى، building أعمق، فهم أوضح للـ system، وتواصل أوضح عن قيمة الـ product.",
-                "accent": true
-              },
-              {
-                "text": "هيدي الطريقة اللي عم جرّب اربط فيهن الدراسة بالـ building، ولسّه عم بلّش فيها.",
-                "accent": false
-              }
+              { "text": "بعد الـ JSON parsing، ضلّت labels مرتبطة بكل request جوّا الـ query." },
+              { "text": "هالـ labels خلّت الـ query ترجع أكتر من series (سلسلة زمنية)." },
+              { "text": "كل series صارت alert instance مستقلة." },
+              { "text": "فبدل نتيجة وحدة، صار عنا عدة نتائج عم تتقيّم لحالها." }
             ]
+          },
+          {
+            "layout": "personal-decision",
+            "title": "الحل كان نقلّل الـ labels قبل التجميع",
+            "context": "خلّينا `responseTime` بس قبل الـ `unwrap` والـ aggregation (تجميع القيم):",
+            "evidence": {
+              "kind": "code",
+              "code": "| keep responseTime\n| unwrap responseTime",
+              "language": "logql",
+              "caption": "من runbook تبع المشروع"
+            }
+          },
+          {
+            "layout": "personal-realization",
+            "title": "شو تأكدنا منه؟",
+            "statement": "بالـ staging read rule، النتيجة صارت aggregate series وحدة.",
+            "note": "هيدا هو التحقق الموثّق تحديداً، وما عم نعمّمه على باقي الـ rules."
+          },
+          {
+            "layout": "personal-belief",
+            "title": "وهالشي ما يعني إن الـ app صار أسرع",
+            "quote": "ما غيّرنا الـ thresholds ولا الـ pending / keep-firing settings."
+          },
+          {
+            "layout": "personal-takeaway",
+            "title": "الـ thresholds بقوا نفسها.",
+            "detail": "Read P95 فوق 500 ms\n\nMutation P95 فوق 800 ms"
+          },
+          {
+            "layout": "personal-takeaway",
+            "title": "الـ P95 هون مقياس للـ latency.",
+            "detail": "تقريباً 95% من الطلبات بتكون بزمن استجابة أقل منه. هيدي thresholds للـ alert، مش قياسات بتثبت إن الـ response time تحسّن."
+          },
+          {
+            "layout": "personal-takeaway",
+            "title": "شو أخدت من هالمشكلة؟",
+            "detail": "بهالحالة، كثرة الـ alert instances كانت من query cardinality (عدد الـ series المختلفة)، مش من bug بالمشروع.\n\nصار عندي check إضافي: شو الـ labels والـ series اللي الـ query عم ترجعها؟"
+          },
+          {
+            "layout": "personal-closing",
+            "question": "صار معك alert كانت المشكلة فيه من الـ query نفسها، مش من التطبيق؟"
           }
         ]
-      },
-      "caption": "مواد الـ CS، الـ building، وفهم الـ product مش مسارات منفصلة.\n\nبلّشت سنتي التانية بـ CS، وعم جرّب أربط بين الأساسيات مثل databases وsoftware engineering وnetworking، وبين TypeScript، فهم الـ systems، والتفكير بقيمة الـ product.\n\nبالنسبة إلي، هالربط بيعطي الـ building اتجاه أوضح: ما بوقف عند code، وبفكّر كمان بالـ system وبقيمة اللي عم بنِيه. هيدي فكرة عم جرّبها ببداية هالسنة، مش نتيجة وصلتلا.\n\nأي جزء بتحسّوه منفصل عن الـ building، وهو مش منفصل؟",
-      "cta": "أي جزء بتحسّوه منفصل عن الـ building، وهو مش منفصل؟"
+      }
     }
   ]
 }

@@ -121,8 +121,8 @@ Each approved variant is written as a standalone artifact. Adaptation changes pr
 
 - **Owner:** Workflow 04 — `framework/content-playbook/Content Creation Playbook.md#04--format-adaptation`
 - **Outputs, only when approved:**
-  - Instagram Carousel: `content/drafts/carousel.md` and `production/workspace/carousel.json`.
-  - LinkedIn Post: `content/drafts/linkedin.md`.
+  - Instagram Carousel: `content/drafts/format/carousel.md` and `production/workspace/carousel.json`.
+  - LinkedIn Post: `content/drafts/format/linkedin.md`.
 - LinkedIn content never lives inside another platform's draft.
 - Only Carousel produces renderer JSON.
 

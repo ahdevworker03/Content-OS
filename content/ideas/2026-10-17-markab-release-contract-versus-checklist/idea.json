@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-17-markab-release-contract-versus-checklist",
+  "captured_at": "2026-10-17T20:42:24+03:00",
+  "project": {
+    "name": "Markab",
+    "area": "Staging release procedure"
+  },
+  "idea": {
+    "title": "Distinguish a release contract from a stricter rehearsal checklist",
+    "type": "engineering-learning",
+    "summary": "A staging rehearsal was paused when a requested checklist differed from the checked-in release procedure. Source review showed the existing procedure matched the approved contract."
+  },
+  "context": {
+    "situation": "A checklist requested image verification before stopping the old API and an exact migration count after deployment.",
+    "investigation": "The active milestone, staging runbook, deployment script and tests were compared. The runbook explicitly stops the old API before pulling and verifying the candidate, then requires migration deploy and clean status before starting the new API.",
+    "result": "No source fix was required by the release contract. The old order carries potential downtime if the registry fails, while a migration count is release-specific evidence rather than a permanent invariant. The staging checkout still required a separately approved Git-only advance before a later rehearsal."
+  },
+  "content_value": {
+    "learning_points": [
+      "Check approved operational contracts before changing code to match an ad hoc checklist.",
+      "Distinguish a clean migration state from a snapshot-specific migration count.",
+      "Document the availability trade-off of pulling an image after the existing service stops."
+    ]
+  },
+  "resources": []
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-16-markab-stable-rtl-contact-grid",
+  "captured_at": "2026-10-16T22:27:00+03:00",
+  "project": {
+    "name": "Markab",
+    "repository": "markab",
+    "area": "Mobile customer contact panel"
+  },
+  "idea": {
+    "title": "Explicit physical grid placement solves mixed-direction mobile contact layouts",
+    "type": "engineering-learning",
+    "summary": "A mobile RTL customer panel needed the location field to move physically left without moving the phone. Fixed track widths alone did not control that geometry; an explicitly LTR grid with assigned physical columns did, while the actual location value kept dir=auto."
+  },
+  "context": {
+    "goal": "Place the mobile location field in a stable, narrower column to the left of the phone field without changing phone rendering.",
+    "situation": "Customer addresses may be Arabic, English, or mixed-direction text in an Arabic RTL interface.",
+    "problem": "The inherited RTL grid direction reversed track placement, so a narrower location track still sat too close to the visual center.",
+    "investigation": "The address value already used dir=auto; Chromium measurements showed the remaining free grid space was on the outer left of the location track, rather than between location and phone.",
+    "decision": "Set only the mobile grid to dir=ltr, assign location to its first physical column and phone to its third, and use right-aligned field wrappers for Arabic labels.",
+    "implementation": "Changed the mobile grid to grid-cols-[7rem_minmax(0,1fr)_calc(50%-0.25rem)] with col-start-1 for location and col-start-3 for phone; updated focused tests.",
+    "result": "At a 375px viewport, the location wrapper moved from x=71.5–183.5 to x=28–140 while the phone stayed at x=191.5–347. English, Arabic, and mixed values stayed in the same location column."
+  },
+  "content_value": {
+    "learning_points": [
+      "Text direction should control text rendering, not column placement.",
+      "Physical grid direction and text direction are separate layout concerns.",
+      "A fixed narrow metadata column can improve mobile scanability without changing the surrounding card styling."
+    ],
+    "story_points": [
+      "The apparent language-layout problem came from RTL grid track placement, not from dir=auto.",
+      "The phone column stayed exactly the same while the location field moved 43.5px left.",
+      "Headless visual verification checked all requested address directions at 375px."
+    ],
+    "possible_angles": [
+      "Why direction-aware text and physical grid placement are different problems.",
+      "A small CSS grid change that moves Arabic-English mobile metadata without moving adjacent content.",
+      "How to preserve dir=auto while designing an RTL contact card."
+    ]
+  },
+  "resources": [],
+  "notes": [
+    "No customer data or source screenshots were archived."
+  ]
+}

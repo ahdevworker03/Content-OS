@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-20-content-os-renderer-reference-drift",
+  "captured_at": "2026-10-20T19:43:47+03:00",
+  "project": {
+    "name": "Content OS",
+    "repository": "content-os",
+    "area": "Carousel renderer and export investigation"
+  },
+  "idea": {
+    "title": "A visual mismatch began with the active content source",
+    "type": "debugging-story",
+    "summary": "A gallery and Figma design showed a project-structure story, while extracted renderer slides showed a latency-alert story. Tracing the export route to the active workspace JSON explained the content mismatch; layout and color differences remained separate fidelity issues."
+  },
+  "context": {
+    "situation": "The exported carousel was compared with a Figma file, gallery preview, and design direction document.",
+    "problem": "The eight exported images did not resemble the project-structure reference.",
+    "investigation": "Inspected the exported images, active workspace JSON, renderer loader, slide adapter, layouts, CSS, and Figma frames. The loader selects the workspace carousel, which currently contains the latency-alert story. The Figma frames use project-structure content and some distinct composition and color choices.",
+    "result": "Reported the source-data mismatch as the primary cause and identified renderer fidelity gaps. No renderer change was made."
+  },
+  "content_value": {
+    "learning_points": [
+      "Check which content source an export actually loads before debugging its styling.",
+      "Separate wrong story selection from differences in visual implementation.",
+      "Treat a gallery image, editable design, and written direction as references that may differ from one another."
+    ],
+    "story_points": [
+      "The exported PNGs contained a latency-alert story.",
+      "The linked Figma file contained a project-structure story.",
+      "The export route loaded the current workspace carousel through the adapter."
+    ],
+    "possible_angles": [
+      "The carousel looked wrong before CSS was involved.",
+      "Trace output back through data selection, mapping, and layout."
+    ]
+  },
+  "resources": [],
+  "notes": [
+    "The extracted slides were existing untracked files; their exact generation command was not established."
+  ]
+}

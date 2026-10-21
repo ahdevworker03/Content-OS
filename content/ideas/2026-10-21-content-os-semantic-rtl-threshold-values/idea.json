@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-21-content-os-semantic-rtl-threshold-values",
+  "captured_at": "2026-10-21T08:45:00+03:00",
+  "project": {
+    "name": "Content OS",
+    "repository": "content-os",
+    "area": "Carousel renderer templates"
+  },
+  "idea": {
+    "title": "Style mixed-script values with semantics, not DOM position",
+    "type": "engineering-learning",
+    "summary": "A reusable Arabic carousel threshold layout had styled whichever bidi element appeared last. Replacing that positional CSS with explicit label and value markup kept technical values readable even when RTL/LTR ordering changes."
+  },
+  "context": {
+    "goal": "Improve reusable phone-size comparison readability without changing the carousel content model.",
+    "situation": "The active carousel uses a segmented takeaway layout for two latency thresholds, rather than the generic comparison template.",
+    "problem": "The value emphasis depended on bdi:last-child, which is a structural assumption that can misidentify text when mixed RTL/LTR content changes.",
+    "investigation": "Traced the active slide through its layout component and confirmed that the generic comparison CSS did not render this slide.",
+    "decision": "Add semantic threshold label and value classes within the existing takeaway component and render each threshold as a restrained label/value row.",
+    "implementation": "Replaced the positional selector with explicit semantic markup and shared segmented-layout CSS.",
+    "result": "The current export shows Read P95 and Mutation P95 as readable labels with moderately emphasized values, and the renderer DOM reports two semantic value elements with no positional CSS selector."
+  },
+  "content_value": {
+    "learning_points": [
+      "Mixed-script typography is a data-structure concern as well as a CSS concern.",
+      "A visually similar layout may use a different component than its apparent template category.",
+      "Semantic classes prevent bidi text order from changing the styling target."
+    ],
+    "story_points": [
+      "The initial assumption was that comparison CSS controlled the threshold slide.",
+      "Tracing the rendering route identified the actual segmented takeaway layout."
+    ],
+    "possible_angles": [
+      "Why bdi:last-child is fragile in Arabic technical UI.",
+      "The debugging value of tracing a layout ID to its real component.",
+      "How semantic markup protects typographic hierarchy in mixed-language content."
+    ]
+  },
+  "resources": [],
+  "notes": [
+    "This is raw source material only and records the verified renderer change."
+  ]
+}

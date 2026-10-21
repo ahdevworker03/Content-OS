@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-16-content-os-canonical-draft-boundary",
+  "captured_at": "2026-10-16T16:21:43+03:00",
+  "project": {
+    "name": "Content OS",
+    "repository": "content-os",
+    "area": "Content lifecycle workflow"
+  },
+  "idea": {
+    "title": "Make the canonical draft a clear contract between planning and adaptation",
+    "type": "workflow-improvement",
+    "summary": "Workflow 03 now defines a format-neutral draft structure, checks the approved brief and source evidence, and stops before platform-specific writing."
+  },
+  "context": {
+    "goal": "Make the Post Content Builder workflow actionable while preserving the boundary between canonical meaning and platform adaptations.",
+    "situation": "Workflow 03 described its purpose and output but left its Required Skill section empty and provided no concrete draft headings or brief-readiness stop condition.",
+    "problem": "The instructions did not give a consistent structure for capturing source-supported meaning, uncertainty, and adaptation intent before platform writing.",
+    "investigation": "Reviewed the existing playbook, Content Workflow lifecycle, project writing skills, and current canonical-draft ownership rules.",
+    "decision": "Specify an input gate, a compact canonical-draft outline, source traceability, factual-boundary checks, and explicit format-neutral constraints in Workflow 03.",
+    "implementation": "Updated the Post Content Builder section in framework/content-playbook/Content Creation Playbook.md; removed the empty Required Skill heading because no canonical-writing skill exists in the project skill directory.",
+    "result": "Workflow 03 now gives a bounded process and output structure for writing only content/drafts/post.md, while keeping format and platform adaptation in Workflow 04."
+  },
+  "content_value": {
+    "learning_points": [
+      "A workflow becomes more actionable when its abstract content contract is reflected in a concrete output outline.",
+      "A clear readiness gate can prevent content workflows from silently inventing unresolved planning decisions.",
+      "Canonical meaning and platform presentation benefit from an explicit stage boundary."
+    ],
+    "story_points": [
+      "The workflow already had a sound lifecycle boundary but an empty skill section and no concrete draft structure.",
+      "The update made source traceability and uncertainty part of the writing steps.",
+      "The output remains one format-neutral canonical file before adaptation begins."
+    ],
+    "possible_angles": [
+      "Turning an abstract content workflow into a usable writing contract.",
+      "Why a canonical content draft should capture meaning before platform presentation."
+    ]
+  },
+  "resources": [
+    {
+      "file": "workflow-contract.md",
+      "description": "Short excerpt of the updated Workflow 03 outline and its format-neutral boundary.",
+      "source": "framework/content-playbook/Content Creation Playbook.md#03--post-content-builder"
+    }
+  ],
+  "notes": []
+}

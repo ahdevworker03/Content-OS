@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-17-markab-pages-project-identity",
+  "captured_at": "2026-10-17T17:09:51+03:00",
+  "project": {
+    "name": "Markab",
+    "area": "Cloudflare Pages release verification"
+  },
+  "idea": {
+    "title": "Verify a Pages project name independently from its hostname",
+    "type": "engineering-learning",
+    "summary": "A read-only release audit found that Pages project names differed from their existing pages.dev hostnames and from the names used in release tooling."
+  },
+  "context": {
+    "goal": "Verify Pages project identities and automatic deployment settings before a staging rehearsal.",
+    "situation": "Two Git-integrated Pages projects retained older pages.dev hostnames after their project names differed from those hostnames.",
+    "investigation": "The Cloudflare API project list and individual project records returned the current names, hostnames, Git branches, and automatic deployment settings. Lookups using the hostname prefixes returned project-not-found errors. The release commands and their preflight checks used the older names.",
+    "result": "Both release targets need correction. The staging API record still reported automatic production-branch deployments enabled and all preview branches enabled, despite a reported dashboard change. No deployment or configuration change was performed."
+  },
+  "content_value": {
+    "learning_points": [
+      "Identify cloud resources by the API project name rather than deriving it from a hostname.",
+      "Check production and preview branch deployment controls separately and re-read the live state.",
+      "Include identity preflight checks and their tests when correcting release tooling."
+    ],
+    "possible_angles": [
+      "Resource identity can differ from the URL that users see.",
+      "A read-only release audit can reveal mismatched targets and deployment settings before a rehearsal."
+    ]
+  },
+  "resources": []
+}

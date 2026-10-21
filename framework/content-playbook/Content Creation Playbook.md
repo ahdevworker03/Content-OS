@@ -229,36 +229,41 @@ This workflow starts with an approved Content Brief and ends with one canonical 
 
 Do not read format rules, renderer schemas, or platform-specific writing skills here. Those belong to Workflow 04.
 
-## Required Skill
+## Inputs
 
+- One approved Content Brief with a clear core idea, trigger, intended outcome, and factual constraints.
+- The source material and references named by the brief.
 
-## Input
-
-One approved Content Brief, with selected source material and references as needed.
+If the brief is missing, not approved, or leaves a substantive decision unresolved, stop and report what Workflow 02 must clarify. Do not fill the gap by making a new planning decision.
 
 ## Output
 
-Write only `content/drafts/post.md`. It is the canonical, format-neutral source for later adaptations and must preserve:
+Write only `content/drafts/post.md`. Use clear prose or structured notes under these headings, omitting a heading only when the brief and sources provide no relevant material:
 
-- Core idea
-- Authentic trigger
-- Reasoning
-- Key points
-- Supported examples and their sources
-- Claims and factual boundaries, including uncertainty and what is not known
-- Intended takeaway
-- CTA intent
-- Important wording worth preserving
+```markdown
+# Canonical Content
 
-Use clear prose or structured notes. The canonical draft records what the content means; it is not publish-ready copy.
+## Core Idea
+## Trigger
+## Reasoning
+## Key Points
+## Supported Examples and Sources
+## Claims, Uncertainty, and Factual Boundaries
+## Intended Takeaway
+## CTA Intent
+## Wording to Preserve
+```
+
+Record what the content means, including the creator's supported perspective and important wording. Keep source references beside the claims or examples they support. This is canonical source material, not publish-ready copy.
 
 ## Workflow
 
-1. Read the approved brief and its supporting source material in full.
-2. Identify the claims, experiences, examples, uncertainties, and limits the sources actually support.
-3. Write the canonical content under the output headings above. Keep the creator's perspective and important wording without optimizing for a platform or format.
-4. Check that every key point supports the brief's insight and intended takeaway.
-5. Write `content/drafts/post.md` and stop.
+1. Confirm the brief is approved and complete enough to write. If not, stop and report the missing decision or information.
+2. Read the brief and its named supporting source material in full. Record what each source supports, including conflicting evidence, uncertainty, and limits; do not infer missing facts.
+3. Build the canonical draft using the output headings. Preserve the brief's core idea, authentic trigger, reasoning, intended takeaway, CTA intent, and wording worth keeping. Include only relevant, supported examples and identify their sources.
+4. Keep the draft format-neutral. Do not choose a platform, language, format, hook, slide sequence, paragraph structure, or visual treatment. Keep source language where practical; translation and platform rewriting belong to Workflow 04.
+5. Check each substantive statement against the brief or its sources, and confirm the key points support the approved insight and takeaway. Retain uncertainty instead of strengthening a claim.
+6. Write only `content/drafts/post.md`, then stop.
 
 ## Success Criteria
 
@@ -332,12 +337,12 @@ Generate only the variants explicitly listed under Required variants. Write each
 
 | Approved variant | Output |
 |---|---|
-| Instagram Carousel | `content/drafts/carousel.md` |
-| LinkedIn Post | `content/drafts/linkedin.md` |
+| Instagram Carousel | `content/drafts/format/carousel.md` |
+| LinkedIn Post | `content/drafts/format/linkedin.md` |
 
 For Instagram Carousel only, also write `production/workspace/carousel.json` in the Content Model format. It must contain the approved carousel variant for the renderer and must not embed LinkedIn post copy. No other variant generates renderer JSON.
 
-Each Markdown variant contains only the platform/format package it represents. LinkedIn is a standalone artifact and never lives inside `carousel.md`.
+Update the existing files at the listed `content/drafts/format/` paths in place. Do not create parallel `content/drafts/carousel.md` or `content/drafts/linkedin.md` files. Each Markdown variant contains only the platform/format package it represents. LinkedIn is a standalone artifact and never lives inside `carousel.md`.
 
 ## Adaptation Invariant
 
@@ -363,7 +368,7 @@ If a variant appears to need a substantive change, stop and return the proposed 
 3. Create each approved variant as an independent adaptation. Keep the primary format as the depth anchor; rewrite structure and wording for each secondary platform.
 4. For every variant, check its claims, examples, uncertainty, CTA intent, and takeaway against `post.md`.
 5. If an Instagram Carousel is required, plan its narrative and slide count from the approved canonical content. For each slide, first state its purpose, then choose the one supported visual layout that fits that purpose, and then write the slide copy. Available personal-account layout IDs are `cover`, `story`, `focus`, `sequence`, `comparison`, `evidence`, and `closing`; use the field definitions in `framework/model/Content Model.md`.
-6. Write `carousel.md` and the matching `production/workspace/carousel.json`. Include the selected layout on each JSON slide and keep the slide copy and layout-specific fields aligned between Markdown and JSON. Layouts may repeat or be omitted. There is no required seven- or eight-slide count or fixed layout order; choose only compositions the content earns.
+6. Update `content/drafts/format/carousel.md` and the matching `production/workspace/carousel.json`. Include the selected layout on each JSON slide and keep the slide copy and layout-specific fields aligned between Markdown and JSON. Layouts may repeat or be omitted. There is no required seven- or eight-slide count or fixed layout order; choose only compositions the content earns.
 7. Use `evidence` only for supplied, approved code or a local screenshot/image, or for a supplied diagram explicitly identified as conceptual. Image and diagram assets must be placed under `production/workspace/evidence/` and referenced as `evidence/<filename>`. Do not create fake proof or infer evidence from copy.
 8. Do not write React, TSX, CSS, or per-post renderer code. Layout components are installed once in the renderer; ordinary carousel work changes only the Markdown and workspace JSON.
 9. Check that no unapproved variant was generated, all expected outputs exist, and each standalone draft contains only its own variant.
@@ -374,7 +379,7 @@ If a variant appears to need a substantive change, stop and return the proposed 
 - Each variant follows its platform language, voice, and format rules.
 - Each variant preserves the canonical meaning and factual boundaries.
 - Platform adaptations are independently structured, not copied or mechanically translated.
-- LinkedIn is a standalone `linkedin.md` artifact.
+- LinkedIn is a standalone `content/drafts/format/linkedin.md` artifact.
 - `carousel.json` exists only when a Carousel variant is required and represents Carousel content only.
 - Carousel Markdown and JSON agree on all slide text.
 - Every carousel slide has a purpose and a supported, content-fitting `layout` selection.
@@ -593,8 +598,8 @@ Use only the standalone artifact for the variant that was published:
 
 | Published variant | Source artifact |
 |---|---|
-| Instagram Carousel | `content/drafts/carousel.md` |
-| LinkedIn Post | `content/drafts/linkedin.md` |
+| Instagram Carousel | `content/drafts/format/carousel.md` |
+| LinkedIn Post | `content/drafts/format/linkedin.md` |
 
 The source must match what was published exactly. If the published copy differs from the draft, use the exact published copy supplied or captured from the platform; do not silently archive a different draft.
 

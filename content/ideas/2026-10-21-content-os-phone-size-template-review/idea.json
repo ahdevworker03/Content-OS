@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-21-content-os-phone-size-template-review",
+  "captured_at": "2026-10-21T08:30:00+03:00",
+  "project": {
+    "name": "Content OS",
+    "repository": "content-os",
+    "area": "Carousel renderer templates"
+  },
+  "idea": {
+    "title": "A carousel template should be reviewed at phone size, not only on the canvas",
+    "type": "engineering-learning",
+    "summary": "A reusable Arabic carousel template pass showed that heading scale, footer weight, and comparison hierarchy can look acceptable at 1080 pixels while losing balance at a 360 pixel feed view. Exported PNGs and a phone-size contact sheet made those problems concrete."
+  },
+  "context": {
+    "goal": "Improve reusable personal carousel templates while preserving the existing authoring contract and renderer pipeline.",
+    "situation": "The renderer had a warm palette and distinct layouts, but several shared heading sizes and fixed offsets produced sparse or oversized compositions in the active carousel.",
+    "investigation": "Compared the design direction and template references with full-size exports and a 360 pixel contact sheet, then traced workspace data through the adapter, SlideRenderer, layouts, Studio preview, and export route.",
+    "decision": "Keep the seven authoring layout IDs and their adapter mapping, then refine shared typography, spacing, label/value scale, and footer treatment in the presentation layer.",
+    "implementation": "Reduced shared role heading scale, tightened fixed vertical offsets, changed comparison from accent-heavy cards to label/value rows, and retained the flat canvas and common footer.",
+    "result": "The current ten-slide carousel exported at 1080 by 1080 with readable phone-size thumbnails, while short and long Arabic and mixed-script fixtures remained within safe bounds."
+  },
+  "content_value": {
+    "learning_points": [
+      "Canvas-size layout checks do not replace a phone-size review.",
+      "Reusable templates need typography rules that accommodate content length without slide-specific selectors.",
+      "A quieter footer and smaller value hierarchy can improve reading order without adding metadata."
+    ],
+    "story_points": [
+      "The design target was an editorial system rather than a single alert carousel.",
+      "The rejected redesign helped clarify which visual direction not to carry forward.",
+      "The comparison layout improved by removing repeated accent bars and using one readable hierarchy."
+    ],
+    "possible_angles": [
+      "Why I now review carousel templates at 360 pixels before exporting.",
+      "The difference between fixing a slide and fixing a template.",
+      "How smaller typography can make technical Arabic carousels easier to read."
+    ]
+  },
+  "resources": [
+    {
+      "file": "phone-contact-sheet.png",
+      "description": "Fresh 360 pixel-per-slide contact sheet from the verified template pass.",
+      "source": "production/export/personal-template-pass-2026-10-21/phone-contact-sheet.png"
+    }
+  ],
+  "notes": [
+    "The idea records a renderer-template improvement; it does not alter the approved alert-latency content."
+  ]
+}

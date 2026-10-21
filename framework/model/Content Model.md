@@ -93,16 +93,18 @@ The Body is a discriminated union. Its structure depends on the format field.
   "type": "carousel",
   "slides": [
     {
-      "layout": "cover | story | focus | sequence | comparison | evidence | closing",
+      "layout": "personal-cover | personal-trigger | personal-belief | personal-friction | personal-realization | personal-decision | personal-takeaway | personal-closing",
       "number": "SLIDE 1 OF 8",
       "title": "Slide heading",
       "lead_in": "Optional conversational context",
       "context": "Optional supporting context",
       "subtext": "Legacy cover subtitle",
       "body": "Story context",
+      "quote": "Prior belief",
       "emphasis": "Optional emphasized story line",
       "statement": "Central belief or realization",
       "note": "Optional focus note",
+      "detail": "Optional takeaway detail",
       "items": [
         { "text": "Ordered progression item", "accent": false }
       ],
@@ -121,16 +123,18 @@ The Body is a discriminated union. Its structure depends on the format field.
 }
 ```
 
-The seven personal-account compositions are selected independently per slide. They may repeat or be omitted; neither a fixed slide count nor a fixed layout order is required. Layout IDs describe visual composition, not content pillars. The renderer applies the personal account style only in this carousel app; it is not a default brand for future Content OS users.
+The eight personal-account compositions are selected independently per slide. They may repeat or be omitted; neither a fixed slide count nor a fixed layout order is required. Layout IDs describe visual composition, not content pillars. The renderer applies the personal account style only in this carousel app; it is not a default brand for future Content OS users.
 
 Field usage by layout:
-- `cover` — `title`, optional `context` or legacy `subtext`.
-- `story` — `title`, `body`, optional `emphasis`.
-- `focus` — `title`, `statement`, optional `note`.
-- `sequence` — `title`, two to four ordered `items` (`text`).
-- `comparison` — `title`, `before` and `after` (`label`, `text`) describing a genuine contrast.
-- `evidence` — `title`, optional `context`, and supplied `evidence`: `code` with `code`, or `image` / `diagram` with a workspace asset path and accessible `alt`. Diagrams require `conceptual: true` and a caption identifying them as conceptual. Local assets live under `production/workspace/evidence/` and JSON references them as `evidence/<filename>`.
-- `closing` — `question`, optional `signoff`.
+- `personal-cover` — `title`, optional `lead_in`, `emphasis`, and `context`.
+- `personal-trigger` — `title`, `body`, and optional `question` panel.
+- `personal-belief` — `title` and `quote`.
+- `personal-friction` — `title`, optional `lead_in`, and two to four ordered `items` (`text`).
+- `personal-realization` — `title`, `statement`, optional `note`, and optional `lead_in`.
+- `personal-decision` — `title`, optional `context`, and supplied `evidence`: `code` with `code`, or `image` / `diagram` with a workspace asset path and accessible `alt`. Diagrams require `conceptual: true` and a caption identifying them as conceptual. Local assets live under `production/workspace/evidence/` and JSON references them as `evidence/<filename>`.
+- `personal-takeaway` — `title`, optional `detail`.
+- `personal-closing` — `question`, optional `signoff`.
+- Legacy `cover`, `story`, `focus`, `sequence`, `comparison`, `evidence`, and `closing` values remain accepted and map to their closest personal role.
 - Legacy `box-list`, `arrow-list`, `bullet-list`, `grid` / `grid-2x2`, `cta`, and `final-cta` values remain accepted during migration. `final-cta` maps to `closing`, retaining its footer and question data in the renderer model.
 - `number`, `swipe`, and generic section labels are not rendered in the personal slide artwork. The footer is the fixed `abdallahhassoun.dev` handle.
 
@@ -243,7 +247,7 @@ The following JSON Schema formalizes the content model. Every Content Item in th
             "required": ["layout"],
             "additionalProperties": false,
             "properties": {
-              "layout": { "type": "string", "enum": ["cover", "story", "focus", "sequence", "comparison", "evidence", "closing", "box-list", "arrow-list", "grid", "grid-2x2", "bullet-list", "cta", "final-cta"] },
+              "layout": { "type": "string", "enum": ["personal-cover", "personal-trigger", "personal-belief", "personal-friction", "personal-realization", "personal-decision", "personal-takeaway", "personal-closing", "cover", "story", "focus", "sequence", "comparison", "evidence", "closing", "box-list", "arrow-list", "grid", "grid-2x2", "bullet-list", "cta", "final-cta"] },
               "number": { "type": "string" },
               "section_tag": { "type": "object", "properties": { "text": { "type": "string" }, "class": { "type": "string" } } },
               "subtag": { "type": "string" },
@@ -254,8 +258,10 @@ The following JSON Schema formalizes the content model. Every Content Item in th
               "context": { "type": "string" },
               "body": { "type": "string" },
               "emphasis": { "type": "string" },
+              "quote": { "type": "string" },
               "statement": { "type": "string" },
               "note": { "type": "string" },
+              "detail": { "type": "string" },
               "items": { "type": "array", "items": { "type": "object", "properties": { "text": { "type": "string" }, "accent": { "type": "boolean" } } } },
               "grid_items": { "type": "array", "items": { "type": "object", "properties": { "label": { "type": "string" }, "text": { "type": "string" } } } },
               "before": { "type": "object", "required": ["label", "text"], "properties": { "label": { "type": "string" }, "text": { "type": "string" } } },
@@ -284,6 +290,14 @@ The following JSON Schema formalizes the content model. Every Content Item in th
               { "if": { "required": ["layout"], "properties": { "layout": { "const": "comparison" } } }, "then": { "required": ["title", "before", "after"] } },
               { "if": { "required": ["layout"], "properties": { "layout": { "const": "evidence" } } }, "then": { "required": ["title", "evidence"] } },
               { "if": { "required": ["layout"], "properties": { "layout": { "const": "closing" } } }, "then": { "required": ["question"] } }
+              ,{ "if": { "required": ["layout"], "properties": { "layout": { "const": "personal-cover" } } }, "then": { "required": ["title"] } }
+              ,{ "if": { "required": ["layout"], "properties": { "layout": { "const": "personal-trigger" } } }, "then": { "required": ["title", "body"] } }
+              ,{ "if": { "required": ["layout"], "properties": { "layout": { "const": "personal-belief" } } }, "then": { "required": ["title", "quote"] } }
+              ,{ "if": { "required": ["layout"], "properties": { "layout": { "const": "personal-friction" } } }, "then": { "required": ["title", "items"], "properties": { "items": { "minItems": 2, "maxItems": 4 } } } }
+              ,{ "if": { "required": ["layout"], "properties": { "layout": { "const": "personal-realization" } } }, "then": { "required": ["title", "statement"] } }
+              ,{ "if": { "required": ["layout"], "properties": { "layout": { "const": "personal-decision" } } }, "then": { "required": ["title", "evidence"] } }
+              ,{ "if": { "required": ["layout"], "properties": { "layout": { "const": "personal-takeaway" } } }, "then": { "required": ["title"] } }
+              ,{ "if": { "required": ["layout"], "properties": { "layout": { "const": "personal-closing" } } }, "then": { "required": ["question"] } }
             ]
           }
         }

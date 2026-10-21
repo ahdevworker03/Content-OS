@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-16-content-os-format-draft-paths",
+  "captured_at": "2026-10-16T19:27:17+03:00",
+  "project": {
+    "name": "Content OS",
+    "repository": "content-os",
+    "area": "Content lifecycle workflow"
+  },
+  "idea": {
+    "title": "Update the established variant files instead of creating parallel drafts",
+    "type": "workflow-improvement",
+    "summary": "Format adaptation now updates the existing files in content/drafts/format and documents those exact paths across the workflow instructions."
+  },
+  "context": {
+    "goal": "Apply approved platform adaptations using the project's established draft file locations.",
+    "situation": "The existing Carousel and LinkedIn drafts were stored under content/drafts/format, but the workflow instructions named root-level paths.",
+    "problem": "Following the stale paths created parallel root-level variant files instead of updating the existing drafts.",
+    "investigation": "Compared the existing draft tree with the playbook, lifecycle documentation, and README output paths.",
+    "decision": "Update the existing format drafts in place, remove the parallel files, and align the workflow path instructions with the actual repository structure.",
+    "implementation": "Replaced content/drafts/format/carousel.md and content/drafts/format/linkedin.md with the approved adaptations; updated Workflow 04 and matching lifecycle and README references.",
+    "result": "The adaptations reside only under content/drafts/format, and documentation explicitly directs future runs to edit those existing files."
+  },
+  "content_value": {
+    "learning_points": [
+      "Check existing project paths before creating workflow outputs.",
+      "When implementation and documentation disagree, update the relevant source-of-truth paths together.",
+      "An explicit in-place update instruction helps prevent duplicate draft artifacts."
+    ],
+    "story_points": [
+      "Variant files already existed in a dedicated format directory.",
+      "The workflow's root-level output paths caused parallel files to be created.",
+      "The correction updated existing drafts and aligned path references across the workflow documents."
+    ],
+    "possible_angles": [
+      "How checking the repository tree can prevent duplicate workflow outputs.",
+      "Keep documentation paths aligned with where a project actually stores its files."
+    ]
+  },
+  "resources": [
+    {
+      "file": "path-contract.md",
+      "description": "Short excerpt of the corrected existing-file output contract.",
+      "source": "framework/content-playbook/Content Creation Playbook.md#04--format-adaptation"
+    }
+  ],
+  "notes": []
+}

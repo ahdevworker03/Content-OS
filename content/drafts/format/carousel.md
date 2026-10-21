@@ -1,93 +1,137 @@
-# Instagram Carousel — شو بيربط مواد الـ CS بالـ building؟
+# Instagram Carousel — When a latency alert is really a query-cardinality problem
 
-## Instagram Carousel (Lebanese Arabic)
+## Slide 1
 
-### Slide 1 — Cover
+**Purpose:** Open on the mismatch between the noisy alert and its source.
+**Layout:** `personal-cover`
 
-**Visual:** A simple four-part system map on a desk: foundations → practice → systems → product value. Keep it clear and practical, not like a personal planner.
+**Title:**
 
-**Text:**
+الـ alert كان عم يروح ويرجع…
 
-مواد الـ CS مش منفصلة
-عن الـ building
+**Accent thought:**
 
-### Slide 2 — Context
+بس المشكلة كانت بالـ query
 
-**Visual:** University notes beside a blank system map. No fabricated grades, project screens, or results.
+## Slide 2
 
-**Text:**
+**Purpose:** Show the real staging symptom and clarify what an alert instance means.
+**Layout:** `personal-trigger`
 
-بلّشت سنتي التانية بـ CS، وصرت اسأل:
-كيف هالمواد بتأثر على software ببنيه؟
+**Title:** شو كان عم يصير؟
 
-مش كمواد لحالن، بس كأجزاء بتأثر على كيف بفكّر بالـ building.
+**Body:**
 
-هيدا الربط عم جرّب افهمه ببداية هالسنة.
+على staging، الـ latency alert كان عم ينتقل بين FIRING وRESOLVED كل شوي.
 
-### Slide 3 — Engineering foundations
+وبنفس الوقت كان عم يطلع أكتر من alert instance (تنبيه مستقل).
 
-**Visual:** A notebook with “Databases / Software Engineering / Networking” connected to a small system diagram.
+**Question panel:** وين كانت المشكلة؟
 
-**Text:**
+## Slide 3
 
-الأساسيات بتغيّر القرار قبل ما اكتب code.
+**Purpose:** Explain how request-specific labels created multiple query results without claiming they caused the state switching.
+**Layout:** `personal-friction`
 
-databases، software engineering، وnetworking بيعطوني طريقة أفهم فيها الـ system قبل ما قرّر كيف ابنِيه.
+**Title:** ليه صار في أكتر من alert instance؟
 
-### Slide 4 — Focused technical depth
+**Sequence:**
 
-**Visual:** A simple handwritten map: TypeScript → React / Express → Prisma. Present it as a learning direction, not a completed stack diagram.
+1. بعد الـ JSON parsing، ضلّت labels مرتبطة بكل request جوّا الـ query.
+2. هالـ labels خلّت الـ query ترجع أكتر من series (سلسلة زمنية).
+3. كل series صارت alert instance مستقلة.
+4. فبدل نتيجة وحدة، صار عنا عدة نتائج عم تتقيّم لحالها.
 
-**Text:**
+## Slide 4
 
-TypeScript مش بس للـ frontend.
+**Purpose:** Show the query correction and explain aggregation in plain language.
+**Layout:** `personal-decision`
 
-بتخلّيني اشتغل بنفس اللغة بالـ frontend والـ backend.
+**Title:** الحل كان نقلّل الـ labels قبل التجميع
 
-ومع React، Express، وPrisma، بصير أسهل أفهم كيف الأجزاء بتكمل بعضها.
+**Context:**
 
-### Slide 5 — Understanding real systems
+خلّينا `responseTime` بس قبل الـ `unwrap` والـ aggregation (تجميع القيم):
 
-**Visual:** A hand-drawn frontend ↔ backend ↔ database flow. Label it as questions to explore; no traffic charts or claimed metrics.
+**Evidence (LogQL):**
 
-**Text:**
+```logql
+| keep responseTime
+| unwrap responseTime
+```
 
-الـ system مش مجموعة أجزاء بتشتغل لحالا.
+**Caption:** من runbook تبع المشروع
 
-المهم كيف الـ data بتمشي بين الـ frontend والـ backend، وكيف كل جزء بيتأثر بالتاني.
+## Slide 5
 
-هالشي بيوضح أكتر من building وتجربة حقيقية، خطوة خطوة.
+**Purpose:** State exactly what was verified and keep the evidence scoped to one rule.
+**Layout:** `personal-realization`
 
-### Slide 6 — Communicating what I build
+**Title:** شو تأكدنا منه؟
 
-**Visual:** A page with three prompts: “الفكرة؟ لمين؟ شو قيمتها؟” beside a student’s rough presentation notes.
+**Statement:**
 
-**Text:**
+بالـ staging read rule، النتيجة صارت aggregate series وحدة.
 
-والـ product مش بس implementation.
+**Note:**
 
-قيمة الـ product بتبين أكتر لما نعرف: لمين هو، شو بحل، وليش حدا يهتم فيه.
+هيدا هو التحقق الموثّق تحديداً، وما عم نعمّمه على باقي الـ rules.
 
-هيدا جزء من التفكير بالـ product، مش شغلة بتصير بعد الـ code.
+## Slide 6
 
-### Slide 7 — Outcome
+**Purpose:** Separate the query fix from actual application performance.
+**Layout:** `personal-belief`
 
-**Visual:** Return to the four-part planning page. Draw light connecting lines between studying, focused practice, building, and explaining; avoid a “roadmap to success” look.
+**Title:** وهالشي ما يعني إن الـ app صار أسرع
 
-**Text:**
+**Quote:**
 
-هول مش أربع مسارات منفصلين.
+ما غيّرنا الـ thresholds ولا الـ pending / keep-firing settings.
 
-أساسيات أقوى، building أعمق، فهم أوضح للـ system، وتواصل أوضح عن قيمة الـ product.
+## Slide 7
 
-هيدي الطريقة اللي عم جرّب اربط فيهن الدراسة بالـ building، ولسّه عم بلّش فيها.
+**Purpose:** Preserve the approved alert thresholds without presenting them as measurements.
+**Layout:** `personal-takeaway`
 
-## Instagram Caption
+**Title:** الـ thresholds بقوا نفسها.
 
-مواد الـ CS، الـ building، وفهم الـ product مش مسارات منفصلة.
+**Detail:**
 
-بلّشت سنتي التانية بـ CS، وعم جرّب أربط بين الأساسيات مثل databases وsoftware engineering وnetworking، وبين TypeScript، فهم الـ systems، والتفكير بقيمة الـ product.
+Read P95 فوق 500 ms
 
-بالنسبة إلي، هالربط بيعطي الـ building اتجاه أوضح: ما بوقف عند code، وبفكّر كمان بالـ system وبقيمة اللي عم بنِيه. هيدي فكرة عم جرّبها ببداية هالسنة، مش نتيجة وصلتلا.
+Mutation P95 فوق 800 ms
 
-أي جزء بتحسّوه منفصل عن الـ building، وهو مش منفصل؟
+## Slide 8
+
+**Purpose:** Explain the threshold metric without implying improved application performance.
+**Layout:** `personal-takeaway`
+
+**Title:** الـ P95 هون مقياس للـ latency.
+
+**Detail:**
+
+والـ P95 هون هو مقياس للـ latency: تقريباً 95% من الطلبات بتكون بزمن استجابة أقل منه.
+
+هيدي thresholds للـ alert، مش قياسات بتثبت إن الـ response time تحسّن.
+
+## Slide 9
+
+**Purpose:** Give the reader a reusable debugging check grounded in this incident.
+**Layout:** `personal-takeaway`
+
+**Title:** شو أخدت من هالمشكلة؟
+
+**Detail:**
+
+بهالحالة، كثرة الـ alert instances كانت من query cardinality (عدد الـ series المختلفة)، مش من bug بالمشروع.
+
+صار عندي check إضافي: شو الـ labels والـ series اللي الـ query عم ترجعها؟
+
+## Slide 10
+
+**Purpose:** Invite peer discussion.
+**Layout:** `personal-closing`
+
+**Question:**
+
+صار معك alert كانت المشكلة فيه من الـ query نفسها، مش من التطبيق؟

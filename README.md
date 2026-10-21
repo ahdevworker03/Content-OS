@@ -42,8 +42,9 @@ Social Media Content/
 │   ├── ideas/                              # Captured content ideas
 │   ├── drafts/                             # Canonical source and approved standalone variants
 │   │   ├── post.md                         # Format-neutral canonical content (Workflow 03)
-│   │   ├── carousel.md                     # Instagram Carousel adaptation (Workflow 04)
-│   │   └── linkedin.md                     # LinkedIn Post adaptation (when approved)
+│   │   └── format/
+│   │       ├── carousel.md                 # Instagram Carousel adaptation (Workflow 04)
+│   │       └── linkedin.md                 # LinkedIn Post adaptation (when approved)
 │   └── published/                          # Exact published variants by platform
 │       ├── instagram/                      # Variant-specific content/metadata; Carousel JSON/assets only for Carousel
 │       ├── linkedin/                       # Standalone LinkedIn post content and metadata
@@ -91,7 +92,7 @@ Six subdirectories organize the framework markdown files by concern:
 
 **`ideas/`** — Captured ideas, one folder per idea, with a required `idea.json` and optional curated supporting resources. Manual saves follow `framework/model/idea.schema.json`; automatic project-agent capture follows `framework/Content idea capture rules.md`.
 
-**`drafts/`** — `post.md` is the format-neutral canonical source written by Workflow 03. Workflow 04 creates only approved standalone adaptations in `carousel.md` or `linkedin.md`. LinkedIn never lives inside `carousel.md`. Carousel alone also produces `production/workspace/carousel.json`. Draft files may be empty until their workflow is run.
+**`drafts/`** — `post.md` is the format-neutral canonical source written by Workflow 03. Workflow 04 updates only approved standalone adaptations in `drafts/format/carousel.md` or `drafts/format/linkedin.md`; it does not create parallel variant files at the `drafts/` root. LinkedIn never lives inside `carousel.md`. Carousel alone also produces `production/workspace/carousel.json`. Draft files may be empty until their workflow is run.
 
 **`published/`** — Archived published content, one folder per published platform variant under a lowercase platform directory using the canonical convention `content/published/<platform>/<YYYY-MM-DD-slug>/`:
 
@@ -165,8 +166,8 @@ Idea
   → (02) Approved Content Brief
   → (03) Canonical Content Draft: content/drafts/post.md
   → (04) Format / Platform Adaptation: approved standalone variants
-       Carousel → carousel.md + production/workspace/carousel.json
-       LinkedIn → linkedin.md
+       Carousel → content/drafts/format/carousel.md + production/workspace/carousel.json
+       LinkedIn → content/drafts/format/linkedin.md
   → (05) Render Validation (Carousel only, where applicable)
   → (06) Export (Carousel only, where applicable)
   → Publish the selected variant
@@ -184,7 +185,7 @@ Idea
 3. **Idea Discovery** — `Content Creation Playbook.md` surfaces content opportunities from real triggers.
 4. **Content Planning** — `Content Creation Playbook.md` evaluates the idea and produces an approved brief.
 5. **Canonical Content** — Workflow 03 writes only format-neutral substance to `content/drafts/post.md`.
-6. **Format / Platform Adaptation** — Workflow 04 creates only the variants approved in the brief. Carousel JSON is generated only for Carousel; LinkedIn is a standalone `linkedin.md`.
+6. **Format / Platform Adaptation** — Workflow 04 updates only the variants approved in the brief at `content/drafts/format/`. Carousel JSON is generated only for Carousel; LinkedIn is a standalone `linkedin.md`.
 7. **Render Validation** — Workflow 05 validates Carousel rendering where applicable.
 8. **Export Assets** — Workflow 06 exports validated Carousel slides through the Studio or Playwright path where applicable.
 9. **Publish** — The creator publishes the selected approved variant manually.
@@ -199,8 +200,8 @@ Idea
     → 02 Content Planning: Approved Content Brief
     → 03 Post Content Builder: content/drafts/post.md
     → 04 Format Adaptation: only approved standalone variants
-         Instagram Carousel → carousel.md + production/workspace/carousel.json
-         LinkedIn Post → linkedin.md
+         Instagram Carousel → content/drafts/format/carousel.md + production/workspace/carousel.json
+         LinkedIn Post → content/drafts/format/linkedin.md
     → 05 Render Validation (Carousel, where applicable)
     → 06 Export Assets (Carousel, where applicable)
     → Manual Publish

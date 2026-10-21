@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-20-content-os-figma-role-renderer",
+  "captured_at": "2026-10-20T20:10:00+03:00",
+  "project": {
+    "name": "Content OS",
+    "repository": "content-os",
+    "area": "Carousel renderer"
+  },
+  "idea": {
+    "title": "Why a carousel needed roles instead of generic templates",
+    "type": "architecture-decision",
+    "summary": "A Figma visual system had distinct narrative compositions, but the renderer reused generic layouts. Refactoring around explicit editorial roles kept the content model structured while allowing each story moment to have a stable visual treatment."
+  },
+  "context": {
+    "situation": "Exported carousel slides shared palette and typography with Figma but did not reproduce its compositions.",
+    "problem": "Generic story and focus layouts repeated panels and treated composition as an optional-field side effect.",
+    "decision": "Add typed Figma-aligned personal roles, map legacy workspace layouts to their closest role, and keep shared slide framing and footer primitives.",
+    "implementation": "Updated the content model contract, workspace adapter, typed renderer data, role layouts, CSS tokens, Studio inspector, validation, and role fixture.",
+    "result": "The live export produced eight 1080 by 1080 slides with Figma-aligned friction, decision, realization, and closing compositions while retaining legacy workspace input support."
+  },
+  "content_value": {
+    "learning_points": [
+      "A visual system often needs role-based compositions rather than one generic template with optional fields.",
+      "Keep shared frame and footer primitives while giving each narrative moment its own layout.",
+      "Map legacy data deliberately when evolving a renderer contract."
+    ],
+    "story_points": [
+      "The mismatch looked like a CSS issue at first.",
+      "The root design constraint was that different narrative roles had been collapsed into repeated generic layouts.",
+      "The refactor kept workspace data structured and avoided using Figma images as slide backgrounds."
+    ],
+    "possible_angles": [
+      "When reusable components make a story look repetitive.",
+      "The difference between template reuse and a visual language."
+    ]
+  },
+  "resources": [],
+  "notes": [
+    "The active workspace carousel was intentionally preserved because it contained unrelated uncommitted content changes."
+  ]
+}

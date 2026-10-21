@@ -1,11 +1,24 @@
-As I start my second year of Computer Science, I’ve set four connected focus areas for the year. My plan goes beyond completing courses one at a time.
+On staging, a latency alert kept switching between FIRING and RESOLVED.
 
-I’ll focus on understanding foundation subjects like databases, software engineering, and networking, while building deeper TypeScript skills for web development. Using TypeScript across a web stack gives me a practical way to connect that technical focus with the systems I’m planning to build.
+At first, it looked like an application issue. We were also getting repeated alert emails and multiple alert instances.
 
-I’m also planning to learn how real systems behave through building: how the frontend, backend, and database work together, and what changes when people use the system.
+The problem turned out to be in the LogQL query.
 
-Alongside that, I’ll work on explaining ideas, presenting what I build, and communicating and selling its value. I see that communication as part of building, and I’m still learning how to do it well.
+After JSON parsing, request-specific labels were still being kept, so the query returned multiple series and produced multiple alert instances.
 
-These are the areas I’m committing to focus on this year, not skills I’ve already mastered. My plan is to connect university fundamentals with deeper technical practice, learning through real systems, and clearer communication as I build.
+The fix was small:
 
-How have you connected what you study with what you build?
+```logql
+| keep responseTime
+| unwrap responseTime
+```
+
+By keeping only responseTime before the unwrap and aggregation, the corrected staging read rule produced one aggregate series.
+
+We applied the same query change to the staging and production read and mutation queries. But I’m keeping the verified result narrow: the runbook specifically confirms the single-series result for the staging read rule.
+
+The alert thresholds did not change: read P95 above 500 ms and mutation P95 above 800 ms.
+And this fix does not show that application response time improved. It fixed the alert-query cardinality.
+
+For me, the useful part was realizing that a noisy alert does not always point back to the application. Sometimes the query itself is creating the noise.
+Have you run into an alert where the query turned out to be the real problem?

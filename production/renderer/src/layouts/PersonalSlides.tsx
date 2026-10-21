@@ -41,17 +41,23 @@ function PersonalFrame({
   layout,
   leadIn,
   children,
+  className = "",
 }: {
   layout: PersonalLayout;
   leadIn?: string;
   children: ReactNode;
+  className?: string;
 }) {
   return (
-    <Slide className={`personal-layout personal-layout--${layout}`}>
+    <Slide className={`personal-layout personal-layout--${layout} ${className}`}>
       {leadIn && <p className="personal-layout__lead-in">{leadIn}</p>}
       <div className="personal-layout__content">{children}</div>
     </Slide>
   );
+}
+
+function isolatePercentages(text: string) {
+  return text.split(/(\d+(?:\.\d+)?%)/g).map((part, index) => /^\d+(?:\.\d+)?%$/.test(part) ? <bdi dir="ltr" key={index}>{part}</bdi> : part);
 }
 
 export function PersonalCover({ slide }: { slide: CoverSlideData }) {
@@ -150,7 +156,8 @@ export function PersonalClosing({ slide }: { slide: ClosingSlideData }) {
 
 export function PersonalRoleCover({ slide }: { slide: PersonalCoverSlideData }) {
   return (
-    <PersonalFrame layout="role-cover" leadIn={slide.leadIn}>
+    <PersonalFrame layout="role-cover">
+      {slide.leadIn && <p className="personal-role__cover-context">{slide.leadIn}</p>}
       <Title>{slide.title}</Title>
       {slide.emphasis && <p className="personal-role__emphasis">{slide.emphasis}</p>}
       {slide.context && <p className="personal-role__context">{slide.context}</p>}
@@ -202,7 +209,7 @@ export function PersonalDecision({ slide }: { slide: PersonalDecisionSlideData }
   return (
     <PersonalFrame layout="decision" leadIn={slide.leadIn}>
       <Title as="h2" size="lg">{slide.title}</Title>
-      {slide.context && <p className="personal-role__body">{slide.context}</p>}
+      {slide.context && <p className="personal-role__body">{slide.context.split(/(`[^`]+`)/).map((part, index) => part.startsWith("`") && part.endsWith("`") ? <code dir="ltr" key={index}>{part.slice(1, -1)}</code> : part)}</p>}
       <figure className="personal-role__evidence">
         {slide.evidence.kind === "code" ? (
           <pre dir="ltr"><code>{slide.evidence.code}</code></pre>
@@ -216,10 +223,29 @@ export function PersonalDecision({ slide }: { slide: PersonalDecisionSlideData }
 }
 
 export function PersonalTakeaway({ slide }: { slide: PersonalTakeawaySlideData }) {
+  const details = slide.detail?.split(/\n\s*\n/).filter(Boolean) ?? [];
+  const composition = /[؟?]\s*$/.test(slide.title) ? "reflection" : details.length > 1 ? "segmented" : "explanation";
+
   return (
-    <PersonalFrame layout="takeaway" leadIn={slide.leadIn}>
+    <PersonalFrame layout="takeaway" leadIn={slide.leadIn} className={`personal-layout--takeaway-${composition}`}>
       <Title as="h2" size="lg">{slide.title}</Title>
-      {slide.detail && <p className="personal-role__context">{slide.detail}</p>}
+      {details.length > 0 && (
+        <div className="personal-role__details">
+          {details.map((detail, index) => {
+            const threshold = composition === "segmented" ? detail.match(/^(.*?)\s+(فوق|تحت)\s+(.*)$/) : null;
+            return (
+              <p className={`personal-role__context${threshold ? " personal-role__threshold" : ""}`} key={index}>
+                {threshold ? (
+                  <>
+                    <span className="personal-role__threshold-label"><bdi dir="ltr">{threshold[1]}</bdi> {threshold[2]}</span>
+                    <bdi className="personal-role__threshold-value" dir="ltr">{threshold[3]}</bdi>
+                  </>
+                ) : isolatePercentages(detail)}
+              </p>
+            );
+          })}
+        </div>
+      )}
     </PersonalFrame>
   );
 }
