@@ -177,24 +177,6 @@ The automated path is useful when consistent browser-rendered output is required
 
 ---
 
-## Layout Validation
-
-The Studio includes optional layout guides for checking slide boundaries and safe areas during review.
-
-<p align="center">
-  <img
-    src="docs/screenshots/readme/safety-guides.png"
-    alt="Content OS layout safety guides"
-    width="100%"
-  />
-</p>
-
-The guides are development tools only. They are disabled in thumbnails and final exports.
-
-This makes it possible to validate layout constraints without changing the final rendering logic.
-
----
-
 ## AI-Assisted Workflow
 
 Content OS uses repository instructions and specialized agent skills to divide content work into explicit responsibilities.
