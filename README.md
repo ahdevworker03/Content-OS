@@ -156,6 +156,8 @@ Repository-specific agent skills live in `.agents/skills/`. The current skill in
 - `content-reviewer` — mandatory final editorial gate for completed variants. It returns `PASS`, `PASS WITH MINOR EDITS`, `REVISE`, or `BLOCK` and routes problems back to the owning layer.
 - `content-refinement` — orchestration entry point when the creator explicitly asks to review/refine an idea or draft end-to-end. It coordinates the specialist skills without replacing their ownership.
 
+LinkedIn does not require a dedicated repository skill. Workflow 04 follows `framework/formats/linkedin.md` directly for LinkedIn structure, voice, and writing constraints.
+
 The default editorial order is:
 
 ```text
@@ -194,8 +196,8 @@ Idea
        → content-editor semantic/editorial gate
   → (04) Format / Platform Adaptation: approved standalone variants
        Carousel → content/drafts/format/carousel.md + production/workspace/carousel.json
-       LinkedIn → content/drafts/format/linkedin.md
-       → relevant language/format skills
+       LinkedIn → content/drafts/format/linkedin.md via framework/formats/linkedin.md
+       → relevant language/format rules
        → content-reviewer final gate
   → (05) Render Validation (Carousel only, where applicable)
   → (06) Export (Carousel only, where applicable)
@@ -214,7 +216,7 @@ Idea
 3. **Idea Discovery** — Workflow 01 surfaces opportunities from real triggers and requires `content-strategist` to return `READY` before an idea moves forward. `DEVELOP` ideas are refined first; `REJECT` ideas are not forced into production.
 4. **Content Planning** — Workflow 02 turns one `READY` idea into an approved brief with primary format, target platforms, and required variants.
 5. **Canonical Content** — Workflow 03 writes format-neutral substance to `content/drafts/post.md`, then runs `content-editor` before the canonical draft is accepted.
-6. **Format / Platform Adaptation** — Workflow 04 updates only variants approved in the brief at `content/drafts/format/`, applies the relevant language/format skills, and runs `content-reviewer` on every completed variant. Carousel JSON is generated only for Carousel; LinkedIn remains a standalone `linkedin.md` artifact.
+6. **Format / Platform Adaptation** — Workflow 04 updates only variants approved in the brief at `content/drafts/format/`, applies the relevant language/format rules, and runs `content-reviewer` on every completed variant. Carousel JSON is generated only for Carousel; LinkedIn remains a standalone `linkedin.md` artifact governed directly by `framework/formats/linkedin.md`.
 7. **Render Validation** — Workflow 05 validates Carousel rendering only after the Carousel has passed the final editorial gate.
 8. **Export Assets** — Workflow 06 exports validated Carousel slides through the Studio or Playwright path where applicable.
 9. **Publish** — The creator publishes the selected approved variant manually.
@@ -233,7 +235,7 @@ Idea
     → 04 Format Adaptation: only approved standalone variants
          Instagram Carousel → language skills → carousel-copy-polish
              → content/drafts/format/carousel.md + production/workspace/carousel.json
-         LinkedIn Post → content/drafts/format/linkedin.md
+         LinkedIn Post → framework/formats/linkedin.md → content/drafts/format/linkedin.md
          → content-reviewer final gate for every variant
     → 05 Render Validation (Carousel, where applicable)
     → 06 Export Assets (Carousel, where applicable)
@@ -250,5 +252,4 @@ The canonical draft owns content meaning and factual boundaries. Workflow 04 may
 - **Variant archive inputs** — Workflow 07 selects the standalone source matching the actual publication; LinkedIn is archived independently from any Instagram variant.
 - **Content Item IDs** — the Content Model now prefers platform-neutral IDs (e.g. `content-001`), but existing published/workspace IDs are still platform-specific (`instagram-007`, `linkedin-001`, …) until migrated.
 - **Idea persistence** — Workflow 01 supports optional user-requested persistence into `content/ideas/...`. Automatic project-agent capture after completed work is governed separately by `framework/workflows/Content Idea Capture Rules.md`.
-- **LinkedIn skill coverage** — there is currently no repository skill under `.agents/skills/` dedicated to LinkedIn writing; LinkedIn behavior is governed by `framework/formats/linkedin.md` until such a skill is intentionally added.
 - **Metadata completeness (older posts)** — posts archived before the current convention may lack recorded publish dates (folders use `unknown-date-…`) and may have placeholder pillar/trigger fields.
