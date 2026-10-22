@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-22-markab-password-reset-e2e-isolation",
+  "captured_at": "2026-10-22T17:56:00Z",
+  "project": {
+    "name": "Markab",
+    "repository": "markab",
+    "area": "End-to-end test isolation"
+  },
+  "idea": {
+    "title": "The E2E test passed but broke the next test",
+    "type": "debugging-story",
+    "summary": "A password-reset E2E test changed a shared seeded account and left the database in a different state. Restoring the seed password in Playwright cleanup made the suite deterministic, including when an assertion fails."
+  },
+  "context": {
+    "goal": "Keep authentication E2E tests independent and repeatable.",
+    "situation": "The password-reset scenario uses the common seeded organization owner.",
+    "problem": "It changed the owner's password without restoring it, so later tests could inherit invalid credentials.",
+    "investigation": "A regression test showed the original seeded password was unavailable after the reset flow.",
+    "decision": "Restore the seeded password in test.afterEach so cleanup runs after both passing and failing assertions.",
+    "implementation": "Request a new reset token and confirm the known seeded password during Playwright teardown.",
+    "result": "The full local E2E suite passed five tests, including the regression check for the original seeded password."
+  },
+  "content_value": {
+    "learning_points": [
+      "A passing test can still corrupt shared E2E state.",
+      "Cleanup must run after assertion failures, not only on the happy path.",
+      "A regression test should prove the seeded baseline remains usable."
+    ],
+    "story_points": [
+      "The failure was not inside password reset itself but in the state it left behind.",
+      "The fix reused the existing reset workflow rather than adding direct database mutation."
+    ],
+    "possible_angles": [
+      "Why E2E tests can pass individually and fail as a suite.",
+      "The most important assertion is sometimes about cleanup, not the feature under test."
+    ]
+  },
+  "resources": [
+    {
+      "file": "cleanup-example.ts",
+      "description": "Minimal Playwright cleanup and regression-test excerpt.",
+      "source": "apps/web/e2e/password-reset.e2e.ts"
+    }
+  ],
+  "notes": []
+}

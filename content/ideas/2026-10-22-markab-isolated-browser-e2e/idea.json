@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-22-markab-isolated-browser-e2e",
+  "captured_at": "2026-10-22T13:30:00Z",
+  "project": {
+    "name": "Markab",
+    "repository": "markab",
+    "area": "Local browser end-to-end testing"
+  },
+  "idea": {
+    "title": "Make browser E2E safe by making the target impossible to confuse",
+    "type": "engineering-learning",
+    "summary": "A local browser E2E foundation used a disposable database, a strict target guard, deterministic seed data, and a file-backed test mailbox without changing production delivery behavior."
+  },
+  "context": {
+    "goal": "Add reliable local browser coverage for authentication and password reset workflows.",
+    "situation": "The application needed browser-level confidence without connecting tests to shared environments or real email delivery.",
+    "problem": "An E2E runner can cause damage if its database target or delivery path is accidentally shared with development or production.",
+    "decision": "Require E2E mode, a local host, and the exact disposable database name before setup; use a filesystem mailbox only in E2E mode.",
+    "implementation": "Added target validation, deterministic seed data, disposable PostgreSQL lifecycle, isolated local storage, and two Playwright workflows.",
+    "result": "A clean runner reset, migration, seed, API/web startup, and both browser workflows passed together against a local disposable database."
+  },
+  "content_value": {
+    "learning_points": [
+      "Isolation should be enforced by executable checks, not naming conventions alone.",
+      "A fake external boundary can preserve the real user flow while keeping tests deterministic.",
+      "A full browser run is stronger evidence than unit tests for session and password-reset behavior."
+    ],
+    "story_points": [
+      "The test database was treated as a safety boundary rather than merely a test fixture.",
+      "The password reset workflow reached a file mailbox instead of a mocked API response.",
+      "The final proof was a clean disposable environment running both user journeys together."
+    ],
+    "possible_angles": [
+      "How to make E2E tests safer than your development database.",
+      "Why a file mailbox can be a better E2E test double than mocking email.",
+      "The difference between unit coverage and proving a real auth journey in a browser."
+    ]
+  },
+  "resources": [],
+  "notes": [
+    "No credentials, database URLs, or customer data captured."
+  ]
+}
