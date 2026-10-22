@@ -23,7 +23,7 @@
 
 ## Purpose
 
-Discover, evaluate, and recommend high-potential content ideas grounded in real work and aligned with the creator's brand strategy. This workflow identifies content opportunities from current systems, decisions, projects, technical discoveries, and relevant learning context. It is responsible for idea generation and selection only — it does not plan content, write content, render, export, or archive.
+Discover, evaluate, refine, and recommend high-potential content ideas grounded in real work and aligned with the creator's brand strategy. This workflow identifies content opportunities from current systems, decisions, projects, technical discoveries, and relevant learning context. It is responsible for idea generation, refinement, and selection only — it does not plan content, write content, render, export, or archive.
 
 ---
 
@@ -31,7 +31,7 @@ Discover, evaluate, and recommend high-potential content ideas grounded in real 
 
 This workflow begins with user context, ongoing work, recent learning, project activity, or previously identified opportunities.
 
-It ends when one or more recommended content ideas have been selected for Content Planning.
+It ends only when one or more recommended content ideas have passed the idea-quality gate and received a `READY` verdict from `content-strategist`.
 
 ---
 
@@ -39,6 +39,7 @@ It ends when one or more recommended content ideas have been selected for Conten
 
 - `framework/strategy/Brand Strategy.md` — Creator identity, audience, content pillars, boundaries.
 - `framework/memory/Posted Titles.md` — Published content index for duplication checking.
+- `.agents/skills/content-strategist/SKILL.md` — Mandatory idea-quality gate.
 
 `framework/strategy/Brand Strategy.md` should only be consulted if voice or platform considerations materially affect whether an idea is worth pursuing. Production and renderer documents are not required for idea discovery.
 
@@ -60,21 +61,31 @@ It ends when one or more recommended content ideas have been selected for Conten
 
 ## Outputs
 
-The workflow produces one or more recommended content ideas. Each recommendation must include, at minimum:
+The workflow produces one or more evaluated content ideas. Every idea must receive one strategist verdict:
 
-- **Working title** — A descriptive title for the proposed content.
-- **Core idea** — One sentence summarising what the content is about.
+- `REJECT` — there is no sufficiently valuable post in the available material; do not force one.
+- `DEVELOP` — there is useful material, but the angle, evidence, audience value, or reasoning still needs refinement.
+- `READY` — the idea is specific, authentic, useful, sufficiently supported, differentiated, and ready for Content Planning.
+
+For every `DEVELOP` or `READY` idea, the strategist must provide a refined content direction containing, at minimum:
+
+- **Working angle/title** — A descriptive direction for the proposed content.
+- **Core idea** — One sentence summarising what the content is actually about.
 - **Authentic trigger** — The real experience that inspired the idea.
+- **Core tension/question** — What was surprising, unclear, difficult, consequential, or worth examining.
+- **Core insight** — The non-generic idea the experience supports.
+- **Supporting evidence** — Existing project details, code, screenshots, decisions, results, or other source-supported material.
 - **Audience problem** — What the audience struggles with that this content addresses.
-- **Expected audience value** — What the audience will learn or gain.
+- **Expected audience payoff** — What the audience will understand, question, or be able to apply.
+- **Specificity/differentiation** — What makes the idea dependent on this real experience rather than generic developer advice.
 - **Suggested content pillar** — The pillar from Brand View this idea belongs to.
 - **Suggested primary format** — Instagram Carousel or LinkedIn post.
 - **Recommended platforms** — Which platforms the content should target.
-- **Reason this idea is worth creating** — Why this specific idea matters now.
-- **Confidence level** — How strongly the idea is recommended (high, medium, or exploratory).
-- **Notes for Content Planning** — Context, warnings, or observations that will help workflow 02 evaluate the idea.
+- **Why the format fits** — Why the idea has the right depth and structure for that format.
+- **What not to claim** — Important factual or certainty boundaries.
+- **Notes for Content Planning** — Context, warnings, or observations that will help Workflow 02 evaluate the idea.
 
-The selected recommendation becomes the official input for Content Planning.
+Only a `READY` idea becomes official input for Content Planning.
 
 **Optional persistence.** By default, recommendations are delivered in the conversation. If the user asks to save a selected idea, create `content/ideas/<YYYY-MM-DD-project-slug>/idea.json`, with optional curated supporting resources beside it. Follow `framework/model/idea.schema.json`; see `framework/workflows/Content Idea Capture Rules.md` for capture guidance. This manual, user-driven discovery and saving flow is separate from automatic project-agent capture after completed and verified work.
 
@@ -85,49 +96,41 @@ The selected recommendation becomes the official input for Content Planning.
 Idea Discovery is successful when all of the following are true:
 
 - **Every idea is grounded in authentic experience.** No hypothetical or fabricated topics.
-- **Every idea aligns with Brand View.** The content fits the creator's identity, audience, and pillars.
-- **Duplicate topics have been avoided.** The posted-titles index was checked and no near-duplicate was selected.
-- **Each idea solves a meaningful audience problem.** The content addresses something the audience genuinely struggles with or needs to understand.
-- **Each recommendation has clear educational or practical value.** The audience will learn something useful or gain a new perspective.
-- **The suggested format matches the depth of the topic.** A shallow observation is not proposed as a Carousel, and a deep concept is not reduced to a brief post.
-- **The recommended platforms are appropriate.** Each platform is suited to the format and the audience expectation on that platform.
-- **The rationale for selecting each idea is clear.** The reason the idea is worth creating is explicitly stated.
-- **At least one recommendation is sufficiently developed to proceed into Content Planning.** The selected idea has enough substance for workflow 02 to evaluate and brief.
+- **Every idea has a strategist verdict.** No candidate proceeds by default.
+- **Only `READY` proceeds.** `DEVELOP` ideas are refined first; `REJECT` ideas are not forced into production.
+- **Every `READY` idea aligns with Brand View.** The content fits the creator's identity, audience, and pillars.
+- **Duplicate topics have been avoided.** The posted-titles index was checked and no near-duplicate was selected without a substantially different angle.
+- **The trigger is specific and consequential enough to explain.** The post is not built around a vague observation.
+- **The insight is more than a description of what happened.** There is a clear, defensible idea worth communicating.
+- **The evidence supports the insight.** The idea does not depend on invented facts, outcomes, or conclusions.
+- **The audience payoff is explicit.** The reader gains a useful model, tradeoff, question, or lesson.
+- **The suggested format matches the depth of the topic.** A shallow observation is not inflated into a Carousel, and a deep concept is not reduced to a brief post.
+- **The rationale for selecting the idea is clear.** The reason this specific experience deserves content is explicit.
 
 ---
 
 ## Workflow
 
 1. **Gather current context.** Collect all available input from the user — their current projects, learning focus, recent discoveries, and any notes or material they have shared.
-
-2. **Review recent work and context.** Identify the most interesting or significant systems, decisions, bugs, breakthroughs, confusions, or concepts from the creator's recent activity that could anchor authentic content.
-
-3. **Consult Brand View.** Confirm the creator's identity, audience, pillars, and boundaries. Ensure every candidate idea will fit within the established brand strategy.
-
-4. **Check previously published topics.** Read `framework/memory/Posted Titles.md`. Avoid duplicating topics that have already been covered. If a topic is worth revisiting, ensure the angle is substantially different.
-
-5. **Identify potential content opportunities.** From the gathered context, list every experience or discovery that could become content. Prioritise those that are authentic, timely, and aligned with the brand.
-
-6. **Evaluate each opportunity.** For each candidate, assess: Is the trigger specific and authentic? Does it solve a real audience problem? What format would it fit? Which platform would it serve? Is it sufficiently different from previously published content?
-
-7. **Recommend the strongest ideas.** Select the most promising opportunities. For each, produce a full recommendation with working title, core idea, trigger, audience problem, expected value, pillar, format, platforms, rationale, confidence level, and notes for planning.
-
-8. **Explain why each recommendation fits the brand and audience.** Provide a brief justification connecting each idea to the creator's identity, the audience's needs, and the established content pillars.
-
-9. **Select the idea or ideas to move into Content Planning.** Confirm which recommendations are ready for workflow 02. If multiple ideas are strong, identify the highest-priority one.
-
+2. **Review recent work and context.** Identify systems, decisions, bugs, breakthroughs, confusions, tradeoffs, or concepts that could anchor authentic content.
+3. **Consult Brand View.** Confirm the creator's identity, audience, pillars, and boundaries.
+4. **Check previously published topics.** Read `framework/memory/Posted Titles.md`. Avoid near-duplicates unless the angle is substantially different.
+5. **Identify potential content opportunities.** List the strongest real triggers without forcing every activity into a post.
+6. **Run the `content-strategist` gate.** Evaluate trigger, tension, insight, evidence, audience payoff, non-obviousness, specificity, depth/format fit, duplication, and brand fit.
+7. **Handle the verdict.** For `REJECT`, explain why and stop developing that idea. For `DEVELOP`, use the strategist's refinement report to strengthen the angle from existing evidence, then evaluate again. Do not invent missing substance. For `READY`, keep the strategist's refined direction as the official idea package.
+8. **Prioritize READY ideas.** If more than one idea is `READY`, identify the strongest one based on audience value, distinctiveness, evidence, timing, and effort versus impact.
+9. **Select the idea or ideas to move into Content Planning.** Only ideas with a current `READY` verdict may proceed to Workflow 02.
 10. **Save ideas if requested (optional).** If the user wants a selected idea saved, create its own folder at `content/ideas/<YYYY-MM-DD-project-slug>/` with a required `idea.json` and optional curated supporting resources. Use the date and a short, lowercase, hyphen-separated project/topic slug. Follow `framework/model/idea.schema.json` and `framework/workflows/Content Idea Capture Rules.md`; keep format, platform, and brand recommendations in the conversation for Content Planning rather than adding fields outside the schema. If the user did not ask to save, deliver the recommendations in conversation only and skip this step.
 
 ---
 
 ## Constraints
 
-- Never invent experiences, projects, achievements, or emotions. Every idea must originate from a real trigger.
-- Never fabricate projects or claim knowledge the creator does not have.
-- Never recommend ideas that conflict with Brand View — the content must fit the creator's identity, pillars, and audience boundaries.
-- Never duplicate previously published content without a substantially different angle. Always check Posted Titles before recommending.
-- Never begin planning or outlining the content. Planning belongs to workflow 02, and content creation belongs to workflow 03.
-- Never write scripts, slides, captions, posts, or any content output.
+- Never invent experiences, projects, achievements, emotions, evidence, or outcomes.
+- Never move a `REJECT` or unresolved `DEVELOP` idea into Workflow 02.
+- Never approve an idea only because it can be turned into content.
+- Never duplicate previously published content without a substantially different angle.
+- Never begin canonical writing, slide writing, or platform adaptation here.
 - Never make production decisions about rendering, export, or archiving.
 - Persistence in this manual workflow is optional and user-directed. When saving, use the idea folder and `idea.json` representation defined by `framework/model/idea.schema.json`; automatic project-agent capture remains a separate behavior governed by `framework/workflows/Content Idea Capture Rules.md`.
 
@@ -135,28 +138,32 @@ Idea Discovery is successful when all of the following are true:
 
 ## Completion
 
-This workflow ends immediately after one or more content ideas have been selected and confirmed ready for Content Planning. No further workflows are executed automatically. The agent stops.
+This workflow ends only after at least one selected idea has a `READY` verdict and a refined direction suitable for Content Planning, or after reporting that no candidate is currently ready. No further workflows are executed automatically. The agent stops.
 
 # 02 — Content Planning
 
 ## Purpose
 
-Turn one selected idea into an approved Content Brief that fixes the idea, audience, primary format, target platforms, and every required variant before canonical writing begins.
+Turn one `READY` idea into an approved Content Brief that fixes the idea, audience, primary format, target platforms, and every required variant before canonical writing begins.
 
 ## Scope
 
-This workflow starts with a selected idea and ends with one approved Content Brief. It makes planning decisions only. It does not write canonical content, adapt variants, render, export, publish, or archive.
+This workflow starts with a `READY` idea from Workflow 01 and ends with one approved Content Brief. It makes planning decisions only. It does not write canonical content, adapt variants, render, export, publish, or archive.
 
 ## Required Reading
 
 - `framework/strategy/Brand Strategy.md` — creator identity, audience, pillars, boundaries, platform voice, and language rules.
 - Relevant format rules only when needed to choose or constrain a format.
+- The latest `content-strategist` report/refined direction for the selected idea.
 
 ## Inputs
 
-- The selected content idea and its authentic trigger.
+- One selected idea with a current `READY` verdict.
+- Its refined trigger, tension, insight, supporting evidence, audience payoff, format recommendation, and factual boundaries.
 - User context and supporting material.
 - Relevant earlier planning decisions, if this continues an existing idea or series.
+
+If the idea is `REJECT`, `DEVELOP`, or lacks a strategist verdict, return it to Workflow 01. Do not plan around an unvalidated idea.
 
 ## Output — Approved Content Brief
 
@@ -173,8 +180,9 @@ Produce exactly one narrative brief with:
 - **Target platforms** — every platform this item is intended for.
 - **Required variants** — each approved platform and format pair, such as Instagram Carousel and LinkedIn Post.
 - Creative direction
-- Supporting context
+- Supporting context and evidence
 - Required references
+- Factual/uncertainty boundaries
 - Constraints
 - Notes for the Post Content Builder
 
@@ -182,25 +190,28 @@ The required variants must be explicit and compatible with the primary format an
 
 ## Workflow
 
-1. Review the selected idea, trigger, and supporting context.
-2. Check fit with Brand View, Brand Voice, the audience, and existing published titles.
-3. Define the audience problem, key insight, outcome, and content pillar.
-4. Choose the **primary format**.
+1. Confirm the selected idea has a current `READY` verdict and review the strategist's refined direction.
+2. Check fit with Brand View, Brand Voice, the audience, and existing published titles without weakening the validated core angle.
+3. Define the audience problem, key insight, outcome, content pillar, evidence, and factual boundaries.
+4. Choose the **primary format** using the validated depth/format recommendation as input.
 5. Choose **target platforms** and list each **required variant** as a platform/format pair.
 6. Set the shared creative direction and constraints. Resolve strategy decisions here; do not delegate them to later workflows.
 7. Review the brief for completeness and approve it for Workflow 03.
 
 ## Success Criteria
 
+- The source idea has a current `READY` verdict.
 - The trigger is authentic and specific.
+- The validated insight, evidence, audience payoff, and factual boundaries remain intact.
 - The idea aligns with the brand, audience, and an established content pillar.
 - Primary format, target platforms, and required variants are all explicit.
 - Each required variant has a clear role and follows the platform strategy.
-- The brief defines the meaning, intended takeaway, and boundaries needed by the canonical draft.
+- The brief defines the meaning, intended takeaway, evidence, and boundaries needed by the canonical draft.
 - No creative or strategic decisions remain for Workflow 03 or Workflow 04.
 
 ## Constraints
 
+- Do not weaken or replace the validated core idea without returning it to Workflow 01 for strategic reevaluation.
 - Do not write the canonical draft or any platform/format copy.
 - Do not generate structured data, slides, visuals, or assets.
 - Do not render, export, publish, or archive.
@@ -214,11 +225,11 @@ Stop after the approved brief is complete. The next stage is Workflow 03 — Pos
 
 ## Purpose
 
-Turn an approved Content Brief into the format-neutral canonical written content. Workflow 03 owns the substance and meaning that every approved variant will carry.
+Turn an approved Content Brief into the format-neutral canonical written content. Workflow 03 owns the substance and meaning that every approved variant will carry, including the semantic/editorial quality of that meaning before adaptation begins.
 
 ## Scope
 
-This workflow starts with an approved Content Brief and ends with one canonical draft at `content/drafts/post.md`. It does not produce format or platform variants.
+This workflow starts with an approved Content Brief and ends with one canonical draft at `content/drafts/post.md` that has passed the `content-editor` gate. It does not produce format or platform variants.
 
 ## Required Reading
 
@@ -226,12 +237,13 @@ This workflow starts with an approved Content Brief and ends with one canonical 
 - `framework/strategy/Brand Strategy.md` — identity, audience, pillars, boundaries, core voice, and factual boundaries.
 - `framework/memory/Posted Titles.md` — check for duplication and relevant prior work.
 - User-provided source material and references named by the brief.
+- `.agents/skills/content-editor/SKILL.md` — mandatory semantic/editorial gate.
 
 Do not read format rules, renderer schemas, or platform-specific writing skills here. Those belong to Workflow 04.
 
 ## Inputs
 
-- One approved Content Brief with a clear core idea, trigger, intended outcome, and factual constraints.
+- One approved Content Brief with a clear core idea, trigger, intended outcome, evidence, and factual constraints.
 - The source material and references named by the brief.
 
 If the brief is missing, not approved, or leaves a substantive decision unresolved, stop and report what Workflow 02 must clarify. Do not fill the gap by making a new planning decision.
@@ -256,6 +268,20 @@ Write only `content/drafts/post.md`. Use clear prose or structured notes under t
 
 Record what the content means, including the creator's supported perspective and important wording. Keep source references beside the claims or examples they support. This is canonical source material, not publish-ready copy.
 
+## Required Editorial Gate
+
+After the first canonical draft exists, run `content-editor` against the complete draft and its approved sources.
+
+The editor must evaluate meaning, logic, clarity, context, reasoning, specificity, semantic repetition, claim strength, and information sufficiency.
+
+Handle its verdict as follows:
+
+- `READY` — no meaningful semantic/editorial issue remains; continue to completion.
+- `READY WITH EDITS` — apply the editor's complete revised artifact to `content/drafts/post.md`, then verify factual traceability again.
+- `NEEDS SOURCE INPUT` — stop and surface the missing information or unresolved creator decision. Do not invent a repair.
+
+The editor's revision report is diagnostic evidence; the complete revised artifact is the source for the corrected canonical draft when edits are supported.
+
 ## Workflow
 
 1. Confirm the brief is approved and complete enough to write. If not, stop and report the missing decision or information.
@@ -263,41 +289,46 @@ Record what the content means, including the creator's supported perspective and
 3. Build the canonical draft using the output headings. Preserve the brief's core idea, authentic trigger, reasoning, intended takeaway, CTA intent, and wording worth keeping. Include only relevant, supported examples and identify their sources.
 4. Keep the draft format-neutral. Do not choose a platform, language, format, hook, slide sequence, paragraph structure, or visual treatment. Keep source language where practical; translation and platform rewriting belong to Workflow 04.
 5. Check each substantive statement against the brief or its sources, and confirm the key points support the approved insight and takeaway. Retain uncertainty instead of strengthening a claim.
-6. Write only `content/drafts/post.md`, then stop.
+6. Run `content-editor` on the complete draft. Apply all supported semantic/editorial repairs from its revised artifact. If it returns `NEEDS SOURCE INPUT`, stop and report the unresolved input rather than fabricating it.
+7. Re-check the edited draft against the brief and supporting sources. Confirm the edit did not add facts, evidence, achievements, certainty, or a new strategic angle.
+8. Write the final editor-checked version to `content/drafts/post.md`, then stop.
 
 ## Success Criteria
 
 - Every substantive point is traceable to the brief or supporting source material.
 - The trigger, reasoning, supported examples, and uncertainty are preserved.
-- The draft is sufficient for Workflow 04 to adapt without inventing substance.
+- The draft has passed the `content-editor` semantic/editorial gate.
+- No unresolved `NEEDS SOURCE INPUT` issue remains.
+- Meaning, logic, context, and claim strength are sufficient for Workflow 04 to adapt without inventing substance.
 - No format or platform decision is introduced or changed.
 - `content/drafts/post.md` is the only output written by this workflow.
 
 ## Constraints
 
 - Do not create carousel slides, layouts, captions, LinkedIn paragraph structure, visual directions, or renderer JSON.
-- Do not translate, polish, shorten, expand, or restructure content for a target platform.
-- Do not invent facts, claims, examples, experiences, achievements, or certainty.
+- Do not translate or restructure content for a target platform.
+- Do not invent facts, claims, examples, experiences, achievements, evidence, or certainty while editing.
+- Do not use `content-editor` to override a strategic decision from Workflow 02; strategic problems return upstream.
 - Do not modify the approved brief or supporting source files.
 - Do not render, export, publish, or archive.
 
 ## Change Control
 
-Workflow 04 may change presentation only. If adaptation exposes a missing or conflicting substantive point, return the proposed change to this canonical stage and update `post.md` before regenerating affected variants.
+Workflow 04 may change presentation only. If adaptation or final review exposes a missing, conflicting, or weak substantive point, return the proposed change to this canonical stage, run the `content-editor` gate again, update `post.md`, then regenerate affected variants.
 
 ## Completion
 
-Stop as soon as `content/drafts/post.md` is written and checked. Workflow 04 owns all approved format/platform adaptations.
+Stop only after `content/drafts/post.md` has passed the editor gate and factual traceability check. Workflow 04 owns all approved format/platform adaptations.
 
 # 04 — Format Adaptation
 
 ## Purpose
 
-Adapt the approved canonical content into exactly the format/platform variants listed in the Content Brief, without changing its meaning or factual boundaries.
+Adapt the approved canonical content into exactly the format/platform variants listed in the Content Brief, refine each variant with the relevant language/format skills, and pass each variant through the final `content-reviewer` quality gate without changing canonical meaning or factual boundaries.
 
 ## Scope
 
-This workflow starts after Workflow 03 has produced `content/drafts/post.md`. It ends when every required variant is written to its standalone output. It does not plan new variants, revise canonical substance, render, export, publish, or archive.
+This workflow starts after Workflow 03 has produced an editor-checked `content/drafts/post.md`. It ends when every required variant is written to its standalone output and has a final `content-reviewer` verdict of `PASS` or `PASS WITH MINOR EDITS` with all required minor edits applied. It does not plan new variants, silently revise canonical substance, render, export, publish, or archive.
 
 ## Required Reading
 
@@ -309,24 +340,30 @@ This workflow starts after Workflow 03 has produced `content/drafts/post.md`. It
   - `framework/formats/linkedin.md`
 - `framework/model/Content Model.md` only when an Instagram Carousel variant is required, to write its renderer JSON.
 - `framework/memory/Posted Titles.md` for title/duplication context when relevant.
+- `.agents/skills/content-reviewer/SKILL.md` — mandatory final editorial gate.
 
 Do not read or use rules for variants that the brief did not approve.
 
 ## Required Skills
 
-Apply only the relevant writing skills for the required variants:
+Apply only the relevant writing skills for each required variant:
 
 - `lebanese-arabic-writing` — Arabic Instagram variants.
 - `arabic-technical-language` — Arabic copy containing technical terms.
-- `carousel-copy-polish` — Instagram Carousel.
+- `carousel-copy-polish` — Instagram Carousel; identify the content archetype before polishing structure.
 - `linkedin-reflection-writing` — LinkedIn Post; follow `framework/formats/linkedin.md`.
+- `content-reviewer` — mandatory final quality gate for every completed variant.
+
+`content-editor` is not a routine adaptation skill. Use it only when review exposes a semantic, logic, or substantive clarity problem that must return to Workflow 03.
+
+`content-refinement` is the orchestration entry point when the creator explicitly asks to review/refine an idea or draft end-to-end; it does not replace the stage ownership defined here.
 
 Use the repository skill files under `.agents/skills/<skill-name>/SKILL.md`. Skills may improve presentation but may not override the brief or the adaptation invariant below.
 
 ## Inputs
 
 - Approved Content Brief.
-- `content/drafts/post.md`.
+- Editor-checked `content/drafts/post.md`.
 - Brand strategy and voice documents.
 - Relevant format rules and writing skills.
 - Supporting references explicitly approved by the brief.
@@ -359,55 +396,86 @@ It must not silently change:
 
 Every variant must be traceable to `post.md`. A platform-specific example may be used only when it already exists in the canonical draft or is explicitly supported by an approved reference. Do not strengthen claims, make plans sound completed, or introduce new evidence.
 
-If a variant appears to need a substantive change, stop and return the proposed change to Workflow 03. Update the canonical draft first, then regenerate affected variants. Do not patch the meaning inside an adaptation.
+If a variant or final review appears to need a substantive change, stop and return that issue to Workflow 03. Update the canonical draft through `content-editor` first, then regenerate affected variants. Do not patch canonical meaning inside an adaptation.
+
+## Final Review Routing
+
+After a variant has been adapted and polished, run `content-reviewer` against the complete variant, the Content Brief, `content/drafts/post.md`, Brand Strategy, and the relevant format rules.
+
+Handle the reviewer verdict as follows:
+
+- `PASS` — variant is editorially ready.
+- `PASS WITH MINOR EDITS` — apply all supported minor edits and verify the final artifact still matches `post.md`.
+- `REVISE` — classify each issue and route it to the owning skill/layer, repair the artifact, then review again.
+- `BLOCK` — stop progression. Resolve the missing fact, contradiction, unsupported claim, or creator decision at the owning upstream stage before continuing.
+
+Issue ownership:
+
+- `SEMANTIC`, `LOGIC`, or substantive `CLARITY` → Workflow 03 / `content-editor`.
+- `FACTUAL` → approved sources and Workflow 03.
+- `LANGUAGE` or `VOICE` → the relevant language skill in Workflow 04.
+- `FORMAT`, pacing, density, hook, or carousel flow → `carousel-copy-polish` or the relevant format skill.
+- `GENERICITY` or `AUDIENCE_VALUE` that reveals a weak underlying angle → Workflow 01/02 / `content-strategist`.
+- `REPETITION` → repair at the layer where the repeated meaning originated.
+
+Use at most two automatic repair-and-review cycles for one variant in one execution. If a blocking issue remains, surface it instead of endlessly rewriting or inventing a solution.
 
 ## Workflow
 
-1. Read the brief and canonical draft. Confirm the brief's Required variants are explicit and the canonical draft covers their intended substance. If either is incomplete, stop and report the gap.
+1. Read the brief and editor-checked canonical draft. Confirm the brief's Required variants are explicit and the canonical draft covers their intended substance. If either is incomplete, stop and report the gap.
 2. Read the platform voice rules and only the relevant format rules and skills.
 3. Create each approved variant as an independent adaptation. Keep the primary format as the depth anchor; rewrite structure and wording for each secondary platform.
 4. For every variant, check its claims, examples, uncertainty, CTA intent, and takeaway against `post.md`.
-5. If an Instagram Carousel is required, plan its narrative and slide count from the approved canonical content. For each slide, first state its purpose, then choose the one supported visual layout that fits that purpose, and then write the slide copy. Available personal-account layout IDs are `cover`, `story`, `focus`, `sequence`, `comparison`, `evidence`, and `closing`; use the field definitions in `framework/model/Content Model.md`.
-6. Update `content/drafts/format/carousel.md` and the matching `production/workspace/carousel.json`. Write an Instagram caption in natural Lebanese Arabic as part of the standalone Markdown draft, and store the same text in the Instagram variant's `caption` field in JSON. The caption should complement the slides, preserve their factual boundaries, and end with the approved discussion CTA when one exists. Include the selected layout on each JSON slide and keep the slide copy and layout-specific fields aligned between Markdown and JSON. Layouts may repeat or be omitted. There is no required seven- or eight-slide count or fixed layout order; choose only compositions the content earns.
-7. Use `evidence` only for supplied, approved code or a local screenshot/image, or for a supplied diagram explicitly identified as conceptual. Image and diagram assets must be placed under `production/workspace/evidence/` and referenced as `evidence/<filename>`. Do not create fake proof or infer evidence from copy.
-8. Do not write React, TSX, CSS, or per-post renderer code. Layout components are installed once in the renderer; ordinary carousel work changes only the Markdown and workspace JSON.
-9. Check that no unapproved variant was generated, all expected outputs exist, and each standalone draft contains only its own variant.
+5. If an Instagram Carousel is required, identify the best-fitting content archetype using `carousel-copy-polish`, then plan its narrative and slide count from the approved canonical content. For each slide, first state its purpose, then choose the one supported visual layout that fits that purpose, and then write the slide copy. Available personal-account layout IDs are `cover`, `story`, `focus`, `sequence`, `comparison`, `evidence`, and `closing`; use the field definitions in `framework/model/Content Model.md`.
+6. Apply the relevant language and format skills. For Arabic Instagram copy, use `lebanese-arabic-writing` and `arabic-technical-language`, then `carousel-copy-polish`. Do not use these skills to alter unsupported meaning.
+7. Update `content/drafts/format/carousel.md` and the matching `production/workspace/carousel.json` when Carousel is required. Write an Instagram caption in natural Lebanese Arabic as part of the standalone Markdown draft, and store the same text in the Instagram variant's `caption` field in JSON. The caption should complement the slides, preserve their factual boundaries, and end with the approved discussion CTA when one exists. Include the selected layout on each JSON slide and keep the slide copy and layout-specific fields aligned between Markdown and JSON. Layouts may repeat or be omitted. There is no required seven- or eight-slide count or fixed layout order; choose only compositions the content earns.
+8. Use `evidence` only for supplied, approved code or a local screenshot/image, or for a supplied diagram explicitly identified as conceptual. Image and diagram assets must be placed under `production/workspace/evidence/` and referenced as `evidence/<filename>`. Do not create fake proof or infer evidence from copy.
+9. Run `content-reviewer` on each completed variant. Apply `PASS WITH MINOR EDITS` changes directly when they stay within the adaptation boundary. For `REVISE`, route each issue to its owning skill/layer, repair, and review again. For `BLOCK`, stop until the upstream issue is resolved.
+10. After any Carousel review repair, update both `content/drafts/format/carousel.md` and `production/workspace/carousel.json` so Markdown, JSON slide copy, layout fields, and caption remain synchronized.
+11. Do not write React, TSX, CSS, or per-post renderer code. Layout components are installed once in the renderer; ordinary carousel work changes only the Markdown and workspace JSON.
+12. Check that no unapproved variant was generated, all expected outputs exist, each standalone draft contains only its own variant, and every required variant has a final acceptable reviewer verdict.
 
 ## Success Criteria
 
 - Exactly the approved variants were generated.
+- The canonical source entering adaptation had already passed `content-editor`.
 - Each variant follows its platform language, voice, and format rules.
 - Each variant preserves the canonical meaning and factual boundaries.
 - Platform adaptations are independently structured, not copied or mechanically translated.
+- Every completed variant received a `content-reviewer` verdict.
+- No variant with unresolved `REVISE` or `BLOCK` status proceeds to rendering/publication.
+- All supported reviewer repairs were applied by the correct owning skill/layer rather than patched arbitrarily.
 - LinkedIn is a standalone `content/drafts/format/linkedin.md` artifact.
 - `carousel.json` exists only when a Carousel variant is required and represents Carousel content only.
-- Carousel Markdown and JSON agree on all slide text.
+- Carousel Markdown and JSON agree on all slide text and layout fields.
 - The Instagram caption is present in Markdown and matches the Instagram variant's JSON `caption` field.
 - Every carousel slide has a purpose and a supported, content-fitting `layout` selection.
+- Carousel narrative structure follows the actual content archetype rather than a forced mistake/realization sequence.
 - No fixed layout order or slide count was imposed, and no React/CSS was generated for the post.
 
 ## Constraints
 
 - Do not change Workflow 02's primary format, target platforms, or required variants.
 - Do not change the substance of `post.md` or silently introduce new source material.
+- Do not resolve semantic, factual, or strategic reviewer findings inside a platform rewrite; route them upstream.
 - Do not generate a variant that is not approved in the brief.
-- Do not force a cover/body/closing sequence when the approved content does not call for it; the template catalog is a set of reusable compositions, not a mandatory sequence.
-- Do not render, validate in the renderer, export, publish, or archive.
+- Do not force a cover/body/closing sequence or a mistake/realization narrative when the approved content does not call for it.
+- Do not render, validate in the renderer, export, publish, or archive before the final editorial gate passes.
 - Do not modify the renderer, Studio, or export implementation.
 
 ## Completion
 
-Stop after all approved variants are written and checked. Workflow 05 performs render validation where applicable.
+Stop only after all approved variants are written, synchronized where applicable, and have a final `PASS` or `PASS WITH MINOR EDITS` verdict with required minor edits applied. Workflow 05 performs render validation where applicable.
 
 # 05 — Render Validation
 
 ## Purpose
 
-Validate an approved Instagram Carousel variant in the React renderer. This workflow is conditional: run it only when Workflow 02 approved an Instagram Carousel and Workflow 04 produced its canonical renderer JSON.
+Validate an approved Instagram Carousel variant in the React renderer. This workflow is conditional: run it only when Workflow 02 approved an Instagram Carousel, Workflow 04 produced its canonical renderer JSON, and the Carousel passed the final editorial gate.
 
 ## Scope
 
-This workflow starts after Carousel adaptation and ends with a render-ready confirmation or a validation report. It validates; it does not edit content, JSON, layouts, or renderer code.
+This workflow starts after Carousel adaptation and editorial approval and ends with a render-ready confirmation or a validation report. It validates; it does not edit content, JSON, layouts, or renderer code.
 
 ## Required Reading
 
@@ -416,7 +484,7 @@ This workflow starts after Carousel adaptation and ends with a render-ready conf
 
 ## Inputs
 
-- `production/workspace/carousel.json` from Workflow 04.
+- Editorially approved `production/workspace/carousel.json` from Workflow 04.
 - The React renderer and its configuration.
 - Available schema and rendering validation tools.
 
@@ -431,6 +499,7 @@ Do not update repository content as part of the report.
 
 ## Success Criteria
 
+- Workflow 04's final content-review gate passed for the Carousel.
 - JSON parses and conforms to the Content Model.
 - Only the intended carousel variant is present in the renderer input.
 - Every slide renders with supported layouts and required fields.
@@ -439,7 +508,7 @@ Do not update repository content as part of the report.
 
 ## Workflow
 
-1. Confirm that an Instagram Carousel is among the approved variants and `carousel.json` exists.
+1. Confirm that an Instagram Carousel is among the approved variants, its final `content-reviewer` verdict is acceptable, and `carousel.json` exists.
 2. Parse the JSON and validate it against `framework/model/Content Model.md`. If this fails, report all detected schema issues and stop.
 3. Load the workspace data in the React renderer.
 4. Inspect every slide for render errors, missing or truncated text, unsupported layout, and missing required fields.
@@ -447,9 +516,9 @@ Do not update repository content as part of the report.
 
 ## Constraints
 
-- Run only for an approved Carousel variant; LinkedIn does not require this workflow.
+- Run only for an editorially approved Carousel variant; LinkedIn does not require this workflow.
 - Never modify `carousel.json`, Markdown variants, or renderer implementation.
-- Never rewrite content. Substantive corrections return to Workflow 03; presentation adaptations return to Workflow 04.
+- Never rewrite content. Substantive corrections return to Workflow 03; presentation adaptations return to Workflow 04 and must pass review again.
 - Never export assets; Workflow 06 owns Carousel export.
 - Never archive or update `Posted Titles.md`; Workflow 07 owns archiving.
 
