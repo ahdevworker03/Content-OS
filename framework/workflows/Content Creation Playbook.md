@@ -37,11 +37,11 @@ It ends only when one or more recommended content ideas have passed the idea-qua
 
 ## Required Reading
 
-- `framework/strategy/Brand Strategy.md` — Creator identity, audience, content pillars, boundaries.
+- `framework/strategy/Brand Strategy.md` — required for creator identity, audience, content pillars, boundaries, and brand fit.
 - `framework/memory/Posted Titles.md` — Published content index for duplication checking.
 - `.agents/skills/content-strategist/SKILL.md` — Mandatory idea-quality gate.
 
-`framework/strategy/Brand Strategy.md` should only be consulted if voice or platform considerations materially affect whether an idea is worth pursuing. Production and renderer documents are not required for idea discovery.
+Use `framework/strategy/Brand Strategy.md` in Workflow 01 for strategic fit only: identity, audience, pillars, boundaries, and brand fit. Do not apply platform-specific writing treatment, voice polishing, or adaptation rules during idea discovery. Production and renderer documents are not required for idea discovery.
 
 ---
 
@@ -55,7 +55,7 @@ It ends only when one or more recommended content ideas have passed the idea-qua
 - **Screenshots and code snippets** — Visual or code-based material that documents real experiences.
 - **Questions the user recently explored** — Topics the creator investigated out of curiosity or necessity.
 - **Previously published content** — Existing posts to reference for continuity or to identify gaps.
-- **Framework strategy documents** — Brand View (required) and Brand Voice (when needed).
+- **Framework strategy document** — `framework/strategy/Brand Strategy.md` for identity, audience, pillars, boundaries, and brand fit.
 
 ---
 
@@ -78,7 +78,7 @@ For every `DEVELOP` or `READY` idea, the strategist must provide a refined conte
 - **Audience problem** — What the audience struggles with that this content addresses.
 - **Expected audience payoff** — What the audience will understand, question, or be able to apply.
 - **Specificity/differentiation** — What makes the idea dependent on this real experience rather than generic developer advice.
-- **Suggested content pillar** — The pillar from Brand View this idea belongs to.
+- **Suggested content pillar** — The pillar from `framework/strategy/Brand Strategy.md` this idea belongs to.
 - **Suggested primary format** — Instagram Carousel or LinkedIn post.
 - **Recommended platforms** — Which platforms the content should target.
 - **Why the format fits** — Why the idea has the right depth and structure for that format.
@@ -98,7 +98,7 @@ Idea Discovery is successful when all of the following are true:
 - **Every idea is grounded in authentic experience.** No hypothetical or fabricated topics.
 - **Every idea has a strategist verdict.** No candidate proceeds by default.
 - **Only `READY` proceeds.** `DEVELOP` ideas are refined first; `REJECT` ideas are not forced into production.
-- **Every `READY` idea aligns with Brand View.** The content fits the creator's identity, audience, and pillars.
+- **Every `READY` idea aligns with `framework/strategy/Brand Strategy.md`.** The content fits the creator's identity, audience, pillars, and boundaries.
 - **Duplicate topics have been avoided.** The posted-titles index was checked and no near-duplicate was selected without a substantially different angle.
 - **The trigger is specific and consequential enough to explain.** The post is not built around a vague observation.
 - **The insight is more than a description of what happened.** There is a clear, defensible idea worth communicating.
@@ -113,7 +113,7 @@ Idea Discovery is successful when all of the following are true:
 
 1. **Gather current context.** Collect all available input from the user — their current projects, learning focus, recent discoveries, and any notes or material they have shared.
 2. **Review recent work and context.** Identify systems, decisions, bugs, breakthroughs, confusions, tradeoffs, or concepts that could anchor authentic content.
-3. **Consult Brand View.** Confirm the creator's identity, audience, pillars, and boundaries.
+3. **Consult `framework/strategy/Brand Strategy.md`.** Confirm the creator's identity, audience, pillars, boundaries, and brand fit. Do not apply platform-specific writing treatment at this stage.
 4. **Check previously published topics.** Read `framework/memory/Posted Titles.md`. Avoid near-duplicates unless the angle is substantially different.
 5. **Identify potential content opportunities.** List the strongest real triggers without forcing every activity into a post.
 6. **Run the `content-strategist` gate.** Evaluate trigger, tension, insight, evidence, audience payoff, non-obviousness, specificity, depth/format fit, duplication, and brand fit.
@@ -191,7 +191,7 @@ The required variants must be explicit and compatible with the primary format an
 ## Workflow
 
 1. Confirm the selected idea has a current `READY` verdict and review the strategist's refined direction.
-2. Check fit with Brand View, Brand Voice, the audience, and existing published titles without weakening the validated core angle.
+2. Check fit with `framework/strategy/Brand Strategy.md`, the audience, and existing published titles without weakening the validated core angle. Use platform voice/language rules only where they affect planning; detailed writing treatment remains Workflow 04's responsibility.
 3. Define the audience problem, key insight, outcome, content pillar, evidence, and factual boundaries.
 4. Choose the **primary format** using the validated depth/format recommendation as input.
 5. Choose **target platforms** and list each **required variant** as a platform/format pair.
