@@ -55,7 +55,7 @@ The overlay is a **preview-time visual aid, never part of the rendered slide**. 
 A single file (`config.ts`) exposes a boolean toggle that determines the data source:
 
 - **Workspace mode** (`USE_WORKSPACE_DATA = true`, the default): fetches `/carousel.json` — the Content Model workspace file at `production/workspace/carousel.json`, served by Vite via `publicDir: "../workspace"` — and passes it through the adapter layer.
-- **Sample mode** (`USE_WORKSPACE_DATA = false`): imports the bundled sample `carousel.json` at build time. The sample file already uses the canonical type format, so no transformation is needed. This mode exists as a development convenience and fallback.
+- **Sample mode** (`USE_WORKSPACE_DATA = false`): imports `src/renderer/data/fixtures/sample-carousel.json` at build time. The sample file already uses the canonical type format, so no transformation is needed. This mode exists as a development convenience and fallback.
 
 This layer exists so that the same codebase can be developed against stable local data and later connected to external data without structural changes.
 
@@ -73,7 +73,7 @@ This layer is the **only file in the system that understands both schemas**. The
 
 ### 2.4 Renderer Models
 
-The models are defined in `types/index.ts` as a set of TypeScript types and interfaces. The core type is `SlideData`, a discriminated union keyed on the `layout` property:
+The models are defined in `src/renderer/models/` as a set of TypeScript types and interfaces. The core type is `SlideData`, a discriminated union keyed on the `layout` property:
 
 ```
 SlideData = CoverSlideData
@@ -103,7 +103,7 @@ This component exists to separate routing logic from presentation. Layouts never
 
 ### 2.6 Layouts
 
-Each layout type has a dedicated component file in `src/layouts/`. Layouts compose UI primitives into a full slide visual. They are responsible for:
+Each layout type has a dedicated component file in `src/renderer/layouts/`. Layouts compose UI primitives into a full slide visual. They are responsible for:
 
 - Arranging primitives (Title, Subtitle, Badge, BulletList, etc.) according to the layout design.
 - Accepting only the props their layout requires.
@@ -111,11 +111,11 @@ Each layout type has a dedicated component file in `src/layouts/`. Layouts compo
 
 Layouts exist as separate components because each visual arrangement is distinct. Keeping them isolated makes it trivial to add, remove, or modify a layout without touching unrelated code.
 
-The personal account layouts are presentational components in `src/layouts/PersonalSlides.tsx`. The content agent selects the `layout` per slide in `production/workspace/carousel.json`; no per-post TSX/CSS or second template pipeline is used. They share the `Slide` canvas, a fixed `abdallahhassoun.dev` footer, and scoped personal layout CSS. Image and diagram evidence must be a local workspace asset; diagrams carry a conceptual label. This visual identity belongs to this account only, not to the broader Content OS product vision.
+The personal account layouts are presentational components in `src/renderer/layouts/PersonalSlides.tsx`. The content agent selects the `layout` per slide in `production/workspace/carousel.json`; no per-post TSX/CSS or second template pipeline is used. They share the `Slide` canvas, a fixed `abdallahhassoun.dev` footer, and scoped personal layout CSS. Image and diagram evidence must be a local workspace asset; diagrams carry a conceptual label. This visual identity belongs to this account only, not to the broader Content OS product vision.
 
 ### 2.7 UI Components
 
-Shared primitives live in `src/components/ui/`. These are small, presentational components that accept simple string props and optional class names:
+Shared primitives live in `src/renderer/components/ui/`. These are small, presentational components that accept simple string props and optional class names:
 
 - `Title` — styled heading at configurable level (h1/h2/h3)
 - `Subtitle` — muted paragraph text
@@ -123,7 +123,7 @@ Shared primitives live in `src/components/ui/`. These are small, presentational 
 - `Footer` — small dimmed text
 - `BulletList` — unordered list with highlight support
 
-A base `Slide` wrapper in `src/components/slide/` provides the 1080×1080 canvas, safe padding, personal handle footer, and preview-only safety overlay. All layouts render inside this wrapper. Slide-scoped palette variables provide this personal account's warm light canvas (`#EEE6DD`), ink (`#2A2521`), and restrained terracotta accent without setting a product-wide brand; Studio guides remain outside export artwork.
+A base `Slide` wrapper in `src/renderer/components/slide/` provides the 1080×1080 canvas, safe padding, personal handle footer, and preview-only safety overlay. All layouts render inside this wrapper. Slide-scoped palette variables provide this personal account's warm light canvas (`#EEE6DD`), ink (`#2A2521`), and restrained terracotta accent without setting a product-wide brand; Studio guides remain outside export artwork.
 
 These primitives exist to prevent duplication. Layouts share common visual elements; centralising them ensures consistent styling and reduces maintenance.
 
@@ -203,7 +203,7 @@ production/workspace/carousel.json   served by Vite as /carousel.json
          │      - unknown layouts → "__unsupported" (graceful degradation)
          │
          ▼
-   Renderer Models (types/index.ts)
+   Renderer Models (src/renderer/models/)
          │
          │  [4] Data is now a typed Carousel { slides: SlideData[] }
          │
@@ -276,15 +276,14 @@ production/workspace/carousel.json   served by Vite as /carousel.json
 
 ```
 src/
-├── renderer/        Pipeline: config, loader, adapter, router, safety overlay
-├── layouts/         Layout components (one per slide type)
-├── components/
-│   ├── slide/       Base canvas wrapper (reads safety context)
-│   └── ui/          Reusable presentation primitives
+├── renderer/        Pipeline, models, layouts, components, safety, fixtures
+│   ├── adapter/     Workspace-to-renderer schema adapter
+│   ├── components/  Slide canvas and reusable UI primitives
+│   ├── data/fixtures/  Bundled sample carousel
+│   ├── layouts/     Layout components (one per slide type)
+│   └── models/      Canonical renderer types
 ├── studio/          Development tools: preview, inspector, export, debug, navigation
-├── export/          Frozen /export route for the Playwright capture pipeline
-├── types/           Canonical type definitions (SlideData, Carousel)
-├── data/            Sample carousel JSON (canonical format)
+├── export-view/     Frozen /export route for the Playwright capture pipeline
 ├── main.tsx         Entry point
 ├── App.tsx          Root component (routes: / → Studio, /export → ExportView)
 └── index.css        Global styles and design tokens
@@ -298,39 +297,43 @@ The core rendering pipeline. Every file in this directory is part of the data-to
 |---|---|
 | `config.ts` | Data source selection toggle |
 | `loadCarousel.ts` | Async data acquisition, error handling |
-| `mapWorkspaceCarousel.ts` | Schema translation (adapter) |
+| `adapter/mapWorkspaceCarousel.ts` | Schema translation (adapter) |
+| `models/` | Canonical renderer type definitions (`SlideData`, `Carousel`) |
+| `layouts/` | Slide layout components |
+| `components/` | Slide canvas and reusable UI primitives |
+| `data/fixtures/sample-carousel.json` | Bundled canonical sample carousel |
 | `SlideRenderer.tsx` | Layout routing |
 | `UnsupportedSlide.tsx` | Graceful fallback for unknown layouts |
 | `safety/context.tsx` | `SafetyProvider` context (overlay visibility) |
 | `safety/SafetyOverlay.tsx` | Guide overlay rendered on demand (safe area, crosshairs) |
 
-### `src/layouts/`
+### `src/renderer/layouts/`
 
 One file per layout type. Each component receives exactly the props its layout requires (enforced by the discriminated union in `SlideRenderer`). Layouts are independent of each other and unaware of the routing mechanism.
 
-### `src/components/slide/`
+### `src/renderer/components/slide/`
 
 The `Slide` wrapper component that provides the 1080×1080 canvas container. Any component that renders a full slide must be wrapped in `Slide` to receive the correct dimensions, background, and border radius. `Slide` reads the safety context and renders the guide overlay when enabled.
 
-### `src/components/ui/`
+### `src/renderer/components/ui/`
 
 Atomic UI primitives shared across layouts. These are pure presentational components with no state, no side effects, and no knowledge of the renderer or the data model.
 
-### `src/export/`
+### `src/export-view/`
 
-The frozen `/export` route (`ExportView.tsx`). Renders every slide in the carousel at full scale inside `SafetyProvider show: false`. This route is the stable capture target for the Playwright export pipeline in `production/export/` — its output must remain byte-identical.
+The frozen `/export` route in `src/export-view/ExportView.tsx`. Renders every slide in the carousel at full scale inside `SafetyProvider show: false`. This route is the stable capture target for the Playwright export pipeline in `production/export/` — its output must remain byte-identical.
 
 ### `src/studio/`
 
 A development environment — not part of the renderer. Manages state, provides navigation, per-layout in-memory editing, validation reporting, JSON inspection, zoom, and client-side export. The studio imports and orchestrates the renderer but does not contain rendering logic. Only `Preview`, `SlideCard`, and the export thumbnails render slides, and always through `SlideRenderer`.
 
-### `src/types/`
+### `src/renderer/models/`
 
 The canonical type definitions for the entire renderer. These types are the contract between the data layer and the presentation layer. No other system module imports types from outside this file.
 
-### `src/data/`
+### `src/renderer/data/fixtures/`
 
-A sample `carousel.json` file in the canonical format. Used during development when `USE_WORKSPACE_DATA` is `false`. This file is not part of the renderer's runtime logic; it is a development convenience.
+`sample-carousel.json` in the canonical format. Used during development when `USE_WORKSPACE_DATA` is `false` and as a fallback when workspace loading fails.
 
 ---
 
@@ -471,7 +474,7 @@ There are **two export paths**, both built on the same `SlideRenderer`:
 
 ### 8.1 Playwright pipeline (`/export` route)
 
-The frozen `/export` route (`src/export/ExportView.tsx`) renders every slide in the carousel at full scale (`--slide-scale: 1`) inside `SafetyProvider show: false`. The Playwright script in `production/export/export-slides.js` navigates to that route and screenshots each `.slide` element:
+The frozen `/export` route (`src/export-view/ExportView.tsx`) renders every slide in the carousel at full scale (`--slide-scale: 1`) inside `SafetyProvider show: false`. The Playwright script in `production/export/export-slides.js` navigates to that route and screenshots each `.slide` element:
 
 ```
 Carousel → SlideRenderer → Layout → UI Components → React → Headless Browser → PNG
@@ -501,10 +504,10 @@ The architecture is designed for additive growth. Here is how common extension s
 
 ### Additional layouts
 
-1. Add a new variant to the `SlideData` discriminated union in `types/index.ts`.
-2. Create a new layout component in `src/layouts/`.
+1. Add a new variant to the `SlideData` discriminated union in `src/renderer/models/`.
+2. Create a new layout component in `src/renderer/layouts/`.
 3. Add a new `case` in `SlideRenderer.tsx`.
-4. Add a mapping branch in `mapWorkspaceCarousel.ts`.
+4. Add a mapping branch in `src/renderer/adapter/mapWorkspaceCarousel.ts`.
 5. Add validation rules in `src/studio/validation.ts`.
 
 The compiler enforces exhaustiveness — every step is guided by type errors. New layouts also benefit from the Inspector: if the layout has editable fields, add a branch in `src/studio/InspectorPanel.tsx` so the Studio can edit it in memory.

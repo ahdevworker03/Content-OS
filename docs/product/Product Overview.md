@@ -661,7 +661,7 @@ The **Content Model** is the structured contract for Carousel content consumed b
 
 A **Carousel** is a post format made of ordered slides. It contains a sequence of slides, platform-specific content, visual structure, and exportable assets.
 
-**Current:** the active Carousel variant is stored in `production/workspace/carousel.json`; its adapted Markdown is `content/drafts/carousel.md`.
+**Current:** the active Carousel variant is stored in `production/workspace/carousel.json`; its adapted Markdown is `content/drafts/format/carousel.md`.
 
 **Future:** multiple carousels may exist as posts or post versions inside the product.
 
@@ -1329,7 +1329,7 @@ The **Post** is the main domain object — one publishable idea or content item.
 
 An **Idea** is raw source material before the Content Brief. It can originate from direct user input, a learning moment, a project update, or completed implementation, debugging, product, client, university, or workflow work captured automatically by an agent.
 
-- **Current representation:** `content/ideas/<YYYY-MM-DD-project-slug>/`, with a required `idea.json` and optional curated supporting resources. The JSON follows `framework/model/idea.schema.json`; automatic capture follows `framework/Content idea capture rules.md`.
+- **Current representation:** `content/ideas/<YYYY-MM-DD-project-slug>/`, with a required `idea.json` and optional curated supporting resources. The JSON follows `framework/model/idea.schema.json`; automatic capture follows `framework/workflows/Content Idea Capture Rules.md`.
 - **Automatic capture boundary:** the project agent preserves raw material only. Content OS later owns publication decisions, duplicate detection, platform and format choice, brand voice, and final content.
 - **Next:** entered through the product's creation flow.
 
@@ -1549,7 +1549,7 @@ Idea → Approved Content Brief → Canonical Content Draft → Format / Platfor
 | Post | Groups the related idea, brief, canonical draft, approved variants, applicable Carousel data, exports, and publication/archive records |
 | Content Brief | Current planning workflow output; approved before canonical writing |
 | Canonical Content Draft | `content/drafts/post.md` |
-| Platform / Format Variants | Approved standalone drafts: `content/drafts/carousel.md`, `content/drafts/linkedin.md` |
+| Platform / Format Variants | Approved standalone drafts: `content/drafts/format/carousel.md`, `content/drafts/format/linkedin.md` |
 | Active Carousel | `production/workspace/carousel.json` |
 | Content Model | `framework/model/Content Model.md` |
 | Renderer Model | TypeScript types in the renderer |

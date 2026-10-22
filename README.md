@@ -41,10 +41,10 @@ Social Media Content/
 ├── content/                                # Content lifecycle artifacts
 │   ├── ideas/                              # Captured content ideas
 │   ├── drafts/                             # Canonical source and approved standalone variants
-│   │   ├── post.md                         # Format-neutral canonical content (Workflow 03)
+│   │   ├── post.md                         # Generated canonical draft (Workflow 03; present when active)
 │   │   └── format/
-│   │       ├── carousel.md                 # Instagram Carousel adaptation (Workflow 04)
-│   │       └── linkedin.md                 # LinkedIn Post adaptation (when approved)
+│   │       ├── carousel.md                 # Generated Carousel adaptation (Workflow 04; when approved)
+│   │       └── linkedin.md                 # Generated LinkedIn adaptation (Workflow 04; when approved)
 │   └── published/                          # Exact published variants by platform
 │       ├── instagram/                      # Variant-specific content/metadata; Carousel JSON/assets only for Carousel
 │       ├── linkedin/                       # Standalone LinkedIn post content and metadata
@@ -95,7 +95,7 @@ Five subdirectories organize the framework files by concern:
 
 **`ideas/`** — Captured ideas, one folder per idea, with a required `idea.json` and optional curated supporting resources. Manual saves follow `framework/model/idea.schema.json`; automatic project-agent capture follows `framework/workflows/Content Idea Capture Rules.md`.
 
-**`drafts/`** — `post.md` is the format-neutral canonical source written by Workflow 03. Workflow 04 updates only approved standalone adaptations in `drafts/format/carousel.md` or `drafts/format/linkedin.md`; it does not create parallel variant files at the `drafts/` root. LinkedIn never lives inside `carousel.md`. Carousel alone also produces `production/workspace/carousel.json`. Draft files may be empty until their workflow is run.
+**`drafts/`** — `post.md` is the format-neutral canonical source written by Workflow 03. Workflow 04 creates only approved standalone adaptations in `drafts/format/carousel.md` or `drafts/format/linkedin.md`; it does not create parallel variant files at the `drafts/` root. Carousel alone also produces `production/workspace/carousel.json`. These files are generated workflow artifacts and may not exist when no draft is active.
 
 **`published/`** — Archived published content, one folder per published platform variant under a lowercase platform directory using the canonical convention `content/published/<platform>/<YYYY-MM-DD-slug>/`:
 
@@ -109,7 +109,7 @@ Each archive folder preserves one exact published platform variant in `content.m
 **`renderer/`** is the React carousel rendering engine and Studio application (Vite + React + TypeScript):
 
 - **`src/renderer/`** — Renderer-owned code. `loadCarousel.ts` loads data; `adapter/mapWorkspaceCarousel.ts` converts the Content Model to renderer models; `SlideRenderer.tsx` dispatches by layout; `config.ts` selects the data source.
-- **`src/renderer/models/`** — Renderer-specific typed presentation models, including the discriminated `SlideData` union. `src/types.ts` is a small compatibility re-export while older Studio imports are migrated.
+- **`src/renderer/models/`** — Renderer-specific typed presentation models, including the discriminated `SlideData` union.
 - **`src/renderer/layouts/`** — Reusable slide layout components, including the personal-account layouts.
 - **`src/renderer/components/`** — Reusable rendering primitives (`Title`, `Subtitle`, `BulletList`, `Badge`, `Footer`) and the `Slide` canvas.
 - **`src/renderer/data/fixtures/sample-carousel.json`** — Stable bundled sample carousel used in sample mode and as a fallback if workspace loading fails.
@@ -217,6 +217,6 @@ The canonical draft owns content meaning and factual boundaries. Workflow 04 may
 
 - **Variant archive inputs** — Workflow 07 selects the standalone source matching the actual publication; LinkedIn is archived independently from any Instagram variant.
 - **Content Item IDs** — the Content Model now prefers platform-neutral IDs (e.g. `content-001`), but existing published/workspace IDs are still platform-specific (`instagram-007`, `linkedin-001`, …) until migrated.
-- **Idea persistence** — `content/ideas/` exists, but Workflow 01 does not yet write recommended ideas there; persistence is optional and may be added later.
+- **Idea persistence** — Workflow 01 supports optional user-requested persistence into `content/ideas/...`. Automatic project-agent capture after completed work is governed separately by `framework/workflows/Content Idea Capture Rules.md`.
 - **Skill duplication** — the writing skills overlap on voice and Arabic rules. Acceptable for now; may be consolidated only if it becomes a maintenance issue.
 - **Metadata completeness (older posts)** — posts archived before the current convention may lack recorded publish dates (folders use `unknown-date-…`) and may have placeholder pillar/trigger fields.

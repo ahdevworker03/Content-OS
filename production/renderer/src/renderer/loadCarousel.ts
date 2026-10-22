@@ -6,7 +6,7 @@ import type { Carousel } from "./models";
 /**
  * Loads the carousel the renderer should display.
  *
- * Workspace mode (default) fetches the Content Model JSON written by Workflow 03
+ * Workspace mode (default) fetches the Content Model JSON written by Workflow 04
  * at `production/workspace/carousel.json`. Vite serves the workspace directory
  * as static assets (see vite.config.ts `publicDir`), so `/carousel.json` is
  * available in dev, on the `/export` route, and in production builds.

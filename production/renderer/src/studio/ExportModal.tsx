@@ -4,7 +4,7 @@ import JSZip from "jszip";
 import { jsPDF } from "jspdf";
 import SlideRenderer from "../renderer/SlideRenderer";
 import { SafetyProvider } from "../renderer/safety";
-import type { Carousel } from "../types";
+import type { Carousel } from "../renderer/models";
 
 const EXPORT_PIXEL_RATIO = 2;
 const SLIDE_SIZE = 1080;

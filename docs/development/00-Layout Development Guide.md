@@ -101,7 +101,7 @@ The architecture supports additive growth. A new layout requires changes in a sm
 
 ### Step 1: Add a renderer model (if required)
 
-If the new layout introduces a visual pattern not covered by existing models, add a new variant to the `SlideData` discriminated union in `types/index.ts`.
+If the new layout introduces a visual pattern not covered by existing models, add a new variant to the `SlideData` discriminated union in `src/renderer/models/index.ts`.
 
 ```
 Existing: CoverSlideData, BulletListSlideData, GridSlideData, ...
@@ -114,14 +114,14 @@ Define only the fields the layout needs. No workspace schema leaks here.
 
 ### Step 2: Create the layout component
 
-Create a new file in `src/layouts/`. Follow the existing patterns:
+Create `src/renderer/layouts/<LayoutName>.tsx`. Follow the existing patterns:
 
 - Accept props matching the new type variant.
 - Render inside `<Slide>`.
 - Compose UI primitives for text and common patterns.
 - Use layout-specific markup for unique visual arrangements.
 
-Export the component and add it to `src/layouts/index.ts`.
+Export the component from `src/renderer/layouts/index.ts`.
 
 **Why:** Each layout is an independent file. Adding a new layout never modifies an existing layout. The barrel export keeps imports clean.
 
@@ -138,7 +138,7 @@ case "timeline":
 
 ### Step 4: Update the workspace adapter
 
-Add a new `layout` branch in `mapWorkspaceCarousel.ts` and a mapping function that transforms the Content Model authoring fields into the new canonical type. The adapter selects the carousel variant from `variants`, reads `variant.body.slides`, and maps `layout` strings (`cover`, `box-list`, `arrow-list`, `grid-2x2`, `bullet-list`, `final-cta`) plus authoring fields (`subtext`, `handle`, `questions`, `highlight`, `footer`, `items`) into renderer `SlideData`.
+Add a new `layout` branch in `src/renderer/adapter/mapWorkspaceCarousel.ts` and a mapping function that transforms the Content Model authoring fields into the new canonical type. The adapter selects the carousel variant from `variants`, reads `variant.body.slides`, and maps `layout` strings (`cover`, `box-list`, `arrow-list`, `grid-2x2`, `bullet-list`, `final-cta`) plus authoring fields (`subtext`, `handle`, `questions`, `highlight`, `footer`, `items`) into renderer `SlideData`.
 
 ```
 layout: "timeline"  (Content Model) → "timeline" (renderer)
@@ -267,7 +267,7 @@ Layouts should not use `useState` or `useReducer`. If state is unavoidable, lift
 
 ```
 // ❌ Wrong: layout imports workspace types or adapter
-import { mapWorkspaceCarousel } from "../renderer/mapWorkspaceCarousel";
+import { mapWorkspaceCarousel } from "../renderer/adapter/mapWorkspaceCarousel";
 ```
 
 A layout should never know the workspace schema exists. If a layout is receiving workspace-format data, the pipeline is broken. Fix the upstream layers instead.
@@ -355,13 +355,13 @@ Use this checklist whenever creating or modifying a layout.
 
 | #   | Step                                                         | Done |
 | --- | ------------------------------------------------------------ | ---- |
-| 1   | Renderer model added to `types/index.ts` (if new concept)    | □    |
+| 1   | Renderer model added to `src/renderer/models/index.ts` (if new concept) | □    |
 | 2   | New type variant added to `SlideData` union                  | □    |
-| 3   | Layout component created in `src/layouts/`                   | □    |
-| 4   | Component exported from `src/layouts/index.ts`               | □    |
+| 3   | Layout component created in `src/renderer/layouts/<LayoutName>.tsx` | □    |
+| 4   | Component exported from `src/renderer/layouts/index.ts`      | □    |
 | 5   | Case added to `SlideRenderer.tsx` switch                     | □    |
 | 6   | TypeScript compiles without errors                           | □    |
-| 7   | Workspace adapter updated in `mapWorkspaceCarousel.ts`       | □    |
+| 7   | Workspace adapter updated in `src/renderer/adapter/mapWorkspaceCarousel.ts` | □    |
 | 8   | Validation rules added in `validation.ts`                    | □    |
 | 9   | Studio preview renders correctly                             | □    |
 | 10  | Auto-fit + zoom (Fit / − / +, Ctrl+scroll) verified          | □    |
@@ -369,7 +369,7 @@ Use this checklist whenever creating or modifying a layout.
 | 12  | Inspector shows correct validation results                   | □    |
 | 13  | Debug panel shows expected data structure                    | □    |
 | 14  | No architectural rules violated (see Section 6)              | □    |
-| 15  | Sample data added to `src/data/carousel.json` (for dev mode) | □    |
+| 15  | Sample data added to `src/renderer/data/fixtures/sample-carousel.json` (for dev mode) | □    |
 
 ### Existing layout modification checklist
 

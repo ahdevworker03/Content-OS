@@ -1,5 +1,5 @@
 import type { ChangeEvent } from "react";
-import type { EvidenceContent, SlideData } from "../types";
+import type { EvidenceContent, SlideData } from "../renderer/models";
 import type { ValidationWarning } from "./types";
 
 type InspectorPanelProps = {

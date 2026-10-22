@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-22-content-os-architecture-path-consistency",
+  "captured_at": "2026-10-22T05:55:49Z",
+  "project": {
+    "name": "Content OS",
+    "repository": "https://github.com/ahdevworker03/Content-OS",
+    "area": "architecture and documentation consistency"
+  },
+  "idea": {
+    "title": "Keeping documentation aligned after a folder-structure refactor",
+    "type": "workflow-improvement",
+    "summary": "A renderer folder refactor had already reached main, but several architecture guides, workflow instructions, source comments, and a temporary type re-export still pointed at the old locations."
+  },
+  "context": {
+    "goal": "Bring current documentation and source imports into line with the merged renderer structure without changing runtime behavior.",
+    "situation": "The renderer now owns models, layouts, components, data fixtures, safety, and its adapter under src/renderer, while Studio and the export view have their own directories.",
+    "investigation": "Searched current docs, source, README, and workflow guidance for former renderer and draft paths; distinguished active instructions from intentionally preserved historical idea and published records.",
+    "decision": "Update current source-of-truth references, migrate renderer model imports directly, remove the compatibility shim, and leave historical records intact.",
+    "implementation": "Corrected architecture and development documentation, README workflow notes, Workflow 04 draft paths, and Workflow 04 source comments; migrated the remaining Studio renderer-model imports and deleted src/types.ts.",
+    "result": "Renderer tests and production build passed, and the diff whitespace check passed. No runtime behavior was intentionally changed."
+  },
+  "content_value": {
+    "learning_points": [
+      "A folder refactor is not complete until docs, agent instructions, runtime comments, and imports all describe the same ownership boundaries.",
+      "Broad stale-path searches need contextual review: historical records and explicit negative instructions can mention old paths for valid reasons.",
+      "Removing a compatibility shim after direct imports are migrated eliminates ambiguity about the canonical type location."
+    ],
+    "story_points": [
+      "The code tree had already moved, but developers could still be guided toward files that no longer existed.",
+      "The cleanup preserved historical evidence while correcting current instructions and checked that tests/build still passed."
+    ],
+    "possible_angles": [
+      "Why documentation drift is part of a refactor, not a separate polish task",
+      "How to review stale-path search results without rewriting history",
+      "What a compatibility shim is for—and when it is safe to remove"
+    ]
+  },
+  "resources": [],
+  "notes": [
+    "Captured as raw source material after verification; no platform or publication decision made."
+  ]
+}

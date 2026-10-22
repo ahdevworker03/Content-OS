@@ -43,7 +43,7 @@ Debug affordances are gated behind the development build. Production builds ship
 The renderer is a layered, presentation-only engine: configuration → loader → adapter → typed models → `SlideRenderer` → layouts → UI components. The Studio is one consumer of that pipeline.
 
 ```
-Renderer (src/renderer/, src/layouts/, src/types/, src/components/)
+Renderer (src/renderer/ — models, layouts, components, safety, adapter)
    ▲
    │  imports: SlideRenderer, types, SafetyProvider, loadCarousel
    │
@@ -231,7 +231,7 @@ The identity and environment disclosure.
 The path from raw JSON to a rendered slide in the Preview, with the Studio's responsibilities marked:
 
 ```
-production/workspace/carousel.json  or  src/data/carousel.json
+      production/workspace/carousel.json  or  src/renderer/data/fixtures/sample-carousel.json
         │
         │  [1] config.ts selects the data source (workspace vs. local dev)
         ▼
