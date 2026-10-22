@@ -6,7 +6,7 @@ This repository contains a **personal brand content framework** for a Lebanese C
 
 The system is organized into four main top-level directories: **`framework/`** (brand strategy, formats, workflows, content model, memory), **`content/`** (ideas, drafts, and published archive), **`production/`** (renderer, workspace, export pipeline), and **`docs/`** (product, architecture, design, and development documentation). It is AI-assisted — the framework documents serve as instruction sources for an LLM content generation agent.
 
-Design philosophy: every piece of content originates from a real trigger (a bug, a lecture, a project issue), passes through a consistent brand lens, and is adapted per-format and per-platform rather than copied.
+Design philosophy: every piece of content originates from a real trigger (a bug, a lecture, a project issue), passes through a consistent brand lens, is refined through explicit editorial quality gates, and is adapted per-format and per-platform rather than copied.
 
 ---
 
@@ -17,12 +17,12 @@ Social Media Content/
 ├── .agents/                               # Codex project guidance
 │   └── skills/                             # Repository-specific agent skills
 │       ├── lebanese-arabic-writing/SKILL.md
-│       ├── student-builder-voice/SKILL.md
 │       ├── arabic-technical-language/SKILL.md
 │       ├── carousel-copy-polish/SKILL.md
-│       ├── linkedin-reflection-writing/SKILL.md
 │       ├── content-strategist/SKILL.md
-│       └── content-reviewer/SKILL.md
+│       ├── content-editor/SKILL.md
+│       ├── content-reviewer/SKILL.md
+│       └── content-refinement/SKILL.md
 ├── framework/                              # Brand strategy, formats, workflows, model, memory
 │   ├── strategy/                           # Creator identity and voice
 │   │   └── Brand Strategy.md               # Creator identity, voice, tone, and platform rules
@@ -30,8 +30,8 @@ Social Media Content/
 │   │   ├── Carousels.md                    # Carousel types and structure
 │   │   └── linkedin.md                     # LinkedIn post writing and format rules
 │   ├── workflows/                          # Lifecycle, numbered workflows, and idea capture rules
-│   │   ├── Content Lifecycle.md            # Format selection, lifecycle, and stage ownership
-│   │   ├── Content Creation Playbook.md    # Plan, create, validate, export, and archive
+│   │   ├── Content Lifecycle.md            # Format selection, lifecycle, stage ownership, editorial gates
+│   │   ├── Content Creation Playbook.md    # Plan, create, refine, validate, export, and archive
 │   │   └── Content Idea Capture Rules.md   # Manual and automatic idea persistence rules
 │   ├── model/                              # Canonical content data model
 │   │   └── Content Model.md                # Content Item JSON Schema, renderer interface
@@ -80,13 +80,13 @@ Social Media Content/
 
 Five subdirectories organize the framework files by concern:
 
-| Subdirectory | File                            | Description                                                                                                                                                                                   |
-| ------------ | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `strategy/`  | `Brand Strategy.md`             | Creator identity, audience, content boundaries, pillars, voice, tone, style, and platform rules. Owns who the creator is and how they write.                                                   |
+| Subdirectory | File                            | Description |
+| ------------ | ------------------------------- | ----------- |
+| `strategy/`  | `Brand Strategy.md`             | Creator identity, audience, content boundaries, pillars, voice, tone, style, and platform rules. Owns who the creator is and how they write. |
 | `formats/`   | `Carousels.md`                  | Carousel types, structure, renderer layouts, and format constraints. |
 |              | `linkedin.md`                   | LinkedIn post structure, voice, reflection, and writing constraints. |
-| `workflows/` | `Content Lifecycle.md`          | Trigger-first format selection and the canonical lifecycle from Idea through exact-variant archive, including stage ownership and quality checks. |
-|              | `Content Creation Playbook.md`  | Seven stage instructions grouped by planning, creation, conditional Carousel production, and archiving. |
+| `workflows/` | `Content Lifecycle.md`          | Trigger-first format selection and the canonical lifecycle from Idea through exact-variant archive, including stage ownership and editorial quality gates. |
+|              | `Content Creation Playbook.md`  | Seven stage instructions grouped by planning, creation, editorial refinement, conditional Carousel production, and archiving. |
 |              | `Content Idea Capture Rules.md` | Rules for persisting selected ideas and project-agent idea capture. |
 | `model/`     | `Content Model.md`              | Structured Carousel contract and renderer interface. The workspace carousel (`production/workspace/carousel.json`) conforms to this model. |
 | `memory/`    | `Posted Titles.md`              | Lightweight lookup table of published content. Per-post metadata lives in each post's `metadata.json`. |
@@ -95,7 +95,7 @@ Five subdirectories organize the framework files by concern:
 
 **`ideas/`** — Captured ideas, one folder per idea, with a required `idea.json` and optional curated supporting resources. Manual saves follow `framework/model/idea.schema.json`; automatic project-agent capture follows `framework/workflows/Content Idea Capture Rules.md`.
 
-**`drafts/`** — `post.md` is the format-neutral canonical source written by Workflow 03. Workflow 04 creates only approved standalone adaptations in `drafts/format/carousel.md` or `drafts/format/linkedin.md`; it does not create parallel variant files at the `drafts/` root. Carousel alone also produces `production/workspace/carousel.json`. These files are generated workflow artifacts and may not exist when no draft is active.
+**`drafts/`** — `post.md` is the format-neutral canonical source written and semantically checked by Workflow 03. Workflow 04 creates only approved standalone adaptations in `drafts/format/carousel.md` or `drafts/format/linkedin.md`; it does not create parallel variant files at the `drafts/` root. Carousel alone also produces `production/workspace/carousel.json`. These files are generated workflow artifacts and may not exist when no draft is active.
 
 **`published/`** — Archived published content, one folder per published platform variant under a lowercase platform directory using the canonical convention `content/published/<platform>/<YYYY-MM-DD-slug>/`:
 
@@ -144,31 +144,59 @@ Top-level documentation, split by purpose:
 
 ---
 
-## Writing Skills
+## Editorial and Writing Skills
 
-Codex project skills live in `.agents/skills/`. Workflow 03 in `Content Creation Playbook.md` uses `student-builder-voice` for the canonical draft. Workflow 04 in `Content Creation Playbook.md` applies the relevant platform and format writing skills to approved variants:
+Repository-specific agent skills live in `.agents/skills/`. The current skill inventory is:
 
-- `lebanese-arabic-writing` — natural Lebanese Arabic for Instagram Carousels.
-- `student-builder-voice` — the student-builder voice across all formats and platforms.
-- `arabic-technical-language` — Arabic prose with natural English developer terms.
-- `carousel-copy-polish` — tightening carousel slide copy (hooks, one-idea-per-slide, CTAs).
-- `linkedin-reflection-writing` — LinkedIn adaptations in English (reflective, not corporate).
+- `content-strategist` — mandatory idea-quality gate. It evaluates trigger, tension, insight, evidence, audience payoff, specificity, differentiation, and format fit, then returns `REJECT`, `DEVELOP`, or `READY`.
+- `content-editor` — semantic/editorial repair for canonical meaning: logic, clarity, context, reasoning, specificity, semantic repetition, claim strength, and information sufficiency.
+- `lebanese-arabic-writing` — natural Lebanese Arabic phrasing, dialect consistency, and spoken flow for Arabic Instagram content.
+- `arabic-technical-language` — Arabic prose with natural English developer terminology and consistent code-mixing.
+- `carousel-copy-polish` — archetype-aware Carousel copy refinement: structure, hook, pacing, density, slide flow, specificity, repetition, and CTA fit.
+- `content-reviewer` — mandatory final editorial gate for completed variants. It returns `PASS`, `PASS WITH MINOR EDITS`, `REVISE`, or `BLOCK` and routes problems back to the owning layer.
+- `content-refinement` — orchestration entry point when the creator explicitly asks to review/refine an idea or draft end-to-end. It coordinates the specialist skills without replacing their ownership.
 
-Two consultation skills also exist: `content-strategist` (evaluating/prioritising ideas before production) and `content-reviewer` (reviewing drafted content before publishing). They are advisory and sit outside the numbered workflows.
+The default editorial order is:
+
+```text
+idea quality
+→ meaning and reasoning
+→ language and voice
+→ format fit
+→ final editorial review
+```
+
+For an Arabic Instagram Carousel, the refinement chain is:
+
+```text
+canonical meaning
+→ content-editor
+→ lebanese-arabic-writing + arabic-technical-language
+→ carousel-copy-polish
+→ content-reviewer
+```
+
+These are not all optional consultation helpers anymore. `content-strategist` is part of Workflow 01, `content-editor` is mandatory in Workflow 03, and `content-reviewer` is mandatory in Workflow 04. `content-refinement` is used when the creator explicitly requests an end-to-end review/refinement pass.
+
+Review and editing skills must not stop at problem lists when the current sources are sufficient to repair the content. They should return an actionable report and the complete revised artifact or refined direction, while preserving factual boundaries and surfacing genuinely missing source information instead of inventing it.
 
 ---
 
 ## Production Pipeline
 
-The lifecycle moves from Idea through canonical meaning and approved variants to the exact published-variant archive:
+The lifecycle moves from Idea through canonical meaning, editorial quality gates, approved variants, and finally the exact published-variant archive:
 
 ```
 Idea
+  → (01) Idea Quality Gate: content-strategist → REJECT / DEVELOP / READY
   → (02) Approved Content Brief
   → (03) Canonical Content Draft: content/drafts/post.md
+       → content-editor semantic/editorial gate
   → (04) Format / Platform Adaptation: approved standalone variants
        Carousel → content/drafts/format/carousel.md + production/workspace/carousel.json
        LinkedIn → content/drafts/format/linkedin.md
+       → relevant language/format skills
+       → content-reviewer final gate
   → (05) Render Validation (Carousel only, where applicable)
   → (06) Export (Carousel only, where applicable)
   → Publish the selected variant
@@ -182,12 +210,12 @@ Idea
 ## System Workflow
 
 1. **Strategy** — `Brand Strategy.md` defines creator identity, audience, pillars, voice, and platform rules as the strategy source influencing all downstream decisions.
-2. **Content Lifecycle** — `Content Lifecycle.md` provides format-selection guidance and defines the lifecycle. Workflow 02 records the approved primary format, target platforms, and required variants in the brief.
-3. **Idea Discovery** — `Content Creation Playbook.md` surfaces content opportunities from real triggers.
-4. **Content Planning** — `Content Creation Playbook.md` evaluates the idea and produces an approved brief.
-5. **Canonical Content** — Workflow 03 writes only format-neutral substance to `content/drafts/post.md`.
-6. **Format / Platform Adaptation** — Workflow 04 updates only the variants approved in the brief at `content/drafts/format/`. Carousel JSON is generated only for Carousel; LinkedIn is a standalone `linkedin.md`.
-7. **Render Validation** — Workflow 05 validates Carousel rendering where applicable.
+2. **Content Lifecycle** — `Content Lifecycle.md` provides format-selection guidance, lifecycle ownership, and editorial gate rules.
+3. **Idea Discovery** — Workflow 01 surfaces opportunities from real triggers and requires `content-strategist` to return `READY` before an idea moves forward. `DEVELOP` ideas are refined first; `REJECT` ideas are not forced into production.
+4. **Content Planning** — Workflow 02 turns one `READY` idea into an approved brief with primary format, target platforms, and required variants.
+5. **Canonical Content** — Workflow 03 writes format-neutral substance to `content/drafts/post.md`, then runs `content-editor` before the canonical draft is accepted.
+6. **Format / Platform Adaptation** — Workflow 04 updates only variants approved in the brief at `content/drafts/format/`, applies the relevant language/format skills, and runs `content-reviewer` on every completed variant. Carousel JSON is generated only for Carousel; LinkedIn remains a standalone `linkedin.md` artifact.
+7. **Render Validation** — Workflow 05 validates Carousel rendering only after the Carousel has passed the final editorial gate.
 8. **Export Assets** — Workflow 06 exports validated Carousel slides through the Studio or Playwright path where applicable.
 9. **Publish** — The creator publishes the selected approved variant manually.
 10. **Archive** — Workflow 07 archives the exact copy and applicable assets published on that platform and updates `Posted Titles.md`.
@@ -198,18 +226,22 @@ Idea
 
 ```text
 01 Idea Discovery
+    → content-strategist: REJECT / DEVELOP / READY
     → 02 Content Planning: Approved Content Brief
     → 03 Post Content Builder: content/drafts/post.md
+         → content-editor semantic/editorial gate
     → 04 Format Adaptation: only approved standalone variants
-         Instagram Carousel → content/drafts/format/carousel.md + production/workspace/carousel.json
+         Instagram Carousel → language skills → carousel-copy-polish
+             → content/drafts/format/carousel.md + production/workspace/carousel.json
          LinkedIn Post → content/drafts/format/linkedin.md
+         → content-reviewer final gate for every variant
     → 05 Render Validation (Carousel, where applicable)
     → 06 Export Assets (Carousel, where applicable)
     → Manual Publish
     → 07 Archive Published Post: exact published variant + Posted Titles.md
 ```
 
-The canonical draft owns content meaning and factual boundaries. Workflow 04 may change presentation but must preserve that meaning; substantive changes return to Workflow 03. Carousel JSON and assets remain Carousel-specific. A LinkedIn archive contains the standalone LinkedIn publication, not Instagram content.
+The canonical draft owns content meaning and factual boundaries. Workflow 04 may change presentation but must preserve that meaning; substantive semantic, logical, or factual changes return to Workflow 03. Strategic weakness returns to Workflow 01/02. Carousel JSON and assets remain Carousel-specific. A LinkedIn archive contains the standalone LinkedIn publication, not Instagram content.
 
 ---
 
@@ -218,5 +250,5 @@ The canonical draft owns content meaning and factual boundaries. Workflow 04 may
 - **Variant archive inputs** — Workflow 07 selects the standalone source matching the actual publication; LinkedIn is archived independently from any Instagram variant.
 - **Content Item IDs** — the Content Model now prefers platform-neutral IDs (e.g. `content-001`), but existing published/workspace IDs are still platform-specific (`instagram-007`, `linkedin-001`, …) until migrated.
 - **Idea persistence** — Workflow 01 supports optional user-requested persistence into `content/ideas/...`. Automatic project-agent capture after completed work is governed separately by `framework/workflows/Content Idea Capture Rules.md`.
-- **Skill duplication** — the writing skills overlap on voice and Arabic rules. Acceptable for now; may be consolidated only if it becomes a maintenance issue.
+- **LinkedIn skill coverage** — there is currently no repository skill under `.agents/skills/` dedicated to LinkedIn writing; LinkedIn behavior is governed by `framework/formats/linkedin.md` until such a skill is intentionally added.
 - **Metadata completeness (older posts)** — posts archived before the current convention may lack recorded publish dates (folders use `unknown-date-…`) and may have placeholder pillar/trigger fields.
