@@ -1,72 +1,62 @@
 ---
 name: content-refinement
-description: Use when the user asks to review, refine, strengthen, improve, or make an idea or drafted content worth publishing before approval, especially when quality problems may involve strategy, meaning, language, format, or overall readiness.
+description: Use when the user asks to review, refine, strengthen, improve, or make an idea or drafted content worth publishing before approval, especially when quality problems may span strategy, meaning, language, format, or readiness.
 ---
 
 # Content Refinement
 
 ## Purpose
 
-Act as the single editorial entry point for turning a rough idea or draft into a stronger, approval-ready content artifact.
+Provide one orchestration entry point for end-to-end content refinement.
 
-This skill **orchestrates existing specialist skills**. It does not replace them or duplicate their rules.
+This skill owns **routing, order, and repair iteration**. Specialist skills own their own evaluation rules, verdicts, and output contracts.
 
 Core rule:
 
-> Never stop at identifying problems when the available context is sufficient to improve the idea or content directly.
-
-Every refinement must produce both an actionable report and the best revised artifact or direction supported by the source material.
+> When the available sources are sufficient, refinement must produce an improved direction or artifact, not only a list of problems.
 
 ---
 
 ## When to Use
 
-Use when the user asks things such as:
+Use when the creator asks to review or refine an idea or draft across more than one editorial layer, for example:
 
 - review this idea and refine it,
-- make this idea worth posting,
-- turn this into real content,
-- review this content before I approve it,
-- improve the meaning or clarity,
+- make this worth posting,
+- review this before I approve it,
+- improve the meaning and wording,
 - make this carousel stronger,
-- check whether this is worth publishing,
-- refine this draft instead of only criticizing it.
+- refine this instead of only criticizing it.
 
-Do not use for simple proofreading, rendering validation, export, or visual design review.
+Do not use for simple proofreading, render validation, export, or visual design review.
 
 ---
 
-## First Decision: What Is Being Refined?
+## Routing
 
-Classify the input before loading specialist skills.
+Classify the artifact before loading specialists.
 
-### Idea / content direction
+### Idea or content direction
 
-Use `content-strategist` first.
+Run `content-strategist` first.
 
-Goal: decide whether the underlying idea deserves production and find its strongest defensible angle.
+- `REJECT` stops that direction.
+- `DEVELOP` must be refined from existing evidence and evaluated again before writing.
+- `READY` may proceed to planning or canonical writing.
 
-Expected strategist outcome:
-
-- `REJECT` — no worthwhile post should be forced from the material.
-- `DEVELOP` — there is useful material, but the angle/value/reasoning needs refinement.
-- `READY` — the idea is specific, authentic, useful, differentiated, and sufficiently supported.
-
-If `DEVELOP`, refine the direction before moving into writing.
-
-If `REJECT`, explain why and do not manufacture a post merely to produce output.
+Use the strategist's own required report and refined direction. Do not duplicate its evaluation inside this orchestrator.
 
 ### Canonical draft or long-form meaning
 
-Use `content-editor`.
+Run `content-editor`.
 
-Goal: repair meaning, logic, clarity, context, reasoning, specificity, semantic repetition, and claim strength while preserving factual boundaries.
+Use it to repair meaning, logic, clarity, context, reasoning, specificity, repetition, and claim strength without inventing facts or evidence.
 
-### Format/platform draft
+### Platform or format draft
 
-Use the relevant writing and format skills only after the meaning is sound.
+First confirm that canonical meaning is sound. Then load only the language and format rules needed by that variant, and finish with `content-reviewer`.
 
-For an Arabic Instagram carousel, use:
+For an Arabic Instagram Carousel:
 
 ```text
 canonical meaning
@@ -76,13 +66,13 @@ canonical meaning
 → content-reviewer
 ```
 
-For other formats, load only the skills relevant to that format and language.
+For LinkedIn, use `framework/formats/linkedin.md` directly for platform/format rules, then run `content-reviewer`.
 
 ---
 
 ## Refinement Invariant
 
-Always refine in this order:
+Always preserve this order:
 
 ```text
 idea quality
@@ -94,118 +84,44 @@ idea quality
 
 Do not polish weak reasoning into attractive copy.
 
-Do not shorten or stylize a sentence before confirming what it actually means.
+Do not let a platform rewrite silently change canonical facts, evidence, reasoning, uncertainty, or intended takeaway.
 
-Do not let a format rewrite silently change canonical facts, evidence, reasoning, or intended takeaway.
-
-If a platform draft exposes a substantive problem in canonical meaning, return that issue upstream to the canonical draft.
+If a variant exposes a substantive semantic, logical, or factual problem, return it to the canonical layer before continuing.
 
 ---
 
-## Specialist Responsibilities
-
-Use each skill for its own concern:
+## Ownership
 
 - `content-strategist` — idea worthiness, angle, audience value, differentiation, positioning.
 - `content-editor` — meaning, logic, clarity, context, reasoning, semantic repair.
-- `lebanese-arabic-writing` — Lebanese phrasing, dialect consistency, natural spoken voice.
-- `arabic-technical-language` — natural Arabic/English technical terminology and code mixing.
-- `carousel-copy-polish` — slide structure, pacing, hook, density, flow, carousel copy fit.
-- `content-reviewer` — independent final quality judgment before approval/publication.
+- `lebanese-arabic-writing` — Lebanese phrasing, dialect consistency, natural voice.
+- `arabic-technical-language` — Arabic/English technical terminology and code mixing.
+- `carousel-copy-polish` — Carousel archetype, slide structure, hook, pacing, density, flow, CTA fit.
+- `content-reviewer` — independent final quality gate and issue routing.
 
-Do not collapse these roles into one generic rewrite pass.
-
----
-
-## Required Output Behavior
-
-A refinement response must be **corrective, not merely diagnostic**.
-
-When enough information exists, produce:
-
-### 1. Refinement Verdict
-
-Use the verdict appropriate to the stage being reviewed, for example:
-
-- idea: `REJECT`, `DEVELOP`, `READY`
-- edited draft: `READY`, `READY WITH EDITS`, `NEEDS SOURCE INPUT`
-- final review: `PASS`, `PASS WITH MINOR EDITS`, `REVISE`, `BLOCK`
-
-### 2. Core Meaning / Strongest Angle
-
-State what the idea or content should fundamentally communicate.
-
-This becomes the reference point for all downstream editing.
-
-### 3. Refinement Report
-
-For each meaningful issue include:
-
-```text
-Category
-Location or scope
-Problem
-Why it matters
-Action taken
-```
-
-Use categories appropriate to the stage, such as:
-
-- STRATEGY
-- AUDIENCE_VALUE
-- GENERICITY
-- SEMANTIC
-- LOGIC
-- FACTUAL
-- CLARITY
-- LANGUAGE
-- VOICE
-- FORMAT
-- REPETITION
-
-### 4. Revised Artifact or Refined Direction
-
-Do not make the user manually apply the report.
-
-- For an idea: provide the refined content direction, including trigger, tension, insight, evidence, audience payoff, and recommended format.
-- For a draft: provide the complete revised draft.
-- For a carousel: provide the complete revised slide copy.
-
-Preserve source-supported facts and uncertainty.
-
-### 5. Remaining Human Decisions
-
-List only decisions that genuinely require creator intent, missing evidence, or preference.
-
-If none remain, say `None`.
+Do not collapse these responsibilities into one generic rewrite pass.
 
 ---
 
-## Review-and-Repair Loop
+## Execution
 
-When a final reviewer returns `REVISE`:
-
-1. classify each issue,
-2. route it to the owning skill,
-3. repair the artifact,
-4. review again.
-
-Use at most two automatic repair cycles in one refinement request. If a blocking issue still remains after that, surface the unresolved decision or missing source information instead of endlessly rewriting.
-
-A `BLOCK` caused by missing facts, unsupported claims, or contradictory source material must never be solved by invention.
+1. Identify the current stage and artifact.
+2. Load only the specialist skills and format documents required for that stage.
+3. Run the owning specialist and preserve its verdict, report structure, and factual boundaries.
+4. Apply repairs that the current sources support; do not leave safe, obvious repairs for the creator to perform manually.
+5. When `content-reviewer` returns `REVISE`, route each issue to its owning layer, repair it there, then review the resulting artifact again.
+6. Use at most two automatic repair-and-review cycles in one refinement request.
+7. If a specialist returns a blocking state such as `BLOCK` or `NEEDS SOURCE INPUT`, surface the missing evidence, contradiction, or creator decision instead of inventing a solution.
 
 ---
 
-## Approval Standard
+## Completion
 
-The result is ready for human approval only when:
+Return:
 
-- the idea itself is worth publishing,
-- the meaning is specific and coherent,
-- conclusions follow from the available evidence,
-- the language sounds natural for the intended audience,
-- the selected format strengthens rather than distorts the idea,
-- generic or empty statements have been removed,
-- the user receives a complete revised artifact rather than a list of chores.
+- the relevant specialist verdict or verdicts,
+- a concise summary of what materially changed,
+- the complete revised artifact or refined direction when the sources support one,
+- only the unresolved human decisions that genuinely require creator intent or missing evidence.
 
-The goal is to reduce manual word-by-word correction while keeping the creator, not the agent, as the final approver.
+The creator remains the final approver.
