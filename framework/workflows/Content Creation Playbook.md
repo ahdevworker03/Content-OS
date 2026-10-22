@@ -351,7 +351,7 @@ Apply only the relevant writing skills for each required variant:
 - `lebanese-arabic-writing` — Arabic Instagram variants.
 - `arabic-technical-language` — Arabic copy containing technical terms.
 - `carousel-copy-polish` — Instagram Carousel; identify the content archetype before polishing structure.
-- `linkedin-reflection-writing` — LinkedIn Post; follow `framework/formats/linkedin.md`.
+- LinkedIn Post — follow `framework/formats/linkedin.md` directly; no dedicated LinkedIn skill is required.
 - `content-reviewer` — mandatory final quality gate for every completed variant.
 
 `content-editor` is not a routine adaptation skill. Use it only when review exposes a semantic, logic, or substantive clarity problem that must return to Workflow 03.
@@ -413,8 +413,8 @@ Issue ownership:
 
 - `SEMANTIC`, `LOGIC`, or substantive `CLARITY` → Workflow 03 / `content-editor`.
 - `FACTUAL` → approved sources and Workflow 03.
-- `LANGUAGE` or `VOICE` → the relevant language skill in Workflow 04.
-- `FORMAT`, pacing, density, hook, or carousel flow → `carousel-copy-polish` or the relevant format skill.
+- `LANGUAGE` or `VOICE` → the relevant language skill or format rules in Workflow 04.
+- `FORMAT`, pacing, density, hook, or carousel flow → `carousel-copy-polish` or the relevant format rules.
 - `GENERICITY` or `AUDIENCE_VALUE` that reveals a weak underlying angle → Workflow 01/02 / `content-strategist`.
 - `REPETITION` → repair at the layer where the repeated meaning originated.
 
@@ -427,7 +427,7 @@ Use at most two automatic repair-and-review cycles for one variant in one execut
 3. Create each approved variant as an independent adaptation. Keep the primary format as the depth anchor; rewrite structure and wording for each secondary platform.
 4. For every variant, check its claims, examples, uncertainty, CTA intent, and takeaway against `post.md`.
 5. If an Instagram Carousel is required, identify the best-fitting content archetype using `carousel-copy-polish`, then plan its narrative and slide count from the approved canonical content. For each slide, first state its purpose, then choose the one supported visual layout that fits that purpose, and then write the slide copy. Available personal-account layout IDs are `cover`, `story`, `focus`, `sequence`, `comparison`, `evidence`, and `closing`; use the field definitions in `framework/model/Content Model.md`.
-6. Apply the relevant language and format skills. For Arabic Instagram copy, use `lebanese-arabic-writing` and `arabic-technical-language`, then `carousel-copy-polish`. Do not use these skills to alter unsupported meaning.
+6. Apply the relevant language and format rules. For Arabic Instagram copy, use `lebanese-arabic-writing` and `arabic-technical-language`, then `carousel-copy-polish`. For LinkedIn, follow `framework/formats/linkedin.md` directly. Do not use presentation rules to alter unsupported meaning.
 7. Update `content/drafts/format/carousel.md` and the matching `production/workspace/carousel.json` when Carousel is required. Write an Instagram caption in natural Lebanese Arabic as part of the standalone Markdown draft, and store the same text in the Instagram variant's `caption` field in JSON. The caption should complement the slides, preserve their factual boundaries, and end with the approved discussion CTA when one exists. Include the selected layout on each JSON slide and keep the slide copy and layout-specific fields aligned between Markdown and JSON. Layouts may repeat or be omitted. There is no required seven- or eight-slide count or fixed layout order; choose only compositions the content earns.
 8. Use `evidence` only for supplied, approved code or a local screenshot/image, or for a supplied diagram explicitly identified as conceptual. Image and diagram assets must be placed under `production/workspace/evidence/` and referenced as `evidence/<filename>`. Do not create fake proof or infer evidence from copy.
 9. Run `content-reviewer` on each completed variant. Apply `PASS WITH MINOR EDITS` changes directly when they stay within the adaptation boundary. For `REVISE`, route each issue to its owning skill/layer, repair, and review again. For `BLOCK`, stop until the upstream issue is resolved.
@@ -445,7 +445,7 @@ Use at most two automatic repair-and-review cycles for one variant in one execut
 - Every completed variant received a `content-reviewer` verdict.
 - No variant with unresolved `REVISE` or `BLOCK` status proceeds to rendering/publication.
 - All supported reviewer repairs were applied by the correct owning skill/layer rather than patched arbitrarily.
-- LinkedIn is a standalone `content/drafts/format/linkedin.md` artifact.
+- LinkedIn is a standalone `content/drafts/format/linkedin.md` artifact governed directly by `framework/formats/linkedin.md`.
 - `carousel.json` exists only when a Carousel variant is required and represents Carousel content only.
 - Carousel Markdown and JSON agree on all slide text and layout fields.
 - The Instagram caption is present in Markdown and matches the Instagram variant's JSON `caption` field.
@@ -702,7 +702,7 @@ Update `framework/memory/Posted Titles.md` with the published variant's archive 
 ## Success Criteria
 
 - The archive describes one actual published platform variant.
-- `content.md` exactly matches what appeared on that platform.
+- `content.md` exactly matches what appeared on the platform.
 - No other platform's copy is included.
 - Carousel JSON and slide assets appear only in Carousel archives.
 - The archive path uses the verified publication date and does not overwrite an existing entry.
