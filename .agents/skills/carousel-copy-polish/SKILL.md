@@ -1,791 +1,580 @@
 ---
 name: carousel-copy-polish
-description: Use this skill when reviewing, rewriting, or polishing Instagram carousel copy so each slide has one clear idea, a stronger hook, tighter wording, better flow, and a practical developer voice without becoming generic, motivational, or teacher-like.
+description: Use when an Instagram carousel draft needs tighter slide copy, clearer sequencing, stronger hooks, better pacing, less repetition, or a structure that better fits the kind of content being communicated.
 ---
 
-# Carousel Copy Polish Skill
+# Carousel Copy Polish
 
 ## Purpose
 
-Polish Instagram carousel copy after the first draft is created.
+Polish an existing Instagram carousel so the copy is clear, specific, readable, and structurally appropriate for the content.
 
-This skill improves:
+This skill owns **carousel presentation quality**. It does not decide whether the underlying idea is worth publishing and it does not repair canonical meaning or factual reasoning.
 
-- hook strength
-- slide clarity
-- slide-by-slide flow
-- text length
-- idea separation
-- audience takeaway
-- practical developer voice
-- project connection
-- CTA quality
+Core rule:
 
-The goal is not to make the carousel more “professional.”
-
-The goal is to make it clearer, more specific, more readable, and more authentic.
+> Choose the carousel structure from the content archetype. Do not force every post into the same mistake → friction → realization story.
 
 ---
 
-## When to Use This Skill
+## When to Use
 
-Use this skill after a carousel draft exists.
+Use after a carousel draft exists and the underlying meaning is already sound.
 
 Use it for:
 
-- reviewing carousel slides
-- rewriting weak slide copy
-- reducing text length
-- improving hooks
-- improving transitions between slides
-- checking whether each slide has one idea
-- making a carousel feel less AI-generated
-- making the carousel sound more like a real developer working through the problem
+- stronger hooks,
+- tighter slide copy,
+- slide-by-slide flow,
+- pacing,
+- one-idea-per-slide discipline,
+- reducing overloaded slides,
+- removing repetition,
+- matching structure to content type,
+- improving the ending or CTA,
+- making the carousel feel less generic or AI-generated.
 
-Do not use this skill for:
+Do not use it to:
 
-- creating the original content idea
-- choosing the format
-- rendering slides
-- exporting assets
-- writing LinkedIn posts
-- changing the design system
+- discover or validate the original idea,
+- change canonical facts or reasoning,
+- invent project details or evidence,
+- repair factual gaps,
+- choose visual design or renderer layout,
+- write LinkedIn content.
 
----
-
-## Core Rule
-
-Each slide should do one job.
-
-Bad slide:
-
-> I used to think debugging was only about fixing errors, but after building my project I realized it is also about understanding the flow of data, reading logs, checking assumptions, testing the API, and slowing down before changing code.
-
-Good slide split:
-
-```text id="ch97rq"
-Slide 1:
-I used to think debugging meant fixing errors.
-
-Slide 2:
-But in my project, debugging started before the fix.
-
-Slide 3:
-I had to understand where the data changed.
-
-Slide 4:
-That forced me to slow down before touching the code.
-```
-
-If one slide contains multiple ideas, split it or cut it.
+If the carousel exposes a semantic, logical, or factual problem, route that issue upstream to `content-editor` or the canonical draft instead of hiding it with better copy.
 
 ---
 
-## Carousel Structure
+## Core Slide Rule
 
-A strong carousel should usually follow this structure:
+Each slide should do one primary job.
 
-```text id="nyalpc"
-Slide 1 — Hook
-Slide 2 — Trigger / real moment
-Slide 3 — Wrong assumption
-Slide 4 — What happened
-Slide 5 — What changed in understanding
-Slide 6 — Project bridge / practical lesson
-Slide 7 — Small takeaway
-Slide 8 — Peer-level CTA
-```
-
-This is a guide, not a rigid rule.
-
-The carousel should always feel like one clear learning moment, not a list of random advice.
-
----
-
-## Slide 1: Hook
-
-The hook should be specific and rooted in a real tension.
-
-Good hooks:
-
-- I thought this was a CSS problem. It wasn’t.
-- One small 404 taught me more than a tutorial.
-- I misunderstood `state` until my UI broke.
-- The bug was small. The lesson was not.
-- I kept changing code before understanding the problem.
-- My dashboard looked broken, but the real issue was structure.
-- I thought tests were extra work until one change broke the flow.
-
-Bad hooks:
-
-- 5 tips to become a better developer
-- Things every programmer should know
-- Why debugging is important
-- My programming journey
-- What I learned today
-- How to improve your coding skills
-- Important lessons from building projects
-
-The bad hooks are too generic.
-
-A good hook should make the reader ask:
-
-> “What happened?”
-
----
-
-## Hook Checklist
-
-Before accepting Slide 1, check:
-
-- Is it specific?
-- Does it create curiosity?
-- Does it sound like a real moment?
-- Is it short?
-- Does it avoid generic advice?
-- Does it avoid motivational wording?
-- Can it be understood quickly?
-
-If the hook could fit any programming account, rewrite it.
-
----
-
-## Slide 2: Trigger
-
-Slide 2 should explain what actually happened.
-
-Good:
-
-> I was fixing the rental details dashboard.
-> The numbers looked misaligned, so I opened the layout.
+If one slide contains several ideas, split, cut, or prioritize.
 
 Bad:
 
-> While working on a software project, I encountered an important challenge.
-
-Good:
-
-> I changed one API field and the frontend started showing wrong values.
-
-Bad:
-
-> I faced a problem related to frontend-backend integration.
-
-The trigger should be concrete.
-
-Use real objects:
-
-- page
-- component
-- API request
-- database field
-- table
-- form
-- dashboard
-- route
-- test
-- deployment
-- error message
-
-Avoid abstract phrases:
-
-- a problem
-- a challenge
-- an issue
-- a concept
-- a situation
-
-Use them only if they are made specific.
-
----
-
-## Slide 3: Wrong Assumption
-
-A strong carousel often includes what the writer first misunderstood.
-
-Good:
-
-> I thought the issue was spacing.
-
-Good:
-
-> I assumed the backend was broken.
-
-Good:
-
-> I thought TypeScript was being annoying.
-
-Good:
-
-> I blamed the UI first.
-
-This creates a natural learning arc.
-
-Avoid pretending the writer knew the answer from the beginning.
-
-Bad:
-
-> I immediately identified the root cause and implemented the correct solution.
-
-This sounds fake and removes the learning story.
-
----
-
-## Slide 4: Friction
-
-Show the point where the problem resisted the first fix.
-
-Good:
-
-> Every CSS class I changed fixed one part and broke another.
-
-Good:
-
-> The API was returning 200, but the data was still wrong.
-
-Good:
-
-> The test failed even though the function looked simple.
-
-Good:
-
-> The page rendered, but the values did not match the real rental state.
-
-Friction makes the carousel feel real.
-
-Without friction, the post becomes generic advice.
-
----
-
-## Slide 5: Realization
-
-This slide should show what changed in understanding.
-
-Good:
-
-> The problem was not the spacing.
-> It was the information structure.
-
-Good:
-
-> The bug was not in the request.
-> It was in the assumption I made about the response.
-
-Good:
-
-> Tests were not just checking code.
-> They were protecting the workflow.
-
-Avoid overclaiming.
-
-Bad:
-
-> This taught me the complete importance of software architecture.
+> I thought the problem was CSS, then checked the API, found missing data, realized validation was wrong, and learned why tests matter.
 
 Better:
 
-> This made architecture feel less theoretical.
-
----
-
-## Slide 6: Project Bridge
-
-Connect the lesson to the actual project.
-
-Good:
-
-> In a rental system, one wrong status can make a vehicle look available when it is not.
-
-Good:
-
-> In my dashboard, alignment was not just visual. It affected how quickly the user could read money and status.
-
-Good:
-
-> In my API, validation had to protect the rental workflow, not just reject bad input.
-
-The Project Bridge proves the lesson came from real work.
-
-Without this slide, the carousel may sound like copied advice.
-
----
-
-## Slide 7: Small Takeaway
-
-The takeaway should be small, believable, and specific.
-
-Good:
-
-> Before changing code, I now try to find where the assumption breaks.
-
-Good:
-
-> A UI bug is not always a CSS bug.
-
-Good:
-
-> Tests started making sense when they protected a real workflow.
-
-Good:
-
-> Reading the error carefully is slower at first, but faster than guessing.
-
-Bad:
-
-> Debugging is the most important skill every developer must master.
-
-Bad:
-
-> Never underestimate the power of clean code.
-
-Bad:
-
-> Consistency is the key to success.
-
-Avoid broad motivational lessons.
-
----
-
-## Slide 8: CTA
-
-End with a peer-level question.
-
-Good CTAs:
-
-- Did a small bug ever change how you understood a concept?
-- What is one bug that made you slow down?
-- Have you ever blamed CSS when the problem was structure?
-- Which part of debugging still feels confusing to you?
-- What concept only made sense after building something?
-
-Bad CTAs:
-
-- Like and follow for more tips.
-- Save this post for later.
-- Share with a developer friend.
-- Comment “DEBUG” if this helped.
-- Follow me for more programming content.
-
-The CTA should invite reflection, not engagement farming.
-
----
-
-## Text Length Rules
-
-Carousel text should be short.
-
-Preferred per slide:
-
-```text id="g5tzyl"
-1–3 short lines
-1 idea
-No long paragraphs
-```
-
-Avoid:
-
-```text id="qte5li"
-5+ lines on one slide
-multiple examples on one slide
-long technical explanation
-repeating the same point
-```
-
-If a slide needs more than 3 short lines, ask:
-
-```text id="wqso65"
-Can this become two slides?
-Can one detail be removed?
-Is this explanation needed for the post?
-```
-
----
-
-## One-Idea Rule
-
-Each slide should contain one primary idea.
-
-Bad:
-
-> I thought the problem was CSS, but then I checked the API, found the response was missing data, realized validation was wrong, and learned why tests matter.
-
-This contains:
-
-- CSS assumption
-- API check
-- missing data
-- validation
-- testing lesson
-
-Better:
-
-```text id="yl16hx"
+```text
 Slide:
 I thought the problem was CSS.
 
-Next slide:
+Next:
 Then I checked the API response.
 
-Next slide:
-The data was missing before it reached the component.
+Next:
+The data was already wrong before it reached the component.
 ```
 
+A reader should understand each slide quickly and know why the next slide exists.
+
 ---
 
-## Flow Rules
+# 1. Identify the Carousel Archetype First
 
-A carousel should feel like a sequence.
+Before polishing, classify the draft into the archetype that best matches its actual purpose.
 
-Each slide should make the next slide feel necessary.
+Supported default archetypes:
 
-Bad flow:
+- `debug-story`
+- `explainer`
+- `comparison`
+- `case-study`
+- `decision`
+- `insight`
 
-```text id="l3r0or"
-Slide 1: Debugging is important.
-Slide 2: React uses components.
-Slide 3: I built a rental platform.
-Slide 4: Testing helps developers.
+These are structural guides, not rigid templates. Use the minimum structure needed to communicate the idea clearly.
+
+If none fits exactly, choose the closest reasoning pattern instead of forcing the draft into a fictional personal-learning story.
+
+---
+
+## Archetype: `debug-story`
+
+Use when a real bug, failed assumption, debugging path, or technical mistake is the center of the post.
+
+Typical flow:
+
+```text
+Hook
+→ real trigger
+→ initial assumption
+→ friction / failed attempt
+→ diagnosis
+→ realization
+→ practical takeaway
+→ optional peer question
 ```
 
-Good flow:
+Useful when the reader benefits from following the investigation.
 
-```text id="6oyv43"
-Slide 1: I thought this was a CSS bug.
-Slide 2: It happened on my rental details dashboard.
-Slide 3: I changed spacing, but the alignment stayed wrong.
-Slide 4: Then I noticed the data groups had no shared structure.
-Slide 5: The issue was layout logic, not just styling.
+Do not manufacture a wrong assumption or dramatic failure if it did not happen.
+
+---
+
+## Archetype: `explainer`
+
+Use when the primary value is understanding a concept, mechanism, or mental model.
+
+Typical flow:
+
+```text
+Question / tension
+→ simple mental model
+→ how it works
+→ concrete example
+→ important boundary or common confusion
+→ practical takeaway
 ```
 
----
+The post does not need a personal mistake arc.
 
-## Remove These From Carousel Copy
+Good example direction:
 
-Remove or rewrite:
-
-- generic advice
-- motivational endings
-- expert claims
-- long definitions
-- repeated sentences
-- tutorial-style intros
-- “in this post”
-- “you must”
-- “every developer”
-- “best practice”
-- “ultimate guide”
-- “top tips”
-- “important concept”
-- “journey”
-- “never give up”
-- “keep going”
-- engagement bait
-
----
-
-## Preserve These
-
-Do not remove:
-
-- real confusion
-- real mistake
-- project context
-- uncertainty
-- simple wording
-- practical developer perspective
-- technical clarity
-- specific bug or trigger
-- small honest takeaway
-
-The polish should not erase the human part.
-
----
-
-## Before / After Examples
-
-### Example 1: Generic Hook
-
-Bad:
-
-> Debugging is an important skill for every developer.
-
-Good:
-
-> I kept changing code before reading the error.
-
-Reason:
-The good version starts from behavior, not advice.
-
----
-
-### Example 2: Teacher Voice
-
-Bad:
-
-> Every developer should understand how API responses affect frontend components.
-
-Good:
-
-> My component looked broken, but the real problem was the API response.
-
-Reason:
-The good version sounds like something that happened.
-
----
-
-### Example 3: Too Much on One Slide
-
-Bad:
-
-> I was working on the dashboard and the values were not aligned correctly, so I tried changing the CSS, but then I realized the real issue was that the layout did not have a consistent structure for labels, numbers, and status indicators.
-
-Good:
-
-```text id="n9rshu"
-Slide:
-The dashboard values looked misaligned.
-
-Next slide:
-I tried fixing the CSS first.
-
-Next slide:
-But the real issue was the structure behind the layout.
+```text
+Why does a transaction matter?
+→ two database changes belong together
+→ one failing should cancel both
+→ rental/payment example
+→ transaction is not the same as two independent queries
 ```
 
-Reason:
-The good version creates a readable sequence.
+Avoid turning the carousel into textbook documentation.
 
 ---
 
-### Example 4: Weak Takeaway
+## Archetype: `comparison`
 
-Bad:
+Use when the post explains a tradeoff between two approaches, tools, designs, or decisions.
 
-> This taught me that clean code and good UI are very important.
+Typical flow:
 
-Good:
+```text
+Context / decision to make
+→ option A
+→ option B
+→ comparison criteria
+→ tradeoffs
+→ conclusion for this context
+→ when the other option may be better
+```
 
-> A messy layout can make correct data feel wrong.
-
-Reason:
-The good takeaway is specific and memorable.
-
----
-
-### Example 5: Engagement CTA
-
-Bad:
-
-> Save this post and follow for more coding tips.
-
-Good:
-
-> Did you ever fix the wrong part of a bug first?
-
-Reason:
-The good CTA fits the learning moment.
+Do not frame one option as universally correct when the evidence only supports a contextual choice.
 
 ---
 
-## Arabic Carousel Rules
+## Archetype: `case-study`
 
-When polishing Arabic carousel copy:
+Use when the value comes from showing how a real project problem was approached.
 
-- Use Lebanese Arabic if the platform is Instagram.
-- Keep English technical terms natural.
-- Avoid formal Arabic.
-- Avoid translated phrasing.
-- Keep each slide short.
-- Do not over-explain.
-- Preserve the developer voice.
+Typical flow:
 
-Good:
+```text
+Situation
+→ problem
+→ constraints
+→ approach / implementation
+→ evidence
+→ result
+→ lesson or transferable principle
+```
 
-> كنت مفكرها مشكلة CSS.
-> طلعت من structure الصفحة.
-
-Bad:
-
-> في هذا المنشور سوف نناقش أهمية فهم بنية الصفحة قبل تعديل التنسيق.
-
-Good:
-
-> غيرت spacing أكتر من مرة.
-> بس المشكلة بعدها موجودة.
-
-Bad:
-
-> قمت بتعديل المسافات بين العناصر عدة مرات، ولكن المشكلة بقيت قائمة.
+The result should be tied to real project evidence, not generic claims.
 
 ---
 
-## English Carousel Rules
+## Archetype: `decision`
 
-When polishing English carousel copy:
+Use when the post explains why a technical or product decision was made.
 
-- Keep it simple.
-- Avoid corporate LinkedIn tone.
-- Avoid tutorial voice.
-- Use first-person learning.
-- Keep claims small.
-- Use project-specific details.
+Typical flow:
 
-Good:
+```text
+Decision
+→ context
+→ constraints
+→ alternatives
+→ tradeoffs
+→ chosen direction
+→ why it fits now
+→ what would make the decision change later
+```
 
-> I thought the API was broken.
-> The request was fine.
-> My assumption about the response was wrong.
+This archetype is especially useful for architecture and product-engineering content.
 
-Bad:
-
-> Understanding API contracts is essential for building robust frontend applications.
-
----
-
-## Technical Explanation Rule
-
-Carousels can include technical concepts, but they should not become documentation.
-
-Bad:
-
-> A database transaction is a sequence of operations performed as a single logical unit of work, ensuring ACID properties such as atomicity, consistency, isolation, and durability.
-
-Good:
-
-> I understood transactions when I had two database changes that had to succeed together.
-> If one failed, both needed to roll back.
-
-Use simple technical explanation connected to the project.
+Do not rewrite it into “I was wrong, then I learned” unless that is actually the story.
 
 ---
 
-## Repetition Check
+## Archetype: `insight`
 
-Remove repeated ideas.
+Use when one concise observation is the main value and there is not enough depth for a full case study or explainer.
 
-Common repetition patterns:
+Typical flow:
 
-- Same lesson stated on multiple slides.
-- Hook repeated as takeaway.
-- “I learned” repeated too often.
-- Project context repeated without adding new meaning.
-- Same technical term explained twice.
+```text
+Specific observation
+→ evidence / real context
+→ why it matters
+→ consequence or application
+→ concise takeaway
+```
 
-If two slides say the same thing, merge or delete one.
+Keep these carousels shorter. Do not inflate a small insight into eight slides merely because carousels often have eight slides.
 
 ---
 
-## Specificity Check
+# 2. Hook Rules
 
-Replace vague words with concrete details.
+The hook must match the archetype.
+
+A hook does not always need to ask “What happened?”. It may instead make the reader ask:
+
+- Why did they choose that?
+- What is the difference?
+- How does this work?
+- What went wrong?
+- Why does this matter?
+
+Good `debug-story` hook:
+
+> I thought this was a CSS problem. It wasn’t.
+
+Good `decision` hook:
+
+> I kept Studio and Renderer in one package on purpose.
+
+Good `comparison` hook:
+
+> Both structures worked. Only one fit the project I actually had.
+
+Good `explainer` hook:
+
+> I only understood transactions when two database changes had to succeed together.
+
+Bad generic hooks:
+
+- 5 tips every developer should know
+- Why clean code matters
+- Things programmers need to learn
+- My coding journey
+- Important lessons from software development
+
+If the hook could fit hundreds of unrelated programming accounts, rewrite it.
+
+---
+
+# 3. Specificity Rules
+
+Prefer concrete project language over abstract labels.
 
 Vague:
 
 - problem
 - issue
-- thing
 - project
 - code
-- feature
-- concept
 - challenge
+- concept
+- feature
+- thing
 
-Better:
+More useful:
 
 - rental details dashboard
 - API response
 - vehicle status
-- payment balance
-- TypeScript type error
 - Prisma migration
-- CSS grid layout
-- login request
-- test failure
+- TypeScript type error
+- CSS grid
+- authentication flow
+- repository structure
+- renderer adapter
 
-Good:
+Specificity must come from the source material. Never invent specificity to make copy sound stronger.
 
-> I had an issue in my project.
+---
+
+# 4. Flow Rules
+
+A carousel should feel like one sequence, not several related thoughts placed next to each other.
+
+For every adjacent pair of slides, ask:
+
+> Why does this slide need to come after the previous one?
+
+Good flow has a visible relationship such as:
+
+- cause → consequence,
+- question → explanation,
+- option → tradeoff,
+- evidence → conclusion,
+- context → decision,
+- attempt → result.
+
+If two slides have no clear relationship, reorder, bridge, merge, or remove one.
+
+Do not invent transitions that imply reasoning absent from the canonical content.
+
+---
+
+# 5. Text Density
+
+Default target per slide:
+
+```text
+1 primary idea
+1–3 short lines
+no unnecessary paragraph
+```
+
+This is a readability target, not a rigid line-count law.
+
+A technical slide may need slightly more text if shortening it would remove necessary meaning.
+
+When a slide is overloaded, ask:
+
+- Can one detail be removed?
+- Is one sentence only repeating the previous slide?
+- Should this become two slides?
+- Is this detail necessary for the audience payoff?
+
+Do not shorten content until it becomes vague.
+
+---
+
+# 6. Repetition Check
+
+Detect repeated **meaning**, not only repeated wording.
+
+Common repetition:
+
+- the hook restated as the takeaway,
+- the same lesson phrased differently on two slides,
+- project context repeated without adding evidence,
+- the same technical explanation given twice,
+- several slides saying “I realized…” without distinct meaning.
+
+Merge, differentiate, or remove repeated slides.
+
+---
+
+# 7. Technical Explanation Rule
+
+Carousels may explain technical concepts, but should not become documentation.
+
+Bad:
+
+> A database transaction is a sequence of operations performed as a single logical unit of work, ensuring ACID properties...
 
 Better:
 
-> The rental details dashboard was showing money values out of alignment.
+> I understood transactions when two database changes had to succeed together.
+> If one failed, both needed to roll back.
+
+Keep technical explanation tied to the post's actual purpose and audience.
 
 ---
 
-## Slide Quality Checklist
+# 8. Takeaway Rules
 
-For every slide, check:
+The ending should match the archetype.
 
-- What is the one idea?
-- Is the text short?
-- Is the wording specific?
-- Does it move the story forward?
-- Is there unnecessary explanation?
-- Does it sound like the writer?
-- Is there any generic advice?
-- Is there any teacher voice?
-- Can a reader understand it in two seconds?
+A debugging story may end with a changed debugging habit.
 
-If a slide fails, rewrite it.
+A decision post may end with the condition under which the decision should change.
 
----
+A comparison may end with the criteria that determined the choice.
 
-## Full Carousel Checklist
+An explainer may end with the simplest usable mental model.
 
-Before accepting the carousel, check:
+A case study may end with a transferable principle.
 
-- Slide 1 has a specific hook.
-- Slide 2 gives the real trigger.
-- The carousel has a clear learning arc.
-- Each slide has one idea.
-- The flow is logical.
-- The project bridge is present.
-- The takeaway is small and believable.
-- The CTA is peer-level.
-- The voice sounds like a developer working through real problems.
-- The copy does not sound AI-generated.
-- No slide is overloaded.
-- No slide repeats another slide.
-- Technical terms are clear and natural.
+Avoid broad motivational endings such as:
+
+- Consistency is the key to success.
+- Clean code is always important.
+- Never stop learning.
+- Every bug is a lesson.
+
+The takeaway should be narrower than the evidence, never broader.
 
 ---
 
-## Rewriting Process
+# 9. CTA Rules
 
-When polishing a carousel:
+A CTA is optional.
 
-1. Identify the core learning moment.
-2. Identify the strongest hook.
-3. Remove generic slides.
-4. Split overloaded slides.
-5. Tighten each slide to one idea.
-6. Make the sequence clearer.
-7. Add or improve the project bridge.
-8. Replace broad advice with a small takeaway.
-9. Replace engagement bait with a peer-level CTA.
-10. Preserve the original meaning and developer voice.
+Do not force a question if the carousel already ends naturally.
+
+When a CTA fits, keep it peer-level and connected to the content.
+
+Good:
+
+- What would make you split these into separate packages?
+- Which tradeoff would matter most in your project?
+- Did a bug ever expose a wrong assumption like this?
+
+Avoid engagement farming:
+
+- Like and follow for more
+- Save this post
+- Comment “DEBUG”
+- Share this with a developer friend
 
 ---
 
-## Output Standard
+# 10. Arabic Carousel Rules
 
-The final carousel should feel like:
+For Arabic Instagram carousels:
 
-```text id="9gp6ph"
-A real thing happened.
-I misunderstood part of it.
-I checked it.
-I understood something clearer.
-Here is the small lesson.
-Did something similar happen to you?
+- use `lebanese-arabic-writing` for dialect and natural phrasing,
+- use `arabic-technical-language` for technical terminology,
+- keep slide copy concise,
+- preserve the selected archetype,
+- do not convert a decision/explainer into a fake learning story merely to sound personal.
+
+This skill should not duplicate detailed Arabic rules owned by those skills.
+
+---
+
+# 11. English Carousel Rules
+
+For English carousels:
+
+- keep sentences simple,
+- avoid corporate LinkedIn tone,
+- avoid textbook language,
+- use project-specific details,
+- preserve uncertainty and contextual claims,
+- do not force first-person reflection when the archetype is primarily explanatory or comparative.
+
+---
+
+# 12. Remove or Rewrite
+
+Remove or rewrite:
+
+- generic advice,
+- motivational filler,
+- unsupported expert claims,
+- unnecessary definitions,
+- repeated ideas,
+- tutorial-style intros,
+- “in this post”,
+- “every developer”,
+- “best practice” when unsupported,
+- “ultimate guide”,
+- “top tips”,
+- engagement bait,
+- invented drama,
+- fake wrong assumptions,
+- forced realization language.
+
+Preserve:
+
+- real project context,
+- real uncertainty,
+- actual tradeoffs,
+- evidence,
+- specific technical details,
+- small honest conclusions,
+- the canonical meaning.
+
+---
+
+# 13. Required Polishing Process
+
+1. Confirm the canonical meaning is already sound.
+2. Identify the carousel archetype.
+3. Check whether the current slide order fits that archetype.
+4. Identify the strongest archetype-appropriate hook.
+5. Remove generic or redundant slides.
+6. Split overloaded slides.
+7. Tighten each slide to one primary job.
+8. Strengthen transitions without inventing reasoning.
+9. Verify evidence, tradeoffs, and takeaway are in the right places.
+10. Remove or improve the CTA if it is forced.
+11. Re-read the carousel as one continuous sequence.
+12. Produce the complete revised carousel copy.
+
+Do not return only a list of copy problems when enough context exists to repair them.
+
+---
+
+# 14. Required Output
+
+When used as part of refinement, return:
+
+### Archetype
+
+State the selected archetype and why it fits.
+
+### Copy Verdict
+
+Use one:
+
+- `READY`
+- `READY WITH EDITS`
+- `RETURN UPSTREAM`
+
+Use `RETURN UPSTREAM` when the problem is semantic, logical, factual, or strategic rather than copy-level.
+
+### Copy Revision Report
+
+For each meaningful issue:
+
+```text
+Category: HOOK | FLOW | DENSITY | REPETITION | SPECIFICITY | FORMAT | CTA
+Location
+Problem
+Why it matters
+Change
 ```
 
-Not:
+### Revised Carousel
 
-```text id="67v6ts"
-Here is a polished educational carousel about a programming topic.
-```
+Provide the complete revised slide copy, not only fragments.
 
-The best carousel is not the most impressive one.
+### Remaining Human Decisions
 
-The best carousel is the one that feels specific, readable, honest, and useful.
+List only decisions that require creator intent or missing source information. If none remain, say `None`.
+
+---
+
+# Full Carousel Checklist
+
+Before accepting the carousel, confirm:
+
+- the archetype matches the actual content,
+- the structure fits that archetype,
+- the hook creates the right kind of curiosity,
+- every slide has one primary job,
+- slide order is logical,
+- no slide exists only to fill a template slot,
+- project details are specific and source-supported,
+- repeated meaning has been removed,
+- technical explanation is understandable without becoming documentation,
+- the takeaway is proportional to the evidence,
+- the CTA is natural or intentionally omitted,
+- the copy does not distort canonical meaning,
+- the carousel does not sound like a generic AI-generated programming post.
+
+---
+
+## Success Standard
+
+The polished carousel should feel like the clearest visual sequence for **this specific idea**, not like the idea was squeezed into a reusable social-media formula.
+
+A debugging story may feel like an investigation.
+A decision may feel like a tradeoff.
+An explainer may feel like a mental model becoming clear.
+A comparison may feel like criteria leading to a choice.
+A case study may feel like evidence leading to a result.
+An insight may be short and direct.
+
+The format should serve the meaning, not control it.
