@@ -73,7 +73,7 @@ The [Content Format](#content-format) section explains the two fixed outputs; it
 
 # Content Pipeline
 
-This document owns the Content OS lifecycle and workflow handoffs. The [Content Format](#content-format) section defines idea and format-selection principles; the numbered prompt for each stage owns execution details.
+This document owns the Content OS lifecycle and workflow handoffs. The [Content Format](#content-format) section defines idea-development principles and the fixed platform-output contract.
 
 ## Canonical lifecycle
 
@@ -209,17 +209,17 @@ The final reviewer routes issues by ownership rather than patching them in the w
 
 ## Production ownership
 
-| Stage | Owner | Responsibility |
-|---|---|---|
-| Capture inbox | Project agents / manual capture | Preserve potentially useful raw material while context is fresh; do not judge publication worthiness. |
-| Idea qualification | Workflow 01 + `content-strategist` | Develop captured material first, then qualify its strongest supported direction; use `DEVELOP` normally for unfinished potential and `REJECT` only exceptionally. Only selected `READY` ideas proceed. |
-| Brief | Human / Workflow 02 | Approve shared content direction and record both fixed required variants from a `READY` idea. |
-| Canonical draft | Workflow 03 + `content-editor` | Define and repair meaning, evidence, reasoning, and boundaries in `post.md`. |
-| Adaptation | Workflow 04 + relevant writing/format skills + `content-reviewer` | Produce both fixed standalone variants, refine each presentation independently, run the final editorial gates, and generate the required Carousel JSON. |
-| Render validation | Workflow 05 | Validate the editorially approved Carousel renderer output when applicable. |
-| Export | Workflow 06 | Export Carousel assets when applicable. |
-| Publish | Human | Publish the selected approved variant on the platform. |
-| Archive | Workflow 07 | Preserve the exact published variant and update the title index. |
+| Stage              | Owner                                                             | Responsibility                                                                                                                                                                                         |
+| ------------------ | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Capture inbox      | Project agents / manual capture                                   | Preserve potentially useful raw material while context is fresh; do not judge publication worthiness.                                                                                                  |
+| Idea qualification | Workflow 01 + `content-strategist`                                | Develop captured material first, then qualify its strongest supported direction; use `DEVELOP` normally for unfinished potential and `REJECT` only exceptionally. Only selected `READY` ideas proceed. |
+| Brief              | Human / Workflow 02                                               | Approve shared content direction and record both fixed required variants from a `READY` idea.                                                                                                          |
+| Canonical draft    | Workflow 03 + `content-editor`                                    | Define and repair meaning, evidence, reasoning, and boundaries in `post.md`.                                                                                                                           |
+| Adaptation         | Workflow 04 + relevant writing/format skills + `content-reviewer` | Produce both fixed standalone variants, refine each presentation independently, run the final editorial gates, and generate the required Carousel JSON.                                                |
+| Render validation  | Workflow 05                                                       | Validate the editorially approved Carousel renderer output when applicable.                                                                                                                            |
+| Export             | Workflow 06                                                       | Export Carousel assets when applicable.                                                                                                                                                                |
+| Publish            | Human                                                             | Publish the selected approved variant on the platform.                                                                                                                                                 |
+| Archive            | Workflow 07                                                       | Preserve the exact published variant and update the title index.                                                                                                                                       |
 
 ## Refinement entry point
 
