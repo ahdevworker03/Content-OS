@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-23-content-os-idea-qualification-gate",
+  "captured_at": "2026-10-23T12:00:00Z",
+  "project": {
+    "name": "Content OS",
+    "repository": "content-os",
+    "area": "Content lifecycle and workflow contracts"
+  },
+  "idea": {
+    "title": "Separate capturing content opportunities from approving them",
+    "type": "workflow-design",
+    "summary": "Refined the Content OS lifecycle so project agents preserve moderately screened raw ideas in an inbox, while a distinct editorial qualification gate decides whether each idea deserves production."
+  },
+  "context": {
+    "goal": "Align Content OS workflow documentation with the existing file-based idea capture practice and approved production lifecycle.",
+    "situation": "Project agents already capture potentially useful opportunities into content/ideas after primary work is complete and verified, but Workflow 01 was still named Idea Discovery and treated recent-work scanning as its normal production entrypoint.",
+    "problem": "The capture inbox and editorial publication decision were blurred across workflow and lifecycle documentation, risking stricter capture or unqualified ideas reaching Content Planning.",
+    "investigation": "Compared the playbook, capture rules, lifecycle, architecture/product descriptions, Brand Strategy, Posted Titles, idea schema, and content-strategist skill. Found that the three-verdict gate already existed, while the input contract and ownership boundaries were inconsistent.",
+    "decision": "Keep capture intentionally moderate and raw; make Workflow 01 an editorial qualification gate with REJECT, DEVELOP, or READY; allow only a selected current READY idea into Workflow 02.",
+    "implementation": "Updated workflow and lifecycle documentation, the strategist skill, and active README/architecture/product references. Kept Workflow 03 as canonical meaning ownership and Workflow 04 as platform/language adaptation ownership.",
+    "result": "Documentation now separates capture/ingestion from production qualification and defines the handoff to Content Planning."
+  },
+  "content_value": {
+    "learning_points": [
+      "A useful raw capture threshold and a strict publication-quality gate solve different problems and should have separate owners.",
+      "Moderately noisy capture can preserve authentic context without implying every saved idea should become a post.",
+      "Explicit workflow handoffs help prevent adjacent stages from repeating or silently replacing each other's decisions."
+    ],
+    "story_points": [
+      "The system already had a strategist verdict gate, but the workflow name and entrypoint still implied idea discovery.",
+      "The correction was primarily a contract/documentation alignment rather than an application feature.",
+      "The approved boundary preserves raw capture, adds editorial qualification, then allows only READY ideas into planning."
+    ],
+    "possible_angles": [
+      "Why a capture inbox should not double as a publishing approval queue.",
+      "Separating evidence-preserving idea capture from editorial qualification.",
+      "How explicit stage ownership prevents workflow gates from being duplicated downstream."
+    ]
+  },
+  "resources": [],
+  "notes": [
+    "This is a raw capture, not a qualification verdict or publish-ready content direction.",
+    "The change was documentation and skill-contract alignment; no renderer, Studio, export, layout, or schema behavior changed."
+  ]
+}

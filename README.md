@@ -60,7 +60,7 @@ PNG / PDF export
 Published archive
 ```
 
-Project agents can capture useful content ideas from completed development work into `content/ideas/` according to the repository's idea-capture rules.
+Project agents can capture raw content opportunities at an intentionally moderate threshold from completed, verified work into `content/ideas/` according to the repository's idea-capture rules. The folder is an inbox, not a publishing queue: Workflow 01 — Idea Qualification assigns `REJECT`, `DEVELOP`, or `READY`, and only a selected `READY` idea proceeds to Workflow 02 — Content Planning.
 
 The content is not published automatically. Ideas still pass through explicit quality, writing, review, rendering, and approval stages before publication.
 

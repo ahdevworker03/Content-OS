@@ -237,17 +237,22 @@ Content OS later owns:
 
 ```text
 captured idea
-→ review
-→ deduplication / merging
-→ brand fit
-→ content strategy
-→ platform choice
-→ format choice
-→ final angle
-→ writing
-→ design
-→ validation
+→ Workflow 01 — Idea Qualification
+  ├─ assess trigger, audience value, evidence, strategic angle, and brand fit
+  └─ verdict: REJECT / DEVELOP / READY
+     └─ selected READY only → Workflow 02 — Content Planning
+          └─ Approved Content Brief:
+             primary format, target platforms, required variants,
+             shared creative direction, and constraints
+→ Workflow 03 — Post Content Builder / canonical content
+→ Workflow 04 — Format / Platform Adaptation
+  └─ platform-specific language, voice, structure, and presentation
+→ validation / export where applicable
 → publishing preparation
 ```
 
+Workflow 01 performs deduplication/consolidation and brand/content qualification before planning. Workflow 02 chooses the primary format, target platforms, and required variants inside the approved brief. Workflow 04 performs the actual platform/language adaptation; Workflow 02 does not write platform-specific copy.
+
 Project agents only preserve authentic raw material from the work while the context is fresh.
+
+`content/ideas/` is a raw capture inbox, not an approved publishing backlog. Its intentionally moderate threshold must not be raised to reduce inbox volume. Project agents do not decide publication worthiness, deduplicate across Content OS, choose platform/format, apply final brand voice, or write final content; Workflow 01 owns the editorial qualification gate and only a current `READY` idea proceeds to Workflow 02. Manual raw ideas and ideas discovered from recent work enter through the same qualification step.

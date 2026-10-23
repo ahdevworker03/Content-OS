@@ -5,11 +5,11 @@
 
 # Content Format
 
-This document defines format-selection principles used while planning an approved idea. Workflow 01 selects ideas; Workflow 02 approves the brief, primary format, target platforms, and required variants.
+This document defines format-selection principles used while planning a qualified idea. Captured ideas enter Workflow 01 for qualification; Workflow 02 approves the brief, primary format, target platforms, and required variants from a selected READY idea.
 
 It answers the question: **"Given a trigger, what content format should this become?"**
 
-The complete lifecycle is defined in the [Content Pipeline](#content-pipeline) section: **Idea → Approved Content Brief → Canonical Content Draft → Format / Platform Adaptation → Render Validation (where applicable) → Export (where applicable) → Publish → Archive the exact published variant**. Editorial quality gates run inside the relevant numbered workflows; they do not add parallel lifecycle stages. This document provides format-selection guidance only.
+The complete lifecycle is defined in the [Content Pipeline](#content-pipeline) section: **Capture / ingestion → Qualified READY Idea → Approved Content Brief → Canonical Content Draft → Format / Platform Adaptation → Render Validation (where applicable) → Export (where applicable) → Publish → Archive the exact published variant**. Editorial quality gates run inside the relevant numbered workflows; they do not add parallel lifecycle stages. This document provides format-selection guidance only.
 
 ---
 
@@ -40,7 +40,7 @@ The idea-quality gate in Workflow 01 uses `content-strategist` to decide whether
 
 ## How to Select a Format
 
-Once a trigger is validated, choose between an Instagram Carousel and a LinkedIn post based on the depth and audience of the insight.
+Once a trigger is qualified, Workflow 02 chooses the approved format based on the depth and audience of the insight.
 
 ### Carousel
 
@@ -70,9 +70,9 @@ Every piece should aim to:
 
 ## Relationship to the Content Lifecycle
 
-The planning decisions in this document inform idea evaluation and format selection. Workflow 02 records the approved primary format, target platforms, and required variants in the Content Brief.
+The planning decisions in this document inform Workflow 01's strategic format recommendation and Workflow 02's final format selection. Workflow 02 records the approved primary format, target platforms, and required variants in the Content Brief.
 
-The [Content Format](#content-format) section answers only **"which format fits this idea?"** It does not define canonical writing, adaptation, rendering, export, publication, or archive behavior. Those lifecycle stages are owned by the [Content Pipeline](#content-pipeline) section and its numbered workflow prompts.
+The [Content Format](#content-format) section informs **"which format is likely to fit this direction?"** Workflow 01 may recommend a primary format; Workflow 02 owns the approved format and variants. This document does not define canonical writing, adaptation, rendering, export, publication, or archive behavior. Those lifecycle stages are owned by the [Content Pipeline](#content-pipeline) section and its numbered workflow prompts.
 
 # Content Pipeline
 
@@ -81,17 +81,19 @@ This document owns the Content OS lifecycle and workflow handoffs. The [Content 
 ## Canonical lifecycle
 
 ```text
-Idea
-  └─ idea-quality gate: content-strategist → REJECT / DEVELOP / READY
-→ Approved Content Brief
-→ Canonical Content Draft
+Real work
+  → automatic/manual capture or optional discovery → content/ideas/ (raw capture inbox)
+  → Workflow 01 — Idea Qualification: content-strategist → REJECT / DEVELOP / READY
+    └─ only selected READY ideas proceed
+  → Approved Content Brief
+  → Canonical Content Draft
   └─ semantic/editorial gate: content-editor
-→ Format / Platform Adaptation
+  → Format / Platform Adaptation
   └─ language + format refinement → content-reviewer
-→ Render Validation (where applicable)
-→ Export (where applicable)
-→ Publish
-→ Archive the exact published variant
+  → Render Validation (where applicable)
+  → Export (where applicable)
+  → Publish
+  → Archive the exact published variant
 ```
 
 The quality gates are internal to the existing stages. They do not create additional numbered workflows or new persistence artifacts.
@@ -102,19 +104,20 @@ Publishing is a manual platform action between Workflow 06 and Workflow 07; it i
 
 ### 1. Idea
 
-An authentic experience, question, or observation is selected for development.
+`content/ideas/` holds raw captured opportunities, not approved publishing ideas. Workflow 01 evaluates captures for authentic trigger, useful/distinct supported insight, audience payoff, brand fit, and duplication. Optional discovery from recent work is an ingestion path and feeds the same inbox; it is not the mandatory production stage.
 
-- **Owner:** Workflow 01 — `framework/workflows/Content Creation Playbook.md#01--idea-discovery`
+- **Capture owner:** automatic/manual ingestion under `framework/workflows/Content Idea Capture Rules.md`; capture remains intentionally moderate and does not decide publishability.
+- **Qualification owner:** Workflow 01 — `framework/workflows/Content Creation Playbook.md#01--idea-qualification`
 - **Quality gate:** `.agents/skills/content-strategist/SKILL.md`
 - **Gate outcome:** `REJECT`, `DEVELOP`, or `READY`; only `READY` proceeds.
-- **Output:** selected and refined idea with its trigger, strongest defensible angle, audience payoff, supporting context, and recommended format.
+- **Output:** verdict for each evaluated idea; for meaningful `DEVELOP` and `READY`, a refined strategic direction with trigger, strongest defensible angle, evidence, audience payoff, brand/pillar fit, format/platform recommendation, and factual boundaries.
 
 ### 2. Approved Content Brief
 
 Planning fixes what the post means, who it serves, how it is framed, and where it will appear.
 
 - **Owner:** Workflow 02 — `framework/workflows/Content Creation Playbook.md#02--content-planning`
-- **Input requirement:** a `READY` idea from the Workflow 01 quality gate.
+- **Input requirement:** one selected idea with a current `READY` verdict and strategic direction from Workflow 01. `REJECT`, unresolved `DEVELOP`, or unqualified ideas return to Workflow 01.
 - **Output:** approved brief with primary format, target platforms, and explicit required variants.
 
 ### 3. Canonical Content Draft
@@ -189,7 +192,7 @@ The final reviewer routes issues by ownership rather than patching them in the w
 - factual issues → source material and Workflow 03
 - language or voice issues → relevant language skill in Workflow 04
 - format/pacing issues → relevant format skill in Workflow 04
-- genericity or audience-value issues that expose a weak underlying angle → Workflow 01/02 / `content-strategist`
+- genericity or audience-value issues that expose a weak underlying angle → Workflow 01 / `content-strategist`; Workflow 02 returns the brief upstream rather than requalifying the idea
 
 ## Quality checks
 
@@ -209,7 +212,8 @@ The final reviewer routes issues by ownership rather than patching them in the w
 
 | Stage | Owner | Responsibility |
 |---|---|---|
-| Idea | Human / Workflow 01 + `content-strategist` | Select, challenge, refine, and gate an authentic idea; only `READY` proceeds. |
+| Capture inbox | Project agents / manual capture | Preserve potentially useful raw material while context is fresh; do not judge publication worthiness. |
+| Idea qualification | Workflow 01 + `content-strategist` | Decide whether a capture merits content and identify its strongest supported strategic direction; only selected `READY` ideas proceed. |
 | Brief | Human / Workflow 02 | Approve direction and required variants from a `READY` idea. |
 | Canonical draft | Workflow 03 + `content-editor` | Define and repair meaning, evidence, reasoning, and boundaries in `post.md`. |
 | Adaptation | Workflow 04 + relevant writing/format skills + `content-reviewer` | Produce only approved standalone variants, refine presentation, run the final editorial gate, and generate Carousel JSON only when needed. |

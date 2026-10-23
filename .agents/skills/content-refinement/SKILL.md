@@ -41,8 +41,10 @@ Classify the artifact before loading specialists.
 Run `content-strategist` first.
 
 - `REJECT` stops that direction.
-- `DEVELOP` must be refined from existing evidence and evaluated again before writing.
-- `READY` may proceed to planning or canonical writing.
+- `DEVELOP` must be refined from existing evidence and evaluated again; it cannot proceed to writing until it is marked `READY`.
+- `READY` proceeds to Workflow 02 — Content Planning only.
+
+`REJECT`, `DEVELOP`, and unqualified ideas cannot proceed to canonical writing. Workflow 03 begins only after Workflow 02 has produced an approved Content Brief; this skill must not route an idea directly to canonical writing.
 
 Use the strategist's own required report and refined direction. Do not duplicate its evaluation inside this orchestrator.
 

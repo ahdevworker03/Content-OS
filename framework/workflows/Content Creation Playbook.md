@@ -2,7 +2,7 @@
 
 ### Plan
 
-- [01 — Idea Discovery](#01--idea-discovery)
+- [01 — Idea Qualification](#01--idea-qualification)
 - [02 — Content Planning](#02--content-planning)
 
 ### Create
@@ -19,19 +19,19 @@
 
 - [07 — Archive Published Post](#07--archive-published-post)
 
-# 01 — Idea Discovery
+# 01 — Idea Qualification
 
 ## Purpose
 
-Discover, evaluate, refine, and recommend high-potential content ideas grounded in real work and aligned with the creator's brand strategy. This workflow identifies content opportunities from current systems, decisions, projects, technical discoveries, and relevant learning context. It is responsible for idea generation, refinement, and selection only — it does not plan content, write content, render, export, or archive.
+Evaluate and refine raw captured ideas to determine whether each contains a sufficiently strong, authentic, useful, evidence-supported, brand-fitting content opportunity. Workflow 01 decides whether there is a worthwhile post and identifies its strongest supported strategic direction. It does not routinely scan recent work as the normal production entrypoint, and it does not plan the brief, write content, render, export, or archive.
 
 ---
 
 ## Scope
 
-This workflow begins with user context, ongoing work, recent learning, project activity, or previously identified opportunities.
+The normal input is one or more existing raw captures in `content/ideas/<idea-folder>/idea.json`, with curated resources, any explicit user context, source evidence, Brand Strategy, Posted Titles, and the `content-strategist` skill. A manually supplied raw idea may also be evaluated before it is persisted.
 
-It ends only when one or more recommended content ideas have passed the idea-quality gate and received a `READY` verdict from `content-strategist`.
+It ends when every evaluated idea has exactly one current `REJECT`, `DEVELOP`, or `READY` verdict, with a refined strategic direction for every meaningful `DEVELOP` or `READY` result. Only `READY` ideas may proceed to Workflow 02.
 
 ---
 
@@ -41,21 +41,19 @@ It ends only when one or more recommended content ideas have passed the idea-qua
 - `framework/memory/Posted Titles.md` — Published content index for duplication checking.
 - `.agents/skills/content-strategist/SKILL.md` — Mandatory idea-quality gate.
 
-Use `framework/strategy/Brand Strategy.md` in Workflow 01 for strategic fit only: identity, audience, pillars, boundaries, and brand fit. Do not apply platform-specific writing treatment, voice polishing, or adaptation rules during idea discovery. Production and renderer documents are not required for idea discovery.
+Use Brand Strategy for identity, audience, pillars, boundaries, and fit. Do not apply platform-language writing treatment, voice polishing, or adaptation rules. Optional discovery from recent work is an ingestion behavior: save its raw capture to `content/ideas/`, then qualify it here.
 
 ---
 
 ## Inputs
 
-- **Current user context** — What the creator is building, investigating, deciding, studying, or trying to understand.
-- **Recent projects** — Active or recently completed project work that could generate authentic content.
-- **Learning experiences** — Lectures, tutorials, books, or courses the creator is currently engaged with.
-- **Technical discoveries** — Bugs solved, concepts understood, tools learned, or workflows improved.
-- **User notes** — Any thoughts, observations, or reflections the user provides.
-- **Screenshots and code snippets** — Visual or code-based material that documents real experiences.
-- **Questions the user recently explored** — Topics the creator investigated out of curiosity or necessity.
+- **Captured idea(s)** — Normally `content/ideas/<idea-folder>/idea.json`, with curated supporting resources.
+- **Explicit user context and source evidence** — Details needed to interpret and verify the captured experience.
+- **Manually supplied raw idea** — Optional, even if it has not yet been persisted.
 - **Previously published content** — Existing posts to reference for continuity or to identify gaps.
 - **Framework strategy document** — `framework/strategy/Brand Strategy.md` for identity, audience, pillars, boundaries, and brand fit.
+
+The capture inbox is intentionally moderately noisy. Qualification, not capture, determines whether an idea merits production.
 
 ---
 
@@ -83,17 +81,18 @@ For every `DEVELOP` or `READY` idea, the strategist must provide a refined conte
 - **Recommended platforms** — Which platforms the content should target.
 - **Why the format fits** — Why the idea has the right depth and structure for that format.
 - **What not to claim** — Important factual or certainty boundaries.
+- **Factual/uncertainty boundaries** — What remains unknown or qualified.
 - **Notes for Content Planning** — Context, warnings, or observations that will help Workflow 02 evaluate the idea.
 
 Only a `READY` idea becomes official input for Content Planning.
 
-**Optional persistence.** By default, recommendations are delivered in the conversation. If the user asks to save a selected idea, create `content/ideas/<YYYY-MM-DD-project-slug>/idea.json`, with optional curated supporting resources beside it. Follow `framework/model/idea.schema.json`; see `framework/workflows/Content Idea Capture Rules.md` for capture guidance. This manual, user-driven discovery and saving flow is separate from automatic project-agent capture after completed and verified work.
+Optional ingestion remains available through “find content ideas from my recent work”: capture raw idea(s) under `content/ideas/` using `framework/workflows/Content Idea Capture Rules.md`, then run this qualification gate. Do not make discovery the mandatory production entrypoint or treat capture as approval.
 
 ---
 
 ## Success Criteria
 
-Idea Discovery is successful when all of the following are true:
+Idea Qualification is successful when all of the following are true:
 
 - **Every idea is grounded in authentic experience.** No hypothetical or fabricated topics.
 - **Every idea has a strategist verdict.** No candidate proceeds by default.
@@ -104,6 +103,9 @@ Idea Discovery is successful when all of the following are true:
 - **The insight is more than a description of what happened.** There is a clear, defensible idea worth communicating.
 - **The evidence supports the insight.** The idea does not depend on invented facts, outcomes, or conclusions.
 - **The audience payoff is explicit.** The reader gains a useful model, tradeoff, question, or lesson.
+- **All required qualification questions are answered.** Assess whether the trigger is real and specific; whether it contains a useful idea rather than activity; the tension and insight; genericity; evidence and its limits; audience problem and payoff; brand fit; duplication and distinctness; substance; and claims that must remain bounded.
+- **Overlapping captures are consolidated conceptually.** Do not treat heavily overlapping ideas as separate proposed posts without a distinct direction.
+- **Backlog priority is reasoned.** When several ideas qualify, recommend the strongest next candidate using audience value, distinctiveness, evidence, timing/relevance, and effort/value; do not default to newest.
 - **The suggested format matches the depth of the topic.** A shallow observation is not inflated into a Carousel, and a deep concept is not reduced to a brief post.
 - **The rationale for selecting the idea is clear.** The reason this specific experience deserves content is explicit.
 
@@ -111,16 +113,14 @@ Idea Discovery is successful when all of the following are true:
 
 ## Workflow
 
-1. **Gather current context.** Collect all available input from the user — their current projects, learning focus, recent discoveries, and any notes or material they have shared.
-2. **Review recent work and context.** Identify systems, decisions, bugs, breakthroughs, confusions, tradeoffs, or concepts that could anchor authentic content.
-3. **Consult `framework/strategy/Brand Strategy.md`.** Confirm the creator's identity, audience, pillars, boundaries, and brand fit. Do not apply platform-specific writing treatment at this stage.
-4. **Check previously published topics.** Read `framework/memory/Posted Titles.md`. Avoid near-duplicates unless the angle is substantially different.
-5. **Identify potential content opportunities.** List the strongest real triggers without forcing every activity into a post.
-6. **Run the `content-strategist` gate.** Evaluate trigger, tension, insight, evidence, audience payoff, non-obviousness, specificity, depth/format fit, duplication, and brand fit.
-7. **Handle the verdict.** For `REJECT`, explain why and stop developing that idea. For `DEVELOP`, use the strategist's refinement report to strengthen the angle from existing evidence, then evaluate again. Do not invent missing substance. For `READY`, keep the strategist's refined direction as the official idea package.
-8. **Prioritize READY ideas.** If more than one idea is `READY`, identify the strongest one based on audience value, distinctiveness, evidence, timing, and effort versus impact.
-9. **Select the idea or ideas to move into Content Planning.** Only ideas with a current `READY` verdict may proceed to Workflow 02.
-10. **Save ideas if requested (optional).** If the user wants a selected idea saved, create its own folder at `content/ideas/<YYYY-MM-DD-project-slug>/` with a required `idea.json` and optional curated supporting resources. Use the date and a short, lowercase, hyphen-separated project/topic slug. Follow `framework/model/idea.schema.json` and `framework/workflows/Content Idea Capture Rules.md`; keep format, platform, and brand recommendations in the conversation for Content Planning rather than adding fields outside the schema. If the user did not ask to save, deliver the recommendations in conversation only and skip this step.
+1. **Load the capture(s).** Read the raw `idea.json` and curated resources, along with explicit user context and relevant source evidence. If discovery from recent work was explicitly requested, treat it as optional capture/ingestion and qualify the resulting captures here.
+2. **Consult Brand Strategy and Posted Titles.** Assess identity, audience, pillars, boundaries, brand fit, and duplication. A similar prior post is acceptable only where the new direction is genuinely distinct.
+3. **Assess each capture.** Answer the qualification questions: real/specific trigger; useful idea versus activity; tension/question and insight; specificity; supporting evidence and whether it supports the insight; audience problem/payoff; brand fit; duplication/distinctness; sufficiency; unsupported claims and uncertainty. Consolidate heavily overlapping captures as one content direction where appropriate.
+4. **Run the `content-strategist` gate.** Assign exactly one verdict per idea. Never invent experience, evidence, outcomes, certainty, or opinions.
+5. **Handle each verdict.** For `REJECT`, explain why and stop developing it. For `DEVELOP`, refine from existing evidence and reevaluate; it cannot proceed until marked `READY`. For `READY`, retain the refined direction as the official strategic recommendation.
+6. **Provide direction for meaningful `DEVELOP` and all `READY` results.** Include the required direction fields above. These are recommendations, not publish-ready copy.
+7. **Prioritize the backlog.** Report ideas under `READY`, `DEVELOP`, and `REJECT`. If multiple are READY, recommend the strongest next candidate using audience value, distinctiveness, evidence, timing/relevance, and effort/value. The user may choose another READY idea.
+8. **Hand off only selected READY ideas.** Only an idea with a current `READY` verdict and refined direction may become an official Workflow 02 input.
 
 ---
 
@@ -131,6 +131,7 @@ Idea Discovery is successful when all of the following are true:
 - Never approve an idea only because it can be turned into content.
 - Never duplicate previously published content without a substantially different angle.
 - Never begin canonical writing, slide writing, or platform adaptation here.
+- Never write Lebanese Arabic hooks, carousel slides, LinkedIn paragraphs, captions, final CTAs, or other platform-language copy.
 - Never make production decisions about rendering, export, or archiving.
 - Persistence in this manual workflow is optional and user-directed. When saving, use the idea folder and `idea.json` representation defined by `framework/model/idea.schema.json`; automatic project-agent capture remains a separate behavior governed by `framework/workflows/Content Idea Capture Rules.md`.
 
@@ -138,7 +139,7 @@ Idea Discovery is successful when all of the following are true:
 
 ## Completion
 
-This workflow ends only after at least one selected idea has a `READY` verdict and a refined direction suitable for Content Planning, or after reporting that no candidate is currently ready. No further workflows are executed automatically. The agent stops.
+This workflow ends after every evaluated idea has a current verdict and the backlog recommendation is clear, including when no idea is READY. No further workflows are executed automatically. The agent stops.
 
 # 02 — Content Planning
 
@@ -148,7 +149,7 @@ Turn one `READY` idea into an approved Content Brief that fixes the idea, audien
 
 ## Scope
 
-This workflow starts with a `READY` idea from Workflow 01 and ends with one approved Content Brief. It makes planning decisions only. It does not write canonical content, adapt variants, render, export, publish, or archive.
+This workflow starts with one selected idea carrying a current `READY` qualification and its strategic direction from Workflow 01, and ends with one approved Content Brief. It defines exactly what is being made; it does not rerun qualification. It does not write canonical content, adapt variants, render, export, publish, or archive.
 
 ## Required Reading
 
@@ -191,11 +192,11 @@ The required variants must be explicit and compatible with the primary format an
 ## Workflow
 
 1. Confirm the selected idea has a current `READY` verdict and review the strategist's refined direction.
-2. Check fit with `framework/strategy/Brand Strategy.md`, the audience, and existing published titles without weakening the validated core angle. Use platform voice/language rules only where they affect planning; detailed writing treatment remains Workflow 04's responsibility.
-3. Define the audience problem, key insight, outcome, content pillar, evidence, and factual boundaries.
+2. Confirm the approved strategic direction remains consistent with Brand Strategy and published-content constraints. If worthiness, genericity, core insight, brand fit, or evidence sufficiency is in doubt, return to Workflow 01 rather than independently re-qualifying or replacing its decisions.
+3. Formalize the approved audience/outcome, content pillar, evidence, and factual boundaries in the Content Brief.
 4. Choose the **primary format** using the validated depth/format recommendation as input.
 5. Choose **target platforms** and list each **required variant** as a platform/format pair.
-6. Set the shared creative direction and constraints. Resolve strategy decisions here; do not delegate them to later workflows.
+6. Set the shared creative direction and constraints for the approved direction. Do not reopen qualification decisions; return any concern about the worthiness or core angle to Workflow 01.
 7. Review the brief for completeness and approve it for Workflow 03.
 
 ## Success Criteria
@@ -415,7 +416,7 @@ Issue ownership:
 - `FACTUAL` → approved sources and Workflow 03.
 - `LANGUAGE` or `VOICE` → the relevant language skill or format rules in Workflow 04.
 - `FORMAT`, pacing, density, hook, or carousel flow → `carousel-copy-polish` or the relevant format rules.
-- `GENERICITY` or `AUDIENCE_VALUE` that reveals a weak underlying angle → Workflow 01/02 / `content-strategist`.
+- `GENERICITY` or `AUDIENCE_VALUE` that reveals a weak underlying angle → Workflow 01 / `content-strategist`; Workflow 02 returns the concern upstream rather than requalifying.
 - `REPETITION` → repair at the layer where the repeated meaning originated.
 
 Use at most two automatic repair-and-review cycles for one variant in one execution. If a blocking issue remains, surface it instead of endlessly rewriting or inventing a solution.

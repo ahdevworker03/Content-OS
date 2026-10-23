@@ -325,7 +325,8 @@ The system should understand and plan before producing final content.
 Expected order:
 
 ```
-Idea → Brief → Canonical Content → Format / Platform Variants
+Capture / ingestion → Qualified READY Idea → Approved Content Brief → Canonical Content
+  → Format / Platform Variants
   → Design / Rendering where applicable → Review → Export / Publish
 ```
 
@@ -1110,7 +1111,7 @@ A short continuity mapping between the current internal system and future produc
 
 | Current Internal System | Future Product Experience |
 |---|---|
-| Workflow 01 — Idea Discovery | Describe Idea / capture idea |
+| Workflow 01 — Idea Qualification | Qualify captured idea; only READY proceeds |
 | Workflow 02 — Content Planning | AI Brief |
 | Workflow 03 — Post Content Builder | Write only the Canonical Content Draft |
 | Workflow 04 — Format Adaptation | Create approved standalone variants; produce Carousel content/model data only for Carousel |
@@ -1512,7 +1513,7 @@ A **Version** is a saved state of a Post/Carousel.
 Conceptual lifecycle states:
 
 ```
-Idea → Approved Content Brief → Canonical Content Draft → Format / Platform Adaptation
+Capture / ingestion → Qualified READY Idea → Approved Content Brief → Canonical Content Draft → Format / Platform Adaptation
   → Render Validation (where applicable) → Export (where applicable)
   → Publish → Archive the exact published variant
 ```
@@ -1545,7 +1546,7 @@ Idea → Approved Content Brief → Canonical Content Draft → Format / Platfor
 | Domain Object | Current Representation |
 |---|---|
 | Brand | Brand View / Brand Voice / writing skills |
-| Idea | `content/ideas/<YYYY-MM-DD-project-slug>/` with required `idea.json` and optional curated supporting resources |
+| Idea | Raw capture inbox at `content/ideas/<YYYY-MM-DD-project-slug>/` with required `idea.json` and optional curated resources; Workflow 01 qualification precedes Content Planning |
 | Post | Groups the related idea, brief, canonical draft, approved variants, applicable Carousel data, exports, and publication/archive records |
 | Content Brief | Current planning workflow output; approved before canonical writing |
 | Canonical Content Draft | `content/drafts/post.md` |
