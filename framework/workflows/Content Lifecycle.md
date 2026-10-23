@@ -5,11 +5,11 @@
 
 # Content Format
 
-This document defines format-selection principles used while planning a qualified idea. Captured ideas enter Workflow 01 for qualification; Workflow 02 approves the brief, primary format, target platforms, and required variants from a selected READY idea.
+This document defines the fixed platform outputs and lifecycle for the current personal Content OS. Every qualified idea produces both an Instagram Carousel and a LinkedIn Post. Workflow 01 qualifies and develops the idea; Workflow 02 plans shared meaning and records the inherited outputs in the brief; Workflow 04 writes each platform adaptation.
 
-It answers the question: **"Given a trigger, what content format should this become?"**
+It describes how the required formats serve the shared content direction. It is not a per-idea platform/format selection policy.
 
-The complete lifecycle is defined in the [Content Pipeline](#content-pipeline) section: **Capture / ingestion → Qualified READY Idea → Approved Content Brief → Canonical Content Draft → Format / Platform Adaptation → Render Validation (where applicable) → Export (where applicable) → Publish → Archive the exact published variant**. Editorial quality gates run inside the relevant numbered workflows; they do not add parallel lifecycle stages. This document provides format-selection guidance only.
+The complete lifecycle is defined in the [Content Pipeline](#content-pipeline) section: **Capture / ingestion → Qualified READY Idea → Approved Content Brief → Canonical Content Draft → Instagram Carousel + LinkedIn Post adaptation → Carousel validation/export (where applicable) → Publish → Archive the exact published variants**. Editorial quality gates run inside the relevant numbered workflows; they do not add parallel lifecycle stages.
 
 ---
 
@@ -23,7 +23,7 @@ Content should never be created from abstract ideas or generic topics. A trigger
 
 ---
 
-## How to Evaluate a Trigger
+## How Workflow 01 Develops a Trigger
 
 Not every daily experience becomes content. A good trigger has:
 
@@ -32,28 +32,25 @@ Not every daily experience becomes content. A good trigger has:
 - **Shareability:** The insight can be explained clearly to a peer.
 - **Relevance:** The trigger relates to the content pillars defined in `Brand Strategy.md`.
 
-Triggers that lack specificity or a learning outcome should be noted but not developed into content.
+When a captured trigger lacks specificity or a clear learning outcome, Workflow 01 should first clarify and develop it from available evidence. Leave it in `DEVELOP` if useful substance exists but remains unresolved.
 
-The idea-quality gate in Workflow 01 uses `content-strategist` to decide whether a candidate is `REJECT`, `DEVELOP`, or `READY`. Only `READY` ideas may enter Content Planning. `DEVELOP` ideas must be refined first; `REJECT` ideas must not be forced into production.
+Workflow 01 uses `content-strategist` to develop captured material and assign `REJECT`, `DEVELOP`, or `READY`. `DEVELOP` is the normal intermediate state for useful but unfinished ideas; try reasonable evidence-based refinement before using the exceptional `REJECT` verdict. Only `READY` ideas may enter Content Planning.
 
 ---
 
-## How to Select a Format
+## Fixed Platform Outputs
 
-Once a trigger is qualified, Workflow 02 chooses the approved format based on the depth and audience of the insight.
+Every content idea that reaches production in the current personal Content OS produces both required variants. Workflow 02 records these inherited outputs; it does not decide whether either is included.
 
 ### Carousel
 
-Use when:
-- The concept requires a structured, multi-slide explanation that guides the reader step by step.
-- The reader needs to follow the reasoning, not just see a conclusion.
-- The insight has enough depth to fill 5–10 slides grounded in real code or project work.
+The Instagram Carousel presents the shared insight in Lebanese Arabic through visual, multi-slide storytelling. Workflow 04 determines the carousel narrative, slide structure and copy based on the canonical content and `Carousels.md` rules; it does not replace the LinkedIn variant.
 
 Refer to [`Carousels.md`](../formats/Carousels.md) for full format rules — structure, slide schema, constraints, and best practices.
 
 ### LinkedIn Post
 
-Use when the idea is best expressed as a concise professional explanation or reflection grounded in a specific project, system, decision, or learning moment. Focus on the useful reasoning, not only what changed in the writer’s thinking.
+The LinkedIn Post presents the same supported insight in English through professional explanation or reflection grounded in the project, system, decision, or learning moment. Workflow 04 independently adapts its structure and copy; it is not omitted because the Instagram version exists.
 
 Refer to [`linkedin.md`](../formats/linkedin.md) for LinkedIn structure, voice, examples, and writing constraints.
 
@@ -70,9 +67,9 @@ Every piece should aim to:
 
 ## Relationship to the Content Lifecycle
 
-The planning decisions in this document inform Workflow 01's strategic format recommendation and Workflow 02's final format selection. Workflow 02 records the approved primary format, target platforms, and required variants in the Content Brief.
+Workflow 01 does not choose platforms or formats. Workflow 02 locks the shared content direction and records both fixed required variants in the Content Brief. Workflow 04 owns language, voice, structure, and presentation for each.
 
-The [Content Format](#content-format) section informs **"which format is likely to fit this direction?"** Workflow 01 may recommend a primary format; Workflow 02 owns the approved format and variants. This document does not define canonical writing, adaptation, rendering, export, publication, or archive behavior. Those lifecycle stages are owned by the [Content Pipeline](#content-pipeline) section and its numbered workflow prompts.
+The [Content Format](#content-format) section explains the two fixed outputs; it does not define a choice between them. This document does not define canonical writing, platform adaptation, rendering, export, publication, or archive behavior. Those lifecycle stages are owned by the [Content Pipeline](#content-pipeline) section and its numbered workflow prompts.
 
 # Content Pipeline
 
@@ -85,11 +82,13 @@ Real work
   → automatic/manual capture or optional discovery → content/ideas/ (raw capture inbox)
   → Workflow 01 — Idea Qualification: content-strategist → REJECT / DEVELOP / READY
     └─ only selected READY ideas proceed
-  → Approved Content Brief
-  → Canonical Content Draft
+  → Approved Content Brief (both outputs fixed)
+  → Canonical Content Draft (shared, platform-neutral meaning)
   └─ semantic/editorial gate: content-editor
-  → Format / Platform Adaptation
-  └─ language + format refinement → content-reviewer
+  → Workflow 04 — Format Adaptation
+    ├─ Instagram Carousel (Lebanese Arabic)
+    └─ LinkedIn Post (English)
+       └─ separate platform adaptation + content-reviewer
   → Render Validation (where applicable)
   → Export (where applicable)
   → Publish
@@ -104,21 +103,21 @@ Publishing is a manual platform action between Workflow 06 and Workflow 07; it i
 
 ### 1. Idea
 
-`content/ideas/` holds raw captured opportunities, not approved publishing ideas. Workflow 01 evaluates captures for authentic trigger, useful/distinct supported insight, audience payoff, brand fit, and duplication. Optional discovery from recent work is an ingestion path and feeds the same inbox; it is not the mandatory production stage.
+`content/ideas/` holds raw captured opportunities, not approved publishing ideas. Workflow 01 develops each capture toward its strongest supported direction before assigning a verdict; useful but unfinished material normally remains `DEVELOP`, and `REJECT` is exceptional after reasonable refinement. Optional discovery from recent work is an ingestion path and feeds the same inbox; it is not the mandatory production stage.
 
 - **Capture owner:** automatic/manual ingestion under `framework/workflows/Content Idea Capture Rules.md`; capture remains intentionally moderate and does not decide publishability.
 - **Qualification owner:** Workflow 01 — `framework/workflows/Content Creation Playbook.md#01--idea-qualification`
 - **Quality gate:** `.agents/skills/content-strategist/SKILL.md`
-- **Gate outcome:** `REJECT`, `DEVELOP`, or `READY`; only `READY` proceeds.
-- **Output:** verdict for each evaluated idea; for meaningful `DEVELOP` and `READY`, a refined strategic direction with trigger, strongest defensible angle, evidence, audience payoff, brand/pillar fit, format/platform recommendation, and factual boundaries.
+- **Gate outcome:** `DEVELOP` for promising but incomplete directions, `READY` when strategically mature, or exceptional `REJECT` only after reasonable refinement leaves no worthwhile supported direction. Only `READY` proceeds.
+- **Output:** verdict for each evaluated idea; for meaningful `DEVELOP` and `READY`, a refined strategic direction with trigger, strongest defensible angle, evidence, audience payoff, brand/pillar fit, how the shared direction supports both fixed variants, and factual boundaries.
 
 ### 2. Approved Content Brief
 
-Planning fixes what the post means, who it serves, how it is framed, and where it will appear.
+Planning fixes what both versions mean, who they serve, and how their shared substance is framed.
 
 - **Owner:** Workflow 02 — `framework/workflows/Content Creation Playbook.md#02--content-planning`
 - **Input requirement:** one selected idea with a current `READY` verdict and strategic direction from Workflow 01. `REJECT`, unresolved `DEVELOP`, or unqualified ideas return to Workflow 01.
-- **Output:** approved brief with primary format, target platforms, and explicit required variants.
+- **Output:** approved shared Content Brief with the fixed required variants: Instagram Carousel and LinkedIn Post.
 
 ### 3. Canonical Content Draft
 
@@ -138,16 +137,16 @@ Each approved variant is written as a standalone artifact. Adaptation changes pr
 - **Refinement:** apply only the relevant language/format skills for the required variant.
 - **Final editorial gate:** `.agents/skills/content-reviewer/SKILL.md`
 - **Allowed review outcomes:** `PASS`, `PASS WITH MINOR EDITS`, `REVISE`, `BLOCK`.
-- **Outputs, only when approved:**
+- **Required outputs for every qualified content item:**
   - Instagram Carousel: `content/drafts/format/carousel.md` and `production/workspace/carousel.json`.
   - LinkedIn Post: `content/drafts/format/linkedin.md`.
 - LinkedIn content never lives inside another platform's draft.
 - Only Carousel produces renderer JSON.
-- A variant is not ready for Workflow 05/publication until its final editorial review is `PASS` or `PASS WITH MINOR EDITS` and any required minor edits have been applied.
+- The LinkedIn variant is not ready for publication until its final editorial review is `PASS` or `PASS WITH MINOR EDITS` and required minor edits have been applied. The Carousel also proceeds through Workflow 05 validation before export/publication.
 
 ### 5. Render Validation (where applicable)
 
-Validate the adapted Carousel in the React renderer. This stage applies only when an Instagram Carousel variant is approved and has passed its editorial gate.
+Validate the required Instagram Carousel in the React renderer after it has passed its editorial gate.
 
 - **Owner:** Workflow 05 — `framework/workflows/Content Creation Playbook.md#05--render-validation`
 - **Input:** editorially approved `production/workspace/carousel.json`.
@@ -167,7 +166,7 @@ The creator publishes the chosen approved variant on its target platform. Publis
 
 ### 8. Archive the exact published variant
 
-Archive what appeared on the platform, not automatically the primary format or latest shared package.
+Archive exactly the platform variant that appeared, not another generated variant or a shared package.
 
 - **Owner:** Workflow 07 — `framework/workflows/Content Creation Playbook.md#07--archive-published-post`
 - **Inputs:** exact published copy, platform, variant format, verified date, URL/identifier, and applicable assets.
@@ -196,15 +195,15 @@ The final reviewer routes issues by ownership rather than patching them in the w
 
 ## Quality checks
 
-- Workflow 01 has a `content-strategist` verdict; only `READY` ideas proceed.
-- The brief names all intended platforms and required variants.
+- Workflow 01 has a `content-strategist` verdict; `DEVELOP` is used for promising unfinished ideas and `REJECT` only after reasonable refinement finds no worthwhile supported direction; only `READY` proceeds.
+- The brief records both fixed required outputs: Instagram Carousel and LinkedIn Post.
 - Canonical claims and examples are supported by the source material.
 - Workflow 03 has passed the canonical draft through `content-editor`; unresolved source gaps are not invented away.
 - Every variant matches the canonical meaning and its platform/format rules.
 - Every required variant receives a `content-reviewer` verdict before it is considered approval-ready.
 - `REVISE` findings are repaired by the owning skill and reviewed again; `BLOCK` findings stop progression.
 - Carousel Markdown and JSON agree before render validation.
-- Validation and export run only for variants that require them.
+- Render validation runs for the required Carousel; export follows when Carousel assets are needed.
 - Publication is separate from export.
 - Archive copy matches the exact published variant, with no unrelated platform package.
 
@@ -213,10 +212,10 @@ The final reviewer routes issues by ownership rather than patching them in the w
 | Stage | Owner | Responsibility |
 |---|---|---|
 | Capture inbox | Project agents / manual capture | Preserve potentially useful raw material while context is fresh; do not judge publication worthiness. |
-| Idea qualification | Workflow 01 + `content-strategist` | Decide whether a capture merits content and identify its strongest supported strategic direction; only selected `READY` ideas proceed. |
-| Brief | Human / Workflow 02 | Approve direction and required variants from a `READY` idea. |
+| Idea qualification | Workflow 01 + `content-strategist` | Develop captured material first, then qualify its strongest supported direction; use `DEVELOP` normally for unfinished potential and `REJECT` only exceptionally. Only selected `READY` ideas proceed. |
+| Brief | Human / Workflow 02 | Approve shared content direction and record both fixed required variants from a `READY` idea. |
 | Canonical draft | Workflow 03 + `content-editor` | Define and repair meaning, evidence, reasoning, and boundaries in `post.md`. |
-| Adaptation | Workflow 04 + relevant writing/format skills + `content-reviewer` | Produce only approved standalone variants, refine presentation, run the final editorial gate, and generate Carousel JSON only when needed. |
+| Adaptation | Workflow 04 + relevant writing/format skills + `content-reviewer` | Produce both fixed standalone variants, refine each presentation independently, run the final editorial gates, and generate the required Carousel JSON. |
 | Render validation | Workflow 05 | Validate the editorially approved Carousel renderer output when applicable. |
 | Export | Workflow 06 | Export Carousel assets when applicable. |
 | Publish | Human | Publish the selected approved variant on the platform. |

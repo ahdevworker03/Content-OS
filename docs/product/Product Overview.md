@@ -326,11 +326,11 @@ Expected order:
 
 ```
 Capture / ingestion → Qualified READY Idea → Approved Content Brief → Canonical Content
-  → Format / Platform Variants
+  → Instagram Carousel + LinkedIn Post (current personal Content OS)
   → Design / Rendering where applicable → Review → Export / Publish
 ```
 
-Reason: this avoids random AI output and preserves content quality. The system establishes canonical meaning before adapting it to approved formats and platforms. Carousel slide structure and renderer data belong to Carousel adaptation; not every post becomes a Carousel.
+Reason: this avoids random AI output and preserves content quality. The system establishes canonical meaning before independently adapting it into both fixed current outputs. Carousel slide structure and renderer data belong to Carousel adaptation. This current personal workflow always includes a Carousel; future generalized product configurations are not defined by this rule.
 
 ---
 
@@ -630,7 +630,7 @@ An **Idea** is the raw input before the Content Brief. It may be entered by the 
 
 ## 7. Content Brief
 
-A **Content Brief** is the planning layer between an Idea and canonical content. It captures core idea, audience, primary format, target platforms, required platform/format variants, angle, takeaway, tone, structure direction, and constraints.
+A **Content Brief** is the planning layer between a qualified Idea and canonical content. For the current personal Content OS, it captures the shared core idea, audience, angle, takeaway, tone, creative direction, constraints, and the inherited required variants: Instagram Carousel and LinkedIn Post. Workflow 02 does not choose or omit either output. Future generalized product behavior is not specified here.
 
 **Purpose:** prevent random generation by forcing structure before writing.
 
@@ -642,7 +642,7 @@ A **Content Brief** is the planning layer between an Idea and canonical content.
 
 The **Canonical Content Draft** is the format-neutral written source at `content/drafts/post.md`. It records the core idea, authentic trigger, reasoning, key points, supported examples, claims and factual boundaries, intended takeaway, CTA intent, and wording worth preserving.
 
-Workflow 03 owns this source. It contains no slides, timing, platform captions, LinkedIn paragraph structure, visual directions, or renderer JSON. Workflow 04 adapts it into only the variants approved in the brief.
+Workflow 03 owns this source. It contains no slides, timing, platform captions, LinkedIn paragraph structure, visual directions, or renderer JSON. Workflow 04 independently adapts it into both required current variants.
 
 ---
 
@@ -832,7 +832,7 @@ An **Asset** is a generated or uploaded media file used by or produced from a po
 | Workspace     | No product workspace; repository is the environment            | Product-level container for content/brands/posts |
 | Brand         | Markdown framework files (Brand View, Brand Voice)             | Editable product data                            |
 | Post          | Files in ideas, drafts, published                              | Persisted product record                         |
-| Content Brief | Workflow 02 output: primary format, platforms, required variants | Generated/edited in the application              |
+| Content Brief | Workflow 02 output: shared direction + fixed Instagram Carousel and LinkedIn Post variants | Generated/edited in the application              |
 | Canonical Content Draft | `content/drafts/post.md`, format-neutral substance | Persisted post source                            |
 | Content Model | Carousel renderer contract in `framework/model/Content Model.md` | Typed Carousel contract                          |
 | Carousel      | Single active carousel in `production/workspace/carousel.json` | Multiple posts/post versions                     |
@@ -977,17 +977,17 @@ System responsibility:
 
 ## 7. Step 4 — AI Brief
 
-The system turns the raw idea into a concise **Content Brief**, including working title, core idea, audience, angle, takeaway, tone, primary format, target platforms, required platform/format variants, design direction (if useful), and constraints.
+The future application turns the raw idea into a concise **Content Brief**, including working title, core idea, audience, angle, takeaway, tone, creative direction, design direction (if useful), and constraints. The current personal Content OS inherits both required variants—Instagram Carousel and LinkedIn Post—rather than asking Workflow 02 to select platforms or formats.
 
-User action: approve, edit, regenerate, or change direction.
+User action: approve, edit, regenerate, or change the shared content direction. A future generalized product may have different platform configuration; the current personal workflow always produces both required variants.
 
-**Important:** the brief is the checkpoint before canonical writing and adaptation. This preserves "structure before generation" for a Post, whether or not it includes a Carousel.
+**Important:** the brief is the checkpoint before canonical writing and adaptation. In the current personal Content OS, every produced Post includes both an Instagram Carousel and a LinkedIn Post; future generalized product configurations are not specified by this workflow.
 
 ---
 
 ## 8. Step 5 — Approve / Adjust Direction
 
-The user can accept the brief or change the angle, make it simpler/deeper, change tone, change audience, change language/dialect, change platform/format, or ask for another version.
+In a future generalized application, the user may accept the brief or change the angle, depth, tone, audience, language/dialect, platform/format configuration, or ask for another version. This does not change the fixed dual-platform outputs in the current personal Content OS.
 
 The system should update the brief, keep changes understandable, and avoid generating final slides until the direction is accepted — unless the user requests a fast draft.
 
@@ -995,9 +995,9 @@ The system should update the brief, keep changes understandable, and avoid gener
 
 ## 9. Step 6 — Write Canonical Content and Adapt Approved Variants
 
-The system first creates format-neutral canonical content: trigger, reasoning, key points, supported examples, factual boundaries, takeaway, and CTA intent. It then adapts only the variants approved in the brief. Carousel slide sequence, slide purpose, copy, and **structured Content Model data** belong to Carousel adaptation. LinkedIn and other non-Carousel variants are separate standalone outputs.
+The system first creates format-neutral canonical content: trigger, reasoning, key points, supported examples, factual boundaries, takeaway, and CTA intent. The current personal workflow then independently adapts that meaning into both required variants: Instagram Carousel and LinkedIn Post. Carousel slide sequence, slide purpose, copy, and **structured Content Model data** belong to Carousel adaptation. Each platform version is a separate standalone output.
 
-**Important:** canonical meaning must be established before platform/format adaptation. Structured Carousel data is generated only for the Carousel variant; other variants remain standalone platform artifacts.
+**Important:** canonical meaning must be established before platform/format adaptation. Structured Carousel data is generated for the required Carousel variant; the LinkedIn Post remains a standalone platform artifact.
 
 ---
 
@@ -1057,7 +1057,7 @@ The system produces deterministic final assets, ensures preview matches export, 
 
 **Future:** archive may become a product history view or database-backed record.
 
-**Important:** archive the exact variant that appeared on the platform, not automatically the primary format or a shared multi-platform package.
+**Important:** archive the exact variant that appeared on the platform, not another generated variant or a shared multi-platform package.
 
 ---
 
@@ -1112,7 +1112,7 @@ A short continuity mapping between the current internal system and future produc
 | Current Internal System | Future Product Experience |
 |---|---|
 | Workflow 01 — Idea Qualification | Qualify captured idea; only READY proceeds |
-| Workflow 02 — Content Planning | AI Brief |
+| Workflow 02 — Content Planning | AI Brief for fixed Instagram Carousel + LinkedIn Post outputs |
 | Workflow 03 — Post Content Builder | Write only the Canonical Content Draft |
 | Workflow 04 — Format Adaptation | Create approved standalone variants; produce Carousel content/model data only for Carousel |
 | Workflow 05 — Render Validation | Preview / Validate Carousel where applicable |
@@ -1331,7 +1331,7 @@ The **Post** is the main domain object — one publishable idea or content item.
 An **Idea** is raw source material before the Content Brief. It can originate from direct user input, a learning moment, a project update, or completed implementation, debugging, product, client, university, or workflow work captured automatically by an agent.
 
 - **Current representation:** `content/ideas/<YYYY-MM-DD-project-slug>/`, with a required `idea.json` and optional curated supporting resources. The JSON follows `framework/model/idea.schema.json`; automatic capture follows `framework/workflows/Content Idea Capture Rules.md`.
-- **Automatic capture boundary:** the project agent preserves raw material only. Content OS later owns publication decisions, duplicate detection, platform and format choice, brand voice, and final content.
+- **Automatic capture boundary:** the project agent preserves raw material only. Content OS later owns qualification, duplicate handling, brand fit, evidence-based refinement, and content planning. In the current personal workflow, the required platform outputs are fixed to Instagram Carousel and LinkedIn Post; capture agents do not choose them.
 - **Next:** entered through the product's creation flow.
 
 **Relationships:** Idea becomes Content Brief; Idea belongs to Post.
@@ -1342,12 +1342,12 @@ An **Idea** is raw source material before the Content Brief. It can originate fr
 
 ## 12. Content Brief
 
-The **Content Brief** is the planning checkpoint. It captures working title, core idea, audience, angle, takeaway, tone, primary format, target platforms, required variants, design direction, and constraints.
+The **Content Brief** is the planning checkpoint. It captures working title, core idea, audience, angle, takeaway, tone, shared creative direction, fixed required variants (Instagram Carousel and LinkedIn Post for the current personal Content OS), design direction, and constraints.
 
 - **Current:** output of the internal planning workflow.
 - **Next:** generated and edited inside the application.
 
-**Relationships:** created from Idea; names the primary format, target platforms, and required variants; approved before canonical writing.
+**Relationships:** created from a qualified READY idea; records both inherited required variants for the current personal workflow; approved before canonical writing.
 
 **Important:** this preserves structure before generation.
 
@@ -1513,7 +1513,8 @@ A **Version** is a saved state of a Post/Carousel.
 Conceptual lifecycle states:
 
 ```
-Capture / ingestion → Qualified READY Idea → Approved Content Brief → Canonical Content Draft → Format / Platform Adaptation
+Capture / ingestion → Qualified READY Idea → Approved Content Brief (Instagram Carousel + LinkedIn Post)
+  → Canonical Content Draft → Format / Platform Adaptation
   → Render Validation (where applicable) → Export (where applicable)
   → Publish → Archive the exact published variant
 ```
@@ -1582,14 +1583,14 @@ Postponed: Account, Authentication Identity, Organization/Team, Role/Permission,
 ## 31. Domain Rules
 
 1. A Post starts from an Idea or user prompt.
-2. A Content Brief names primary format, target platforms, and required variants before canonical writing.
+2. For the current personal Content OS, a Content Brief records both fixed required variants—Instagram Carousel and LinkedIn Post—before canonical writing; Workflow 02 does not select between them.
 3. Workflow 03 writes format-neutral content to `content/drafts/post.md` only.
 4. Workflow 04 adapts only approved variants and preserves canonical meaning and factual boundaries.
 5. Carousel renderer JSON is generated only for an approved Carousel variant.
 6. The Adapter is the boundary between Content Model and Renderer Models.
 7. Preview and Export must use the same rendered source.
 8. Export creates Assets; Publication records external sharing.
-9. Archive preserves the exact variant published, not automatically the primary format.
+9. Archive preserves exactly the variant published, not another generated variant.
 10. Layout and Theme / Design Direction both influence rendering.
 11. AI may propose, but the user reviews before export/publication.
 12. SaaS concepts are postponed until the single-user loop works.

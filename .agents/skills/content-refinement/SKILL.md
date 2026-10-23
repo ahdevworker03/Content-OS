@@ -40,8 +40,8 @@ Classify the artifact before loading specialists.
 
 Run `content-strategist` first.
 
-- `REJECT` stops that direction.
-- `DEVELOP` must be refined from existing evidence and evaluated again; it cannot proceed to writing until it is marked `READY`.
+- `REJECT` stops that direction only after `content-strategist` finds no worthwhile supported direction following reasonable refinement.
+- `DEVELOP` is a normal intermediate state for promising but unfinished ideas; refine from existing evidence and reevaluate before planning.
 - `READY` proceeds to Workflow 02 — Content Planning only.
 
 `REJECT`, `DEVELOP`, and unqualified ideas cannot proceed to canonical writing. Workflow 03 begins only after Workflow 02 has produced an approved Content Brief; this skill must not route an idea directly to canonical writing.

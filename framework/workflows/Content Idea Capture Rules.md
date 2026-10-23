@@ -242,7 +242,7 @@ captured idea
   └─ verdict: REJECT / DEVELOP / READY
      └─ selected READY only → Workflow 02 — Content Planning
           └─ Approved Content Brief:
-             primary format, target platforms, required variants,
+             fixed required variants: Instagram Carousel + LinkedIn Post,
              shared creative direction, and constraints
 → Workflow 03 — Post Content Builder / canonical content
 → Workflow 04 — Format / Platform Adaptation
@@ -251,7 +251,7 @@ captured idea
 → publishing preparation
 ```
 
-Workflow 01 performs deduplication/consolidation and brand/content qualification before planning. Workflow 02 chooses the primary format, target platforms, and required variants inside the approved brief. Workflow 04 performs the actual platform/language adaptation; Workflow 02 does not write platform-specific copy.
+Workflow 01 performs evidence-based refinement, deduplication/consolidation, and brand/content qualification before planning. For the current personal Content OS, Workflow 02 inherits both required outputs—Instagram Carousel and LinkedIn Post—and records them in the approved brief; it does not choose or omit platforms/formats. Workflow 04 performs the actual platform/language adaptation; Workflow 02 does not write platform-specific copy.
 
 Project agents only preserve authentic raw material from the work while the context is fresh.
 

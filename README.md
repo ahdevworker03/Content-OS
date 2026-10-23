@@ -39,23 +39,25 @@ Coding / project work
         ↓
 Automatic idea capture
         ↓
-Idea quality gate
+Workflow 01 — Idea Qualification
+        ↓
+Qualified READY idea
         ↓
 Approved content brief
         ↓
 Canonical draft
         ↓
-Editorial review
+Canonical editorial review
         ↓
-Platform adaptation
+Workflow 04 — Format Adaptation
+        ├── Instagram Carousel (Lebanese Arabic)
+        └── LinkedIn Post (English)
         ↓
-Structured carousel JSON
+Platform editorial review
         ↓
-React renderer + Studio
+Carousel validation / export where applicable
         ↓
-Visual validation
-        ↓
-PNG / PDF export
+Manual publishing
         ↓
 Published archive
 ```
@@ -63,6 +65,8 @@ Published archive
 Project agents can capture raw content opportunities at an intentionally moderate threshold from completed, verified work into `content/ideas/` according to the repository's idea-capture rules. The folder is an inbox, not a publishing queue: Workflow 01 — Idea Qualification assigns `REJECT`, `DEVELOP`, or `READY`, and only a selected `READY` idea proceeds to Workflow 02 — Content Planning.
 
 The content is not published automatically. Ideas still pass through explicit quality, writing, review, rendering, and approval stages before publication.
+
+For every idea that reaches production in this personal Content OS, Workflow 02 carries both fixed outputs into the brief: an Instagram Carousel and a LinkedIn Post. Workflow 04 adapts the shared canonical content independently for each platform.
 
 ---
 
@@ -185,7 +189,7 @@ The current skills include:
 
 | Skill                       | Responsibility                                                  |
 | --------------------------- | --------------------------------------------------------------- |
-| `content-strategist`        | Evaluates whether an idea is worth developing                   |
+| `content-strategist`        | Develops captured ideas and qualifies their strongest supported direction |
 | `content-editor`            | Reviews reasoning, clarity, specificity, and factual boundaries |
 | `lebanese-arabic-writing`   | Handles natural Lebanese Arabic phrasing                        |
 | `arabic-technical-language` | Keeps Arabic and English technical terminology consistent       |

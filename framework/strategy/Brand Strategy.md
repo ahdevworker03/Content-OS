@@ -328,13 +328,15 @@ Adapt each variant from the same trigger and insight. Rewrite for its audience i
 
 This section defines the deliverables expected after developing a content idea. The pipeline and AI prompts should reference this section for output expectations.
 
-### Required Outputs
+### Required Outputs — Current Personal Content OS
 
-For every content idea that enters production, the following must be produced:
+Every content idea that reaches production must produce both:
 
-1. **Primary content piece** — At least one complete, publishable Instagram Carousel or LinkedIn post.
-2. **Platform-adapted version** — For every target platform, a version that follows the Platform Rewriting Rules above. If an idea targets both Instagram and LinkedIn, both versions must exist.
-3. **Core insight statement** — A one-sentence summary of the trigger and insight that the content is built on. This anchors all platform variants to the same idea.
+1. **Instagram Carousel** — complete, publishable, Lebanese Arabic content following the Platform Rewriting Rules above.
+2. **LinkedIn Post** — complete, publishable, English content following the Platform Rewriting Rules above.
+3. **Core insight statement** — a one-sentence summary of the shared trigger and insight anchoring both versions.
+
+These are fixed outputs in the current personal Content OS, not per-idea platform choices. A future generalized product may support user-specific platform configuration; this current rule does not prescribe that future architecture.
 
 ### Optional Outputs
 
@@ -342,11 +344,11 @@ The following may be produced depending on capacity and relevance:
 
 1. **Archive metadata** — Structured metadata for the content archive (platform, pillar, format, tags, publishing date).
 
-### Relationship Between Primary and Secondary Content
+### Relationship Between the Two Platform Variants
 
-- The primary content piece determines the format and depth anchor. Secondary content adapts from that anchor — it does not redefine it.
-- Secondary content is derived, not duplicated. Each variant must be a genuine adaptation following the Platform Rewriting Rules.
-- Optional outputs are never required. They are produced only when they add value without reducing the quality of the primary content.
+- Both variants derive from the same canonical meaning and evidence; neither is optional or the other's depth anchor.
+- The variants are independently adapted, not duplicated or mechanically translated. Each follows the Platform Rewriting Rules.
+- Optional archive metadata may be produced when useful; it does not replace or make either platform variant optional.
 
 ### Deliverable Format Expectations
 

@@ -1,6 +1,6 @@
 ---
 name: content-strategist
-description: Use when evaluating, comparing, refining, or prioritizing content ideas before planning or production, especially when it is unclear whether an experience is actually worth turning into content or what the strongest angle should be.
+description: Use when developing, qualifying, comparing, refining, or prioritizing captured content ideas before planning, especially to find the strongest evidence-supported direction and carry useful raw material toward readiness.
 ---
 
 # Content Strategist
@@ -9,11 +9,11 @@ description: Use when evaluating, comparing, refining, or prioritizing content i
 
 Act as Workflow 01's editorial qualification gate for raw captured ideas, normally loaded from `content/ideas/` with their curated evidence. A manually supplied raw idea is also valid input. The capture inbox is intentionally moderately noisy; do not narrow its threshold or assume capture implies approval.
 
-The strategist decides whether an idea deserves production and, when the available evidence allows it, refines the idea into its strongest defensible direction.
+The strategist's primary job is to develop raw captured material into its strongest supported content direction. Qualification should help useful ideas mature, not act as a strict submission filter.
 
 Core rule:
 
-> Do not force a post out of an experience merely because content can be written about it.
+> Treat a capture as starting material: first develop the strongest useful direction it supports; reject only when reasonable refinement leaves no worthwhile supported direction.
 
 ---
 
@@ -29,7 +29,7 @@ Read when relevant:
 - a captured `idea.json` and its curated resources
 - source material supporting the trigger, decision, bug, result, evidence, or lesson
 
-Workflow 01 may recommend a format and platforms but does not apply their writing rules. Workflow 02 owns the approved brief and variants; Workflow 04 owns actual language and platform adaptation.
+Workflow 01 does not choose formats/platforms or apply their writing rules. Both current required outputs—Instagram Carousel and LinkedIn Post—are inherited. Workflow 02 owns the shared approved brief; Workflow 04 owns actual language and platform adaptation.
 
 Never invent missing experiences, results, evidence, or certainty.
 
@@ -41,19 +41,21 @@ Every idea review ends with exactly one verdict.
 
 ### `REJECT`
 
-The available material should not move into production in its current direction.
+No worthwhile supported content direction remains after reasonable refinement.
 
-Use when there is no sufficiently valuable, distinct, supportable post in the available material, including a routine activity without insight, generic/duplicate direction, unsupported conclusion, insufficient audience value, or conflict with brand boundaries. Do not force the capture into content.
+`REJECT` is exceptional. Use it only after reasonable evidence-based refinement finds no worthwhile supported direction, for example: a garbage capture; completely routine activity with no meaningful insight, decision, trade-off, lesson, or useful context; a near-total duplicate with no meaningful new material; a false central premise with no supported direction left; substance that cannot be shared for privacy/confidentiality reasons; or an idea that can be made useful only by inventing experience or lessons.
+
+Do not reject because the title is weak, raw framing is generic, the note is poorly written, the lesson is implicit, evidence needs organization, or the idea is not immediately publish-ready. Refine those cases or use `DEVELOP`.
 
 ### `DEVELOP`
 
-There is real material worth using, but the direction is not ready.
+There is real material worth using, but the direction is not ready. This is the normal intermediate state for promising captures that still need work.
 
-Use when potentially useful content exists but the angle, evidence, audience payoff, insight, overlap, or uncertainty needs work. Refine only from existing evidence. A DEVELOP idea cannot proceed to Workflow 02 until reevaluated and marked READY.
+Use when the title or raw framing is weak, the insight/tension/payoff is unclear, evidence needs connecting or clarification, the angle is too broad, captures need consolidation, or factual boundaries need work. Actively refine using available evidence/context before leaving it in DEVELOP; state what remains unresolved. Never invent substance. A DEVELOP idea cannot proceed to Workflow 02 until reevaluated and marked READY.
 
 ### `READY`
 
-Use only when the complete idea-quality gate below passes. `READY` means the direction is authentic, specific, useful, sufficiently supported, differentiated, aligned with the brand, clear about audience payoff, and bounded by evidence. Only a selected READY idea is an official Workflow 02 input.
+Use when reasonable refinement has produced an authentic trigger, useful tension, clear insight, meaningful audience value, enough supporting evidence, brand fit, reasonable differentiation, and factual boundaries. `READY` means strategically mature enough for Workflow 02, not final copy or an approved Content Brief. Every READY idea inherits both current required outputs: Instagram Carousel and LinkedIn Post; this skill does not select or write either variant.
 
 ---
 
@@ -64,12 +66,12 @@ Evaluate these dimensions together:
 1. **Trigger** — What specifically happened, was decided, observed, questioned, or discovered? Prefer concrete project events, bugs, tradeoffs, failures, implementation results, or real observations over abstract topics.
    Is this trigger real and specific, and does it contain a useful idea rather than merely activity?
 2. **Tension** — What made the trigger worth examining: confusion, broken assumption, surprise, consequence, constraint, decision, or tradeoff?
-3. **Insight** — What does the experience reveal beyond merely describing what happened? Reject generic lessons when the source supports a more precise idea.
+3. **Insight** — What does the experience reveal beyond merely describing what happened? When the source supports a more precise idea, refine away from generic lesson framing.
 4. **Evidence** — What source-supported detail makes the direction credible: code, screenshots, logs, tests, before/after behavior, failed attempts, decisions, measurements, or concrete outcomes? If the core claim requires missing evidence, the idea is not `READY`.
 5. **Audience payoff** — Complete: `After reading this, the target reader should understand ______.` The answer must be specific and useful.
 6. **Specificity and differentiation** — Could essentially the same post be written without this creator's actual experience? If yes, strengthen the angle from real constraints, evidence, or reasoning. Check `Posted Titles.md` when duplication matters.
    If similar material exists, establish whether this angle is genuinely distinct; do not treat duplicate captures as separate posts.
-7. **Depth and format fit** — The idea must contain enough real substance for the proposed format without padding, repetition, fake friction, or compression that destroys the reasoning.
+7. **Substance for both fixed outputs** — Confirm the shared direction has enough real substance to support both an Instagram Carousel and a LinkedIn Post without padding or invented content. The required variants are fixed; do not recommend choosing one platform or format instead of the other. If the common direction needs refinement, use DEVELOP rather than rejecting prematurely.
 8. **Brand fit** — The direction must fit the creator's audience, positioning, pillars, and factual boundaries.
 9. **Overlap and backlog value** — Consolidate heavily overlapping captures into one content direction where appropriate. When several ideas are READY, recommend the next candidate using audience value, distinctiveness, evidence, timing/relevance, and effort/value; do not default to newest.
 
@@ -88,9 +90,9 @@ Do not stop at comments such as:
 - find a stronger takeaway,
 - the angle is weak.
 
-When the existing context supports a stronger direction, produce that direction directly.
+When the existing context supports a stronger direction, produce that direction directly. Try reasonable reframing and connect available evidence before deciding that the idea has no useful direction.
 
-For `DEVELOP`, strengthen the idea from the available trigger, evidence, constraints, and reasoning. For `REJECT`, explain the blocking weakness without fabricating a better story.
+For `DEVELOP`, strengthen the idea from the available trigger, evidence, constraints, and reasoning, then state the remaining gap and what would move it toward READY. For `REJECT`, explain why reasonable refinement still leaves no worthwhile supported direction; do not reject merely because the raw capture is weak.
 
 This skill defines **what is worth saying and why**. It does not write final platform copy.
 
@@ -119,7 +121,7 @@ Insight
 Evidence
 Audience payoff
 Specificity / differentiation
-Depth / format fit
+Substance for both fixed platform outputs
 Brand fit
 ```
 
@@ -149,9 +151,8 @@ Audience problem
 Audience payoff
 What makes it specific
 Content pillar
-Recommended format
-Recommended platforms
-Why that format fits
+Fixed required outputs: Instagram Carousel + LinkedIn Post
+How the shared direction can support both without padding
 Key points worth developing
 Factual/uncertainty boundaries
 What not to claim

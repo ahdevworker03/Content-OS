@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-23-content-os-fixed-platform-pair",
+  "captured_at": "2026-10-23T16:00:00Z",
+  "project": {
+    "name": "Content OS",
+    "repository": "content-os",
+    "area": "Content planning and platform adaptation"
+  },
+  "idea": {
+    "title": "Treat platform adaptations as siblings, not primary and secondary posts",
+    "type": "workflow-design",
+    "summary": "Updated the current personal Content OS contract so every qualified idea yields both an Instagram Carousel and a LinkedIn Post from one shared canonical source, without asking planning to choose one platform over the other."
+  },
+  "context": {
+    "goal": "Align the content workflow with the approved rule that every idea entering production produces both current platform variants.",
+    "situation": "The workflow had framed primary format and target platforms as choices made in Content Planning, while the current personal Content OS expects both Instagram Carousel and LinkedIn Post for each qualified idea.",
+    "problem": "Per-idea platform selection and primary/secondary language could make one required version appear optional and left Workflow 02 resolving a decision whose answer was fixed.",
+    "investigation": "Reviewed the playbook, lifecycle, Brand Strategy, README, product and architecture documents, and strategist/refinement skills. Confirmed Workflow 03 already had a platform-neutral canonical boundary and Workflow 04 already owned platform-specific adaptation.",
+    "decision": "Make both platform variants inherited outputs in Workflow 02, which plans their shared meaning in one Content Brief. Keep Instagram Carousel writing and Lebanese Arabic adaptation, plus English LinkedIn adaptation, downstream in Workflow 04.",
+    "implementation": "Updated the workflow, lifecycle, brand output contract, relevant skills, and active README/product/architecture summaries. No renderer, Studio, export, Content Model, or idea schema behavior changed.",
+    "result": "The current workflow defines two independent platform adaptations from common canonical meaning instead of one primary post with an optional secondary version."
+  },
+  "content_value": {
+    "learning_points": [
+      "When outputs are already fixed by product policy, planning should inherit them rather than present them as open choices.",
+      "Two platform versions can share one canonical meaning without one acting as the other's format or depth anchor.",
+      "Planning owns shared intent and constraints; adaptation owns each platform's language, structure, and presentation."
+    ],
+    "story_points": [
+      "The content pipeline had both Instagram and LinkedIn rules, but planning still treated the output set as a per-idea choice.",
+      "The corrected contract locks both outputs in the brief and preserves separate platform adaptation downstream.",
+      "The documentation explicitly scopes this as the current personal workflow, not a universal future SaaS configuration."
+    ],
+    "possible_angles": [
+      "Why a fixed pair of platform outputs should not be modeled as a primary post plus optional secondary post.",
+      "How one canonical source can support two distinct platform adaptations without turning them into translations.",
+      "Separating shared content planning from platform-specific writing."
+    ]
+  },
+  "resources": [],
+  "notes": [
+    "Raw capture only; the idea has not been qualified for publication.",
+    "This documents workflow-contract decisions, not a renderer or product application feature."
+  ]
+}
