@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-22-portfolio-markab-project-preview",
+  "captured_at": "2026-10-22T22:50:41+03:00",
+  "project": {
+    "name": "Abdallah Hassoun Portfolio",
+    "repository": "Abdallah-Hassoun-Portfolio",
+    "area": "Project card screenshot preview"
+  },
+  "idea": {
+    "title": "Pilot a project screenshot without changing every card",
+    "type": "frontend-implementation-learning",
+    "summary": "Added an optional screenshot preview to the shared project-card model, then populated it for Markab only. A real dashboard screenshot and conditional rendering let the visual treatment be evaluated without placeholders or changes to the other project cards."
+  },
+  "context": {
+    "goal": "Test a screenshot preview on the Markab project card while preserving the existing Projects layout and other cards.",
+    "situation": "The portfolio's three project cards were text-only, and the user wanted to evaluate a visual preview on Markab before extending the treatment elsewhere.",
+    "problem": "No dashboard image existed in the portfolio assets; the deployed Markab URL redirected to login, while the Markab repository contained desktop and mobile dashboard screenshots in its documentation screenshots folder.",
+    "investigation": "Inspected the local Markab and portfolio image assets, confirmed there was no dashboard screenshot among the app's brand images, and previewed the repository's dashboard desktop and mobile captures.",
+    "decision": "Use the existing Markab documentation dashboard screenshot and make image and alt-text data optional so only the Markab card changes.",
+    "implementation": "Copied the desktop dashboard screenshot unchanged to the portfolio's public images, added optional image fields to Project, and conditionally rendered a 16:10 linked preview before the card title.",
+    "result": "The Markab card shows the preview linked to the live product; WhatsApp and Content OS retain their original layout. Desktop and mobile checks found no overflow, and the preview preserves the GitHub and Live Product actions."
+  },
+  "content_value": {
+    "learning_points": [
+      "Optional presentation data can support a one-card design experiment without placeholders on every item.",
+      "Inspect available product imagery before creating or substituting a screenshot.",
+      "Check a screenshot preview at both desktop and mobile sizes for crop and legibility."
+    ],
+    "story_points": [
+      "The public product URL led to a login screen rather than a dashboard screenshot.",
+      "A dashboard capture already existed in the product repository's documentation screenshots.",
+      "The shared project card conditionally renders only the Markab image and links it to the live product."
+    ],
+    "possible_angles": [
+      "A small project-card image experiment can stay scoped to one project through optional data fields.",
+      "Find the real product screenshot before building a decorative substitute."
+    ]
+  },
+  "resources": [
+    {
+      "file": "projects-section-desktop.png",
+      "description": "Desktop capture showing the Markab dashboard preview inside the portfolio project card.",
+      "source": "src/components/ui/ProjectCard.tsx"
+    }
+  ],
+  "notes": [
+    "The referenced CONTENT_IDEA_CAPTURE_RULES.md was not present in the Content OS framework directory; captured using the available idea schema and project-level capture instructions."
+  ]
+}

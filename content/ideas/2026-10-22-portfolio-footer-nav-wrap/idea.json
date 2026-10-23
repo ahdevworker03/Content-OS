@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-22-portfolio-footer-nav-wrap",
+  "captured_at": "2026-10-22T21:47:49+03:00",
+  "project": {
+    "name": "Abdallah Hassoun Portfolio",
+    "repository": "Abdallah-Hassoun-Portfolio",
+    "area": "Responsive navigation"
+  },
+  "idea": {
+    "title": "One more navigation link exposed a mobile overflow",
+    "type": "frontend-debugging-story",
+    "summary": "Adding the Experience link made the footer navigation exceed a 390px mobile viewport. A real browser check identified the footer row as the source, and allowing the links to wrap removed the horizontal overflow."
+  },
+  "context": {
+    "goal": "Add an Experience section and keep the portfolio navigation usable on mobile.",
+    "situation": "The portfolio has shared navigation links in both the header and footer, and the section list grew during a job-application content update.",
+    "problem": "At a 390px viewport, the footer's single-line navigation expanded the page to 401px wide.",
+    "investigation": "A Playwright viewport check reported horizontal overflow. Inspecting element bounds showed the footer navigation extending beyond both viewport edges.",
+    "decision": "Keep the existing footer design and let the links wrap on narrow screens rather than reducing the link labels or hiding navigation.",
+    "implementation": "Changed the footer navigation to wrap and use separate horizontal and vertical gaps.",
+    "result": "The mobile page returned to 390px wide with no horizontal overflow; desktop width and mobile menu navigation also passed browser checks."
+  },
+  "content_value": {
+    "learning_points": [
+      "Adding navigation items can break a different shared navigation surface, such as a footer.",
+      "Check actual element bounds at a narrow viewport instead of assuming the overflow source.",
+      "Wrapping is a small responsive fix that preserves all navigation choices."
+    ],
+    "story_points": [
+      "A new section required one additional navigation item.",
+      "The footer, not the mobile menu, caused a 11px horizontal overflow at 390px.",
+      "A browser check verified the fix without changing the desktop layout."
+    ],
+    "possible_angles": [
+      "A navigation change broke the footer on mobile, not the header menu.",
+      "How inspecting element bounds made a small responsive regression easy to pinpoint."
+    ]
+  },
+  "resources": [
+    {
+      "file": "footer-nav-wrap.tsx",
+      "description": "Small excerpt showing the footer navigation's wrapping and responsive gap classes.",
+      "source": "src/components/layout/Footer.tsx"
+    }
+  ],
+  "notes": [
+    "The referenced CONTENT_IDEA_CAPTURE_RULES.md was not present in the Content OS framework directory; captured using the available idea schema and project-level capture instructions."
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "id": "2026-10-22-portfolio-cv-claim-audit",
+  "captured_at": "2026-10-22T22:04:10+03:00",
+  "project": {
+    "name": "Abdallah Hassoun Portfolio",
+    "repository": "Abdallah-Hassoun-Portfolio",
+    "area": "Portfolio content accuracy"
+  },
+  "idea": {
+    "title": "Treat the CV as the portfolio's claim ledger",
+    "type": "engineering-learning",
+    "summary": "A portfolio refresh against an approved CV surfaced project and tool claims that were not in the CV. Comparing each section to the CV helped keep application copy consistent and remove claims that the chosen source of truth did not substantiate."
+  },
+  "context": {
+    "goal": "Review portfolio content for an application and align factual claims with the supplied CV.",
+    "situation": "The portfolio had recently been updated across its hero, project cards, and skills groups, while the user provided the approved CV text as the source of truth.",
+    "problem": "Some portfolio details, including Arabic-first and offline-sync wording for Markab and automatic idea-capture wording for Content OS, were not stated in the CV.",
+    "investigation": "Compared the visible project descriptions and skills against the CV's project names, bullet points, technology lists, and summary.",
+    "decision": "Keep the CV-supported project capabilities and stack, and remove portfolio claims not supported by that source.",
+    "implementation": "Aligned Markab and Content OS descriptions and technology tags, removed unsupported skill entries, and reflected CV-supported engineering workflows and spoken languages.",
+    "result": "Build, lint, and browser checks passed; the browser check confirmed the removed claims no longer appear in rendered portfolio content."
+  },
+  "content_value": {
+    "learning_points": [
+      "A portfolio can drift from an approved CV as project descriptions evolve.",
+      "Use a named source of truth to decide which claims to retain, not just to polish wording.",
+      "Check the rendered site for removed claims as well as checking that new content appears."
+    ],
+    "story_points": [
+      "A CV-alignment review found extra project and tool claims in the portfolio.",
+      "The source-of-truth decision narrowed copy to the skills and outcomes the application CV states.",
+      "Browser checks verified both the revised content and the absence of the removed claims."
+    ],
+    "possible_angles": [
+      "Use your approved CV as a claim ledger when updating a portfolio for a specific job.",
+      "Why factual consistency matters more than adding every project detail to a portfolio."
+    ]
+  },
+  "resources": [
+    {
+      "file": "claim-audit-examples.md",
+      "description": "Short before-and-after examples of project claims aligned to the CV.",
+      "source": "src/data/projects.ts"
+    }
+  ],
+  "notes": [
+    "The referenced CONTENT_IDEA_CAPTURE_RULES.md was not present in the Content OS framework directory; captured using the available idea schema and project-level capture instructions."
+  ]
+}
